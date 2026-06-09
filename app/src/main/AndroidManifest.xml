@@ -84,6 +84,9 @@
             android:name="com.gizthon.camera.activity.PreviewPhotoActivity"
             android:screenOrientation="landscape"/>
         <activity
+            android:name="com.gizthon.camera.CameraXActivity"
+            android:screenOrientation="landscape"/>
+        <activity
             android:name="com.gizthon.camera.activity.PreviewVideoActivity"
             android:screenOrientation="landscape"/>
         <activity

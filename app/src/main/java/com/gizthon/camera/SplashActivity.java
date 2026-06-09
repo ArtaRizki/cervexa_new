@@ -51,12 +51,10 @@ public class SplashActivity extends CameraBaseActivity {
     }
 
     public void connectDevice(boolean z) {
-        this.cameraManager.getWifiCamera().initDevice(this);
-        if (!this.cameraManager.getWifiCamera().isWifi) {
-            UVCUSBCameraActivity.start(this);
-        } else {
-            this.cameraManager.getWifiCamera().startWifi1Activity(this);
-        }
+        // Bypass UVC and Wi-Fi for TKDN demo
+        // Launch Phone Camera directly
+        startActivity(new android.content.Intent(this, CameraXActivity.class));
+        finish();
     }
 
     @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, android.app.Activity
