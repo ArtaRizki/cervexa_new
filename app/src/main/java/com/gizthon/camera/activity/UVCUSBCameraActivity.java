@@ -206,6 +206,12 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                     public void run() {
                         Toast.makeText(UVCUSBCameraActivity.this, "保存图片成功" + str, 0).show();
                         UVCUSBCameraActivity.this.refresh(str);
+                        
+                        // TODO: Implement backend integration
+                        // Upload the snapshot via CervexaApi here
+                        // CervexaApi api = RetrofitClient.INSTANCE.getApi();
+                        // api.uploadMedia(patientId, mediaFile)...
+                        Toast.makeText(UVCUSBCameraActivity.this, "Uploading to Cervexa Backend...", 1).show();
                     }
                 });
             }

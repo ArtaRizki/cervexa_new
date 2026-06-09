@@ -51,12 +51,9 @@ public class SplashActivity extends CameraBaseActivity {
     }
 
     public void connectDevice(boolean z) {
-        this.cameraManager.getWifiCamera().initDevice(this);
-        if (!this.cameraManager.getWifiCamera().isWifi) {
-            UVCUSBCameraActivity.start(this);
-        } else {
-            this.cameraManager.getWifiCamera().startWifi1Activity(this);
-        }
+        // Dev Branch: Go to LoginActivity first to consume Backend API
+        startActivity(new android.content.Intent(this, com.gizthon.camera.activity.LoginActivity.class));
+        finish();
     }
 
     @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, android.app.Activity
