@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/half_transparent"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/top_bar_height">
+    <ImageView
+        android:id="@+id/return_back"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/ic_return_press"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"/>
+    <TextView
+        android:textSize="@dimen/text_small"
+        android:textColor="@color/text_white"
+        android:gravity="center"
+        android:id="@+id/playback_top_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/cancle_time_select_ibtn"
+        android:layout_toRightOf="@+id/return_back"
+        android:layout_centerVertical="true"/>
+    <ImageView
+        android:id="@+id/cancle_time_select_ibtn"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:src="@mipmap/ic_cancel_x"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"/>
+</RelativeLayout>

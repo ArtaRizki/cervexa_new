@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:tag="layout/preview_video_activity_0"
+    android:background="#000000"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.gizthon.camera.view.IjkVideoView
+        android:id="@+id/video_view"
+        android:layout_width="600dp"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

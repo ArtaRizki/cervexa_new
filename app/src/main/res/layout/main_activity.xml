@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/main_menu_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <HorizontalScrollView
+        android:id="@+id/horizontalscrollview"
+        android:background="#ff5555"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp">
+        <Gallery
+            android:id="@+id/gridview"
+            android:background="#fff555"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:numColumns="4"/>
+    </HorizontalScrollView>
+</LinearLayout>
