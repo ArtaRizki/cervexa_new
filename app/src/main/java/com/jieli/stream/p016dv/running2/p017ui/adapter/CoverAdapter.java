@@ -21,7 +21,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /* JADX INFO: loaded from: classes.dex */
-public class CoverAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.ViewHolder> {
     private Context mContext;
     private OnItemClickListener mOnItemClickListener;
     private List<ThumbnailInfo> mDataList = new ArrayList();
@@ -67,7 +67,7 @@ public class CoverAdapter extends RecyclerView.Adapter<ViewHolder> {
         if (this.mDataList.size() <= 1 || thumbnailInfo.getStartTime() == null) {
             return;
         }
-        if (this.mDataList.get(r0.size() - 2).getStartTime().compareTo(thumbnailInfo.getStartTime()) < 0) {
+        if (this.mDataList.get(this.mDataList.size() - 2).getStartTime().compareTo(thumbnailInfo.getStartTime()) < 0) {
             Collections.sort(this.mDataList, new Comparator<ThumbnailInfo>() { // from class: com.jieli.stream.dv.running2.ui.adapter.CoverAdapter.1
                 @Override // java.util.Comparator
                 public int compare(ThumbnailInfo thumbnailInfo2, ThumbnailInfo thumbnailInfo3) {

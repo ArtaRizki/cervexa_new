@@ -99,7 +99,7 @@ public abstract class AbstractFakeEncoder implements Encoder {
         iRecorder.addEncoder(this);
     }
 
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         release();
         super.finalize();
     }

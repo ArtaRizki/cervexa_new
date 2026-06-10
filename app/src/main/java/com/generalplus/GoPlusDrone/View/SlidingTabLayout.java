@@ -163,7 +163,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 return;
             }
             SlidingTabLayout.this.mTabStrip.onViewPagerPageChanged(i, f);
-            SlidingTabLayout.this.scrollToTab(i, SlidingTabLayout.this.mTabStrip.getChildAt(i) != null ? (int) (r0.getWidth() * f) : 0);
+            SlidingTabLayout.this.scrollToTab(i, SlidingTabLayout.this.mTabStrip.getChildAt(i) != null ? (int) (SlidingTabLayout.this.mTabStrip.getChildAt(i).getWidth() * f) : 0);
             if (SlidingTabLayout.this.mViewPagerPageChangeListener != null) {
                 SlidingTabLayout.this.mViewPagerPageChangeListener.onPageScrolled(i, f, i2);
             }

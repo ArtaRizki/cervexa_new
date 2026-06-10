@@ -113,7 +113,7 @@ public class MediaStoreAdapter extends CursorAdapter {
         return viewHolder;
     }
 
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         changeCursor(null);
         Cursor cursor = this.mMediaInfoCursor;
         if (cursor != null) {

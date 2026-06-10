@@ -52,7 +52,7 @@ public final class DeviceDescription extends Thread {
             }
 
             @Override // okhttp3.Callback
-            public void onResponse(Call call, Response response) throws Throwable {
+            public void onResponse(Call call, Response response) {
                 ResponseBody responseBodyBody;
                 byte[] bArrBytes;
                 Dbug.m1389i(DeviceDescription.this.tag, "download code = " + response.code());

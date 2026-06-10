@@ -76,7 +76,7 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
                         if (message.arg1 == VideoPlayerFragment.this.videoView.getDuration()) {
                             VideoPlayerFragment.this.ivPlayOrPause.setImageResource(C1438R.drawable.drawable_btn_play);
                         }
-                        int iFloor = (int) Math.floor(r5 / 1000.0f);
+                        int iFloor = (int) Math.floor(message.arg1 / 1000.0f);
                         VideoPlayerFragment.this.sbProgress.setProgress(iFloor);
                         VideoPlayerFragment.this.tvCurrentTime.setText(TimeFormate.getTimeFormatValue(iFloor));
                         if (VideoPlayerFragment.this.isPlaying() && VideoPlayerFragment.this.mHandler != null) {
@@ -319,7 +319,7 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
         if (!str.contains(File.separator)) {
             return str;
         }
-        return str.split(File.separator)[r2.length - 1];
+        return str.split(File.separator)[str.split(File.separator).length - 1];
     }
 
     private void changeOrientation() {

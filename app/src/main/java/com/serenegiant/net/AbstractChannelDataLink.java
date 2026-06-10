@@ -61,7 +61,7 @@ public abstract class AbstractChannelDataLink {
         add(callback);
     }
 
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         try {
             release();
         } finally {
@@ -111,7 +111,7 @@ public abstract class AbstractChannelDataLink {
             this.mChannel = byteChannel;
         }
 
-        protected void finalize() throws Throwable {
+        protected void finalize() {
             try {
                 release(-1L);
             } finally {

@@ -222,7 +222,7 @@ public abstract class AbstractEncoder implements Encoder {
         return null;
     }
 
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         this.mRecorder = null;
         release();
         super.finalize();

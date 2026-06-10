@@ -588,102 +588,51 @@ public class AppUtils implements IConstant {
         return arrayList;
     }
 
-    public static boolean bitmapToFile(Bitmap bitmap, String str, int i) throws Throwable {
+    public static boolean bitmapToFile(Bitmap bitmap, String str, int i) {
         boolean z = false;
         if (bitmap == null || TextUtils.isEmpty(str)) {
             return false;
         }
         FileOutputStream fileOutputStream = null;
         try {
-            try {
+            fileOutputStream = new FileOutputStream(str);
+            bitmap.compress(Bitmap.CompressFormat.PNG, i, fileOutputStream);
+            fileOutputStream.flush();
+            z = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fileOutputStream != null) {
                 try {
-                    FileOutputStream fileOutputStream2 = new FileOutputStream(str);
-                    try {
-                        bitmap.compress(Bitmap.CompressFormat.PNG, i, fileOutputStream2);
-                        z = true;
-                        fileOutputStream2.flush();
-                        fileOutputStream2.close();
-                    } catch (IOException e) {
-                        e = e;
-                        fileOutputStream = fileOutputStream2;
-                        e.printStackTrace();
-                        if (fileOutputStream != null) {
-                            fileOutputStream.flush();
-                            fileOutputStream.close();
-                        }
-                        return z;
-                    } catch (Throwable th) {
-                        th = th;
-                        fileOutputStream = fileOutputStream2;
-                        if (fileOutputStream != null) {
-                            try {
-                                fileOutputStream.flush();
-                                fileOutputStream.close();
-                            } catch (IOException e2) {
-                                e2.printStackTrace();
-                            }
-                        }
-                        throw th;
-                    }
-                } catch (Throwable th2) {
-                    th = th2;
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e3) {
-                e = e3;
             }
-        } catch (IOException e4) {
-            e4.printStackTrace();
         }
         return z;
     }
 
-    public static boolean bytesToFile(byte[] bArr, String str) throws Throwable {
+    public static boolean bytesToFile(byte[] bArr, String str) {
         if (bArr == null || TextUtils.isEmpty(str)) {
             return false;
         }
         FileOutputStream fileOutputStream = null;
         try {
-            try {
-                FileOutputStream fileOutputStream2 = new FileOutputStream(str);
+            fileOutputStream = new FileOutputStream(str);
+            fileOutputStream.write(bArr);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (fileOutputStream != null) {
                 try {
-                    fileOutputStream2.write(bArr);
-                    try {
-                        fileOutputStream2.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    return true;
-                } catch (IOException e2) {
-                    e = e2;
-                    fileOutputStream = fileOutputStream2;
+                    fileOutputStream.close();
+                } catch (IOException e) {
                     e.printStackTrace();
-                    if (fileOutputStream == null) {
-                        return false;
-                    }
-                    try {
-                        fileOutputStream.close();
-                        return false;
-                    } catch (IOException e3) {
-                        e3.printStackTrace();
-                        return false;
-                    }
-                } catch (Throwable th) {
-                    th = th;
-                    fileOutputStream = fileOutputStream2;
-                    if (fileOutputStream != null) {
-                        try {
-                            fileOutputStream.close();
-                        } catch (IOException e4) {
-                            e4.printStackTrace();
-                        }
-                    }
-                    throw th;
                 }
-            } catch (IOException e5) {
-                e = e5;
             }
-        } catch (Throwable th2) {
-            th = th2;
         }
     }
 
@@ -735,7 +684,7 @@ public class AppUtils implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct code enable 'Show inconsistent code' option in preferences
     */
-    public static java.lang.String getFromRaw(android.content.Context r3, int r4) throws java.lang.Throwable {
+    public static java.lang.String getFromRaw(android.content.Context r3, int r4) {
         /*
             r0 = 0
             if (r3 != 0) goto L4
@@ -832,7 +781,7 @@ public class AppUtils implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct code enable 'Show inconsistent code' option in preferences
     */
-    public static java.lang.String readTxtFile(java.lang.String r8) throws java.lang.Throwable {
+    public static java.lang.String readTxtFile(java.lang.String r8) {
         /*
             Method dump skipped, instruction units count: 206
             To view this dump change 'Code comments level' option to 'DEBUG'
@@ -870,7 +819,7 @@ public class AppUtils implements IConstant {
                 JSONObject jSONObject2 = new JSONObject(jSONObject.getString(IConstant.DEV_LIST));
                 if (arrayList.size() > 0) {
                     HashMap map = new HashMap();
-                    for (String str2 : arrayList) {
+                    for (Object obj : arrayList) { String str2 = (String) obj;
                         if (!TextUtils.isEmpty(str2) && jSONObject2.has(str2)) {
                             String string3 = jSONObject2.getString(str2);
                             if (!TextUtils.isEmpty(string3)) {
@@ -1126,7 +1075,7 @@ public class AppUtils implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct code enable 'Show inconsistent code' option in preferences
     */
-    public static java.lang.String checkUpdateFilePath(android.content.Context r14, int r15) throws java.lang.Throwable {
+    public static java.lang.String checkUpdateFilePath(android.content.Context r14, int r15) {
         /*
             Method dump skipped, instruction units count: 724
             To view this dump change 'Code comments level' option to 'DEBUG'

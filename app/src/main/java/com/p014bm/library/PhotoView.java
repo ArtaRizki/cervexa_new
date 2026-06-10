@@ -207,7 +207,7 @@ public class PhotoView extends ImageView {
                         f = PhotoView.this.mImgRect.right - PhotoView.this.mWidgetRect.right;
                     }
                     PhotoView.this.mAnimaMatrix.postTranslate(-f, 0.0f);
-                    PhotoView.this.mTranslateX = (int) (r4.mTranslateX - f);
+                    PhotoView.this.mTranslateX = (int) (PhotoView.this.mTranslateX - f);
                 } else if (PhotoView.this.imgLargeWidth || PhotoView.this.hasMultiTouch || PhotoView.this.hasOverTranslate) {
                     PhotoView.this.checkRect();
                     if (!PhotoView.this.hasMultiTouch) {
@@ -220,7 +220,7 @@ public class PhotoView extends ImageView {
                             f = photoView2.resistanceScrollByX(photoView2.mImgRect.right - PhotoView.this.mCommonRect.right, f);
                         }
                     }
-                    PhotoView.this.mTranslateX = (int) (r4.mTranslateX - f);
+                    PhotoView.this.mTranslateX = (int) (PhotoView.this.mTranslateX - f);
                     PhotoView.this.mAnimaMatrix.postTranslate(-f, 0.0f);
                     PhotoView.this.hasOverTranslate = true;
                 }
@@ -232,7 +232,7 @@ public class PhotoView extends ImageView {
                         f2 = PhotoView.this.mImgRect.bottom - PhotoView.this.mWidgetRect.bottom;
                     }
                     PhotoView.this.mAnimaMatrix.postTranslate(0.0f, -f2);
-                    PhotoView.this.mTranslateY = (int) (r4.mTranslateY - f2);
+                    PhotoView.this.mTranslateY = (int) (PhotoView.this.mTranslateY - f2);
                 } else if (PhotoView.this.imgLargeHeight || PhotoView.this.hasOverTranslate || PhotoView.this.hasMultiTouch) {
                     PhotoView.this.checkRect();
                     if (!PhotoView.this.hasMultiTouch) {
@@ -246,7 +246,7 @@ public class PhotoView extends ImageView {
                         }
                     }
                     PhotoView.this.mAnimaMatrix.postTranslate(0.0f, -f2);
-                    PhotoView.this.mTranslateY = (int) (r4.mTranslateY - f2);
+                    PhotoView.this.mTranslateY = (int) (PhotoView.this.mTranslateY - f2);
                     PhotoView.this.hasOverTranslate = true;
                 }
                 PhotoView.this.executeTranslate();
@@ -291,7 +291,7 @@ public class PhotoView extends ImageView {
                 PhotoView.this.mTmpMatrix.mapRect(PhotoView.this.mTmpRect, PhotoView.this.mBaseRect);
                 PhotoView photoView = PhotoView.this;
                 photoView.doTranslateReset(photoView.mTmpRect);
-                PhotoView.this.isZoonUp = !r2.isZoonUp;
+                PhotoView.this.isZoonUp = !PhotoView.this.isZoonUp;
                 PhotoView.this.mTranslate.withScale(f, f2);
                 PhotoView.this.mTranslate.start();
                 return false;
@@ -423,7 +423,7 @@ public class PhotoView extends ImageView {
                         f = PhotoView.this.mImgRect.right - PhotoView.this.mWidgetRect.right;
                     }
                     PhotoView.this.mAnimaMatrix.postTranslate(-f, 0.0f);
-                    PhotoView.this.mTranslateX = (int) (r4.mTranslateX - f);
+                    PhotoView.this.mTranslateX = (int) (PhotoView.this.mTranslateX - f);
                 } else if (PhotoView.this.imgLargeWidth || PhotoView.this.hasMultiTouch || PhotoView.this.hasOverTranslate) {
                     PhotoView.this.checkRect();
                     if (!PhotoView.this.hasMultiTouch) {
@@ -436,7 +436,7 @@ public class PhotoView extends ImageView {
                             f = photoView2.resistanceScrollByX(photoView2.mImgRect.right - PhotoView.this.mCommonRect.right, f);
                         }
                     }
-                    PhotoView.this.mTranslateX = (int) (r4.mTranslateX - f);
+                    PhotoView.this.mTranslateX = (int) (PhotoView.this.mTranslateX - f);
                     PhotoView.this.mAnimaMatrix.postTranslate(-f, 0.0f);
                     PhotoView.this.hasOverTranslate = true;
                 }
@@ -448,7 +448,7 @@ public class PhotoView extends ImageView {
                         f2 = PhotoView.this.mImgRect.bottom - PhotoView.this.mWidgetRect.bottom;
                     }
                     PhotoView.this.mAnimaMatrix.postTranslate(0.0f, -f2);
-                    PhotoView.this.mTranslateY = (int) (r4.mTranslateY - f2);
+                    PhotoView.this.mTranslateY = (int) (PhotoView.this.mTranslateY - f2);
                 } else if (PhotoView.this.imgLargeHeight || PhotoView.this.hasOverTranslate || PhotoView.this.hasMultiTouch) {
                     PhotoView.this.checkRect();
                     if (!PhotoView.this.hasMultiTouch) {
@@ -462,7 +462,7 @@ public class PhotoView extends ImageView {
                         }
                     }
                     PhotoView.this.mAnimaMatrix.postTranslate(0.0f, -f2);
-                    PhotoView.this.mTranslateY = (int) (r4.mTranslateY - f2);
+                    PhotoView.this.mTranslateY = (int) (PhotoView.this.mTranslateY - f2);
                     PhotoView.this.hasOverTranslate = true;
                 }
                 PhotoView.this.executeTranslate();
@@ -507,7 +507,7 @@ public class PhotoView extends ImageView {
                 PhotoView.this.mTmpMatrix.mapRect(PhotoView.this.mTmpRect, PhotoView.this.mBaseRect);
                 PhotoView photoView = PhotoView.this;
                 photoView.doTranslateReset(photoView.mTmpRect);
-                PhotoView.this.isZoonUp = !r2.isZoonUp;
+                PhotoView.this.isZoonUp = !PhotoView.this.isZoonUp;
                 PhotoView.this.mTranslate.withScale(f, f2);
                 PhotoView.this.mTranslate.start();
                 return false;
@@ -639,7 +639,7 @@ public class PhotoView extends ImageView {
                         f = PhotoView.this.mImgRect.right - PhotoView.this.mWidgetRect.right;
                     }
                     PhotoView.this.mAnimaMatrix.postTranslate(-f, 0.0f);
-                    PhotoView.this.mTranslateX = (int) (r4.mTranslateX - f);
+                    PhotoView.this.mTranslateX = (int) (PhotoView.this.mTranslateX - f);
                 } else if (PhotoView.this.imgLargeWidth || PhotoView.this.hasMultiTouch || PhotoView.this.hasOverTranslate) {
                     PhotoView.this.checkRect();
                     if (!PhotoView.this.hasMultiTouch) {
@@ -652,7 +652,7 @@ public class PhotoView extends ImageView {
                             f = photoView2.resistanceScrollByX(photoView2.mImgRect.right - PhotoView.this.mCommonRect.right, f);
                         }
                     }
-                    PhotoView.this.mTranslateX = (int) (r4.mTranslateX - f);
+                    PhotoView.this.mTranslateX = (int) (PhotoView.this.mTranslateX - f);
                     PhotoView.this.mAnimaMatrix.postTranslate(-f, 0.0f);
                     PhotoView.this.hasOverTranslate = true;
                 }
@@ -664,7 +664,7 @@ public class PhotoView extends ImageView {
                         f2 = PhotoView.this.mImgRect.bottom - PhotoView.this.mWidgetRect.bottom;
                     }
                     PhotoView.this.mAnimaMatrix.postTranslate(0.0f, -f2);
-                    PhotoView.this.mTranslateY = (int) (r4.mTranslateY - f2);
+                    PhotoView.this.mTranslateY = (int) (PhotoView.this.mTranslateY - f2);
                 } else if (PhotoView.this.imgLargeHeight || PhotoView.this.hasOverTranslate || PhotoView.this.hasMultiTouch) {
                     PhotoView.this.checkRect();
                     if (!PhotoView.this.hasMultiTouch) {
@@ -678,7 +678,7 @@ public class PhotoView extends ImageView {
                         }
                     }
                     PhotoView.this.mAnimaMatrix.postTranslate(0.0f, -f2);
-                    PhotoView.this.mTranslateY = (int) (r4.mTranslateY - f2);
+                    PhotoView.this.mTranslateY = (int) (PhotoView.this.mTranslateY - f2);
                     PhotoView.this.hasOverTranslate = true;
                 }
                 PhotoView.this.executeTranslate();
@@ -723,7 +723,7 @@ public class PhotoView extends ImageView {
                 PhotoView.this.mTmpMatrix.mapRect(PhotoView.this.mTmpRect, PhotoView.this.mBaseRect);
                 PhotoView photoView = PhotoView.this;
                 photoView.doTranslateReset(photoView.mTmpRect);
-                PhotoView.this.isZoonUp = !r2.isZoonUp;
+                PhotoView.this.isZoonUp = !PhotoView.this.isZoonUp;
                 PhotoView.this.mTranslate.withScale(f, f2);
                 PhotoView.this.mTranslate.start();
                 return false;
@@ -1552,7 +1552,7 @@ public class PhotoView extends ImageView {
         Matrix imageMatrix = imageView.getImageMatrix();
         RectF rectF = new RectF(0.0f, 0.0f, getDrawableWidth(drawable), getDrawableHeight(drawable));
         imageMatrix.mapRect(rectF);
-        RectF rectF2 = new RectF(r0[0] + rectF.left, r0[1] + rectF.top, r0[0] + rectF.right, r0[1] + rectF.bottom);
+        RectF rectF2 = new RectF(rectF.left, rectF.top, rectF.right, rectF.bottom);
         RectF rectF3 = new RectF(0.0f, 0.0f, imageView.getWidth(), imageView.getHeight());
         return new Info(rectF2, rectF, rectF3, new RectF(rectF3), new PointF(rectF3.width() / 2.0f, rectF3.height() / 2.0f), 1.0f, 0.0f, imageView.getScaleType());
     }
@@ -1684,14 +1684,16 @@ public class PhotoView extends ImageView {
             this.mTranslate.withScale(this.mScale, fWidth2);
             this.mTranslate.withRotate((int) this.mDegrees, (int) info.mDegrees, (this.mAnimaDuring * 2) / 3);
             if (info.mWidgetRect.width() < info.mRect.width() || info.mWidgetRect.height() < info.mRect.height()) {
-                final float fWidth3 = info.mWidgetRect.width() / info.mRect.width();
-                final float fHeight3 = info.mWidgetRect.height() / info.mRect.height();
-                if (fWidth3 > 1.0f) {
-                    fWidth3 = 1.0f;
+                float tempWidth3 = info.mWidgetRect.width() / info.mRect.width();
+                float tempHeight3 = info.mWidgetRect.height() / info.mRect.height();
+                if (tempWidth3 > 1.0f) {
+                    tempWidth3 = 1.0f;
                 }
-                if (fHeight3 > 1.0f) {
-                    fHeight3 = 1.0f;
+                if (tempHeight3 > 1.0f) {
+                    tempHeight3 = 1.0f;
                 }
+                final float fWidth3 = tempWidth3;
+                final float fHeight3 = tempHeight3;
                 final ClipCalculate start = info.mScaleType == ImageView.ScaleType.FIT_START ? new START() : info.mScaleType == ImageView.ScaleType.FIT_END ? new END() : new OTHER();
                 postDelayed(new Runnable() { // from class: com.bm.library.PhotoView.5
                     @Override // java.lang.Runnable

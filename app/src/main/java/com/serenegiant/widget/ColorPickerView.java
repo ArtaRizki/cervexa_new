@@ -206,7 +206,7 @@ public class ColorPickerView extends View {
         this.center_x = (width - i6) >>> 1;
         this.center_y = (height - (this.mShowAlphaSlider ? this.slider_width : 0)) >>> 1;
         int i8 = this.center_x;
-        int iSqrt = ((int) Math.sqrt((i8 * i8) + (r0 * r0))) - this.radius;
+        int iSqrt = ((int) Math.sqrt((i8 * i8) + (this.center_y * this.center_y))) - this.radius;
         float f = -iSqrt;
         float f2 = iSqrt;
         this.mSelectionRect.set(f, f, f2, f2);

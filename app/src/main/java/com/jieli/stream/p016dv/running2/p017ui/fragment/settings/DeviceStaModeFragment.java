@@ -42,7 +42,7 @@ public class DeviceStaModeFragment extends BaseFragment {
             if (id == C1438R.id.switch_sta_btn) {
                 DeviceStaModeFragment.this.sendRouterInformation();
             } else if (id == C1438R.id.show_or_hide_pwd) {
-                DeviceStaModeFragment.this.isShowPwd = !r2.isShowPwd;
+                DeviceStaModeFragment.this.isShowPwd = !DeviceStaModeFragment.this.isShowPwd;
                 DeviceStaModeFragment.this.handlerPwdUI();
             }
         }
@@ -81,7 +81,7 @@ public class DeviceStaModeFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void sendRouterInformation() {
         final String strTrim = this.editWifiSSID.getText().toString().trim();
-        final String strTrim2 = this.editWifiPwd.getText().toString().trim();
+        String strTrim2 = this.editWifiPwd.getText().toString().trim();
         this.isSaveMsg = this.mSaveSTAMsgCheckbox.isChecked();
         if (TextUtils.isEmpty(strTrim)) {
             ToastUtil.showToastShort(getString(C1438R.string.wifi_ssid_empty_tip));

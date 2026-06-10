@@ -14,7 +14,7 @@ public class GLMasterContext {
         this.mMasterTask.waitReady();
     }
 
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         try {
             release();
         } finally {

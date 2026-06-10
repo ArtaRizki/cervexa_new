@@ -251,7 +251,7 @@ public class SwitchButton extends CompoundButton {
     }
 
     private Layout makeLayout(CharSequence charSequence) {
-        return new StaticLayout(charSequence, this.mTextPaint, (int) Math.ceil(Layout.getDesiredWidth(charSequence, r2)), Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
+        return new StaticLayout(charSequence, this.mTextPaint, (int) Math.ceil(Layout.getDesiredWidth(charSequence, this.mTextPaint)), Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
     }
 
     @Override // android.widget.TextView, android.view.View
@@ -274,8 +274,8 @@ public class SwitchButton extends CompoundButton {
         if (this.mIsBackUseDrawable) {
             iCeil = Math.max(iCeil, this.mBackDrawable.getMinimumWidth());
         }
-        float width = this.mOnLayout != null ? r2.getWidth() : 0.0f;
-        float width2 = this.mOffLayout != null ? r4.getWidth() : 0.0f;
+        float width = this.mOnLayout != null ? this.mOnLayout.getWidth() : 0.0f;
+        float width2 = this.mOffLayout != null ? this.mOffLayout.getWidth() : 0.0f;
         if (width != 0.0f || width2 != 0.0f) {
             this.mTextWidth = Math.max(width, width2) + (this.mTextMarginH * 2.0f);
             float f = iCeil;
@@ -297,11 +297,11 @@ public class SwitchButton extends CompoundButton {
         int mode = View.MeasureSpec.getMode(i);
         int size = View.MeasureSpec.getSize(i);
         int iCeil = ceil(Math.max(this.mThumbSizeF.y, this.mThumbSizeF.y + this.mThumbMargin.top + this.mThumbMargin.right));
-        float height = this.mOnLayout != null ? r2.getHeight() : 0.0f;
-        float height2 = this.mOffLayout != null ? r4.getHeight() : 0.0f;
+        float height = this.mOnLayout != null ? this.mOnLayout.getHeight() : 0.0f;
+        float height2 = this.mOffLayout != null ? this.mOffLayout.getHeight() : 0.0f;
         if (height != 0.0f || height2 != 0.0f) {
             this.mTextHeight = Math.max(height, height2);
-            iCeil = ceil(Math.max(iCeil, r2));
+            iCeil = ceil(Math.max(iCeil, this.mTextHeight));
         }
         int iMax = Math.max(iCeil, getSuggestedMinimumHeight());
         int iMax2 = Math.max(iMax, getPaddingTop() + iMax + getPaddingBottom());

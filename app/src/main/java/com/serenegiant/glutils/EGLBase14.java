@@ -147,7 +147,7 @@ class EGLBase14 extends EGLBase {
 
     @Override // com.serenegiant.glutils.EGLBase
     public EglSurface createOffscreen(int i, int i2) {
-        EglSurface eglSurface = new EglSurface(i, i2);
+        EglSurface eglSurface = new EglSurface(EGLBase14.this, i, i2);
         eglSurface.makeCurrent();
         return eglSurface;
     }

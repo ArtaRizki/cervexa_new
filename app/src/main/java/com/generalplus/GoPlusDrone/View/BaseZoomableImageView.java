@@ -344,7 +344,7 @@ public abstract class BaseZoomableImageView extends View {
         if (this.mBitmap == null) {
             return 1.0f;
         }
-        float fMax = Math.max(r0.getWidth() / this.mThisWidth, this.mBitmap.getHeight() / this.mThisHeight) * 16.0f;
+        float fMax = Math.max(this.mBitmap.getWidth() / this.mThisWidth, this.mBitmap.getHeight() / this.mThisHeight) * 16.0f;
         if (fMax < 1.0f) {
             return 1.0f;
         }
@@ -355,7 +355,7 @@ public abstract class BaseZoomableImageView extends View {
         if (this.mBitmap == null) {
             return 1.0f;
         }
-        return Math.max(Math.min(this.mThisWidth / r0.getWidth(), this.mThisHeight / this.mBitmap.getHeight()), 1.0f);
+        return Math.max(Math.min(this.mThisWidth / this.mBitmap.getWidth(), this.mThisHeight / this.mBitmap.getHeight()), 1.0f);
     }
 
     protected void zoomTo(float f, float f2, float f3) {
@@ -394,7 +394,7 @@ public abstract class BaseZoomableImageView extends View {
             return;
         }
         float f = 1.0f;
-        float width = this.mThisWidth / r0.getWidth();
+        float width = this.mThisWidth / this.mBitmap.getWidth();
         boolean z = false;
         if (this.adjustLongImageEnable && (this.mBitmap.getHeight() / this.mBitmap.getWidth() > MAX_IMAGE_RATIO_LARGE || (this.landscape && this.mBitmap.getHeight() / this.mBitmap.getWidth() > MAX_IMAGE_RATIO_WIDTH_LARGE_LANDSCAPE))) {
             f = width;

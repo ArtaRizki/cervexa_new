@@ -27,7 +27,7 @@ import android.widget.Toast;
 import com.generalplus.GoPlusDrone.C1021R;
 import com.generalplus.ffmpegLib.ZoomableSurfaceView;
 import com.generalplus.ffmpegLib.ffmpegWrapper;
-import com.google.android.material.timepicker.TimeModel;
+
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import generalplus.com.GPCamLib.CamWrapper;
 import java.io.File;
@@ -160,7 +160,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
             Long lValueOf2 = Long.valueOf(((lValueOf.longValue() / 1000) / 60) / 60);
             Long lValueOf3 = Long.valueOf(((lValueOf.longValue() / 1000) / 60) % 60);
             Long lValueOf4 = Long.valueOf((lValueOf.longValue() / 1000) % 60);
-            CameraActivity.this.m_tvRecordTime.setText(String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, lValueOf2) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, lValueOf3) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, lValueOf4));
+            CameraActivity.this.m_tvRecordTime.setText(String.format("%02d", lValueOf2) + ":" + String.format("%02d", lValueOf3) + ":" + String.format("%02d", lValueOf4));
             CameraActivity.this.handler.postDelayed(this, 1000L);
         }
     };
@@ -583,7 +583,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
             WifiInfo connectionInfo = wifiManager.getConnectionInfo();
             if (connectionInfo != null) {
                 final Integer numValueOf = Integer.valueOf(connectionInfo.getLinkSpeed());
-                final boolean z = false;
+                final boolean[] z = {false};
                 if (!this.mIsStart) {
                     int ipAddress = wifiManager.getConnectionInfo().getIpAddress();
                     if (ipAddress == 0) {
@@ -609,13 +609,13 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
                     int iOrdinal = ffmpegWrapper.ePlayerStatus.E_PlayerStatus_Playing.ordinal();
                     ffmpegWrapper.getInstance();
                     if (iOrdinal == ffmpegWrapper.naStatus()) {
-                        z = true;
+                        z[0] = true;
                     }
                 }
                 runOnUiThread(new Runnable() { // from class: com.generalplus.GoPlusDrone.Activity.CameraActivity.6
                     @Override // java.lang.Runnable
                     public void run() {
-                        if (z) {
+                        if (z[0]) {
                             Toast.makeText(CameraActivity.this, "Replay.", 0).show();
                         }
                         StringBuilder sb = new StringBuilder();

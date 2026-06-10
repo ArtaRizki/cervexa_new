@@ -88,7 +88,7 @@ public class OuterCheckerImpl {
             Code decompiled incorrectly, please refer to instructions dump.
             To view partially-correct code enable 'Show inconsistent code' option in preferences
         */
-        public void run() throws java.lang.Throwable {
+        public void run() {
             /*
                 Method dump skipped, instruction units count: 347
                 To view this dump change 'Code comments level' option to 'DEBUG'

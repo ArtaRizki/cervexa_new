@@ -616,7 +616,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
             return;
         }
         boolean zHasActiveBadge = bottomBarTab.hasActiveBadge();
-        BottomBarTab outerView = bottomBarTab;
+        View outerView = bottomBarTab;
         if (zHasActiveBadge) {
             outerView = bottomBarTab.getOuterView();
         }

@@ -62,7 +62,7 @@ public class VideoCapture {
         this.mOnCaptureListener = onVideoCaptureListener;
     }
 
-    public void capture(byte[] bArr) throws Throwable {
+    public void capture(byte[] bArr) {
         if (bArr == null) {
             return;
         }
@@ -109,7 +109,7 @@ public class VideoCapture {
         this.mRetryTime = 0;
     }
 
-    public void capture(byte[] bArr, String str) throws Throwable {
+    public void capture(byte[] bArr, String str) {
         if (bArr == null) {
             return;
         }
@@ -172,7 +172,7 @@ public class VideoCapture {
             }
 
             @Override // com.generalplus.GoPlusDrone.Fragment.ThreadUtils.Task
-            public Integer doInBackground() throws Throwable {
+            public Integer doInBackground() {
                 int i3 = 0;
                 do {
                     i3++;

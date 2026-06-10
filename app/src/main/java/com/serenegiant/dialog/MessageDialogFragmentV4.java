@@ -60,13 +60,13 @@ public class MessageDialogFragmentV4 extends DialogFragmentEx {
             this.mDialogListener = (MessageDialogListener) context;
         }
         if (this.mDialogListener == null) {
-            ActivityResultCaller targetFragment = getTargetFragment();
+            ActivityResultCaller targetFragment = (ActivityResultCaller) getTargetFragment();
             if (targetFragment instanceof MessageDialogListener) {
                 this.mDialogListener = (MessageDialogListener) targetFragment;
             }
         }
         if (this.mDialogListener == null && BuildCheck.isAndroid4_2()) {
-            ActivityResultCaller parentFragment = getParentFragment();
+            ActivityResultCaller parentFragment = (ActivityResultCaller) getParentFragment();
             if (parentFragment instanceof MessageDialogListener) {
                 this.mDialogListener = (MessageDialogListener) parentFragment;
             }

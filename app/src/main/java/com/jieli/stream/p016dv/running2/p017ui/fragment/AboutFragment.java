@@ -64,7 +64,7 @@ public class AboutFragment extends BaseFragment {
     private int pressCount = 0;
     private Handler mHandler = new Handler(new Handler.Callback() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.1
         @Override // android.os.Handler.Callback
-        public boolean handleMessage(Message message) throws Throwable {
+        public boolean handleMessage(Message message) {
             ArrayList<String> stringArrayList;
             if (message == null || AboutFragment.this.getActivity() == null || AboutFragment.this.getActivity().isDestroyed()) {
                 return false;
@@ -455,7 +455,7 @@ public class AboutFragment extends BaseFragment {
 
         /* JADX INFO: Access modifiers changed from: protected */
         @Override // android.os.AsyncTask
-        public ArrayList<String> doInBackground(Void... voidArr) throws Throwable {
+        public ArrayList<String> doInBackground(Void... voidArr) {
             if (AboutFragment.this.getActivity() == null) {
                 return null;
             }

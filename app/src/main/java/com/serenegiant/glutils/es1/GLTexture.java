@@ -51,7 +51,7 @@ public class GLTexture implements ITexture {
         fArr[5] = i4 / this.mTexHeight;
     }
 
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         release();
         super.finalize();
     }

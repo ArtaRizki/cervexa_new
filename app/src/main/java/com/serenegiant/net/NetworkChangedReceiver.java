@@ -114,7 +114,7 @@ public class NetworkChangedReceiver extends BroadcastReceiver {
             handler.post(new Runnable() { // from class: com.serenegiant.net.NetworkChangedReceiver.1
                 @Override // java.lang.Runnable
                 public void run() {
-                    NetworkChangedReceiver.this.callOnNetworkChanged(i, i2, i3);
+                    networkChangedReceiver.callOnNetworkChanged(i, i2, i3);
                 }
             });
         } else {

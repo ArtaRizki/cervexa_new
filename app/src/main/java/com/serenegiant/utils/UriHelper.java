@@ -170,7 +170,7 @@ public final class UriHelper {
         return null;
     }
 
-    public static String getDataColumn(Context context, Uri uri, String str, String[] strArr) throws Throwable {
+    public static String getDataColumn(Context context, Uri uri, String str, String[] strArr) {
         Cursor cursor = null;
         try {
             Cursor cursorQuery = context.getContentResolver().query(uri, new String[]{"_data"}, str, strArr, null);

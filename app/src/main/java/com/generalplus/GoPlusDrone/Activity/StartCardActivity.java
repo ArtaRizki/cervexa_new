@@ -58,8 +58,6 @@ public class StartCardActivity extends Activity {
                     e2.printStackTrace();
                 } catch (InterruptedException e3) {
                     e3.printStackTrace();
-                } catch (UnknownHostException e4) {
-                    e4.printStackTrace();
                 }
             } catch (TimeoutException e5) {
                 e5.printStackTrace();

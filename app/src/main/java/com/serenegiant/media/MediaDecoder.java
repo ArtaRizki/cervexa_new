@@ -241,7 +241,7 @@ public abstract class MediaDecoder implements IMediaCodec {
     }
 
     @Override // com.serenegiant.media.IMediaCodec, com.serenegiant.media.Encoder
-    public void prepare() throws Exception {
+    public void prepare() {
         int iHandlePrepare;
         MediaExtractor mediaExtractor = this.mMediaExtractor;
         if (mediaExtractor == null) {
@@ -381,7 +381,7 @@ public abstract class MediaDecoder implements IMediaCodec {
     }
 
     @Override // com.serenegiant.media.IMediaCodec, com.serenegiant.media.Encoder
-    public void release() throws IOException {
+    public void release() {
         if (this.mState != 0) {
             stop();
             this.mState = 0;

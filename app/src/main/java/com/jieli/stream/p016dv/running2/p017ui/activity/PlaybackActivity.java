@@ -400,7 +400,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     };
     private final FrameCodec.OnFrameCodecListener mOnFrameCodecListener = new FrameCodec.OnFrameCodecListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.10
         @Override // com.jieli.media.codec.FrameCodec.OnFrameCodecListener
-        public void onCompleted(byte[] bArr, MediaMeta mediaMeta) throws Throwable {
+        public void onCompleted(byte[] bArr, MediaMeta mediaMeta) {
             Dbug.m1389i(PlaybackActivity.this.tag, "mOnFrameCodecListener");
             if (mediaMeta == null) {
                 return;
@@ -584,7 +584,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     };
     private OnRealTimeListener realtimePlayerListener = new OnRealTimeListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.42
         @Override // com.jieli.lib.p015dv.control.player.IPlayerListener
-        public void onVideo(int i, int i2, byte[] bArr, long j, long j2) throws Throwable {
+        public void onVideo(int i, int i2, byte[] bArr, long j, long j2) {
             if (PlaybackActivity.this.isStartDebug && PreferencesHelper.getSharedPreferences(PlaybackActivity.this.mApplication).getBoolean(IConstant.DEBUG_SETTINGS, false)) {
                 PlaybackActivity.access$1608(PlaybackActivity.this);
             }
@@ -886,7 +886,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void saveBitmapAndUpdateUI(byte[] bArr) throws Throwable {
+    public void saveBitmapAndUpdateUI(byte[] bArr) {
         RequestFileInfo requestFileInfoPoll = this.thumbnailRequestQueue.poll();
         if (requestFileInfoPoll == null) {
             Dbug.m1388e(this.tag, "saveBitmapAndUpdateUI is null");

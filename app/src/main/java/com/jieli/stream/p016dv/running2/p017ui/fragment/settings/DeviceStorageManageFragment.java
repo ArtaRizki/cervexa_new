@@ -14,7 +14,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.jieli.lib.p015dv.control.connect.response.SendResponse;
 import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
@@ -102,7 +102,7 @@ public class DeviceStorageManageFragment extends BaseFragment {
         this.mChart.setDrawHoleEnabled(false);
         this.mChart.setRotationAngle(-90.0f);
         this.mChart.setRotationEnabled(false);
-        this.mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
+        this.mChart.animateY(1400, Easing.EaseInOutQuad);
         this.mChart.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
     }
 
@@ -119,9 +119,9 @@ public class DeviceStorageManageFragment extends BaseFragment {
         arrayList2.add(Integer.valueOf(getResources().getColor(C1438R.color.bg_pie_chart_used)));
         pieDataSet.setColors(arrayList2);
         PieData pieData = new PieData(pieDataSet);
-        pieData.setValueFormatter(new IValueFormatter() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStorageManageFragment.4
-            @Override // com.github.mikephil.charting.formatter.IValueFormatter
-            public String getFormattedValue(float f3, Entry entry, int i, ViewPortHandler viewPortHandler) {
+        pieData.setValueFormatter(new ValueFormatter() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStorageManageFragment.4
+            @Override // com.github.mikephil.charting.formatter.ValueFormatter
+            public String getFormattedValue(float f3) {
                 if (f3 > 1024.0f) {
                     return String.format(Locale.getDefault(), "%.2f", Float.valueOf(f3 / 1024.0f)) + "GB";
                 }

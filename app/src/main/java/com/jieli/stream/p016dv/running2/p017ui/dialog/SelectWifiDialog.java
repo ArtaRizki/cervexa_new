@@ -90,7 +90,7 @@ public class SelectWifiDialog extends BaseDialogFragment {
                     return;
                 }
                 if (view == SelectWifiDialog.this.ivShowOrHidePwd) {
-                    SelectWifiDialog.this.isShowPwd = !r3.isShowPwd;
+                    SelectWifiDialog.this.isShowPwd = !SelectWifiDialog.this.isShowPwd;
                     if (SelectWifiDialog.this.isShowPwd) {
                         SelectWifiDialog.this.mEditPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                         SelectWifiDialog.this.ivShowOrHidePwd.setImageResource(C1438R.drawable.dbg_show_pwd_selector);

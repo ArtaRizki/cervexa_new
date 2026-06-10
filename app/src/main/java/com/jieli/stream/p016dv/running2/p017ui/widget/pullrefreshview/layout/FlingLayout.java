@@ -17,7 +17,7 @@ import androidx.core.view.NestedScrollingParentHelper;
 import androidx.core.view.ViewCompat;
 import com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.support.impl.Pullable;
 import com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.support.utils.CanPullUtil;
-import com.nineoldandroids.view.ViewHelper;
+
 
 /* JADX INFO: loaded from: classes.dex */
 public class FlingLayout extends FrameLayout implements NestedScrollingChild, NestedScrollingParent {
@@ -169,7 +169,7 @@ public class FlingLayout extends FrameLayout implements NestedScrollingChild, Ne
         if (view == null) {
             return;
         }
-        ViewHelper.setTranslationY(view, f);
+        view.setTranslationY(f);
     }
 
     private void setMoveY(float f) {
@@ -282,8 +282,9 @@ public class FlingLayout extends FrameLayout implements NestedScrollingChild, Ne
 
     @Override // android.view.ViewGroup, android.view.ViewParent, androidx.core.view.NestedScrollingParent
     public void onNestedScroll(View view, int i, int i2, int i3, int i4) {
-        dispatchNestedScroll(0, i2, 0, i4, new int[2]);
-        moveBy((-i4) - r7[1]);
+        int[] consumed = new int[2];
+        dispatchNestedScroll(0, i2, 0, i4, consumed);
+        moveBy((-i4) - consumed[1]);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:30:0x0075  */

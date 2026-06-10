@@ -236,7 +236,7 @@ public class SubGridViewAdapter extends BaseAdapter implements IConstant {
 
         /* JADX INFO: Access modifiers changed from: protected */
         @Override // android.os.AsyncTask
-        public Bitmap doInBackground(Integer... numArr) throws Throwable {
+        public Bitmap doInBackground(Integer... numArr) {
             int i = 0;
             int iIntValue = numArr[0].intValue();
             this.position = iIntValue;

@@ -71,7 +71,7 @@ public abstract class CommonUsbSerialPort implements UsbSerialPort {
     }
 
     @Override // com.hoho.android.usbserial.driver.UsbSerialPort
-    public void open(UsbDeviceConnection usbDeviceConnection) throws Exception {
+    public void open(UsbDeviceConnection usbDeviceConnection) throws IOException {
         if (this.mConnection != null) {
             throw new IOException("Already open");
         }

@@ -48,7 +48,7 @@ public class ConnectivityHelper {
         init();
     }
 
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         try {
             release();
         } finally {
@@ -171,7 +171,7 @@ public class ConnectivityHelper {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.net.-$$Lambda$ConnectivityHelper$LaPkCj0bTKQL4ectrRH4ABe14m4
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$callOnNetworkChanged$0$ConnectivityHelper(i);
+                        ConnectivityHelper.this.lambda$callOnNetworkChanged$0$ConnectivityHelper(i);
                     }
                 });
             } else {
@@ -194,7 +194,7 @@ public class ConnectivityHelper {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.net.-$$Lambda$ConnectivityHelper$ckFVyOD7_323_SOoyeMXeSDNl6A
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$callOnError$1$ConnectivityHelper(th);
+                        ConnectivityHelper.this.lambda$callOnError$1$ConnectivityHelper(th);
                     }
                 });
             } else {

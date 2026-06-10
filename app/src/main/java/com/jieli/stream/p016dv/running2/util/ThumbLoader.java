@@ -206,7 +206,7 @@ public class ThumbLoader {
         return imageThumbnail;
     }
 
-    public void loadLocalVideoThumb(Context context, String str, int i, int i2, OnLoadVideoThumbListener onLoadVideoThumbListener) throws Throwable {
+    public void loadLocalVideoThumb(Context context, String str, int i, int i2, OnLoadVideoThumbListener onLoadVideoThumbListener) {
         String str2;
         Handler handler = new Handler(context.getMainLooper());
         if (TextUtils.isEmpty(str)) {
@@ -416,7 +416,7 @@ public class ThumbLoader {
         return !TextUtils.isEmpty(str) && (str.endsWith(".AVI") || str.endsWith(".avi"));
     }
 
-    private void getThumbForAvi(final Context context, final String str, final int i, final int i2, final Handler handler, final OnLoadVideoThumbListener onLoadVideoThumbListener) throws Throwable {
+    private void getThumbForAvi(final Context context, final String str, final int i, final int i2, final Handler handler, final OnLoadVideoThumbListener onLoadVideoThumbListener) {
         AviThumbUtil.getRecordVideoThumb(str, new OnAviThumbListener() { // from class: com.jieli.stream.dv.running2.util.ThumbLoader.5
             /* JADX WARN: Multi-variable type inference failed */
             /* JADX WARN: Removed duplicated region for block: B:21:0x004d  */
@@ -440,7 +440,7 @@ public class ThumbLoader {
                 Code decompiled incorrectly, please refer to instructions dump.
                 To view partially-correct code enable 'Show inconsistent code' option in preferences
             */
-            public void onCompleted(byte[] r8, com.jieli.media.codec.bean.MediaMeta r9) throws java.lang.Throwable {
+            public void onCompleted(byte[] r8, com.jieli.media.codec.bean.MediaMeta r9) {
                 /*
                     Method dump skipped, instruction units count: 239
                     To view this dump change 'Code comments level' option to 'DEBUG'
@@ -449,7 +449,7 @@ public class ThumbLoader {
             }
 
             @Override // com.jieli.stream.p016dv.running2.interfaces.OnAviThumbListener
-            public void onError(String str2) throws Throwable {
+            public void onError(String str2) {
                 ThumbLoader.this.loadLocalVideoThumb(context, null, i, i2, onLoadVideoThumbListener);
             }
         });
@@ -479,7 +479,7 @@ public class ThumbLoader {
                 Code decompiled incorrectly, please refer to instructions dump.
                 To view partially-correct code enable 'Show inconsistent code' option in preferences
             */
-            public void onCompleted(byte[] r8, com.jieli.media.codec.bean.MediaMeta r9) throws java.lang.Throwable {
+            public void onCompleted(byte[] r8, com.jieli.media.codec.bean.MediaMeta r9) {
                 /*
                     Method dump skipped, instruction units count: 241
                     To view this dump change 'Code comments level' option to 'DEBUG'
@@ -488,7 +488,7 @@ public class ThumbLoader {
             }
 
             @Override // com.jieli.media.codec.FrameCodec.OnFrameCodecListener
-            public void onError(String str2) throws Throwable {
+            public void onError(String str2) {
                 ThumbLoader.this.loadLocalVideoThumb(context, null, i, i2, onLoadVideoThumbListener);
             }
         });

@@ -212,9 +212,9 @@ public class DiskBasedCache implements Cache {
                         throw th;
                     }
                 } catch (Throwable th2) {
-                    th = th2;
+                    throw new RuntimeException(th2);
                 }
-            } catch (IOException unused4) {
+            } catch (Exception unused4) {
             }
         }
     }

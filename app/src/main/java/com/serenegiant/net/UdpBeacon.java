@@ -290,7 +290,7 @@ public class UdpBeacon {
         this.mRcvMinIntervalsMs = j2;
     }
 
-    public void finalize() throws Throwable {
+    public void finalize() {
         try {
             release();
         } finally {

@@ -186,7 +186,7 @@ public class FTPClientUtil implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct code enable 'Show inconsistent code' option in preferences
     */
-    public java.util.List<java.lang.String> downLoadUpdateFile(java.lang.String r18, int r19, int r20, android.os.Handler r21) throws java.lang.Throwable {
+    public java.util.List<java.lang.String> downLoadUpdateFile(java.lang.String r18, int r19, int r20, android.os.Handler r21) {
         /*
             Method dump skipped, instruction units count: 717
             To view this dump change 'Code comments level' option to 'DEBUG'
@@ -206,7 +206,7 @@ public class FTPClientUtil implements IConstant {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct code enable 'Show inconsistent code' option in preferences
     */
-    public boolean uploadFile(java.lang.String r13, java.lang.String r14, android.os.Handler r15) throws java.lang.Throwable {
+    public boolean uploadFile(java.lang.String r13, java.lang.String r14, android.os.Handler r15) {
         /*
             Method dump skipped, instruction units count: 328
             To view this dump change 'Code comments level' option to 'DEBUG'

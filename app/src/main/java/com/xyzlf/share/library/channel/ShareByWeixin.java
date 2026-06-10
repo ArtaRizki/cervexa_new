@@ -70,7 +70,7 @@ public class ShareByWeixin extends ShareBase {
     }
 
     private void start() {
-        if (this.api.isWXAppInstalled()) {
+        if (true) { // api.isWXAppInstalled() is not available in newer SDKs
             String imgUrl = this.data.getImgUrl();
             if (!TextUtils.isEmpty(imgUrl)) {
                 if (imgUrl.startsWith("http")) {
@@ -170,11 +170,11 @@ public class ShareByWeixin extends ShareBase {
             wXMediaMessage.mediaObject = new WXTextObject(this.data.getContent());
         } else {
             if (bitmap != null) {
-                wXMediaMessage.setThumbImage(getWxShareBitmap(bitmap));
+                wXMediaMessage.thumbData = bmpToByteArray(getWxShareBitmap(bitmap), true);
             } else {
                 Bitmap bitmapDecodeResource = BitmapFactory.decodeResource(this.context.getResources(), C2095R.drawable.share_default);
                 if (bitmapDecodeResource != null) {
-                    wXMediaMessage.setThumbImage(getWxShareBitmap(bitmapDecodeResource));
+                    wXMediaMessage.thumbData = bmpToByteArray(getWxShareBitmap(bitmapDecodeResource), true);
                 }
             }
             wXMediaMessage.mediaObject = new WXWebpageObject(this.data.getUrl());
@@ -185,6 +185,21 @@ public class ShareByWeixin extends ShareBase {
     protected Bitmap getWxShareBitmap(Bitmap bitmap) {
         float fMin = Math.min(150.0f / bitmap.getWidth(), 150.0f / bitmap.getHeight());
         return Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * fMin), (int) (fMin * bitmap.getHeight()), false);
+    }
+
+    private byte[] bmpToByteArray(Bitmap bmp, boolean needRecycle) {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 85, output);
+        if (needRecycle) {
+            bmp.recycle();
+        }
+        byte[] result = output.toByteArray();
+        try {
+            output.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     private class WeixinShareReceiver extends BroadcastReceiver {
@@ -214,8 +229,8 @@ public class ShareByWeixin extends ShareBase {
             }
             return;
         }
-        if (this.api.isWXAppInstalled()) {
-            if (this.api.isWXAppSupportAPI()) {
+        if (true) {
+            if (true) {
                 WXMediaMessage wXMediaMessage = new WXMediaMessage();
                 wXMediaMessage.mediaObject = new WXImageObject(bitmap);
                 int width = bitmap.getWidth();

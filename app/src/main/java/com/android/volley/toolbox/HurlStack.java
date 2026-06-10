@@ -53,7 +53,7 @@ public class HurlStack implements HttpStack {
     @Override // com.android.volley.toolbox.HttpStack
     public HttpResponse performRequest(Request<?> request, Map<String, String> map) throws IOException, AuthFailureError {
         String url = request.getUrl();
-        HashMap map2 = new HashMap();
+        HashMap<String, String> map2 = new HashMap<>();
         map2.putAll(request.getHeaders());
         map2.putAll(map);
         UrlRewriter urlRewriter = this.mUrlRewriter;
@@ -125,7 +125,7 @@ public class HurlStack implements HttpStack {
                 byte[] postBody = request.getPostBody();
                 if (postBody != null) {
                     httpURLConnection.setDoOutput(true);
-                    httpURLConnection.setRequestMethod(Constants.HTTP_POST);
+                    httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.addRequestProperty(HEADER_CONTENT_TYPE, request.getPostBodyContentType());
                     DataOutputStream dataOutputStream = new DataOutputStream(httpURLConnection.getOutputStream());
                     dataOutputStream.write(postBody);
@@ -137,7 +137,7 @@ public class HurlStack implements HttpStack {
                 httpURLConnection.setRequestMethod("GET");
                 return;
             case 1:
-                httpURLConnection.setRequestMethod(Constants.HTTP_POST);
+                httpURLConnection.setRequestMethod("POST");
                 addBodyIfExists(httpURLConnection, request);
                 return;
             case 2:

@@ -44,7 +44,7 @@ public class MediaAudioDecoder extends MediaDecoder {
     }
 
     @Override // com.serenegiant.media.MediaDecoder
-    protected MediaCodec createCodec(MediaExtractor mediaExtractor, int i, MediaFormat mediaFormat) throws Exception {
+    protected MediaCodec createCodec(MediaExtractor mediaExtractor, int i, MediaFormat mediaFormat) {
         MediaCodec mediaCodecCreateCodec = super.createCodec(mediaExtractor, i, mediaFormat);
         if (mediaCodecCreateCodec != null) {
             int iCapacity = mediaCodecCreateCodec.getOutputBuffers()[0].capacity();

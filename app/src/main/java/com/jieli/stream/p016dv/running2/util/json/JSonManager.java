@@ -51,8 +51,8 @@ public class JSonManager {
             mJSonData = str;
             new Thread(new Runnable() { // from class: com.jieli.stream.dv.running2.util.json.JSonManager.1
                 @Override // java.lang.Runnable
-                public void run() throws JSONException {
-                    JSonManager.this.parseJSon(onCompletedListener);
+                public void run() { try {
+                    JSonManager.this.parseJSon(onCompletedListener); } catch(org.json.JSONException e){e.printStackTrace();}
                 }
             }).start();
         } else {

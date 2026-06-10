@@ -25,8 +25,9 @@ public class BitmapUtils {
     }
 
     public static Bitmap bitmapZoomByHeight(Drawable drawable, float f) {
-        float height = f / r1.getHeight();
-        return bitmapZoomByScale(drawableToBitmap(drawable), height, height);
+        Bitmap b = drawableToBitmap(drawable);
+        float height = f / b.getHeight();
+        return bitmapZoomByScale(b, height, height);
     }
 
     public static Bitmap bitmapZoomByScale(Bitmap bitmap, float f, float f2) {

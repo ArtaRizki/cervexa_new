@@ -184,7 +184,7 @@ public final class DeviceFilter {
                         attributeString3 = getAttributeString(context, xmlPullParser, null, "serial", null);
                     }
                     str3 = attributeString3;
-                    attributeBoolean = getAttributeBoolean(context, xmlPullParser, null, SocialConstants.PARAM_EXCLUDE, false);
+                    attributeBoolean = getAttributeBoolean(context, xmlPullParser, null, "exclude", false);
                     z = true;
                 } else if (eventType == 3 && z) {
                     return new DeviceFilter(i, i2, attributeInteger, attributeInteger2, attributeInteger3, str, str2, str3, attributeBoolean);

@@ -15,7 +15,7 @@ import com.gizthon.camera.adapter.ResolutionListAdapter;
 import com.gizthon.camera.application.CameraApplication;
 import com.gizthon.camera.core.OnCameraConnectedListener;
 import com.gizthon.camera.databinding.UsbPreviewActivityBinding;
-import com.google.android.material.timepicker.TimeModel;
+
 import com.jaeger.library.StatusBarUtil;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jiangdg.usbcamera.utils.FileUtils;
@@ -44,7 +44,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
             Long lValueOf2 = Long.valueOf(((lValueOf.longValue() / 1000) / 60) / 60);
             Long lValueOf3 = Long.valueOf(((lValueOf.longValue() / 1000) / 60) % 60);
             Long lValueOf4 = Long.valueOf((lValueOf.longValue() / 1000) % 60);
-            UVCUSBCameraActivity.this.binding.tvRecordTime.setText(String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, lValueOf2) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, lValueOf3) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, lValueOf4));
+            UVCUSBCameraActivity.this.binding.tvRecordTime.setText(String.format("%02d", lValueOf2) + ":" + String.format("%02d", lValueOf3) + ":" + String.format("%02d", lValueOf4));
             UVCUSBCameraActivity.this.handler.postDelayed(this, 1000L);
         }
     };

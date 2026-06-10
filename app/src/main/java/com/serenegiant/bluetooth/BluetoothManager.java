@@ -434,7 +434,7 @@ public class BluetoothManager {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.bluetooth.-$$Lambda$BluetoothManager$aq-ZAjQqydCJxal-0PDMEjLFE2Y
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$callOnDiscover$0$BluetoothManager(arrayList);
+                        this.lambda$callOnDiscover$0$BluetoothManager(arrayList);
                     }
                 });
             }
@@ -461,7 +461,7 @@ public class BluetoothManager {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.bluetooth.-$$Lambda$BluetoothManager$szEVXQv64iZS7lvZIvIx-YwetxU
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$callOnConnect$1$BluetoothManager(bluetoothDevice);
+                        this.lambda$callOnConnect$1$BluetoothManager(bluetoothDevice);
                     }
                 });
             }
@@ -488,7 +488,7 @@ public class BluetoothManager {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.bluetooth.-$$Lambda$BluetoothManager$FBgsvbmziOwyzz08q67BJF_cCOo
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$callOnDisConnect$2$BluetoothManager();
+                        this.lambda$callOnDisConnect$2$BluetoothManager();
                     }
                 });
             }
@@ -519,7 +519,7 @@ public class BluetoothManager {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.bluetooth.-$$Lambda$BluetoothManager$SPq2NTSgCJsXSumNRxJqJjvtdaI
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$callOnFailed$3$BluetoothManager();
+                        this.lambda$callOnFailed$3$BluetoothManager();
                     }
                 });
             }
@@ -552,7 +552,7 @@ public class BluetoothManager {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.bluetooth.-$$Lambda$BluetoothManager$zAxwzMqMSIKFOq5eTMY0WOToGls
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$callOnReceive$4$BluetoothManager(bArr2, i);
+                        this.lambda$callOnReceive$4$BluetoothManager(bArr2, i);
                     }
                 });
             }

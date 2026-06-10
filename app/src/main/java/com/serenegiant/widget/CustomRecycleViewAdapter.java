@@ -16,7 +16,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /* JADX INFO: loaded from: classes2.dex */
-public abstract class CustomRecycleViewAdapter<T> extends RecyclerView.Adapter<ViewHolder<T>> {
+public abstract class CustomRecycleViewAdapter<T> extends RecyclerView.Adapter<CustomRecycleViewAdapter.ViewHolder<T>> {
     private static final boolean DEBUG = false;
     private static final String TAG = CustomRecycleViewAdapter.class.getSimpleName();
     private CustomRecycleViewListener<T> mCustomRecycleViewListener;
@@ -91,7 +91,7 @@ public abstract class CustomRecycleViewAdapter<T> extends RecyclerView.Adapter<V
         }
     }
 
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         synchronized (this.mItems) {
             unregisterDataSetObserver(this.mItems);
         }

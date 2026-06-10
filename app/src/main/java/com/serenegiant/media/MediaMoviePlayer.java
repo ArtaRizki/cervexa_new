@@ -82,7 +82,7 @@ public class MediaMoviePlayer {
     private long previousAudioPresentationTimeUs = -1;
     private final Runnable mMoviePlayerTask = new Runnable() { // from class: com.serenegiant.media.MediaMoviePlayer.1
         @Override // java.lang.Runnable
-        public final void run() throws IOException {
+        public final void run() {
             boolean z;
             int i;
             boolean zProcessStop;

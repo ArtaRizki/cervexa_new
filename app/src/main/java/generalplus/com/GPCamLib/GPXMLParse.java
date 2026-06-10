@@ -94,8 +94,8 @@ public class GPXMLParse {
     public class GPXMLCategory {
         public ArrayList<GPXMLSetting> aryListGPXMLSettings;
         public String strXMLCategoryName;
-        public int i32TreeLevel = this.i32TreeLevel;
-        public int i32TreeLevel = this.i32TreeLevel;
+        public int i32TreeLevel = 0;
+
 
         public GPXMLCategory(String str, int i, ArrayList<GPXMLSetting> arrayList) {
             this.strXMLCategoryName = str;

@@ -113,7 +113,7 @@ public class VolleyLog {
             }
         }
 
-        protected void finalize() throws Throwable {
+        protected void finalize() {
             if (this.mFinished) {
                 return;
             }
@@ -125,7 +125,7 @@ public class VolleyLog {
             if (this.mMarkers.size() == 0) {
                 return 0L;
             }
-            return this.mMarkers.get(r2.size() - 1).time - this.mMarkers.get(0).time;
+            return this.mMarkers.get(this.mMarkers.size() - 1).time - this.mMarkers.get(0).time;
         }
     }
 }

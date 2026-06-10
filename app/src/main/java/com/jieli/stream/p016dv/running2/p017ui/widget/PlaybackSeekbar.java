@@ -8,7 +8,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.google.android.material.timepicker.TimeModel;
+
 import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
 import com.jieli.stream.p016dv.running2.util.AppUtils;
@@ -269,7 +269,7 @@ public class PlaybackSeekbar extends View {
 
     private String formatTime(int i) {
         int i2 = i / 1000;
-        return String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, Integer.valueOf(i2 / 60)) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, Integer.valueOf(i2 % 60));
+        return String.format("%02d", Integer.valueOf(i2 / 60)) + ":" + String.format("%02d", Integer.valueOf(i2 % 60));
     }
 
     private void drawBrowseRule(Canvas canvas) {
@@ -317,7 +317,7 @@ public class PlaybackSeekbar extends View {
         canvas.drawLine(this.browseCursorPos, rectF.bottom, this.browseCursorPos, this.halfHeight - (this.thumbRadio * 2), this.tipBackgroundPaint);
         float f5 = this.browseCursorPos;
         int i3 = this.halfHeight;
-        canvas.drawCircle(f5, i3 - (r2 * 2), this.thumbRadio, this.tipBackgroundPaint);
+        canvas.drawCircle(f5, i3 - (this.thumbRadio * 2), this.thumbRadio, this.tipBackgroundPaint);
     }
 
     private void handleBrowseCoverTouchEvent(MotionEvent motionEvent) {
@@ -327,7 +327,7 @@ public class PlaybackSeekbar extends View {
         if (x < i) {
             f = i;
         } else {
-            f = x < ((float) (this.mWidth - i)) ? x : r2 - i;
+            f = x < ((float) (this.mWidth - i)) ? x : this.mWidth - i;
         }
         this.browseCursorPos = f;
         float f2 = this.endPos;

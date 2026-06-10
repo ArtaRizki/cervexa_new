@@ -135,7 +135,7 @@ public class JoystickView extends View implements Runnable {
     protected void onDraw(Canvas canvas) {
         this.centerX = getWidth() / 2;
         this.centerY = getHeight() / 2;
-        canvas.drawCircle((int) this.centerX, (int) r0, this.joystickRadius, this.mainCircle);
+        canvas.drawCircle((int) this.centerX, (int) this.centerY, this.joystickRadius, this.mainCircle);
         canvas.drawCircle(this.xPosition, this.yPosition, this.buttonRadius, this.button);
     }
 

@@ -49,62 +49,25 @@ public final class CrashExceptionHandler implements Thread.UncaughtExceptionHand
     /* JADX WARN: Type inference failed for: r1v3 */
     /* JADX WARN: Type inference failed for: r1v7 */
     @Override // java.lang.Thread.UncaughtExceptionHandler
-    public void uncaughtException(Thread thread, Throwable th) throws Throwable {
-        PrintWriter printWriter;
+    public void uncaughtException(Thread thread, Throwable th) {
         Context context = this.mWeakContext.get();
         if (context != null) {
-            ?? r1 = 0;
-            PrintWriter printWriter2 = null;
-            PrintWriter printWriter3 = null;
+            PrintWriter printWriter = null;
             try {
-                try {
-                    PrintWriter printWriter4 = new PrintWriter(context.openFileOutput(LOG_NAME, 0));
-                    try {
-                        JSONObject jSONObject = new JSONObject();
-                        jSONObject.put("Build", getBuildInfo());
-                        jSONObject.put("PackageInfo", getPackageInfo());
-                        jSONObject.put("Exception", getExceptionInfo(th));
-                        String str = "SharedPreferences";
-                        jSONObject.put("SharedPreferences", getPreferencesInfo());
-                        printWriter4.print(jSONObject.toString());
-                        printWriter4.flush();
-                        printWriter4.close();
-                        r1 = str;
-                    } catch (FileNotFoundException e) {
-                        e = e;
-                        printWriter2 = printWriter4;
-                        e.printStackTrace();
-                        printWriter = printWriter2;
-                        r1 = printWriter2;
-                        if (printWriter2 != null) {
-                            printWriter.close();
-                            r1 = printWriter;
-                        }
-                    } catch (JSONException e2) {
-                        e = e2;
-                        printWriter3 = printWriter4;
-                        e.printStackTrace();
-                        r1 = printWriter3;
-                        if (printWriter3 != null) {
-                            printWriter = printWriter3;
-                            printWriter.close();
-                            r1 = printWriter;
-                        }
-                    } catch (Throwable th2) {
-                        th = th2;
-                        r1 = printWriter4;
-                        if (r1 != 0) {
-                            r1.close();
-                        }
-                        throw th;
-                    }
-                } catch (FileNotFoundException e3) {
-                    e = e3;
-                } catch (JSONException e4) {
-                    e = e4;
+                printWriter = new PrintWriter(context.openFileOutput(LOG_NAME, 0));
+                JSONObject jSONObject = new JSONObject();
+                jSONObject.put("Build", getBuildInfo());
+                jSONObject.put("PackageInfo", getPackageInfo());
+                jSONObject.put("Exception", getExceptionInfo(th));
+                jSONObject.put("SharedPreferences", getPreferencesInfo());
+                printWriter.print(jSONObject.toString());
+                printWriter.flush();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (printWriter != null) {
+                    printWriter.close();
                 }
-            } catch (Throwable th3) {
-                th = th3;
             }
         }
         try {

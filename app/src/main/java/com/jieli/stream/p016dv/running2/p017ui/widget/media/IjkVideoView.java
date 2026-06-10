@@ -1576,12 +1576,12 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         ijkMediaPlayer.setOption(4, "overlay-format", "fcc-_es2");
         ijkMediaPlayer.setOption(1, "http-detect-range-support", 0L);
         ijkMediaPlayer.setOption(4, "min-frames", 5L);
-        ijkMediaPlayer.setOption(4, "max-buffer-size", PlaybackStateCompat.ACTION_SET_SHUFFLE_MODE);
+        ijkMediaPlayer.setOption(4, "max-buffer-size", 2097152);
         ijkMediaPlayer.setOption(4, "packet-buffering", 0L);
         ijkMediaPlayer.setOption(2, "skip_frame", 16L);
         ijkMediaPlayer.setOption(2, "skip_loop_filter", 48L);
         ijkMediaPlayer.setOption(4, "framedrop", 60L);
-        ijkMediaPlayer.setOption(1, "probesize", PlaybackStateCompat.ACTION_SET_CAPTIONING_ENABLED);
+        ijkMediaPlayer.setOption(1, "probesize", 1048576);
         ijkMediaPlayer.setOption(1, "analyzeduration", 5000L);
         ijkMediaPlayer.setOption(4, "start-on-prepared", 1L);
         ijkMediaPlayer.setOption(1, "flush_packets", 1L);

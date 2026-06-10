@@ -57,7 +57,7 @@ public class MediaStoreImageAdapter extends PagerAdapter {
         }
     }
 
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         changeCursor(null);
         super.finalize();
     }

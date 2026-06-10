@@ -100,11 +100,11 @@ public class ReentrantReadWriteWeakRef<T> {
     }
 
     public T clear() {
-        return set((Object) null);
+        return set((T) null);
     }
 
     public T swap(ReentrantReadWriteWeakRef<T> reentrantReadWriteWeakRef) {
-        return set((ReentrantReadWriteWeakRef) reentrantReadWriteWeakRef);
+        return set(reentrantReadWriteWeakRef);
     }
 
     public boolean isEmpty() {

@@ -20,8 +20,7 @@ public abstract class DialogFragmentEx extends DialogFragment {
     }
 
     /* JADX INFO: Access modifiers changed from: protected */
-    @Override // androidx.fragment.app.Fragment
-    public Bundle requireArguments() throws IllegalStateException {
+    public Bundle getRequireArguments() throws IllegalStateException {
         Bundle arguments = getArguments();
         if (arguments != null) {
             return arguments;

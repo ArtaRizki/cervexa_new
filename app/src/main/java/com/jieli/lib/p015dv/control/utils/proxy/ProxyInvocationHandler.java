@@ -39,7 +39,7 @@ public class ProxyInvocationHandler implements Handler.Callback, ProxyIntercepto
     }
 
     @Override // java.lang.reflect.InvocationHandler
-    public Object invoke(Object obj, Method method, Object[] objArr) throws Throwable {
+    public Object invoke(Object obj, Method method, Object[] objArr) {
         Object object = getObject();
         if (onIntercept(object, method, objArr)) {
             return null;

@@ -248,7 +248,8 @@ public class ClientImpl implements Handler.Callback, IClient, ProxyInterceptor {
         if (this.f2058f == null) {
             return;
         }
-        for (final OnNotifyListener onNotifyListener : (CopyOnWriteArrayList) this.f2058f.clone()) {
+        for (Object obj : (CopyOnWriteArrayList) this.f2058f.clone()) {
+            final OnNotifyListener onNotifyListener = (OnNotifyListener) obj;
             ClientContext.post(new Runnable() { // from class: com.jieli.lib.dv.control.ClientImpl.2
                 @Override // java.lang.Runnable
                 public void run() {

@@ -34,7 +34,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.baidu.mapapi.UIMsg;
 import com.generalplus.GoPlusDrone.Activity.ResolutionAdapter;
-import com.google.android.material.timepicker.TimeModel;
+
 import com.jieli.lib.p015dv.control.connect.response.SendResponse;
 import com.jieli.lib.p015dv.control.intercom.IntercomManager;
 import com.jieli.lib.p015dv.control.model.PictureInfo;
@@ -177,7 +177,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     private final OnNotifyListener onNotifyResponse = new C160817();
     private IMediaPlayer.OnErrorListener mOnErrorListener = new IMediaPlayer.OnErrorListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.18
         @Override // tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener
-        public boolean onError(IMediaPlayer iMediaPlayer, int i, int i2) throws Throwable {
+        public boolean onError(IMediaPlayer iMediaPlayer, int i, int i2) {
             Dbug.m1388e(VideoFragment.this.tag, "Error: framework_err=" + i + ",impl_err=" + i2);
             VideoFragment.this.closeRTS();
             if (i == -10000) {
@@ -248,13 +248,13 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             Long lValueOf2 = Long.valueOf(((lValueOf.longValue() / 1000) / 60) / 60);
             Long lValueOf3 = Long.valueOf(((lValueOf.longValue() / 1000) / 60) % 60);
             Long lValueOf4 = Long.valueOf((lValueOf.longValue() / 1000) % 60);
-            VideoFragment.this.tv_record_time.setText(String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, lValueOf2) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, lValueOf3) + ":" + String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, lValueOf4));
+            VideoFragment.this.tv_record_time.setText(String.format("%02d", lValueOf2) + ":" + String.format("%02d", lValueOf3) + ":" + String.format("%02d", lValueOf4));
             VideoFragment.this.handler.postDelayed(this, 1000L);
         }
     };
     private PopupMenu.OnPopItemClickListener mOnPopItemClickListener = new PopupMenu.OnPopItemClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.28
         @Override // com.jieli.stream.dv.running2.ui.widget.PopupMenu.OnPopItemClickListener
-        public void onItemClick(int i, Integer num, int i2) throws Throwable {
+        public void onItemClick(int i, Integer num, int i2) {
             VideoFragment.this.switchStreamResolution(i);
         }
     };
@@ -262,7 +262,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     byte[] firstData = null;
     private OnRealTimeListener realtimePlayerListener = new OnRealTimeListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.30
         @Override // com.jieli.lib.p015dv.control.player.IPlayerListener
-        public void onVideo(int i, int i2, byte[] bArr, long j, long j2) throws Throwable {
+        public void onVideo(int i, int i2, byte[] bArr, long j, long j2) {
             if (VideoFragment.this.isStartDebug && PreferencesHelper.getSharedPreferences(VideoFragment.this.mApplication).getBoolean(IConstant.DEBUG_SETTINGS, false)) {
                 VideoFragment.access$1308(VideoFragment.this);
             }
@@ -290,7 +290,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         }
 
         @Override // com.jieli.lib.p015dv.control.player.IPlayerListener
-        public void onStateChanged(int i) throws Throwable {
+        public void onStateChanged(int i) {
             Dbug.m1388e(VideoFragment.this.tag, "onStateChanged:state=" + i);
             if (i != 1 && i != 2) {
                 if (i == 5) {
@@ -306,7 +306,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         }
 
         @Override // com.jieli.lib.p015dv.control.player.IPlayerListener
-        public void onError(int i, String str) throws Throwable {
+        public void onError(int i, String str) {
             Dbug.m1388e(VideoFragment.this.tag, "code=" + i + ", message=" + str);
             if (VideoFragment.this.isSwitchCamera) {
                 return;
@@ -365,7 +365,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
         /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
         @Override // android.os.Handler.Callback
-        public boolean handleMessage(Message message) throws Throwable {
+        public boolean handleMessage(Message message) {
             if (VideoFragment.this.getActivity() != null && message != null) {
                 switch (message.what) {
                     case VideoFragment.MSG_TAKE_VIDEO /* 2560 */:
@@ -820,7 +820,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void closeRTS() throws Throwable {
+    public void closeRTS() {
         Dbug.m1389i(this.tag, "close rts................");
         deinitPlayer();
         if (PreferencesHelper.getSharedPreferences(this.mApplication).getBoolean(IConstant.DEBUG_SETTINGS, false)) {
@@ -913,7 +913,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             Code decompiled incorrectly, please refer to instructions dump.
             To view partially-correct code enable 'Show inconsistent code' option in preferences
         */
-        public void onNotify(com.jieli.lib.p015dv.control.json.bean.NotifyInfo r18) throws java.lang.Throwable {
+        public void onNotify(com.jieli.lib.p015dv.control.json.bean.NotifyInfo r18) {
             /*
                 Method dump skipped, instruction units count: 2644
                 To view this dump change 'Code comments level' option to 'DEBUG'
@@ -963,7 +963,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     }
 
     @Override // androidx.fragment.app.Fragment
-    public void onPause() throws Throwable {
+    public void onPause() {
         super.onPause();
         closeRTS();
         RealtimeStream realtimeStream = this.mRealtimeStream;
@@ -998,7 +998,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     }
 
     @Override // androidx.fragment.app.Fragment
-    public void onDestroy() throws Throwable {
+    public void onDestroy() {
         super.onDestroy();
         PowerManager.WakeLock wakeLock = this.wakeLock;
         if (wakeLock != null && wakeLock.isHeld()) {
@@ -1344,7 +1344,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
             /* JADX INFO: Access modifiers changed from: protected */
             @Override // android.os.AsyncTask
-            public Bitmap doInBackground(Integer... numArr) throws Throwable {
+            public Bitmap doInBackground(Integer... numArr) {
                 int i = 0;
                 int iIntValue = numArr[0].intValue();
                 this.position = iIntValue;
@@ -1501,118 +1501,42 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         /* JADX WARN: Type inference failed for: r5v6, types: [java.util.List] */
         @Override // java.lang.Thread, java.lang.Runnable
         public void run() {
-            ?? r0 = "Close Video thumbnail failed";
-            ?? r1 = "mVideoThumbnail close - 004";
             super.run();
             Handler handler = this.softReference.get();
             byte[] bArr = this.data;
             if (bArr == null || bArr.length <= 0) {
                 return;
             }
-            ?? r4 = 0;
-            IsEmpty = 0;
-            ?? IsEmpty = 0;
-            r4 = 0;
-            r4 = 0;
-            ?? r42 = 0;
-            r4 = 0;
-            r4 = 0;
-            r4 = 0;
             try {
-                try {
-                    Bitmap bitmapDecodeByteArray = BitmapFactory.decodeByteArray(bArr, 0, bArr.length);
-                    FileInfo fileInfo = null;
-                    if (VideoFragment.this.thumbList != null && VideoFragment.this.thumbList.size() > 0) {
-                        Object objRemove = VideoFragment.this.thumbList.remove(0);
-                        fileInfo = (FileInfo) objRemove;
-                        IsEmpty = objRemove;
-                    }
-                    if (bitmapDecodeByteArray != null && fileInfo != null && (IsEmpty = TextUtils.isEmpty(VideoFragment.this.mApplication.getUUID())) == 0) {
-                        String mediaDirectory = AppUtils.getMediaDirectory(fileInfo.getCameraType());
-                        Dbug.m1391w(VideoFragment.this.tag, "-SaveVideoThumb- cameraDir : " + mediaDirectory);
-                        String str = AppUtils.splicingFilePath(VideoFragment.this.mApplication.getAppName(), VideoFragment.this.mApplication.getUUID(), mediaDirectory, IConstant.DIR_THUMB) + File.separator + AppUtils.getVideoThumbName(fileInfo);
-                        ThumbLoader.getInstance().addBitmap(str, ThumbnailUtils.extractThumbnail(bitmapDecodeByteArray, VideoFragment.this.viewWidth, VideoFragment.this.viewHeight, 2));
-                        if (handler != null) {
-                            handler.post(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.SaveVideoThumb.1
-                                @Override // java.lang.Runnable
-                                public void run() {
-                                }
-                            });
-                        }
-                        Dbug.m1389i(VideoFragment.this.tag, "-SaveVideoThumb- savePath : " + str);
-                        if (AppUtils.bytesToFile(this.data, str)) {
-                            IsEmpty = "save bitmap ok!";
-                            Dbug.m1389i(VideoFragment.this.tag, "save bitmap ok!");
-                        } else {
-                            IsEmpty = "save bitmap failed!";
-                            Dbug.m1391w(VideoFragment.this.tag, "save bitmap failed!");
-                        }
-                    }
-                    r1 = r1;
-                    r4 = IsEmpty;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    if (VideoFragment.this.thumbList != null && VideoFragment.this.thumbList.size() > 0) {
-                    }
-                    r1 = r1;
-                    if (VideoFragment.this.thumbList != null) {
-                        r1 = r1;
-                        if (VideoFragment.this.thumbList.size() == 0) {
-                            Dbug.m1389i(VideoFragment.this.tag, "mVideoThumbnail close - 004");
-                            if (handler != null) {
-                                handler.post(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.SaveVideoThumb.2
-                                    @Override // java.lang.Runnable
-                                    public void run() {
-                                    }
-                                });
-                            }
-                            VideoThumbnail videoThumbnail = VideoFragment.this.mVideoThumbnail;
-                            r1 = videoThumbnail;
-                            if (videoThumbnail != null) {
-                                boolean zClose = VideoFragment.this.mVideoThumbnail.close();
-                                r1 = zClose;
-                                if (!zClose) {
-                                }
-                            }
-                        }
-                    }
-                }
-                if (VideoFragment.this.thumbList != null) {
-                    r1 = r1;
-                    r4 = IsEmpty;
-                    if (VideoFragment.this.thumbList.size() == 0) {
-                        Dbug.m1389i(VideoFragment.this.tag, "mVideoThumbnail close - 004");
-                        if (handler != null) {
-                            handler.post(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.SaveVideoThumb.2
-                                @Override // java.lang.Runnable
-                                public void run() {
-                                }
-                            });
-                        }
-                        VideoThumbnail videoThumbnail2 = VideoFragment.this.mVideoThumbnail;
-                        r1 = videoThumbnail2;
-                        r4 = IsEmpty;
-                        if (videoThumbnail2 != null) {
-                            boolean zClose2 = VideoFragment.this.mVideoThumbnail.close();
-                            r42 = IsEmpty;
-                            r1 = zClose2;
-                            r4 = IsEmpty;
-                            if (!zClose2) {
-                                String str2 = VideoFragment.this.tag;
-                                Dbug.m1391w(str2, "Close Video thumbnail failed");
-                                r1 = str2;
-                                r4 = r42;
-                            }
-                        }
-                    }
-                }
-                r0 = VideoFragment.this.collections;
-                r0.remove(this);
-            } catch (Throwable th) {
+                Bitmap bitmapDecodeByteArray = BitmapFactory.decodeByteArray(bArr, 0, bArr.length);
+                FileInfo fileInfo = null;
                 if (VideoFragment.this.thumbList != null && VideoFragment.this.thumbList.size() > 0) {
+                    fileInfo = VideoFragment.this.thumbList.remove(0);
                 }
+                if (bitmapDecodeByteArray != null && fileInfo != null && !TextUtils.isEmpty(VideoFragment.this.mApplication.getUUID())) {
+                    String mediaDirectory = AppUtils.getMediaDirectory(fileInfo.getCameraType());
+                    Dbug.m1391w(VideoFragment.this.tag, "-SaveVideoThumb- cameraDir : " + mediaDirectory);
+                    String str = AppUtils.splicingFilePath(VideoFragment.this.mApplication.getAppName(), VideoFragment.this.mApplication.getUUID(), mediaDirectory, IConstant.DIR_THUMB) + File.separator + AppUtils.getVideoThumbName(fileInfo);
+                    ThumbLoader.getInstance().addBitmap(str, ThumbnailUtils.extractThumbnail(bitmapDecodeByteArray, VideoFragment.this.viewWidth, VideoFragment.this.viewHeight, 2));
+                    if (handler != null) {
+                        handler.post(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.SaveVideoThumb.1
+                            @Override // java.lang.Runnable
+                            public void run() {
+                            }
+                        });
+                    }
+                    Dbug.m1389i(VideoFragment.this.tag, "-SaveVideoThumb- savePath : " + str);
+                    if (AppUtils.bytesToFile(this.data, str)) {
+                        Dbug.m1389i(VideoFragment.this.tag, "save bitmap ok!");
+                    } else {
+                        Dbug.m1391w(VideoFragment.this.tag, "save bitmap failed!");
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
                 if (VideoFragment.this.thumbList != null && VideoFragment.this.thumbList.size() == 0) {
-                    Dbug.m1389i(VideoFragment.this.tag, r1);
+                    Dbug.m1389i(VideoFragment.this.tag, "mVideoThumbnail close - 004");
                     if (handler != null) {
                         handler.post(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.SaveVideoThumb.2
                             @Override // java.lang.Runnable
@@ -1620,12 +1544,14 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                             }
                         });
                     }
-                    if (VideoFragment.this.mVideoThumbnail != null && !VideoFragment.this.mVideoThumbnail.close()) {
-                        Dbug.m1391w(VideoFragment.this.tag, r0);
+                    VideoThumbnail videoThumbnail = VideoFragment.this.mVideoThumbnail;
+                    if (videoThumbnail != null) {
+                        if (!videoThumbnail.close()) {
+                            Dbug.m1391w(VideoFragment.this.tag, "Close Video thumbnail failed");
+                        }
                     }
                 }
                 VideoFragment.this.collections.remove(this);
-                throw th;
             }
         }
     }
@@ -1735,7 +1661,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void switchStreamResolution(int i) throws Throwable {
+    public void switchStreamResolution(int i) {
         closeRTS();
         if (this.isRtspEnable) {
             AppUtils.saveRtspResolutionLevel(i);
@@ -2013,14 +1939,14 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             }
 
             @Override // com.jieli.stream.p016dv.running2.data.OnRecordStateListener
-            public void onStop() throws Throwable {
+            public void onStop() {
                 Dbug.m1389i(VideoFragment.this.tag, "LocalRecord: onStop");
                 VideoFragment.this.hideVideoUI();
                 VideoFragment.this.stopLocalRecording();
             }
 
             @Override // com.jieli.stream.p016dv.running2.data.OnRecordStateListener
-            public void onError(String str) throws Throwable {
+            public void onError(String str) {
                 Dbug.m1388e(VideoFragment.this.tag, "Record error:" + str);
                 VideoFragment.this.hideVideoUI();
                 VideoFragment.this.stopLocalRecording();
@@ -2028,7 +1954,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         });
     }
 
-    public void stopLocalRecording() throws Throwable {
+    public void stopLocalRecording() {
         if (this.mRecordVideo != null) {
             String strReplace = new File(this.mRecordVideo.getCurrentFilePath()).getName().replace("avi", "jpg");
             this.aviJpegName = strReplace;

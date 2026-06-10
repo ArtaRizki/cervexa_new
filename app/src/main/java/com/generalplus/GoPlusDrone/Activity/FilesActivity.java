@@ -24,7 +24,7 @@ import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import com.generalplus.GoPlusDrone.C1021R;
-import com.google.android.material.timepicker.TimeModel;
+
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.stream.p016dv.running2.util.IConstant;
 import generalplus.com.GPCamLib.CamWrapper;
@@ -224,7 +224,7 @@ public class FilesActivity extends Activity {
                             boolean unused = FilesActivity.bIsStopUpdateThumbnail = true;
                             boolean unused2 = FilesActivity.bSaveImageItem = true;
                             if (!FilesActivity.m_strAryFileName[C09872.this.m_i32Position].toString().contains(UVCCameraHelper.SUFFIX_JPEG) || C09872.this.strStreamFilePath.isEmpty()) {
-                                return;
+                                //return;
                             }
                             ImageView imageView = new ImageView(FilesActivity.this.m_Context);
                             imageView.setImageURI(Uri.parse(C09872.this.strStreamFilePath));
@@ -579,7 +579,7 @@ public class FilesActivity extends Activity {
                         switch (i7) {
                             case CamWrapper.Error_FullStorage /* 65527 */:
                                 Log.e(TAG, "Error_FullStorage ... ");
-                                return;
+                                //return;
                             case CamWrapper.Error_GetThumbnailFail /* 65528 */:
                                 Log.e(TAG, "Error_GetThumbnailFail ... ");
                                 synchronized (m_i32AryFileStatus) {
@@ -588,13 +588,13 @@ public class FilesActivity extends Activity {
                                     }
                                     break;
                                 }
-                                return;
+                                //return;
                             case CamWrapper.Error_GetFileListFail /* 65529 */:
                                 Log.e(TAG, "Error_GetFileListFail ... ");
-                                return;
+                                //return;
                             case CamWrapper.Error_WriteFail /* 65530 */:
                                 Log.e(TAG, "Error_WriteFail ... ");
-                                return;
+                                //return;
                             case CamWrapper.Error_NoStorage /* 65531 */:
                                 Log.e(TAG, "Error_NoStorage ... ");
                                 runOnUiThread(new Runnable() { // from class: com.generalplus.GoPlusDrone.Activity.FilesActivity.5
@@ -603,13 +603,13 @@ public class FilesActivity extends Activity {
                                         Toast.makeText(FilesActivity.this.m_Context, "Failed. No Storage.", 0).show();
                                     }
                                 });
-                                return;
+                                //return;
                             case CamWrapper.Error_ModeError /* 65532 */:
                                 Log.e(TAG, "Error_ModeError ... ");
-                                return;
+                                //return;
                             case CamWrapper.Error_RequestTimeOut /* 65533 */:
                                 Log.e(TAG, "Error_RequestTimeOut ... ");
-                                return;
+                                //return;
                             case CamWrapper.Error_InvalidCommand /* 65534 */:
                                 Log.e(TAG, "Error_InvalidCommand ... ");
                                 m_bPendingGetThumbnail = false;
@@ -619,7 +619,7 @@ public class FilesActivity extends Activity {
                                     }
                                     break;
                                 }
-                                return;
+                                //return;
                             case 65535:
                                 Log.e(TAG, "Error_ServerIsBusy ... ");
                                 int i8 = this._i32ErrorCount + 1;
@@ -630,11 +630,11 @@ public class FilesActivity extends Activity {
                                     CamWrapper.getComWrapperInstance().GPCamAbort(this._i32CommandIndex);
                                     CamWrapper.getComWrapperInstance().GPCamSendGetStatus();
                                     Toast.makeText(this.m_Context, "Getting thumbnail is failed.", 0).show();
-                                    return;
+                                    //return;
                                 }
-                                return;
+                                //return;
                             default:
-                                return;
+                                //return;
                         }
                 }
             }
@@ -737,7 +737,7 @@ public class FilesActivity extends Activity {
                     CamWrapper.getComWrapperInstance().GPCamGetFileTime(i10, bArr);
                     StringBuilder sb = new StringBuilder();
                     for (int i11 = 0; i11 < 6; i11++) {
-                        sb.append(String.format(TimeModel.ZERO_LEADING_NUMBER_FORMAT, Byte.valueOf(bArr[i11])));
+                        sb.append(String.format("%02d", Byte.valueOf(bArr[i11])));
                     }
                     m_strAryFileTime[i10] = sb.toString();
                     if (m_i32AryFileStatus[i10] == FileTag_FileDeviceInit) {

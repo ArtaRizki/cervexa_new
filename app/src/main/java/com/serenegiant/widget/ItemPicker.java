@@ -62,7 +62,7 @@ public final class ItemPicker extends LinearLayout {
             public void run() {
                 if (!ItemPicker.this.mIncrement) {
                     if (ItemPicker.this.mDecrement) {
-                        ItemPicker.this.changeCurrent(r0.mCurrentValue - 1);
+                        ItemPicker.this.changeCurrent(ItemPicker.this.mCurrentValue - 1);
                         ItemPicker.this.mHandler.postDelayed(this, ItemPicker.this.mSpeed);
                         return;
                     }
@@ -102,7 +102,7 @@ public final class ItemPicker extends LinearLayout {
                     ItemPicker itemPicker2 = ItemPicker.this;
                     itemPicker2.changeCurrent(itemPicker2.mCurrentValue + 1);
                 } else if (C1831R.id.decrement == view.getId()) {
-                    ItemPicker.this.changeCurrent(r3.mCurrentValue - 1);
+                    ItemPicker.this.changeCurrent(ItemPicker.this.mCurrentValue - 1);
                 }
             }
         };

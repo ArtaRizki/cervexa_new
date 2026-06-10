@@ -557,7 +557,7 @@ public final class USBMonitor {
             if (usbControlBlock != null) {
                 return usbControlBlock;
             }
-            UsbControlBlock usbControlBlock2 = new UsbControlBlock(usbDevice);
+            UsbControlBlock usbControlBlock2 = new UsbControlBlock(USBMonitor.this, usbDevice);
             this.mCtrlBlocks.put(usbDevice, usbControlBlock2);
             return usbControlBlock2;
         }
@@ -576,7 +576,7 @@ public final class USBMonitor {
                 boolean z;
                 UsbControlBlock usbControlBlock = (UsbControlBlock) USBMonitor.this.mCtrlBlocks.get(usbDevice);
                 if (usbControlBlock == null) {
-                    usbControlBlock = new UsbControlBlock(usbDevice);
+                    usbControlBlock = new UsbControlBlock(USBMonitor.this, usbDevice);
                     USBMonitor.this.mCtrlBlocks.put(usbDevice, usbControlBlock);
                     z = true;
                 } else {

@@ -33,7 +33,7 @@ public class EnvDrawText {
         } else {
             f3550pt.reset();
         }
-        String phoneType = SysOSUtil.getPhoneType();
+        String phoneType = android.os.Build.MODEL;
         int i7 = (phoneType == null || !phoneType.equals("vivo X3L")) ? i2 : 0;
         if (i7 == 1) {
             typefaceCreate = Typeface.create(Typeface.DEFAULT, 1);
@@ -118,7 +118,8 @@ public class EnvDrawText {
                 iMeasureText3 = iMeasureText;
             }
             Paint.FontMetrics fontMetrics2 = f3550pt.getFontMetrics();
-            int iCeil2 = i10 * ((int) Math.ceil(fontMetrics2.descent - fontMetrics2.ascent));
+            int lineHeight = (int) Math.ceil(fontMetrics2.descent - fontMetrics2.ascent);
+            int iCeil2 = i10 * lineHeight;
             iArr[0] = iMeasureText3;
             iArr[1] = iCeil2;
             int iPow3 = (int) Math.pow(2.0d, (int) Math.ceil(Math.log(iMeasureText3) / Math.log(2.0d)));
@@ -164,11 +165,11 @@ public class EnvDrawText {
                     f3550pt.setStrokeJoin(Paint.Join.ROUND);
                     f3550pt.setStyle(Paint.Style.STROKE);
                     f3550pt.setColor(i4);
-                    canvasTemp.drawText(strSubstring, (iArr[0] - iMeasureText5) / 2, (i13 * r11) - fontMetrics2.ascent, f3550pt);
+                    canvasTemp.drawText(strSubstring, (iArr[0] - iMeasureText5) / 2, (i13 * lineHeight) - fontMetrics2.ascent, f3550pt);
                 }
                 f3550pt.setStyle(Paint.Style.FILL);
                 f3550pt.setColor(i3);
-                canvasTemp.drawText(strSubstring, (iArr[0] - iMeasureText5) / 2, (i13 * r11) - fontMetrics2.ascent, f3550pt);
+                canvasTemp.drawText(strSubstring, (iArr[0] - iMeasureText5) / 2, (i13 * lineHeight) - fontMetrics2.ascent, f3550pt);
                 i13++;
                 i11 = i14;
                 i12 = 92;
@@ -182,11 +183,11 @@ public class EnvDrawText {
                     f3550pt.setStrokeJoin(Paint.Join.ROUND);
                     f3550pt.setStyle(Paint.Style.STROKE);
                     f3550pt.setColor(i4);
-                    canvasTemp.drawText(strSubstring2, (iArr[0] - iMeasureText6) / 2, (i13 * r11) - fontMetrics2.ascent, f3550pt);
+                    canvasTemp.drawText(strSubstring2, (iArr[0] - iMeasureText6) / 2, (i13 * lineHeight) - fontMetrics2.ascent, f3550pt);
                 }
                 f3550pt.setStyle(Paint.Style.FILL);
                 f3550pt.setColor(i3);
-                canvasTemp.drawText(strSubstring2, (iArr[0] - iMeasureText6) / 2, (i13 * r11) - fontMetrics2.ascent, f3550pt);
+                canvasTemp.drawText(strSubstring2, (iArr[0] - iMeasureText6) / 2, (i13 * lineHeight) - fontMetrics2.ascent, f3550pt);
             }
         }
         int i15 = iWordWidthMax * iWordHightMax;

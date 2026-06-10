@@ -403,7 +403,7 @@ public class UpgradeFragment extends BaseFragment {
             Code decompiled incorrectly, please refer to instructions dump.
             To view partially-correct code enable 'Show inconsistent code' option in preferences
         */
-        public void run() throws java.lang.Throwable {
+        public void run() {
             /*
                 Method dump skipped, instruction units count: 270
                 To view this dump change 'Code comments level' option to 'DEBUG'
@@ -420,7 +420,7 @@ public class UpgradeFragment extends BaseFragment {
         }
 
         @Override // java.lang.Thread, java.lang.Runnable
-        public void run() throws Throwable {
+        public void run() {
             super.run();
             Handler handler = this.softReference.get();
             UpgradeFragment.this.sendHandlerMsg(handler, 0, 1, null, 0L);
@@ -473,7 +473,7 @@ public class UpgradeFragment extends BaseFragment {
         }
 
         @Override // java.lang.Thread, java.lang.Runnable
-        public void run() throws Throwable {
+        public void run() {
             super.run();
             Handler handler = this.softReference.get();
             SystemClock.sleep(3000L);

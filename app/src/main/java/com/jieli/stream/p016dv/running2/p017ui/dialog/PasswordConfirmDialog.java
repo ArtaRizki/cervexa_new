@@ -47,7 +47,7 @@ public class PasswordConfirmDialog extends BaseDialogFragment implements IConsta
     @Override // androidx.fragment.app.DialogFragment, androidx.fragment.app.Fragment
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setStyle(1, R.style.Theme.Translucent.NoTitleBar.Fullscreen);
+        setStyle(1, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
         this.mTextTitle = getArguments().getString("title", null);
     }
 

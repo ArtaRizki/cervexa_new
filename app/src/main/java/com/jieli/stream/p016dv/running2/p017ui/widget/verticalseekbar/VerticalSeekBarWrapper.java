@@ -108,7 +108,7 @@ public class VerticalSeekBarWrapper extends FrameLayout {
             layoutParams.width = Math.max(0, i2 - paddingTop);
             layoutParams.height = -2;
             childSeekBar.setLayoutParams(layoutParams);
-            ViewCompat.setPivotX(childSeekBar, z ? 0.0f : Math.max(0, r11));
+            ViewCompat.setPivotX(childSeekBar, z ? 0.0f : Math.max(0, childSeekBar.getMeasuredHeight() / 2));
             ViewCompat.setPivotY(childSeekBar, 0.0f);
             if (rotationAngle == 90) {
                 ViewCompat.setRotation(childSeekBar, 90.0f);

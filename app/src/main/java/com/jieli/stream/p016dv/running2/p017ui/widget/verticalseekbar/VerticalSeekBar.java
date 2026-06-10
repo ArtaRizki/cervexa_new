@@ -130,7 +130,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
         int y = (int) motionEvent.getY();
         int i = this.mRotationAngle;
         float f = 0.0f;
-        float f2 = i != 90 ? i != 270 ? 0.0f : r2 - y : y - paddingLeft;
+        float f2 = i != 90 ? i != 270 ? 0.0f : y : y - paddingLeft;
         if (f2 >= 0.0f && height != 0) {
             float f3 = height;
             f = f2 > f3 ? 1.0f : f2 / f3;

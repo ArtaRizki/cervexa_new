@@ -238,6 +238,7 @@ public class SDUtils {
     }
 
     public static Uri requestStorageAccess(androidx.fragment.app.Fragment fragment, int i) {
+        Uri storageUri = null;
         if (BuildCheck.isLollipop()) {
             FragmentActivity activity = fragment.getActivity();
             storageUri = activity != null ? getStorageUri(activity, i) : null;

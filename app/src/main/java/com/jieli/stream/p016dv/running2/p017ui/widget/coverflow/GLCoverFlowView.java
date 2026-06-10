@@ -548,7 +548,7 @@ public class GLCoverFlowView extends GLSurfaceView implements GLSurfaceView.Rend
             this.f2238gl = gl10;
         }
 
-        protected void finalize() throws Throwable {
+        protected void finalize() {
             int i = this.mTexture;
             if (i != 0) {
                 this.f2238gl.glDeleteTextures(1, new int[]{i}, 0);

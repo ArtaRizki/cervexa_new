@@ -110,7 +110,7 @@ public class SpringBar extends View implements ScrollBar {
         this.head.setX(getOffsetX(f) - (fAtan * getPositionDistance(i)));
         if (f < this.footMoveOffset) {
             float f5 = this.acceleration;
-            fAtan2 = (float) ((Math.atan((((f / r12) * f5) * 2.0f) - f5) + Math.atan(this.acceleration)) / (Math.atan(this.acceleration) * 2.0d));
+            fAtan2 = (float) ((Math.atan((((f / this.footMoveOffset) * f5) * 2.0f) - f5) + Math.atan(this.acceleration)) / (Math.atan(this.acceleration) * 2.0d));
         }
         this.foot.setX(getOffsetX(f) - (fAtan2 * getPositionDistance(i)));
     }

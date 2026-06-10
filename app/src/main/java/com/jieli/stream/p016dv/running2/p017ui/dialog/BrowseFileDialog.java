@@ -83,7 +83,7 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
     @Override // androidx.fragment.app.DialogFragment, androidx.fragment.app.Fragment
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setStyle(1, R.style.Theme.Light.NoTitleBar);
+        setStyle(1, android.R.style.Theme_Light_NoTitleBar);
         setCancelable(false);
     }
 

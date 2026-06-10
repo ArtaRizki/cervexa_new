@@ -144,7 +144,7 @@ public class MediaTask extends HandlerThread implements IConstant, Handler.Callb
                         Code decompiled incorrectly, please refer to instructions dump.
                         To view partially-correct code enable 'Show inconsistent code' option in preferences
                     */
-                    public void onResponse(okhttp3.Call r17, okhttp3.Response r18) throws java.lang.Throwable {
+                    public void onResponse(okhttp3.Call r17, okhttp3.Response r18) {
                         /*
                             Method dump skipped, instruction units count: 706
                             To view this dump change 'Code comments level' option to 'DEBUG'

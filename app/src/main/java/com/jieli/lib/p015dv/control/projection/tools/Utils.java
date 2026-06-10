@@ -8,9 +8,11 @@ import java.io.IOException;
 
 /* JADX INFO: loaded from: classes.dex */
 public class Utils {
-    public static boolean byte2File(byte[] bArr, String str, String str2) throws Throwable {
+    public static boolean byte2File(byte[] bArr, String str, String str2) {
         FileOutputStream fileOutputStream;
         BufferedOutputStream bufferedOutputStream = null;
+        Exception e = null;
+        Throwable th = null;
         try {
             File file = new File(str);
             if (!file.exists() && file.mkdirs()) {
@@ -24,8 +26,8 @@ public class Utils {
                         bufferedOutputStream2.write(bArr);
                         try {
                             bufferedOutputStream2.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                        } catch (IOException e2) {
+                            e2.printStackTrace();
                         }
                         try {
                             fileOutputStream.close();
@@ -52,8 +54,8 @@ public class Utils {
                             }
                         }
                         return false;
-                    } catch (Throwable th) {
-                        th = th;
+                    } catch (Throwable th2) {
+                        th = th2;
                         bufferedOutputStream = bufferedOutputStream2;
                         if (bufferedOutputStream != null) {
                             try {
@@ -93,7 +95,7 @@ public class Utils {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct code enable 'Show inconsistent code' option in preferences
     */
-    public static byte[] file2Bytes(java.lang.String r5) throws java.lang.Throwable {
+    public static byte[] file2Bytes(java.lang.String r5) {
         /*
             java.io.File r0 = new java.io.File
             r0.<init>(r5)

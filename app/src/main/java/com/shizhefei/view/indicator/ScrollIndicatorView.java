@@ -306,10 +306,12 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
     @Override // com.shizhefei.view.indicator.Indicator
     public void onPageScrolled(int i, float f, int i2) {
         this.positionOffset = f;
-        if (this.fixedIndicatorView.getChildAt(i) == null) {
+        View childAt = this.fixedIndicatorView.getChildAt(i);
+        if (childAt == null) {
             return;
         }
-        scrollTo((int) ((r0.getLeft() - ((getWidth() - r0.getWidth()) / 2)) + (((r0.getWidth() + (this.fixedIndicatorView.getChildAt(i + 1) == null ? r0.getWidth() : r1.getWidth())) / 2) * f)), 0);
+        View nextChild = this.fixedIndicatorView.getChildAt(i + 1);
+        scrollTo((int) ((childAt.getLeft() - ((getWidth() - childAt.getWidth()) / 2)) + (((childAt.getWidth() + (nextChild == null ? childAt.getWidth() : nextChild.getWidth())) / 2) * f)), 0);
         this.fixedIndicatorView.onPageScrolled(i, f, i2);
     }
 

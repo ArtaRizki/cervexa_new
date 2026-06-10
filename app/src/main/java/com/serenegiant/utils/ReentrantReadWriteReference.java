@@ -92,7 +92,7 @@ public class ReentrantReadWriteReference<T> {
     }
 
     public T clear() {
-        return set((Object) null);
+        return set((T) null);
     }
 
     public T swap(T t) {
