@@ -264,7 +264,7 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
         if (this.isPinnedTabView) {
             float x = motionEvent.getX();
             float y = motionEvent.getY();
-            if (this.pinnedTabView != null && y >= r2.getTop() && y <= this.pinnedTabView.getBottom() && x > this.pinnedTabView.getLeft() && x < this.pinnedTabView.getRight()) {
+            if (this.pinnedTabView != null && y >= this.pinnedTabView.getTop() && y <= this.pinnedTabView.getBottom() && x > this.pinnedTabView.getLeft() && x < this.pinnedTabView.getRight()) {
                 if (motionEvent.getAction() == 0) {
                     this.mActionDownHappened = true;
                 } else if (motionEvent.getAction() == 1 && this.mActionDownHappened) {

@@ -308,7 +308,7 @@ public class ZoomAspectScaledTextureView extends AspectScaledTextureView impleme
             this.mSecondaryId = motionEvent.getPointerId(1);
             this.mSecondX = motionEvent.getX(1);
             this.mSecondY = motionEvent.getY(1);
-            float fHypot = (float) Math.hypot(this.mSecondX - this.mPrimaryX, r5 - this.mPrimaryY);
+            float fHypot = (float) Math.hypot(this.mSecondX - this.mPrimaryX, this.mSecondY - this.mPrimaryY);
             if (fHypot < MIN_DISTANCE) {
                 return;
             }

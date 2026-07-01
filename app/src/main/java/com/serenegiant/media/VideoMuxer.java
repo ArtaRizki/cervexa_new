@@ -58,7 +58,7 @@ public final class VideoMuxer implements IMuxer {
         }
     }
 
-    protected void finalize() {
+    protected void finalize() throws Throwable {
         release();
         super.finalize();
     }

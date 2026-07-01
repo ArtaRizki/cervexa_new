@@ -123,7 +123,7 @@ public class TLView extends ViewGroup implements IConstant {
             }
             this.left = fileInfo.getStartTime().getTimeInMillis() - MIN_MILLIS;
             this.right = fileInfo.getEndTime().getTimeInMillis() + MIN_MILLIS;
-            this.span = r0 - this.left;
+            this.span = this.right - this.left;
             this.mCalendarStuff.add(fileInfo);
             invalidate();
             return;
@@ -238,7 +238,7 @@ public class TLView extends ViewGroup implements IConstant {
         this.acalendar = new GregorianCalendar();
         this.left = System.currentTimeMillis() - HOUR_MILLIS;
         this.right = System.currentTimeMillis();
-        this.span = r0 - this.left;
+        this.span = this.right - this.left;
         this.mFinger1x = (this.mDeviceWidth / 2) - 200.0f;
         this.mFinger2x = (this.mDeviceWidth / 2) + 200.0f;
         setSelectionMode(this.isSelectionMode);
@@ -556,8 +556,8 @@ public class TLView extends ViewGroup implements IConstant {
                 if (fileInfo.getEndTime().getTimeInMillis() >= this.left && timeInMillis <= this.right) {
                     float f = this.span;
                     int i = this.width;
-                    float f2 = ((timeInMillis - r7) / f) * i;
-                    float f3 = ((r5 - r7) / f) * i;
+                    float f2 = ((timeInMillis - this.left) / f) * i;
+                    float f3 = ((fileInfo.getEndTime().getTimeInMillis() - this.left) / f) * i;
                     float f4 = this.mHeight;
                     float f5 = this.mDensity;
                     int i2 = (int) (f4 - (80.0f * f5));

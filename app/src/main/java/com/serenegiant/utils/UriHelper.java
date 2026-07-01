@@ -173,32 +173,16 @@ public final class UriHelper {
     public static String getDataColumn(Context context, Uri uri, String str, String[] strArr) {
         Cursor cursor = null;
         try {
-            Cursor cursorQuery = context.getContentResolver().query(uri, new String[]{"_data"}, str, strArr, null);
-            if (cursorQuery != null) {
-                try {
-                    if (cursorQuery.moveToFirst()) {
-                        String string = cursorQuery.getString(cursorQuery.getColumnIndexOrThrow("_data"));
-                        if (cursorQuery != null) {
-                            cursorQuery.close();
-                        }
-                        return string;
-                    }
-                } catch (Throwable th) {
-                    th = th;
-                    cursor = cursorQuery;
-                    if (cursor != null) {
-                        cursor.close();
-                    }
-                    throw th;
-                }
+            cursor = context.getContentResolver().query(uri, new String[]{"_data"}, str, strArr, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                return cursor.getString(cursor.getColumnIndexOrThrow("_data"));
             }
-            if (cursorQuery != null) {
-                cursorQuery.close();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
             }
-            return null;
-        } catch (Throwable th2) {
-            th = th2;
         }
+        return null;
     }
 
     public static boolean isExternalStorageDocument(Uri uri) {

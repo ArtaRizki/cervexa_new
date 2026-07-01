@@ -138,7 +138,6 @@ public class Texture2dProgram {
                 this.mTextureTarget = i;
                 this.mProgramHandle = GLHelper.loadShader(str, str2);
                 break;
-                break;
             default:
                 throw new RuntimeException("Unhandled type " + programType);
         }

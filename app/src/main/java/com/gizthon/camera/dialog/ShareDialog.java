@@ -13,15 +13,13 @@ public class ShareDialog extends CenterDialog {
     private OnClickListener onClickListener;
 
     public interface OnClickListener {
-        void shareFecebook() throws FileNotFoundException;
+        void shareWhatsApp() throws FileNotFoundException;
 
-        void shareQq() throws FileNotFoundException;
+        void shareTelegram() throws FileNotFoundException;
 
-        void shareTwiter() throws FileNotFoundException;
+        void shareGmail() throws FileNotFoundException;
 
-        void shareWchat() throws FileNotFoundException;
-
-        void shareYoutube() throws FileNotFoundException;
+        void shareSystem() throws FileNotFoundException;
     }
 
     @Override // com.gizthon.camera.dialog.CenterDialog
@@ -60,55 +58,44 @@ public class ShareDialog extends CenterDialog {
                 ShareDialog.this.dismiss();
             }
         });
-        this.binding.tvWchat.setOnClickListener(new View.OnClickListener() { // from class: com.gizthon.camera.dialog.ShareDialog.2
+        this.binding.tvWhatsapp.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 try {
-                    ShareDialog.this.onClickListener.shareWchat();
+                    ShareDialog.this.onClickListener.shareWhatsApp();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
                 ShareDialog.this.dismiss();
             }
         });
-        this.binding.tvQq.setOnClickListener(new View.OnClickListener() { // from class: com.gizthon.camera.dialog.ShareDialog.3
+        this.binding.tvTelegram.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 try {
-                    ShareDialog.this.onClickListener.shareQq();
+                    ShareDialog.this.onClickListener.shareTelegram();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
                 ShareDialog.this.dismiss();
             }
         });
-        this.binding.tvFecebook.setOnClickListener(new View.OnClickListener() { // from class: com.gizthon.camera.dialog.ShareDialog.4
+        this.binding.tvGmail.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 try {
-                    ShareDialog.this.onClickListener.shareFecebook();
+                    ShareDialog.this.onClickListener.shareGmail();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
                 ShareDialog.this.dismiss();
             }
         });
-        this.binding.tvTwitter.setOnClickListener(new View.OnClickListener() { // from class: com.gizthon.camera.dialog.ShareDialog.5
+        this.binding.tvSystem.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 try {
-                    ShareDialog.this.onClickListener.shareTwiter();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                ShareDialog.this.dismiss();
-            }
-        });
-        this.binding.tvYoutube.setOnClickListener(new View.OnClickListener() { // from class: com.gizthon.camera.dialog.ShareDialog.6
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                try {
-                    ShareDialog.this.onClickListener.shareYoutube();
+                    ShareDialog.this.onClickListener.shareSystem();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }

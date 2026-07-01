@@ -9,23 +9,23 @@ import java.io.IOException;
 public class MediaAVRecorder extends AbstractMediaAVRecorder {
     private static final String TAG = MediaAVRecorder.class.getSimpleName();
 
-    public MediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, String str, int i) throws IOException {
+    public MediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, String str, int i) throws Exception {
         super(context, recorderCallback, (String) null, str, i);
     }
 
-    public MediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, String str, String str2, int i) throws IOException {
+    public MediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, String str, String str2, int i) throws Exception {
         super(context, recorderCallback, str, str2, i);
     }
 
-    public MediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, int i, String str, String str2) throws IOException {
+    public MediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, int i, String str, String str2) throws Exception {
         super(context, recorderCallback, i, str, str2);
     }
 
-    public MediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, DocumentFile documentFile) throws IOException {
+    public MediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, DocumentFile documentFile) throws Exception {
         super(context, recorderCallback, documentFile);
     }
 
-    public MediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, String str) throws IOException {
+    public MediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, String str) throws Exception {
         super(context, recorderCallback, str);
     }
 

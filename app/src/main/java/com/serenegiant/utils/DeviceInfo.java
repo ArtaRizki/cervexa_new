@@ -133,12 +133,13 @@ public final class DeviceInfo {
             try {
                 jSONObject.put(str, line2);
             } catch (Exception e17) {
-                e = e17;
-                jSONObject.put(str, e.getMessage());
+                jSONObject.put(str, e17.getMessage());
             }
         } catch (Exception e18) {
-            e = e18;
             str = "PROC_VERSION";
+            try {
+                jSONObject.put(str, e18.getMessage());
+            } catch (Exception ignored) {}
         }
         JSONObject jSONObject6 = new JSONObject();
         try {
@@ -158,12 +159,13 @@ public final class DeviceInfo {
             try {
                 jSONObject.put(str2, jSONObject6);
             } catch (Exception e19) {
-                e = e19;
-                jSONObject.put(str2, e.getMessage());
+                jSONObject.put(str2, e19.getMessage());
             }
         } catch (Exception e20) {
-            e = e20;
             str2 = "PROC_CPUINFO";
+            try {
+                jSONObject.put(str2, e20.getMessage());
+            } catch (Exception ignored) {}
         }
         return jSONObject;
     }

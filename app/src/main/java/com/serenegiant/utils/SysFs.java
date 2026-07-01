@@ -58,7 +58,7 @@ public class SysFs {
         this.mWriteLock = reentrantReadWriteLock.writeLock();
     }
 
-    protected void finalize() {
+    protected void finalize() throws Throwable {
         try {
             release();
         } finally {

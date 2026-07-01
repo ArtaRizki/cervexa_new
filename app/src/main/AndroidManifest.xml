@@ -35,6 +35,13 @@
     <uses-feature
         android:glEsVersion="0x20000"
         android:required="true"/>
+    
+    <queries>
+        <package android:name="com.whatsapp" />
+        <package android:name="org.telegram.messenger" />
+        <package android:name="com.google.android.gm" />
+    </queries>
+
     <application
         android:theme="@style/AppTheme"
         android:label="@string/appName"
@@ -74,6 +81,15 @@
             android:name="com.gizthon.camera.activity.UVCUSBCameraActivity"
             android:screenOrientation="landscape"
             android:hardwareAccelerated="true"/>
+        <activity
+            android:name="com.gizthon.camera.activity.PatientActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false"/>
+        <activity
+            android:name="com.gizthon.camera.activity.PatientHistoryActivity"
+            android:screenOrientation="landscape"
+            android:exported="false"/>
         <activity
             android:name="com.gizthon.camera.activity.GalleryListActivity"
             android:exported="true"

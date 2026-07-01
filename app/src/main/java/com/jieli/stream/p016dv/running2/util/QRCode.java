@@ -47,7 +47,7 @@ public class QRCode {
             IMAGE_HALFWIDTH = i / 10;
             Hashtable hashtable = new Hashtable();
             hashtable.put(EncodeHintType.CHARACTER_SET, "utf-8");
-            hashtable.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.f2044H);
+            hashtable.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             BitMatrix bitMatrixEncode = new QRCodeWriter().encode(str, BarcodeFormat.QR_CODE, i, i, hashtable);
             Bitmap bitmapCreateScaledBitmap = Bitmap.createScaledBitmap(bitmap, i, i, false);
             int[] iArr = new int[i * i];
@@ -74,7 +74,7 @@ public class QRCode {
             IMAGE_HALFWIDTH = i / 10;
             Hashtable hashtable = new Hashtable();
             hashtable.put(EncodeHintType.CHARACTER_SET, "utf-8");
-            hashtable.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.f2044H);
+            hashtable.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             BitMatrix bitMatrixEncode = new QRCodeWriter().encode(str, BarcodeFormat.QR_CODE, i, i, hashtable);
             Bitmap bitmapCreateScaledBitmap = Bitmap.createScaledBitmap(bitmap, i, i, false);
             int[] iArr = new int[i * i];
@@ -101,7 +101,7 @@ public class QRCode {
             IMAGE_HALFWIDTH = i / 10;
             Hashtable hashtable = new Hashtable();
             hashtable.put(EncodeHintType.CHARACTER_SET, "utf-8");
-            hashtable.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.f2044H);
+            hashtable.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             BitMatrix bitMatrixEncode = new QRCodeWriter().encode(str, BarcodeFormat.QR_CODE, i, i, hashtable);
             Bitmap bitmapCreateScaledBitmap = Bitmap.createScaledBitmap(bitmap, i, i, false);
             int[] iArr = new int[i * i];
@@ -133,7 +133,7 @@ public class QRCode {
             IMAGE_HALFWIDTH = i / 10;
             Hashtable hashtable = new Hashtable();
             hashtable.put(EncodeHintType.CHARACTER_SET, "utf-8");
-            hashtable.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.f2044H);
+            hashtable.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             BitMatrix bitMatrixEncode = new QRCodeWriter().encode(str, BarcodeFormat.QR_CODE, i, i, hashtable);
             Bitmap bitmapCreateScaledBitmap = Bitmap.createScaledBitmap(bitmap, i, i, false);
             int width = bitMatrixEncode.getWidth();
@@ -168,7 +168,7 @@ public class QRCode {
             IMAGE_HALFWIDTH = i / 10;
             Hashtable hashtable = new Hashtable();
             hashtable.put(EncodeHintType.CHARACTER_SET, "utf-8");
-            hashtable.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.f2044H);
+            hashtable.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             BitMatrix bitMatrixEncode = new QRCodeWriter().encode(str, BarcodeFormat.QR_CODE, i, i, hashtable);
             Bitmap bitmapCreateScaledBitmap = Bitmap.createScaledBitmap(bitmap, i, i, false);
             int width = bitMatrixEncode.getWidth();

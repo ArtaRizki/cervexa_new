@@ -221,7 +221,8 @@ public class ThumbLoader {
         Bitmap imageThumbnail = this.mThumbnailCache.get(str);
         if (imageThumbnail == null) {
             if (str.contains("/")) {
-                str2 = str.split("/")[r1.length - 1];
+                String[] parts = str.split("/");
+                str2 = parts[parts.length - 1];
             } else {
                 str2 = "";
             }

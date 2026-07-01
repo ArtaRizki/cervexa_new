@@ -160,8 +160,12 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
                                     Log.w(AbstractRendererHolder.TAG, "failed to save file", e);
                                 }
                             } catch (Throwable th) {
-                                AbstractRendererHolder.this.mCaptureStream.close();
-                                throw th;
+                                try {
+                                    AbstractRendererHolder.this.mCaptureStream.close();
+                                } catch (IOException e) {
+                                    Log.w(AbstractRendererHolder.TAG, "failed to save file", e);
+                                }
+                                throw new RuntimeException(th);
                             }
                         }
                         AbstractRendererHolder.this.mCaptureStream = null;
@@ -231,8 +235,12 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
                                     Log.w(AbstractRendererHolder.TAG, "failed to save file", e);
                                 }
                             } catch (Throwable th) {
-                                AbstractRendererHolder.this.mCaptureStream.close();
-                                throw th;
+                                try {
+                                    AbstractRendererHolder.this.mCaptureStream.close();
+                                } catch (IOException e) {
+                                    Log.w(AbstractRendererHolder.TAG, "failed to save file", e);
+                                }
+                                throw new RuntimeException(th);
                             }
                         }
                         AbstractRendererHolder.this.mCaptureStream = null;

@@ -49,7 +49,7 @@ public class GLTexture implements ITexture {
         fArr[5] = i4 / this.mTexHeight;
     }
 
-    protected void finalize() {
+    protected void finalize() throws Throwable {
         try {
             release();
         } finally {

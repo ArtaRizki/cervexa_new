@@ -1193,11 +1193,11 @@ public class PhotoView extends ImageView {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void doTranslateReset(RectF rectF) {
-        float f;
-        float f2;
-        int i;
-        float f3;
-        float f4;
+        float f = 0.0f;
+        float f2 = 0.0f;
+        int i = 0;
+        float f3 = 0.0f;
+        float f4 = 0.0f;
         int i2 = 0;
         if (rectF.width() <= this.mWidgetRect.width()) {
             i = !isImageCenterWidth(rectF) ? -((int) (((this.mWidgetRect.width() - rectF.width()) / 2.0f) - rectF.left)) : 0;
@@ -1498,7 +1498,7 @@ public class PhotoView extends ImageView {
             this.isRuning = false;
             if (PhotoView.this.imgLargeWidth) {
                 if (PhotoView.this.mImgRect.left > 0.0f) {
-                    PhotoView.this.mTranslateX = (int) (r0.mTranslateX - PhotoView.this.mImgRect.left);
+                    PhotoView.this.mTranslateX = (int) (PhotoView.this.mTranslateX - PhotoView.this.mImgRect.left);
                 } else if (PhotoView.this.mImgRect.right < PhotoView.this.mWidgetRect.width()) {
                     PhotoView.this.mTranslateX -= (int) (PhotoView.this.mWidgetRect.width() - PhotoView.this.mImgRect.right);
                 }
@@ -1507,7 +1507,7 @@ public class PhotoView extends ImageView {
             if (!PhotoView.this.imgLargeHeight) {
                 z2 = z3;
             } else if (PhotoView.this.mImgRect.top > 0.0f) {
-                PhotoView.this.mTranslateY = (int) (r0.mTranslateY - PhotoView.this.mImgRect.top);
+                PhotoView.this.mTranslateY = (int) (PhotoView.this.mTranslateY - PhotoView.this.mImgRect.top);
             } else if (PhotoView.this.mImgRect.bottom < PhotoView.this.mWidgetRect.height()) {
                 PhotoView.this.mTranslateY -= (int) (PhotoView.this.mWidgetRect.height() - PhotoView.this.mImgRect.bottom);
             }
@@ -1541,8 +1541,9 @@ public class PhotoView extends ImageView {
 
     public Info getInfo() {
         RectF rectF = new RectF();
-        getLocation(this, new int[2]);
-        rectF.set(r0[0] + this.mImgRect.left, r0[1] + this.mImgRect.top, r0[0] + this.mImgRect.right, r0[1] + this.mImgRect.bottom);
+        int[] location = new int[2];
+        getLocation(this, location);
+        rectF.set(location[0] + this.mImgRect.left, location[1] + this.mImgRect.top, location[0] + this.mImgRect.right, location[1] + this.mImgRect.bottom);
         return new Info(rectF, this.mImgRect, this.mWidgetRect, this.mBaseRect, this.mScreenCenter, this.mScale, this.mDegrees, this.mScaleType);
     }
 

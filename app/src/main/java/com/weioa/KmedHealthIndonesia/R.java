@@ -2642,7 +2642,30 @@ public final class R {
     }
 
     public static final class id {
+        public static final int tilNama = 0x7f099901;
+        public static final int etNama = 0x7f099902;
+        public static final int tilNik = 0x7f099903;
+        public static final int etNik = 0x7f099904;
+        public static final int tilDob = 0x7f099905;
+        public static final int etDob = 0x7f099906;
+        public static final int tilRS = 0x7f099907;
+        public static final int etRS = 0x7f099908;
+        public static final int tilNrm = 0x7f099909;
+        public static final int etNrm = 0x7f09990a;
+        public static final int btnDaftar = 0x7f09990b;
+        public static final int loadingOverlay = 0x7f09990c;
+        public static final int ivBack = 0x7f09990d;
+        public static final int rvPatients = 0x7f09990e;
+        public static final int etSearch = 0x7f09990f;
+        public static final int tvEmpty = 0x7f099910;
+        public static final int tvNama = 0x7f099911;
+        public static final int tvNik = 0x7f099912;
+        public static final int tvRS = 0x7f099913;
+        public static final int tvDob = 0x7f099914;
+        public static final int tvAvatar = 0x7f099915;
+        public static final int tv_patient_info = 0x7f099916;
         public static final int ALT = 0x7f090000;
+
         public static final int BOTTOM_END = 0x7f090001;
         public static final int BOTTOM_START = 0x7f090002;
         public static final int CTRL = 0x7f090003;
@@ -3629,7 +3652,11 @@ public final class R {
     }
 
     public static final class layout {
+        public static final int activity_patient = 0x7f0c9901;
+        public static final int activity_patient_history = 0x7f0c9902;
+        public static final int item_patient = 0x7f0c9903;
         public static final int abc_action_bar_title_item = 0x7f0c0000;
+
         public static final int abc_action_bar_up_container = 0x7f0c0001;
         public static final int abc_action_menu_item_layout = 0x7f0c0002;
         public static final int abc_action_menu_layout = 0x7f0c0003;

@@ -241,8 +241,8 @@ public abstract class MediaDecoder implements IMediaCodec {
     }
 
     @Override // com.serenegiant.media.IMediaCodec, com.serenegiant.media.Encoder
-    public void prepare() {
-        int iHandlePrepare;
+    public void prepare() throws IOException {
+        int iHandlePrepare = -1;
         MediaExtractor mediaExtractor = this.mMediaExtractor;
         if (mediaExtractor == null) {
             IllegalStateException illegalStateException = new IllegalStateException("DataSource not set yet");
@@ -387,7 +387,11 @@ public abstract class MediaDecoder implements IMediaCodec {
             this.mState = 0;
             callOnRelease();
         }
-        internal_release();
+        try {
+            internal_release();
+        } catch (IOException e) {
+            Log.w(TAG, "internal_release failed", e);
+        }
     }
 
     private void internal_release() throws IOException {

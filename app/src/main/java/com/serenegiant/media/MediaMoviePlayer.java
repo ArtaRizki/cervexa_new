@@ -85,7 +85,7 @@ public class MediaMoviePlayer {
         public final void run() {
             boolean z;
             int i;
-            boolean zProcessStop;
+            boolean zProcessStop = false;
             try {
                 synchronized (MediaMoviePlayer.this.mSync) {
                     z = MediaMoviePlayer.this.mIsRunning = true;
@@ -118,7 +118,11 @@ public class MediaMoviePlayer {
                     }
                 }
             } finally {
-                MediaMoviePlayer.this.handleStop();
+                try {
+                    MediaMoviePlayer.this.handleStop();
+                } catch (java.io.IOException e) {
+                    Log.e(MediaMoviePlayer.this.TAG, "handleStop failed", e);
+                }
             }
         }
     };
@@ -655,14 +659,14 @@ public class MediaMoviePlayer {
                 mediaCodecCreateDecoderByType.configure(trackFormat, this.mOutputSurface, (MediaCrypto) null, 0);
                 mediaCodecCreateDecoderByType.start();
                 return mediaCodecCreateDecoderByType;
-            } catch (IOException e) {
-                e = e;
+            } catch (Exception e) {
                 mediaCodec = mediaCodecCreateDecoderByType;
                 Log.w(this.TAG, e);
                 return mediaCodec;
             }
         } catch (IOException e2) {
-            e = e2;
+            Log.w(this.TAG, e2);
+            return mediaCodec;
         }
     }
 
@@ -683,14 +687,14 @@ public class MediaMoviePlayer {
                 }
                 this.mAudioOutTempBuf = new byte[iCapacity];
                 return mediaCodecCreateDecoderByType;
-            } catch (IOException e) {
-                e = e;
+            } catch (Exception e) {
                 mediaCodec = mediaCodecCreateDecoderByType;
                 Log.w(this.TAG, e);
                 return mediaCodec;
             }
         } catch (IOException e2) {
-            e = e2;
+            Log.w(this.TAG, e2);
+            return mediaCodec;
         }
     }
 

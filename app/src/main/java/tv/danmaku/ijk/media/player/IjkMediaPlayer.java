@@ -790,7 +790,7 @@ public final class IjkMediaPlayer extends AbstractMediaPlayer {
         return _getColorFormatName(i);
     }
 
-    protected void finalize() {
+    protected void finalize() throws Throwable {
         super.finalize();
         native_finalize();
     }

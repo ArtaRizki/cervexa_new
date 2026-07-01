@@ -93,7 +93,8 @@ public class DeviceStaModeFragment extends BaseFragment {
             ToastUtil.showToastShort(getString(C1438R.string.pwd_lenth_limits));
             return;
         }
-        ClientManager.getClient().tryToSetSTAAccount(strTrim, strTrim2, this.isSaveMsg, new SendResponse() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStaModeFragment.2
+        final String finalStrTrim2 = strTrim2;
+        ClientManager.getClient().tryToSetSTAAccount(strTrim, finalStrTrim2, this.isSaveMsg, new SendResponse() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStaModeFragment.2
             @Override // com.jieli.lib.p015dv.control.connect.response.Response
             public void onResponse(Integer num) {
                 if (num.intValue() == 1) {
@@ -105,7 +106,7 @@ public class DeviceStaModeFragment extends BaseFragment {
                             @Override // java.lang.Runnable
                             public void run() {
                                 DeviceStaModeFragment.this.mApplication.setSearchMode(1);
-                                DeviceStaModeFragment.this.mWifiHelper.connectWifi(DeviceStaModeFragment.this.mApplication, strTrim, strTrim2);
+                                DeviceStaModeFragment.this.mWifiHelper.connectWifi(DeviceStaModeFragment.this.mApplication, strTrim, finalStrTrim2);
                                 if (DeviceStaModeFragment.this.getActivity() != null) {
                                     DeviceStaModeFragment.this.getActivity().finish();
                                 }

@@ -31,7 +31,8 @@ class MiscUtils {
     }
 
     protected static int getScreenWidth(Context context) {
-        return (int) (r1.widthPixels / context.getResources().getDisplayMetrics().density);
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return (int) (displayMetrics.widthPixels / displayMetrics.density);
     }
 
     protected static void setTextAppearance(TextView textView, int i) {

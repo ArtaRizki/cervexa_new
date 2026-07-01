@@ -140,7 +140,7 @@ class EGLBase14 extends EGLBase {
 
     @Override // com.serenegiant.glutils.EGLBase
     public EglSurface createFromSurface(Object obj) {
-        EglSurface eglSurface = new EglSurface(obj);
+        EglSurface eglSurface = new EglSurface(this, obj);
         eglSurface.makeCurrent();
         return eglSurface;
     }

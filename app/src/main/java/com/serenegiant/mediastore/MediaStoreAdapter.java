@@ -113,7 +113,7 @@ public class MediaStoreAdapter extends CursorAdapter {
         return viewHolder;
     }
 
-    protected void finalize() {
+    protected void finalize() throws Throwable {
         changeCursor(null);
         Cursor cursor = this.mMediaInfoCursor;
         if (cursor != null) {
@@ -337,7 +337,7 @@ public class MediaStoreAdapter extends CursorAdapter {
 
     /* JADX INFO: Access modifiers changed from: private */
     public static final Bitmap getImageThumbnail(ContentResolver contentResolver, long j, long j2, int i, int i2) throws IOException {
-        Bitmap image;
+        Bitmap image = null;
         String key = getKey(j, j2);
         Bitmap bitmap = sThumbnailCache.get(key);
         if (bitmap == null) {
@@ -408,16 +408,16 @@ public class MediaStoreAdapter extends CursorAdapter {
         protected Bitmap loadBitmap(ContentResolver contentResolver, int i, int i2, long j, int i3, int i4) {
             Bitmap imageThumbnail = null;
             try {
+                if (i != 1) {
+                    if (i == 3) {
+                        imageThumbnail = MediaStoreAdapter.getVideoThumbnail(contentResolver, i2, j, i3, i4);
+                    }
+                    return imageThumbnail;
+                }
+                imageThumbnail = MediaStoreAdapter.getImageThumbnail(contentResolver, i2, j, i3, i4);
             } catch (IOException e) {
                 Log.w(MediaStoreAdapter.TAG, e);
             }
-            if (i != 1) {
-                if (i == 3) {
-                    imageThumbnail = MediaStoreAdapter.getVideoThumbnail(contentResolver, i2, j, i3, i4);
-                }
-                return imageThumbnail;
-            }
-            imageThumbnail = MediaStoreAdapter.getImageThumbnail(contentResolver, i2, j, i3, i4);
             return imageThumbnail;
         }
     }

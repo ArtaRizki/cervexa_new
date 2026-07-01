@@ -144,9 +144,9 @@ public class USBVendorId {
         IDS.put(10990, "Adapt-IP Company");
         IDS.put(10997, "Libratone A/S");
         IDS.put(10999, "Shenzhen Hazens Automotive Electronics (SZ) Co., Ltd.");
-        IDS.put(StatusCodes.STOP_TRACE_REQUEST_FAILED, "Jiangsu Toppower Automotive Electronics Co., Ltd.");
-        IDS.put(StatusCodes.STOP_TRACE_FAILED, "Drapho Electronics Technology Co., Ltd.");
-        IDS.put(UIMsg.f_FUN.FUN_ID_SCH_NAV, "Alps Electric Co., Ltd.");
+        IDS.put(11000, "Jiangsu Toppower Automotive Electronics Co., Ltd.");
+        IDS.put(11001, "Drapho Electronics Technology Co., Ltd.");
+        IDS.put(1100, "Alps Electric Co., Ltd.");
         IDS.put(11022, "Le Shi Zhi Xin Electronic Technology (Tian Jin) Limited");
         IDS.put(11024, "Cardiac Insight, Inc.");
         IDS.put(11028, "EverPro Technologies Company, Ltd.");
@@ -367,7 +367,7 @@ public class USBVendorId {
         IDS.put(1191, "Visioneer");
         IDS.put(1193, "Canon Inc.");
         IDS.put(1200, "Nikon Corporation");
-        IDS.put(UIMsg.f_FUN.FUN_ID_NET_OPTION, "Pan International");
+        IDS.put(1201, "Pan International");
         IDS.put(1204, "Cypress Semiconductor");
         IDS.put(1205, "ROHM Co., Ltd.");
         IDS.put(1207, "Compal Electronics, Inc.");
@@ -408,7 +408,7 @@ public class USBVendorId {
         IDS.put(1390, "Elecom Co., Ltd.");
         IDS.put(1394, "Conexant Systems, Inc.");
         IDS.put(1398, "BAFO/Quality Computer Accessories");
-        IDS.put(UIMsg.f_FUN.FUN_ID_HIS_ACTION_HOTKEY, "Y-E Data, Inc.");
+        IDS.put(1403, "Y-E Data, Inc.");
         IDS.put(1404, "AVM GmbH");
         IDS.put(1410, "Roland Corporation");
         IDS.put(1412, "RATOC Systems, Inc.");

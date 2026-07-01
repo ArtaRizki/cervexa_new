@@ -10,8 +10,7 @@ public class MediaEffectEmboss extends MediaEffectKernel {
 
     /* JADX WARN: Illegal instructions before constructor call */
     public MediaEffectEmboss(float f) {
-        float f2 = -f;
-        super(new float[]{(-2.0f) * f, f2, 0.0f, f2, 1.0f, f, 0.0f, f, 2.0f * f});
+        super(new float[]{(-2.0f) * f, -f, 0.0f, -f, 1.0f, f, 0.0f, f, 2.0f * f});
         this.mIntensity = f;
     }
 

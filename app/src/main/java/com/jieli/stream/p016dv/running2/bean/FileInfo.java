@@ -194,19 +194,16 @@ public class FileInfo implements Serializable, Cloneable {
     }
 
     public Object clone() {
-        FileInfo fileInfo;
-        CloneNotSupportedException e;
+        FileInfo fileInfo = null;
         try {
             fileInfo = (FileInfo) super.clone();
-        } catch (CloneNotSupportedException e2) {
-            fileInfo = null;
-            e = e2;
-        }
-        try {
-            fileInfo.setStartTime((Calendar) this.startTime.clone());
-            fileInfo.setEndTime((Calendar) this.endTime.clone());
-        } catch (CloneNotSupportedException e3) {
-            e = e3;
+            if (this.startTime != null) {
+                fileInfo.setStartTime((Calendar) this.startTime.clone());
+            }
+            if (this.endTime != null) {
+                fileInfo.setEndTime((Calendar) this.endTime.clone());
+            }
+        } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         return fileInfo;

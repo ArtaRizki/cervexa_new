@@ -194,16 +194,15 @@ public class Discovery {
             return null;
         }
         try {
+            for (InterfaceAddress interfaceAddress : NetworkInterface.getByInetAddress(inetAddressM1356c).getInterfaceAddresses()) {
+                if (interfaceAddress != null && (broadcast = interfaceAddress.getBroadcast()) != null) {
+                    String hostAddress = broadcast.getHostAddress();
+                    Dlog.m1384i(f2137a, "myAddress=" + hostAddress);
+                    return hostAddress;
+                }
+            }
         } catch (SocketException e) {
             e.printStackTrace();
-        }
-        for (InterfaceAddress interfaceAddress : NetworkInterface.getByInetAddress(inetAddressM1356c).getInterfaceAddresses()) {
-            if (interfaceAddress != null && (broadcast = interfaceAddress.getBroadcast()) != null) {
-                String hostAddress = broadcast.getHostAddress();
-                Dlog.m1384i(f2137a, "myAddress=" + hostAddress);
-                return hostAddress;
-            }
-            return null;
         }
         return null;
     }

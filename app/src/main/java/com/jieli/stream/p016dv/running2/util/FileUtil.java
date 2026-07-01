@@ -51,10 +51,10 @@ public class FileUtil {
         if (j < 1024) {
             return j + " B";
         }
-        if (j < PlaybackStateCompat.ACTION_SET_CAPTIONING_ENABLED) {
+        if (j < 1048576) {
             return decimalFormat.format(j / 1024.0d) + " K";
         }
-        if (j < IjkMediaMeta.AV_CH_STEREO_RIGHT) {
+        if (j < 1073741824) {
             return decimalFormat.format(j / 1048576.0d) + " M";
         }
         return decimalFormat.format(j / 1.073741824E9d) + " G";

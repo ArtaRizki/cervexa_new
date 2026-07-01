@@ -295,13 +295,13 @@ public class BluetoothManager {
             checkReleased();
             internalCancel(2, false);
             try {
+                this.mConnectingThread = new ConnectingThread(bluetoothDevice, true);
+            } catch (IOException unused) {
                 try {
-                    this.mConnectingThread = new ConnectingThread(bluetoothDevice, true);
+                    this.mConnectingThread = new ConnectingThread(bluetoothDevice, false);
                 } catch (IOException e) {
                     throw new IllegalStateException(e);
                 }
-            } catch (IOException unused) {
-                this.mConnectingThread = new ConnectingThread(bluetoothDevice, false);
             }
             this.mConnectingThread.start();
         }
@@ -434,7 +434,7 @@ public class BluetoothManager {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.bluetooth.-$$Lambda$BluetoothManager$aq-ZAjQqydCJxal-0PDMEjLFE2Y
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.lambda$callOnDiscover$0$BluetoothManager(arrayList);
+                        BluetoothManager.this.lambda$callOnDiscover$0$BluetoothManager(arrayList);
                     }
                 });
             }
@@ -461,7 +461,7 @@ public class BluetoothManager {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.bluetooth.-$$Lambda$BluetoothManager$szEVXQv64iZS7lvZIvIx-YwetxU
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.lambda$callOnConnect$1$BluetoothManager(bluetoothDevice);
+                        BluetoothManager.this.lambda$callOnConnect$1$BluetoothManager(bluetoothDevice);
                     }
                 });
             }
@@ -488,7 +488,7 @@ public class BluetoothManager {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.bluetooth.-$$Lambda$BluetoothManager$FBgsvbmziOwyzz08q67BJF_cCOo
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.lambda$callOnDisConnect$2$BluetoothManager();
+                        BluetoothManager.this.lambda$callOnDisConnect$2$BluetoothManager();
                     }
                 });
             }
@@ -519,7 +519,7 @@ public class BluetoothManager {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.bluetooth.-$$Lambda$BluetoothManager$SPq2NTSgCJsXSumNRxJqJjvtdaI
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.lambda$callOnFailed$3$BluetoothManager();
+                        BluetoothManager.this.lambda$callOnFailed$3$BluetoothManager();
                     }
                 });
             }
@@ -552,7 +552,7 @@ public class BluetoothManager {
                 this.mAsyncHandler.post(new Runnable() { // from class: com.serenegiant.bluetooth.-$$Lambda$BluetoothManager$zAxwzMqMSIKFOq5eTMY0WOToGls
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.lambda$callOnReceive$4$BluetoothManager(bArr2, i);
+                        BluetoothManager.this.lambda$callOnReceive$4$BluetoothManager(bArr2, i);
                     }
                 });
             }
@@ -612,8 +612,8 @@ public class BluetoothManager {
         private final OutputStream mmOutStream;
 
         public ReceiverThread(BluetoothSocket bluetoothSocket) {
-            InputStream inputStream;
             super("ReceiverThread:" + BluetoothManager.this.mName, bluetoothSocket);
+            InputStream inputStream;
             OutputStream outputStream = null;
             try {
                 inputStream = bluetoothSocket.getInputStream();
@@ -624,7 +624,7 @@ public class BluetoothManager {
                     Log.e(BluetoothManager.TAG, "temp sockets not created", e);
                 }
             } catch (IOException e2) {
-                e = e2;
+                Log.e(BluetoothManager.TAG, "temp sockets not created", e2);
                 inputStream = null;
             }
             this.mmInStream = inputStream;
@@ -682,8 +682,8 @@ public class BluetoothManager {
         private final BluetoothServerSocket mmServerSocket;
 
         public ListeningThread(boolean z) {
-            BluetoothServerSocket bluetoothServerSocketListenUsingRfcommWithServiceRecord;
             super("ListeningThread:" + BluetoothManager.this.mName);
+            BluetoothServerSocket bluetoothServerSocketListenUsingRfcommWithServiceRecord;
             try {
                 bluetoothServerSocketListenUsingRfcommWithServiceRecord = z ? BluetoothManager.this.mAdapter.listenUsingRfcommWithServiceRecord(BluetoothManager.this.mName, BluetoothManager.this.mSecureProfileUUID) : BluetoothManager.this.mAdapter.listenUsingInsecureRfcommWithServiceRecord(BluetoothManager.this.mName, BluetoothManager.this.mInSecureProfileUUID);
             } catch (IOException e) {

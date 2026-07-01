@@ -56,39 +56,44 @@ public final class DeviceDescription extends Thread {
                 ResponseBody responseBodyBody;
                 byte[] bArrBytes;
                 Dbug.m1389i(DeviceDescription.this.tag, "download code = " + response.code());
-                if (response.code() == 200 && (responseBodyBody = response.body()) != null && (bArrBytes = responseBodyBody.bytes()) != null) {
-                    FileOutputStream fileOutputStream = new FileOutputStream(new File(AppUtils.splicingFilePath(MainApplication.getApplication().getAppName(), IConstant.VERSION, null, null) + File.separator + IConstant.DEVICE_DESCRIPTION));
-                    try {
+                try {
+                    if (response.code() == 200 && (responseBodyBody = response.body()) != null && (bArrBytes = responseBodyBody.bytes()) != null) {
+                        FileOutputStream fileOutputStream = new FileOutputStream(new File(AppUtils.splicingFilePath(MainApplication.getApplication().getAppName(), IConstant.VERSION, null, null) + File.separator + IConstant.DEVICE_DESCRIPTION));
                         try {
-                            fileOutputStream.write(bArrBytes);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        if (ClientManager.getClient().isConnected()) {
-                            if (DeviceDescription.this.mServiceRef == null) {
-                                Dbug.m1388e(DeviceDescription.this.tag, "context is null");
-                                return;
+                            try {
+                                fileOutputStream.write(bArrBytes);
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                            String strCheckUpdateFilePath = AppUtils.checkUpdateFilePath((Context) DeviceDescription.this.mServiceRef.get(), 2);
-                            if (!TextUtils.isEmpty(strCheckUpdateFilePath) && !strCheckUpdateFilePath.equals(((CommunicationService) DeviceDescription.this.mServiceRef.get()).getString(C1438R.string.latest_version))) {
-                                Dbug.m1391w(DeviceDescription.this.tag, "sdk upgradePath = " + strCheckUpdateFilePath);
-                                ArrayList<String> arrayList = new ArrayList<>();
-                                arrayList.add(strCheckUpdateFilePath);
-                                Intent intent = new Intent(IActions.ACTION_UPGRADE_FILE);
-                                Bundle bundle = new Bundle();
-                                bundle.putInt(IConstant.UPDATE_TYPE, 2);
-                                bundle.putStringArrayList(IConstant.UPDATE_PATH, arrayList);
-                                intent.putExtra(IConstant.KEY_DATA, bundle);
-                                if (DeviceDescription.this.mServiceRef != null && DeviceDescription.this.mServiceRef.get() != null) {
-                                    ((CommunicationService) DeviceDescription.this.mServiceRef.get()).sendBroadcast(intent);
+                            if (ClientManager.getClient().isConnected()) {
+                                if (DeviceDescription.this.mServiceRef == null) {
+                                    Dbug.m1388e(DeviceDescription.this.tag, "context is null");
+                                    return;
+                                }
+                                String strCheckUpdateFilePath = AppUtils.checkUpdateFilePath((Context) DeviceDescription.this.mServiceRef.get(), 2);
+                                if (!TextUtils.isEmpty(strCheckUpdateFilePath) && !strCheckUpdateFilePath.equals(((CommunicationService) DeviceDescription.this.mServiceRef.get()).getString(C1438R.string.latest_version))) {
+                                    Dbug.m1391w(DeviceDescription.this.tag, "sdk upgradePath = " + strCheckUpdateFilePath);
+                                    ArrayList<String> arrayList = new ArrayList<>();
+                                    arrayList.add(strCheckUpdateFilePath);
+                                    Intent intent = new Intent(IActions.ACTION_UPGRADE_FILE);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putInt(IConstant.UPDATE_TYPE, 2);
+                                    bundle.putStringArrayList(IConstant.UPDATE_PATH, arrayList);
+                                    intent.putExtra(IConstant.KEY_DATA, bundle);
+                                    if (DeviceDescription.this.mServiceRef != null && DeviceDescription.this.mServiceRef.get() != null) {
+                                        ((CommunicationService) DeviceDescription.this.mServiceRef.get()).sendBroadcast(intent);
+                                    }
                                 }
                             }
+                        } finally {
+                            fileOutputStream.close();
                         }
-                    } finally {
-                        fileOutputStream.close();
                     }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    response.close();
                 }
-                response.close();
             }
         });
     }

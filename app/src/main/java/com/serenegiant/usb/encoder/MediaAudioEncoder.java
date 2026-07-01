@@ -129,7 +129,6 @@ public class MediaAudioEncoder extends MediaEncoder implements IAudioEncoder {
                                         } catch (Exception unused2) {
                                         }
                                     } catch (Exception e) {
-                                        e = e;
                                         Log.e(MediaAudioEncoder.TAG, "AudioThread#run", e);
                                     }
                                 } catch (Throwable th) {
@@ -148,7 +147,7 @@ public class MediaAudioEncoder extends MediaEncoder implements IAudioEncoder {
                         audioRecord.release();
                     }
                 } catch (Exception e2) {
-                    e = e2;
+                    Log.e(MediaAudioEncoder.TAG, "AudioThread#run", e2);
                     i = 0;
                 }
             } else {

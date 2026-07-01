@@ -343,7 +343,9 @@ public class FixedIndicatorView extends LinearLayout implements Indicator {
             if (this.state == 0) {
                 updateTabSelectState(i);
                 if (z && getMeasuredWidth() != 0 && getItemOutView(i).getMeasuredWidth() != 0 && (i2 = this.mPreSelectedTabIndex) >= 0 && i2 < getTabCountInLayout()) {
-                    this.inRun.startScroll(getItemOutView(this.mPreSelectedTabIndex).getLeft(), getItemOutView(i).getLeft(), Math.min((int) (((Math.abs(r0 - r4) / getItemOutView(i).getMeasuredWidth()) + 1.0f) * 100.0f), IjkMediaCodecInfo.RANK_LAST_CHANCE));
+                    int startX = getItemOutView(this.mPreSelectedTabIndex).getLeft();
+                    int endX = getItemOutView(i).getLeft();
+                    this.inRun.startScroll(startX, endX, Math.min((int) (((Math.abs(startX - endX) / getItemOutView(i).getMeasuredWidth()) + 1.0f) * 100.0f), IjkMediaCodecInfo.RANK_LAST_CHANCE));
                     return;
                 }
                 notifyPageScrolled(i, 0.0f, 0);

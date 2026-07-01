@@ -310,7 +310,7 @@ public class GLCoverFlowView extends GLSurfaceView implements GLSurfaceView.Rend
         while (true) {
             if (width <= i && height <= i) {
                 Bitmap bitmapCreateBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.RGB_565);
-                new Canvas(bitmapCreateBitmap).drawBitmap(bitmapDecodeResource, r8 / 2, r10 / 2, new Paint());
+                new Canvas(bitmapCreateBitmap).drawBitmap(bitmapDecodeResource, (i - width) / 2, (i - height) / 2, new Paint());
                 GL10 gl10 = this.mGLContext;
                 int[] iArr = new int[1];
                 gl10.glGenTextures(1, iArr, 0);
@@ -548,7 +548,7 @@ public class GLCoverFlowView extends GLSurfaceView implements GLSurfaceView.Rend
             this.f2238gl = gl10;
         }
 
-        protected void finalize() {
+        protected void finalize() throws Throwable {
             int i = this.mTexture;
             if (i != 0) {
                 this.f2238gl.glDeleteTextures(1, new int[]{i}, 0);

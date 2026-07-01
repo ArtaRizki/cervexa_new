@@ -88,6 +88,7 @@ public class Utils {
             th = th3;
             fileOutputStream = null;
         }
+        return false;
     }
 
     /* JADX WARN: Removed duplicated region for block: B:37:0x0043 A[EXC_TOP_SPLITTER, SYNTHETIC] */

@@ -54,15 +54,9 @@ public final class CpuMonitor {
     }
 
     private void init() {
-        FileReader fileReader;
+        FileReader fileReader = null;
         try {
             fileReader = new FileReader("/sys/devices/system/cpu/present");
-        } catch (FileNotFoundException unused) {
-            Log.e(TAG, "Cannot do CPU stats since /sys/devices/system/cpu/present is missing");
-        } catch (IOException unused2) {
-            Log.e(TAG, "Error closing file");
-        }
-        try {
             try {
                 Scanner scannerUseDelimiter = new Scanner(new BufferedReader(fileReader)).useDelimiter("[-\n]");
                 scannerUseDelimiter.nextInt();
@@ -92,8 +86,16 @@ public final class CpuMonitor {
                 }
             }
             this.initialized = true;
+        } catch (FileNotFoundException unused) {
+            Log.e(TAG, "Cannot do CPU stats since /sys/devices/system/cpu/present is missing");
         } finally {
-            fileReader.close();
+            if (fileReader != null) {
+                try {
+                    fileReader.close();
+                } catch (IOException unused2) {
+                    Log.e(TAG, "Error closing file");
+                }
+            }
         }
     }
 

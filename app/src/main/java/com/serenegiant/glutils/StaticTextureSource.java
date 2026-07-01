@@ -226,7 +226,10 @@ public class StaticTextureSource {
                         } catch (InterruptedException unused) {
                         }
                     }
-                    this.mClientSync.wait();
+                    try {
+                        this.mClientSync.wait();
+                    } catch (InterruptedException unused) {
+                    }
                 }
             }
         }
@@ -240,7 +243,10 @@ public class StaticTextureSource {
                         } catch (InterruptedException unused) {
                         }
                     }
-                    this.mClientSync.wait();
+                    try {
+                        this.mClientSync.wait();
+                    } catch (InterruptedException unused) {
+                    }
                 }
             }
         }

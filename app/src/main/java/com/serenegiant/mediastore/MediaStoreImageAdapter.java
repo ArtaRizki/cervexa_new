@@ -57,7 +57,7 @@ public class MediaStoreImageAdapter extends PagerAdapter {
         }
     }
 
-    protected void finalize() {
+    protected void finalize() throws Throwable {
         changeCursor(null);
         super.finalize();
     }
@@ -309,13 +309,12 @@ public class MediaStoreImageAdapter extends PagerAdapter {
                         int iCenterY = rect.centerY();
                         rect.set(iCenterX - (width / 2), iCenterY - (height / width), iCenterX + (width / 2), iCenterY + (height / 2));
                         this.mParent.onBoundsChange(rect);
-                    } catch (IOException e) {
-                        e = e;
+                    } catch (Exception e) {
                         Log.w(MediaStoreImageAdapter.TAG, e);
                     }
                 }
             } catch (IOException e2) {
-                e = e2;
+                Log.w(MediaStoreImageAdapter.TAG, e2);
                 image = null;
             }
             return image;

@@ -137,9 +137,8 @@ public class AudioEncoder extends AbstractEncoder implements IAudioEncoder {
                                             } catch (Exception unused) {
                                             }
                                         } catch (Throwable th) {
-                                            th = th;
                                             audioRecordCreateAudioRecord.stop();
-                                            throw th;
+                                            throw new RuntimeException(th);
                                         }
                                     }
                                 }
@@ -148,7 +147,8 @@ public class AudioEncoder extends AbstractEncoder implements IAudioEncoder {
                                 }
                                 audioRecordCreateAudioRecord.stop();
                             } catch (Throwable th2) {
-                                th = th2;
+                                audioRecordCreateAudioRecord.stop();
+                                throw new RuntimeException(th2);
                             }
                         } catch (Exception unused2) {
                         }

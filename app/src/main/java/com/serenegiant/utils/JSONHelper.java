@@ -14,13 +14,13 @@ public class JSONHelper {
             return j;
         }
         try {
+            return jSONObject.getLong(str);
+        } catch (JSONException unused) {
             try {
-                return jSONObject.getLong(str);
-            } catch (Exception unused) {
                 return jSONObject.getBoolean(str) ? 1L : 0L;
+            } catch (JSONException unused2) {
+                return Long.parseLong(jSONObject.getString(str));
             }
-        } catch (JSONException unused2) {
-            return Long.parseLong(jSONObject.getString(str));
         }
     }
 
@@ -29,18 +29,18 @@ public class JSONHelper {
             return j;
         }
         try {
+            return jSONObject.getLong(str);
+        } catch (Exception unused) {
             try {
+                return jSONObject.getBoolean(str) ? 1L : 0L;
+            } catch (Exception unused2) {
                 try {
-                    return jSONObject.getLong(str);
+                    return Long.parseLong(jSONObject.getString(str));
                 } catch (Exception e) {
                     Log.w(TAG, e);
                     return j;
                 }
-            } catch (Exception unused) {
-                return jSONObject.getBoolean(str) ? 1L : 0L;
             }
-        } catch (JSONException unused2) {
-            return Long.parseLong(jSONObject.getString(str));
         }
     }
 
@@ -49,13 +49,13 @@ public class JSONHelper {
             return i;
         }
         try {
+            return jSONObject.getInt(str);
+        } catch (JSONException unused) {
             try {
-                return jSONObject.getInt(str);
-            } catch (Exception unused) {
                 return jSONObject.getBoolean(str) ? 1 : 0;
+            } catch (JSONException unused2) {
+                return Integer.parseInt(jSONObject.getString(str));
             }
-        } catch (JSONException unused2) {
-            return Integer.parseInt(jSONObject.getString(str));
         }
     }
 
@@ -64,18 +64,18 @@ public class JSONHelper {
             return i;
         }
         try {
+            return jSONObject.getInt(str);
+        } catch (Exception unused) {
             try {
+                return jSONObject.getBoolean(str) ? 1 : 0;
+            } catch (Exception unused2) {
                 try {
-                    return jSONObject.getInt(str);
-                } catch (Exception unused) {
-                    return jSONObject.getBoolean(str) ? 1 : 0;
+                    return Integer.parseInt(jSONObject.getString(str));
+                } catch (Exception e) {
+                    Log.w(TAG, e);
+                    return i;
                 }
-            } catch (JSONException unused2) {
-                return Integer.parseInt(jSONObject.getString(str));
             }
-        } catch (Exception e) {
-            Log.w(TAG, e);
-            return i;
         }
     }
 
@@ -85,53 +85,32 @@ public class JSONHelper {
         }
         try {
             return jSONObject.getBoolean(str);
-        } catch (Exception unused) {
+        } catch (JSONException unused) {
             try {
+                return jSONObject.getInt(str) != 0;
             } catch (JSONException unused2) {
-                if (jSONObject.getDouble(str) != 0.0d) {
-                    return true;
-                }
+                return jSONObject.getDouble(str) != 0.0d;
             }
-            return jSONObject.getInt(str) != 0;
         }
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:10:0x0015 A[RETURN, SYNTHETIC] */
-    /* JADX WARN: Removed duplicated region for block: B:9:0x0013 A[RETURN, SYNTHETIC] */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    public static boolean optBoolean(org.json.JSONObject r4, java.lang.String r5, boolean r6) {
-        /*
-            boolean r0 = r4.has(r5)
-            if (r0 == 0) goto L28
-            boolean r6 = r4.getBoolean(r5)     // Catch: java.lang.Exception -> Lb
-            goto L28
-        Lb:
-            r0 = 1
-            r1 = 0
-            int r4 = r4.getInt(r5)     // Catch: org.json.JSONException -> L17
-            if (r4 == 0) goto L15
-        L13:
-            r6 = 1
-            goto L28
-        L15:
-            r6 = 0
-            goto L28
-        L17:
-            double r4 = r4.getDouble(r5)     // Catch: org.json.JSONException -> L22
-            r2 = 0
-            int r6 = (r4 > r2 ? 1 : (r4 == r2 ? 0 : -1))
-            if (r6 == 0) goto L15
-            goto L13
-        L22:
-            r4 = move-exception
-            java.lang.String r5 = com.serenegiant.utils.JSONHelper.TAG
-            android.util.Log.w(r5, r4)
-        L28:
-            return r6
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.utils.JSONHelper.optBoolean(org.json.JSONObject, java.lang.String, boolean):boolean");
+    public static boolean optBoolean(JSONObject jSONObject, String str, boolean z) {
+        if (!jSONObject.has(str)) {
+            return z;
+        }
+        try {
+            return jSONObject.getBoolean(str);
+        } catch (Exception unused) {
+            try {
+                return jSONObject.getInt(str) != 0;
+            } catch (Exception unused2) {
+                try {
+                    return jSONObject.getDouble(str) != 0.0d;
+                } catch (Exception e) {
+                    Log.w(TAG, e);
+                    return z;
+                }
+            }
+        }
     }
 }

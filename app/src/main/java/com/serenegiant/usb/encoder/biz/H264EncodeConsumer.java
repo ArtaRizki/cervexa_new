@@ -172,6 +172,7 @@ public class H264EncodeConsumer extends Thread {
                                 bArr2 = new byte[bufferInfo.size];
                                 outputBuffer.get(bArr2);
                                 this.mMediaCodec.releaseOutputBuffer(iDequeueOutputBuffer, false);
+                                continue;
                             }
                         } else {
                             bArr = bArr2;

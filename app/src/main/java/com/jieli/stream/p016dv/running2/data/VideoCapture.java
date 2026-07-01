@@ -177,7 +177,11 @@ public class VideoCapture {
                 do {
                     i3++;
                     if (!new File(str).exists()) {
-                        Thread.sleep(200L);
+                        try {
+                            Thread.sleep(200L);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     } else {
                         Bitmap bitmapFromSDCard = BitmapUtils.getBitmapFromSDCard(str);
                         BitmapUtils.compressSize(bitmapFromSDCard, new File(str2), i, i2);

@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.graphics.BitmapFactory;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import androidx.print.PrintHelper;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +36,7 @@ public class PreviewPhotoActivity extends Activity {
     private FullImageAdapter adapter;
     private ArrayList<String> m_ayFilePath = null;
     private ImageView shareView;
+    private android.widget.TextView printView;
     private ViewPager viewPager;
 
     public static void start(Context context, ArrayList<String> arrayList, int i) {
@@ -57,120 +60,80 @@ public class PreviewPhotoActivity extends Activity {
         this.adapter = fullImageAdapter;
         this.viewPager.setAdapter(fullImageAdapter);
         this.viewPager.setCurrentItem(i);
-        this.shareView.setOnClickListener(new View.OnClickListener() { // from class: com.gizthon.camera.activity.PreviewPhotoActivity.1
-            @Override // android.view.View.OnClickListener
+        
+        this.printView = (android.widget.TextView) findViewById(R.id.iv_print);
+        if (this.printView != null) {
+            this.printView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        int currentItem = viewPager.getCurrentItem();
+                        String imagePath = m_ayFilePath.get(currentItem);
+                        Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+                        if (bitmap != null) {
+                            PrintHelper photoPrinter = new PrintHelper(PreviewPhotoActivity.this);
+                            photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
+                            photoPrinter.printBitmap("Cetak Foto Serviks", bitmap);
+                        } else {
+                            Toast.makeText(PreviewPhotoActivity.this, "Gagal memuat foto", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(PreviewPhotoActivity.this, "Gagal mencetak", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+        
+        this.shareView.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-                ShareDialog.newInstance().setOnClickListener(new ShareDialog.OnClickListener() { // from class: com.gizthon.camera.activity.PreviewPhotoActivity.1.1
-                    @Override // com.gizthon.camera.dialog.ShareDialog.OnClickListener
-                    public void shareWchat() throws FileNotFoundException {
-                        Uri uriFromFile;
-                        if (PreviewPhotoActivity.this.isInstallApp("com.tencent.mm")) {
-                            ArrayList arrayList = new ArrayList();
-                            Intent intent2 = new Intent();
-                            intent2.setAction("android.intent.action.SEND");
-                            if (PreviewPhotoActivity.this.getApplicationInfo().targetSdkVersion >= 24 && Build.VERSION.SDK_INT >= 24) {
-                                uriFromFile = Uri.parse(MediaStore.Images.Media.insertImage(PreviewPhotoActivity.this.getContentResolver(), new File((String) PreviewPhotoActivity.this.m_ayFilePath.get(i)).getAbsolutePath(), "pangu", (String) null));
-                            } else {
-                                uriFromFile = Uri.fromFile(new File((String) PreviewPhotoActivity.this.m_ayFilePath.get(i)));
-                            }
-                            arrayList.add(uriFromFile);
-                            intent2.setFlags(268435456);
-                            intent2.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareImgUI"));
-                            intent2.setType("image/*");
-                            intent2.addFlags(3);
-                            intent2.putExtra("android.intent.extra.STREAM", uriFromFile);
-                            PreviewPhotoActivity.this.startActivity(Intent.createChooser(intent2, "分享"));
-                            return;
-                        }
-                        Toast.makeText(PreviewPhotoActivity.this, "您需要安装微信客户端", 1).show();
-                    }
+                ShareDialog.newInstance().setOnClickListener(new ShareDialog.OnClickListener() {
+                    @Override
+                    public void shareWhatsApp() { shareToPackage("com.whatsapp"); }
 
-                    @Override // com.gizthon.camera.dialog.ShareDialog.OnClickListener
-                    public void shareQq() throws FileNotFoundException {
-                        Uri uriFromFile;
-                        if (PreviewPhotoActivity.this.isInstallApp("com.tencent.mobileqq")) {
-                            ArrayList arrayList = new ArrayList();
-                            Intent intent2 = new Intent();
-                            intent2.setAction("android.intent.action.SEND");
-                            if (PreviewPhotoActivity.this.getApplicationInfo().targetSdkVersion >= 24 && Build.VERSION.SDK_INT >= 24) {
-                                uriFromFile = Uri.parse(MediaStore.Images.Media.insertImage(PreviewPhotoActivity.this.getContentResolver(), new File((String) PreviewPhotoActivity.this.m_ayFilePath.get(i)).getAbsolutePath(), "pangu", (String) null));
-                            } else {
-                                uriFromFile = Uri.fromFile(new File((String) PreviewPhotoActivity.this.m_ayFilePath.get(i)));
-                            }
-                            arrayList.add(uriFromFile);
-                            intent2.setFlags(268435456);
-                            intent2.setComponent(new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity"));
-                            intent2.setType("image/*");
-                            intent2.addFlags(3);
-                            intent2.putExtra("android.intent.extra.STREAM", uriFromFile);
-                            PreviewPhotoActivity.this.startActivity(Intent.createChooser(intent2, "分享"));
-                            return;
-                        }
-                        Toast.makeText(PreviewPhotoActivity.this, "您需要安装QQ客户端", 1).show();
-                    }
+                    @Override
+                    public void shareTelegram() { shareToPackage("org.telegram.messenger"); }
 
-                    @Override // com.gizthon.camera.dialog.ShareDialog.OnClickListener
-                    public void shareFecebook() throws FileNotFoundException {
-                        Uri uriFromFile;
-                        ArrayList arrayList = new ArrayList();
-                        Intent intent2 = new Intent();
-                        intent2.setAction("android.intent.action.SEND");
-                        if (PreviewPhotoActivity.this.getApplicationInfo().targetSdkVersion >= 24 && Build.VERSION.SDK_INT >= 24) {
-                            uriFromFile = Uri.parse(MediaStore.Images.Media.insertImage(PreviewPhotoActivity.this.getContentResolver(), new File((String) PreviewPhotoActivity.this.m_ayFilePath.get(i)).getAbsolutePath(), "pangu", (String) null));
-                        } else {
-                            uriFromFile = Uri.fromFile(new File((String) PreviewPhotoActivity.this.m_ayFilePath.get(i)));
-                        }
-                        arrayList.add(uriFromFile);
-                        intent2.setFlags(268435456);
-                        intent2.setComponent(new ComponentName("com.facebook.katana", "com.facebook.composer.shareintent.ImplicitShareIntentHandlerDefaultAlias"));
-                        intent2.setType("image/*");
-                        intent2.addFlags(3);
-                        intent2.putExtra("android.intent.extra.STREAM", uriFromFile);
-                        PreviewPhotoActivity.this.startActivity(Intent.createChooser(intent2, "分享"));
-                    }
+                    @Override
+                    public void shareGmail() { shareToPackage("com.google.android.gm"); }
 
-                    @Override // com.gizthon.camera.dialog.ShareDialog.OnClickListener
-                    public void shareTwiter() throws FileNotFoundException {
-                        Uri uriFromFile;
-                        ArrayList arrayList = new ArrayList();
-                        Intent intent2 = new Intent();
-                        intent2.setAction("android.intent.action.SEND");
-                        if (PreviewPhotoActivity.this.getApplicationInfo().targetSdkVersion >= 24 && Build.VERSION.SDK_INT >= 24) {
-                            uriFromFile = Uri.parse(MediaStore.Images.Media.insertImage(PreviewPhotoActivity.this.getContentResolver(), new File((String) PreviewPhotoActivity.this.m_ayFilePath.get(i)).getAbsolutePath(), "pangu", (String) null));
-                        } else {
-                            uriFromFile = Uri.fromFile(new File((String) PreviewPhotoActivity.this.m_ayFilePath.get(i)));
-                        }
-                        arrayList.add(uriFromFile);
-                        intent2.setFlags(268435456);
-                        intent2.setComponent(new ComponentName("com.twitter.android", "com.twitter.composer.ComposerActivity"));
-                        intent2.setType("image/*");
-                        intent2.addFlags(3);
-                        intent2.putExtra("android.intent.extra.STREAM", uriFromFile);
-                        PreviewPhotoActivity.this.startActivity(Intent.createChooser(intent2, "分享"));
-                    }
-
-                    @Override // com.gizthon.camera.dialog.ShareDialog.OnClickListener
-                    public void shareYoutube() throws FileNotFoundException {
-                        Uri uriFromFile;
-                        ArrayList arrayList = new ArrayList();
-                        Intent intent2 = new Intent();
-                        intent2.setAction("android.intent.action.SEND");
-                        if (PreviewPhotoActivity.this.getApplicationInfo().targetSdkVersion >= 24 && Build.VERSION.SDK_INT >= 24) {
-                            uriFromFile = Uri.parse(MediaStore.Images.Media.insertImage(PreviewPhotoActivity.this.getContentResolver(), new File((String) PreviewPhotoActivity.this.m_ayFilePath.get(i)).getAbsolutePath(), "pangu", (String) null));
-                        } else {
-                            uriFromFile = Uri.fromFile(new File((String) PreviewPhotoActivity.this.m_ayFilePath.get(i)));
-                        }
-                        arrayList.add(uriFromFile);
-                        intent2.setFlags(268435456);
-                        intent2.setComponent(new ComponentName("com.google.android.youtube", "com.google.android.apps.youtube.app.application.Shell_UploadActivity"));
-                        intent2.setType("image/*");
-                        intent2.addFlags(3);
-                        intent2.putExtra("android.intent.extra.STREAM", uriFromFile);
-                        PreviewPhotoActivity.this.startActivity(Intent.createChooser(intent2, "分享"));
-                    }
+                    @Override
+                    public void shareSystem() { shareToPackage(null); }
                 }).show(PreviewPhotoActivity.this);
             }
         });
+    }
+
+    private void shareToPackage(String packageName) {
+        try {
+            if (packageName != null && !isInstallApp(packageName)) {
+                Toast.makeText(this, "Aplikasi tidak terinstal", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            
+            int currentItem = viewPager.getCurrentItem();
+            File imageFile = new File(m_ayFilePath.get(currentItem));
+            Uri uriFromFile;
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            
+            if (Build.VERSION.SDK_INT >= 24) {
+                uriFromFile = androidx.core.content.FileProvider.getUriForFile(this, "com.weioa.GoPlusDrone.fileProvider", imageFile);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            } else {
+                uriFromFile = Uri.fromFile(imageFile);
+            }
+            
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_STREAM, uriFromFile);
+            if (packageName != null) {
+                intent.setPackage(packageName);
+            }
+            startActivity(Intent.createChooser(intent, "Bagikan via"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Gagal membagikan", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public class FullImageAdapter extends PagerAdapter {

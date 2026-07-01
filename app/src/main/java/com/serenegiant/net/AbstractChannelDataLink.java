@@ -61,7 +61,7 @@ public abstract class AbstractChannelDataLink {
         add(callback);
     }
 
-    protected void finalize() {
+    protected void finalize() throws Throwable {
         try {
             release();
         } finally {
@@ -111,7 +111,7 @@ public abstract class AbstractChannelDataLink {
             this.mChannel = byteChannel;
         }
 
-        protected void finalize() {
+        protected void finalize() throws Throwable {
             try {
                 release(-1L);
             } finally {
@@ -400,7 +400,7 @@ public abstract class AbstractChannelDataLink {
                     } else {
                         callOnReceive(ChannelHelper.readDoubleArray(this.mChannel));
                     }
-                } catch (SocketException | ClosedChannelException | IOException unused) {
+                } catch (IOException unused) {
                     return;
                 }
             }
@@ -464,12 +464,6 @@ public abstract class AbstractChannelDataLink {
                 return false;
             }
             try {
-            } catch (SocketException unused) {
-            } catch (IOException e) {
-                callOnError(e);
-            } catch (Exception e2) {
-                Log.w(AbstractChannelDataLink.TAG, e2);
-            }
             if (message.what == -9) {
                 internalRelease();
                 return true;
@@ -570,6 +564,12 @@ public abstract class AbstractChannelDataLink {
                 ChannelHelper.write(this.mChannel, 2);
                 ChannelHelper.write(this.mChannel, (String) message.obj);
                 return true;
+            }
+            } catch (SocketException unused) {
+            } catch (IOException e) {
+                callOnError(e);
+            } catch (Exception e2) {
+                Log.w(AbstractChannelDataLink.TAG, e2);
             }
             return false;
         }

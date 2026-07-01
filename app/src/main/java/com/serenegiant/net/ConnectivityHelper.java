@@ -48,7 +48,7 @@ public class ConnectivityHelper {
         init();
     }
 
-    protected void finalize() {
+    protected void finalize() throws Throwable {
         try {
             release();
         } finally {

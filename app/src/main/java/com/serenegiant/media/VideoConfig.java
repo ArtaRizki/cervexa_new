@@ -62,7 +62,7 @@ public class VideoConfig {
             fCeil = 1.0f;
         } else {
             try {
-                fCeil = (float) Math.ceil(IFI / r0);
+                fCeil = (float) Math.ceil(IFI / getCaptureFps());
             } catch (Exception unused) {
                 fCeil = IFRAME_INTERVAL;
             }

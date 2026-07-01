@@ -32,8 +32,8 @@ public abstract class AbstractMediaAVRecorder extends Recorder {
     }
 
     public AbstractMediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, String str, String str2, int i) throws IOException {
-        String dateTimeString;
         super(recorderCallback);
+        String dateTimeString;
         this.mWeakContext = new WeakReference<>(context);
         this.mSaveTreeId = i;
         str2 = TextUtils.isEmpty(str2) ? UVCCameraHelper.SUFFIX_MP4 : str2;
@@ -60,8 +60,8 @@ public abstract class AbstractMediaAVRecorder extends Recorder {
     }
 
     public AbstractMediaAVRecorder(Context context, IRecorder.RecorderCallback recorderCallback, int i, String str, String str2) throws Exception {
-        DocumentFile storageFile;
         super(recorderCallback);
+        DocumentFile storageFile;
         this.mWeakContext = new WeakReference<>(context);
         this.mSaveTreeId = i;
         if (i > 0 && SAFUtils.hasStorageAccess(context, i) && (storageFile = SAFUtils.getStorageFile(context, i, str, "*/*", str2)) != null) {

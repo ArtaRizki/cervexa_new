@@ -8,34 +8,25 @@ import java.io.InputStream;
 /* JADX INFO: loaded from: classes.dex */
 public class VersionHelper {
     public static String getSdkVersionName(Context context) {
-        byte[] bArr;
-        InputStream inputStreamOpenRawResource = context.getResources().openRawResource(C1408R.raw.version);
+        InputStream inputStreamOpenRawResource = null;
         try {
-            try {
+            inputStreamOpenRawResource = context.getResources().openRawResource(C1408R.raw.version);
+            byte[] bArr = new byte[inputStreamOpenRawResource.available()];
+            if (inputStreamOpenRawResource.read(bArr) > 0) {
+                return new String(bArr);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (inputStreamOpenRawResource != null) {
                 try {
-                    bArr = new byte[inputStreamOpenRawResource.available()];
+                    Dlog.m1384i("===", "InputStream closed");
+                    inputStreamOpenRawResource.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    Dlog.m1384i("===", "InputStream closed");
-                    inputStreamOpenRawResource.close();
-                }
-                if (inputStreamOpenRawResource.read(bArr) > 0) {
-                    return new String(bArr);
-                }
-                Dlog.m1384i("===", "InputStream closed");
-                inputStreamOpenRawResource.close();
-                return "";
-            } finally {
-                try {
-                    Dlog.m1384i("===", "InputStream closed");
-                    inputStreamOpenRawResource.close();
-                } catch (IOException e2) {
-                    e2.printStackTrace();
                 }
             }
-        } catch (IOException e3) {
-            e3.printStackTrace();
-            return "";
         }
+        return "";
     }
 }

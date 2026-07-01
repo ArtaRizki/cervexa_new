@@ -54,12 +54,11 @@ public class BitmapAsyncTask extends AbstractAsyncTask<Bitmap> {
 
     static void calculateInSampleSize(int i, int i2, int i3, int i4, BitmapFactory.Options options, boolean z) {
         int iMin;
-        double dFloor;
         if (i4 > i2 || i3 > i) {
             if (i2 == 0) {
-                dFloor = Math.floor(i3 / i);
+                iMin = (int) Math.floor(i3 / i);
             } else if (i == 0) {
-                dFloor = Math.floor(i4 / i2);
+                iMin = (int) Math.floor(i4 / i2);
             } else {
                 int iFloor = (int) Math.floor(i4 / i2);
                 int iFloor2 = (int) Math.floor(i3 / i);
@@ -69,7 +68,6 @@ public class BitmapAsyncTask extends AbstractAsyncTask<Bitmap> {
                     iMin = Math.min(iFloor, iFloor2);
                 }
             }
-            iMin = (int) dFloor;
         } else {
             iMin = 1;
         }

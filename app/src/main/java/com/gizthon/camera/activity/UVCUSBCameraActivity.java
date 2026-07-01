@@ -15,7 +15,8 @@ import com.gizthon.camera.adapter.ResolutionListAdapter;
 import com.gizthon.camera.application.CameraApplication;
 import com.gizthon.camera.core.OnCameraConnectedListener;
 import com.gizthon.camera.databinding.UsbPreviewActivityBinding;
-
+import com.gizthon.camera.model.CervexaDatabase;
+import com.gizthon.camera.model.PatientDao;
 import com.jaeger.library.StatusBarUtil;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jiangdg.usbcamera.utils.FileUtils;
@@ -28,9 +29,18 @@ import com.weioa.KmedHealthIndonesia.R;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 /* JADX INFO: loaded from: classes.dex */
 public class UVCUSBCameraActivity extends CameraBaseActivity {
+    // ── Patient data ──────────────────────────────────────────────────────────
+    private int currentPatientId = -1;
+    private String currentPatientName = "";
+    private String currentPatientNik = "";
+    private String currentPatientRs = "";
+    private java.util.concurrent.ExecutorService dbExecutor;
+
+    // ── Camera ────────────────────────────────────────────────────────────────
     private ResolutionListAdapter adapter;
     private UsbPreviewActivityBinding binding;
     private UVCCameraHelper mCameraHelper;
@@ -66,7 +76,36 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         usbPreviewActivityBinding.setEventHandler(this);
         connectService();
         StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#4A4A4A"));
+        dbExecutor = Executors.newSingleThreadExecutor();
+        readPatientExtras();
         initDate();
+    }
+
+    /** Baca data pasien dari Intent dan tampilkan di overlay kamera. */
+    private void readPatientExtras() {
+        Intent intent = getIntent();
+        currentPatientId   = intent.getIntExtra(PatientActivity.EXTRA_PATIENT_ID, -1);
+        currentPatientName = intent.getStringExtra(PatientActivity.EXTRA_PATIENT_NAMA) != null
+                ? intent.getStringExtra(PatientActivity.EXTRA_PATIENT_NAMA) : "";
+        currentPatientNik  = intent.getStringExtra(PatientActivity.EXTRA_PATIENT_NIK) != null
+                ? intent.getStringExtra(PatientActivity.EXTRA_PATIENT_NIK) : "";
+        currentPatientRs   = intent.getStringExtra(PatientActivity.EXTRA_PATIENT_RS) != null
+                ? intent.getStringExtra(PatientActivity.EXTRA_PATIENT_RS) : "";
+
+        if (!TextUtils.isEmpty(currentPatientName)) {
+            String label = "\uD83D\uDC64 " + currentPatientName;
+            if (!TextUtils.isEmpty(currentPatientNik)) {
+                label += "  |  NIK: " + currentPatientNik;
+            }
+            if (!TextUtils.isEmpty(currentPatientRs)) {
+                label += "  |  " + currentPatientRs;
+            }
+            android.widget.TextView tvPatientInfo = findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_patient_info);
+            if (tvPatientInfo != null) {
+                tvPatientInfo.setText(label);
+                tvPatientInfo.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     void initDate() {
@@ -126,6 +165,36 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                 UVCUSBCameraActivity.this.finish();
             }
         });
+        
+        android.widget.TextView tvPrint = findViewById(R.id.tv_print);
+        if (tvPrint != null) {
+            tvPrint.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(UVCUSBCameraActivity.this, "Buka Galeri untuk Print", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        android.widget.TextView tvShare = findViewById(R.id.tv_share);
+        if (tvShare != null) {
+            tvShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(UVCUSBCameraActivity.this, "Buka Galeri untuk Share", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        android.widget.TextView tvAiToggle = findViewById(R.id.tv_ai_toggle);
+        if (tvAiToggle != null) {
+            tvAiToggle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(UVCUSBCameraActivity.this, "Fitur AI sedang dikembangkan (TFLite)", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
         this.binding.rcResolution.setLayoutManager(new LinearLayoutManager(this));
         ResolutionListAdapter resolutionListAdapter = new ResolutionListAdapter(this);
         this.adapter = resolutionListAdapter;
@@ -201,10 +270,25 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                 if (TextUtils.isEmpty(str2)) {
                     return;
                 }
+                // Asosiasikan foto dengan pasien di DB (background thread)
+                if (currentPatientId != -1) {
+                    final String savedPath = str2;
+                    dbExecutor.execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                CervexaDatabase db = CervexaDatabase.getInstance(UVCUSBCameraActivity.this);
+                                db.patientDao().updateLastPhoto(currentPatientId, savedPath, System.currentTimeMillis());
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
                 new Handler(UVCUSBCameraActivity.this.getMainLooper()).post(new Runnable() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.11.1
                     @Override // java.lang.Runnable
                     public void run() {
-                        Toast.makeText(UVCUSBCameraActivity.this, "保存图片成功" + str, 0).show();
+                        Toast.makeText(UVCUSBCameraActivity.this, "\uD83D\uDCF8 Foto tersimpan", 0).show();
                         UVCUSBCameraActivity.this.refresh(str);
                     }
                 });
@@ -268,6 +352,9 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         super.onDestroy();
         FileUtils.releaseFile();
         this.cameraManager.getUVCUSBCamera().destroyDevice();
+        if (dbExecutor != null) {
+            dbExecutor.shutdown();
+        }
     }
 
     public void zoom(boolean z, View view) {

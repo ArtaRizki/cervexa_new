@@ -91,11 +91,14 @@ public abstract class CustomRecycleViewAdapter<T> extends RecyclerView.Adapter<C
         }
     }
 
-    protected void finalize() {
-        synchronized (this.mItems) {
-            unregisterDataSetObserver(this.mItems);
+    protected void finalize() throws Throwable {
+        try {
+            synchronized (this.mItems) {
+                unregisterDataSetObserver(this.mItems);
+            }
+        } finally {
+            super.finalize();
         }
-        super.finalize();
     }
 
     @Override // androidx.recyclerview.widget.RecyclerView.Adapter

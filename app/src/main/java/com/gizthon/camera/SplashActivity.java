@@ -7,6 +7,8 @@ import androidx.databinding.DataBindingUtil;
 import com.gizthon.camera.activity.CameraBaseActivity;
 import com.gizthon.camera.activity.GalleryListActivity;
 import com.gizthon.camera.activity.HelpActivity;
+import com.gizthon.camera.activity.PatientActivity;
+import com.gizthon.camera.activity.PatientHistoryActivity;
 import com.gizthon.camera.activity.UVCUSBCameraActivity;
 import com.gizthon.camera.databinding.SplashActivityBinding;
 import com.jaeger.library.StatusBarUtil;
@@ -53,10 +55,15 @@ public class SplashActivity extends CameraBaseActivity {
     public void connectDevice(boolean z) {
         this.cameraManager.getWifiCamera().initDevice(this);
         if (!this.cameraManager.getWifiCamera().isWifi) {
-            UVCUSBCameraActivity.start(this);
+            // Selalu masuk ke form pasien terlebih dahulu sebelum kamera
+            PatientActivity.start(this);
         } else {
             this.cameraManager.getWifiCamera().startWifi1Activity(this);
         }
+    }
+
+    public void onClickHistory() {
+        PatientHistoryActivity.start(this);
     }
 
     @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, android.app.Activity

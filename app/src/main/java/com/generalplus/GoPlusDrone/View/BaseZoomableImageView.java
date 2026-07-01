@@ -231,9 +231,9 @@ public abstract class BaseZoomableImageView extends View {
     protected void center(boolean z, boolean z2, boolean z3) {
         float f;
         float f2;
-        float f3;
-        float height;
-        float f4;
+        float f3 = 0.0f;
+        float height = 0.0f;
+        float f4 = 0.0f;
         if (this.mBitmap == null) {
             return;
         }

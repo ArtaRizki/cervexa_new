@@ -747,14 +747,10 @@ public final class USBMonitor {
             if (iControlTransfer > 2 && bArr2[0] == iControlTransfer && bArr2[1] == 3) {
                 try {
                     String str2 = new String(bArr2, 2, iControlTransfer - 2, "UTF-16LE");
-                    try {
-                        if (!"Љ".equals(str2)) {
-                            return str2;
-                        }
-                        str = null;
-                    } catch (UnsupportedEncodingException unused) {
-                        str = str2;
+                    if (!"Љ".equals(str2)) {
+                        return str2;
                     }
+                    str = null;
                 } catch (UnsupportedEncodingException unused2) {
                     continue;
                 }

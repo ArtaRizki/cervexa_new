@@ -487,7 +487,7 @@ public abstract class AbstractUVCCameraHandler extends Handler {
             this.mWeakCameraView = new WeakReference<>(cameraViewInterface);
         }
 
-        protected void finalize() {
+        protected void finalize() throws Throwable {
             Log.i(AbstractUVCCameraHandler.TAG, "CameraThread#finalize");
             super.finalize();
         }

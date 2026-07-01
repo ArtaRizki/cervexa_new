@@ -102,7 +102,8 @@ public class PhotoViewFragment extends BaseFragment implements ViewPager.OnPageC
         if (!str.contains(File.separator)) {
             return str;
         }
-        return str.split(File.separator)[r2.length - 1];
+        String[] parts = str.split(File.separator.equals("\\") ? "\\\\" : File.separator);
+        return parts[parts.length - 1];
     }
 
     @Override // androidx.viewpager.widget.ViewPager.OnPageChangeListener

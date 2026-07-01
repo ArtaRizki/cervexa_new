@@ -42,7 +42,7 @@ public class ShareByWeixin extends ShareBase {
         this.tag = getClass().getSimpleName();
         this.context = context.getApplicationContext();
         this.channel = i;
-        this.api = WXAPIFactory.createWXAPI(context.getApplicationContext(), ManifestUtil.getWeixinKey(this.context));
+        this.api = WXAPIFactory.createWXAPI(context.getApplicationContext(), ManifestUtil.getWeixinKey(this.context), true);
     }
 
     public void registerWeixinReceiver() {

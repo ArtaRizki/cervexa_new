@@ -288,13 +288,12 @@ public class AppUtils implements IConstant {
                 }
                 return arrayList3;
             } catch (Exception e) {
-                e = e;
+                e.printStackTrace();
                 arrayList2 = arrayList3;
             }
         } catch (Exception e2) {
-            e = e2;
+            e2.printStackTrace();
         }
-        e.printStackTrace();
         return arrayList2;
     }
 

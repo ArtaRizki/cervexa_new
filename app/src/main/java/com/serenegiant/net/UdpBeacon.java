@@ -290,7 +290,7 @@ public class UdpBeacon {
         this.mRcvMinIntervalsMs = j2;
     }
 
-    public void finalize() {
+    public void finalize() throws Throwable {
         try {
             release();
         } finally {
@@ -471,7 +471,7 @@ public class UdpBeacon {
 
         @Override // java.lang.Runnable
         public void run() {
-            int iReceive;
+            int iReceive = 0;
             ByteBuffer byteBufferAllocateDirect = ByteBuffer.allocateDirect(256);
             UdpSocket udpSocket = this.mUdpSocket;
             long jElapsedRealtime = SystemClock.elapsedRealtime();
@@ -485,15 +485,13 @@ public class UdpBeacon {
                     }
                 }
                 try {
-                    try {
-                        byteBufferAllocateDirect.clear();
-                        iReceive = udpSocket.receive(byteBufferAllocateDirect);
-                    } catch (IOException unused) {
-                    } catch (Exception e) {
-                        Log.w(UdpBeacon.TAG, e);
-                        return;
-                    }
+                    byteBufferAllocateDirect.clear();
+                    iReceive = udpSocket.receive(byteBufferAllocateDirect);
                 } catch (IllegalStateException | ClosedChannelException unused2) {
+                    return;
+                } catch (IOException unused) {
+                } catch (Exception e) {
+                    Log.w(UdpBeacon.TAG, e);
                     return;
                 }
                 if (!UdpBeacon.this.mIsRunning) {
