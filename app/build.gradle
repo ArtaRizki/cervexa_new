@@ -91,9 +91,9 @@ dependencies {
     // (libUVCCamera.so, libuvc.so) sudah ada di app/src/main/lib/.
 
     
-    // TensorFlow Lite
-    implementation 'org.tensorflow:tensorflow-lite:2.12.0'
-    implementation 'org.tensorflow:tensorflow-lite-support:0.4.3'
+    // TFLite (Upgraded to 2.16.1 to fix Android 15 16KB page size alignment issue)
+    implementation 'org.tensorflow:tensorflow-lite:2.16.1'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.4.4'
     
     // ── Room Database (Manajemen Pasien — Offline) ────────────────────────────
     def room_version = "2.5.2"

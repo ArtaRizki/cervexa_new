@@ -39,8 +39,8 @@ public class PreviewVideoActivity extends Activity {
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.preview_video_activity);
-        this.video_view = (IjkVideoView) findViewById(R.id.video_view);
+        setContentView(getResources().getIdentifier("preview_video_activity", "layout", getPackageName()));
+        this.video_view = (IjkVideoView) findViewById(getResources().getIdentifier("video_view", "id", getPackageName()));
         Intent intent = getIntent();
         this.position = intent.getExtras().getInt(IConstant.KEY_POSITION);
         ArrayList<String> stringArrayListExtra = intent.getStringArrayListExtra("FilePath");

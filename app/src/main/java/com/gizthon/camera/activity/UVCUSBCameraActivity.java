@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.gizthon.camera.adapter.ResolutionListAdapter;
 import com.gizthon.camera.application.CameraApplication;
 import com.gizthon.camera.core.OnCameraConnectedListener;
-import com.gizthon.camera.databinding.UsbPreviewActivityBinding;
+// import com.gizthon.camera.databinding.UsbPreviewActivityBinding;
 import com.gizthon.camera.model.CervexaDatabase;
 import com.gizthon.camera.model.PatientDao;
 import com.jaeger.library.StatusBarUtil;
@@ -42,6 +42,24 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
 
     // ── Camera ────────────────────────────────────────────────────────────────
     private ResolutionListAdapter adapter;
+    public class UsbPreviewActivityBinding {
+        public android.widget.TextView tvRecordTime;
+        public android.widget.ImageView ivResolution;
+        public android.view.View llResolution;
+        public android.widget.ImageView ivZoomIn;
+        public android.widget.ImageView ivZoomOut;
+        public android.widget.ImageView ivZoomFocus;
+        public android.widget.ImageView ivFocusImg;
+        public android.widget.ImageView ivRecord;
+        public android.widget.ImageView ivPicture;
+        public android.widget.ImageView takePhoto;
+        public android.widget.ImageView back;
+        public androidx.recyclerview.widget.RecyclerView rcResolution;
+        public com.serenegiant.usb.widget.UVCCameraTextureView cameraView;
+        public android.widget.ImageView ivBroken;
+        public android.view.View llConent;
+        public void setEventHandler(Object o) {}
+    }
     private UsbPreviewActivityBinding binding;
     private UVCCameraHelper mCameraHelper;
     private int position;
@@ -71,9 +89,26 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
     @Override // com.gizthon.camera.activity.CameraBaseActivity, androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        UsbPreviewActivityBinding usbPreviewActivityBinding = (UsbPreviewActivityBinding) DataBindingUtil.setContentView(this, R.layout.usb_preview_activity);
-        this.binding = usbPreviewActivityBinding;
-        usbPreviewActivityBinding.setEventHandler(this);
+        int layoutId = getResources().getIdentifier("usb_preview_activity", "layout", getPackageName());
+        setContentView(layoutId);
+        
+        this.binding = new UsbPreviewActivityBinding();
+        this.binding.tvRecordTime = findViewById(getResources().getIdentifier("tv_record_time", "id", getPackageName()));
+        this.binding.ivResolution = findViewById(getResources().getIdentifier("iv_resolution", "id", getPackageName()));
+        this.binding.llResolution = findViewById(getResources().getIdentifier("ll_resolution", "id", getPackageName()));
+        this.binding.ivZoomIn = findViewById(getResources().getIdentifier("iv_zoom_in", "id", getPackageName()));
+        this.binding.ivZoomOut = findViewById(getResources().getIdentifier("iv_zoom_out", "id", getPackageName()));
+        this.binding.ivZoomFocus = findViewById(getResources().getIdentifier("iv_zoom_focus", "id", getPackageName()));
+        this.binding.ivFocusImg = findViewById(getResources().getIdentifier("iv_focus_img", "id", getPackageName()));
+        this.binding.ivRecord = findViewById(getResources().getIdentifier("iv_record", "id", getPackageName()));
+        this.binding.ivPicture = findViewById(getResources().getIdentifier("iv_picture", "id", getPackageName()));
+        this.binding.takePhoto = findViewById(getResources().getIdentifier("take_photo", "id", getPackageName()));
+        this.binding.back = findViewById(getResources().getIdentifier("back", "id", getPackageName()));
+        this.binding.rcResolution = findViewById(getResources().getIdentifier("rc_resolution", "id", getPackageName()));
+        this.binding.cameraView = findViewById(getResources().getIdentifier("camera_view", "id", getPackageName()));
+        this.binding.ivBroken = findViewById(getResources().getIdentifier("iv_broken", "id", getPackageName()));
+        this.binding.llConent = findViewById(getResources().getIdentifier("ll_conent", "id", getPackageName()));
+        this.binding.setEventHandler(this);
         connectService();
         StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#4A4A4A"));
         dbExecutor = Executors.newSingleThreadExecutor();
@@ -165,8 +200,8 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                 UVCUSBCameraActivity.this.finish();
             }
         });
-        
-        android.widget.TextView tvPrint = findViewById(R.id.tv_print);
+        int tvPrintId = getResources().getIdentifier("tv_print", "id", getPackageName());
+        android.widget.TextView tvPrint = tvPrintId != 0 ? (android.widget.TextView) findViewById(tvPrintId) : null;
         if (tvPrint != null) {
             tvPrint.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -176,7 +211,8 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
             });
         }
 
-        android.widget.TextView tvShare = findViewById(R.id.tv_share);
+        int tvShareId = getResources().getIdentifier("tv_share", "id", getPackageName());
+        android.widget.TextView tvShare = tvShareId != 0 ? (android.widget.TextView) findViewById(tvShareId) : null;
         if (tvShare != null) {
             tvShare.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -186,12 +222,24 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
             });
         }
 
-        android.widget.TextView tvAiToggle = findViewById(R.id.tv_ai_toggle);
+        int tvAiToggleId = getResources().getIdentifier("tv_ai_toggle", "id", getPackageName());
+        android.widget.TextView tvAiToggle = tvAiToggleId != 0 ? (android.widget.TextView) findViewById(tvAiToggleId) : null;
         if (tvAiToggle != null) {
             tvAiToggle.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(UVCUSBCameraActivity.this, "Fitur AI sedang dikembangkan (TFLite)", Toast.LENGTH_SHORT).show();
+                    try {
+                        com.gizthon.camera.utils.ViaModelHelper helper = new com.gizthon.camera.utils.ViaModelHelper(UVCUSBCameraActivity.this);
+                        if (helper.isInitialized()) {
+                            // Tampilkan shape ke Toast langsung di layar pengguna!
+                            Toast.makeText(UVCUSBCameraActivity.this, "AI Shape:\n" + helper.getShapeInfo(), Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(UVCUSBCameraActivity.this, "Gagal memuat AI:\n" + helper.getShapeInfo(), Toast.LENGTH_LONG).show();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(UVCUSBCameraActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
                 }
             });
         }

@@ -38,16 +38,16 @@ class PatientHistoryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_patient_history)
+        setContentView(resources.getIdentifier("activity_patient_history", "layout", packageName))
         StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#1565C0"))
 
-        val rvPatients = findViewById<RecyclerView>(R.id.rvPatients)
+        val rvPatients = findViewById<RecyclerView>(resources.getIdentifier("rvPatients", "id", packageName))
         adapter = PatientAdapter(patients) { patient -> openCamera(patient) }
         rvPatients.layoutManager = LinearLayoutManager(this)
         rvPatients.adapter = adapter
 
-        findViewById<ImageView>(R.id.ivBack).setOnClickListener { finish() }
-        findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.etSearch)
+        findViewById<ImageView>(resources.getIdentifier("ivBack", "id", packageName)).setOnClickListener { finish() }
+        findViewById<com.google.android.material.textfield.TextInputEditText>(resources.getIdentifier("etSearch", "id", packageName))
             ?.addTextChangedListener(object : android.text.TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, st: Int, c: Int, a: Int) {}
                 override fun onTextChanged(s: CharSequence?, st: Int, b: Int, c: Int) { searchPatients(s?.toString() ?: "") }

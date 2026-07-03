@@ -22,9 +22,47 @@ public class SplashActivity extends CameraBaseActivity {
     @Override // com.gizthon.camera.activity.CameraBaseActivity, androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        SplashActivityBinding splashActivityBinding = (SplashActivityBinding) DataBindingUtil.setContentView(this, com.weioa.KmedHealthIndonesia.R.layout.splash_activity);
-        this.binding = splashActivityBinding;
-        splashActivityBinding.setEventHandler(this);
+        int layoutId = getResources().getIdentifier("splash_activity", "layout", getPackageName());
+        setContentView(layoutId);
+
+        int tvCameraId = getResources().getIdentifier("tv_camera", "id", getPackageName());
+        if (tvCameraId != 0) {
+            android.view.View tvCamera = findViewById(tvCameraId);
+            if (tvCamera != null) {
+                tvCamera.setOnClickListener(new android.view.View.OnClickListener() {
+                    @Override
+                    public void onClick(android.view.View view) {
+                        onClickGallery();
+                    }
+                });
+            }
+        }
+
+        int tvConnectId = getResources().getIdentifier("tv_connect", "id", getPackageName());
+        if (tvConnectId != 0) {
+            android.view.View tvConnect = findViewById(tvConnectId);
+            if (tvConnect != null) {
+                tvConnect.setOnClickListener(new android.view.View.OnClickListener() {
+                    @Override
+                    public void onClick(android.view.View view) {
+                        onClickUsb();
+                    }
+                });
+            }
+        }
+
+        int tvHelpId = getResources().getIdentifier("tv_help", "id", getPackageName());
+        if (tvHelpId != 0) {
+            android.view.View tvHelp = findViewById(tvHelpId);
+            if (tvHelp != null) {
+                tvHelp.setOnClickListener(new android.view.View.OnClickListener() {
+                    @Override
+                    public void onClick(android.view.View view) {
+                        onClickHelp();
+                    }
+                });
+            }
+        }
         StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#202226"));
         this.cameraManager.getWifiCamera().initDevice(this);
     }

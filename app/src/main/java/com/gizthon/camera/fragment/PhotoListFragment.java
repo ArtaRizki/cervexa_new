@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.gizthon.camera.activity.GalleryListActivity;
 import com.gizthon.camera.adapter.PhotoAdapter;
 import com.gizthon.camera.application.CameraApplication;
-import com.gizthon.camera.databinding.GalleryPhotoFragmentBinding;
+// import com.gizthon.camera.databinding.GalleryPhotoFragmentBinding;
 import com.gizthon.camera.model.PhotoBean;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.weioa.KmedHealthIndonesia.R;
@@ -19,6 +19,11 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public class PhotoListFragment extends BaseXFragment {
     private PhotoAdapter adapter;
+    public class GalleryPhotoFragmentBinding {
+        public androidx.recyclerview.widget.RecyclerView rcPhoto;
+        public android.view.View root;
+        public android.view.View getRoot() { return root; }
+    }
     private GalleryPhotoFragmentBinding binding;
 
     public static PhotoListFragment newInstance() {
@@ -31,9 +36,12 @@ public class PhotoListFragment extends BaseXFragment {
     @Override // com.gizthon.camera.fragment.BaseXFragment
     protected void onCreateView(Bundle bundle) {
         super.onCreateView(bundle);
-        GalleryPhotoFragmentBinding galleryPhotoFragmentBinding = (GalleryPhotoFragmentBinding) DataBindingUtil.inflate(this.inflater, R.layout.gallery_photo_fragment, this.container, false);
-        this.binding = galleryPhotoFragmentBinding;
-        setContentView(galleryPhotoFragmentBinding.getRoot());
+        int layoutId = getResources().getIdentifier("gallery_photo_fragment", "layout", getActivity().getPackageName());
+        android.view.View root = this.inflater.inflate(layoutId, this.container, false);
+        this.binding = new GalleryPhotoFragmentBinding();
+        this.binding.root = root;
+        this.binding.rcPhoto = root.findViewById(getResources().getIdentifier("rc_photo", "id", getActivity().getPackageName()));
+        setContentView(root);
         this.binding.rcPhoto.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         PhotoAdapter photoAdapter = new PhotoAdapter(getPhotoBeans(), R.layout.gallery_photo_item);
         this.adapter = photoAdapter;

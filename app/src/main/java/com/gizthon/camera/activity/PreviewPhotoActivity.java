@@ -49,9 +49,9 @@ public class PreviewPhotoActivity extends Activity {
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.preview_photo_activity);
-        this.viewPager = (ViewPager) findViewById(R.id.pager);
-        this.shareView = (ImageView) findViewById(R.id.iv_share);
+        setContentView(getResources().getIdentifier("preview_photo_activity", "layout", getPackageName()));
+        this.viewPager = (ViewPager) findViewById(getResources().getIdentifier("pager", "id", getPackageName()));
+        this.shareView = (ImageView) findViewById(getResources().getIdentifier("iv_share", "id", getPackageName()));
         Intent intent = getIntent();
         final int i = intent.getExtras().getInt(IConstant.KEY_POSITION);
         ArrayList<String> stringArrayListExtra = intent.getStringArrayListExtra("FilePath");
@@ -61,7 +61,8 @@ public class PreviewPhotoActivity extends Activity {
         this.viewPager.setAdapter(fullImageAdapter);
         this.viewPager.setCurrentItem(i);
         
-        this.printView = (android.widget.TextView) findViewById(R.id.iv_print);
+        int printViewId = getResources().getIdentifier("iv_print", "id", getPackageName());
+        this.printView = printViewId != 0 ? (android.widget.TextView) findViewById(printViewId) : null;
         if (this.printView != null) {
             this.printView.setOnClickListener(new View.OnClickListener() {
                 @Override

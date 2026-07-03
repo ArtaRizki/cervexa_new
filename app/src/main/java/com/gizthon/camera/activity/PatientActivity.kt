@@ -67,7 +67,7 @@ class PatientActivity : AppCompatActivity() {
     // ─────────────────────────────────────────────────────────────────────────
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_patient)
+        setContentView(resources.getIdentifier("activity_patient", "layout", packageName))
         StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#1565C0"))
         initViews()
         setupListeners()
@@ -79,29 +79,31 @@ class PatientActivity : AppCompatActivity() {
     }
 
     // ─────────────────────────────────────────────────────────────────────────
+    private fun id(name: String) = resources.getIdentifier(name, "id", packageName)
+
     private fun initViews() {
-        tilNama = findViewById(R.id.tilNama)
-        tilNik  = findViewById(R.id.tilNik)
-        tilDob  = findViewById(R.id.tilDob)
-        tilRS   = findViewById(R.id.tilRS)
-        tilNrm  = findViewById(R.id.tilNrm)
+        tilNama = findViewById(id("tilNama"))
+        tilNik  = findViewById(id("tilNik"))
+        tilDob  = findViewById(id("tilDob"))
+        tilRS   = findViewById(id("tilRS"))
+        tilNrm  = findViewById(id("tilNrm"))
 
-        etNama = findViewById(R.id.etNama)
-        etNik  = findViewById(R.id.etNik)
-        etDob  = findViewById(R.id.etDob)
-        etRS   = findViewById(R.id.etRS)
-        etNrm  = findViewById(R.id.etNrm)
+        etNama = findViewById(id("etNama"))
+        etNik  = findViewById(id("etNik"))
+        etDob  = findViewById(id("etDob"))
+        etRS   = findViewById(id("etRS"))
+        etNrm  = findViewById(id("etNrm"))
 
-        btnDaftar     = findViewById(R.id.btnDaftar)
-        loadingOverlay = findViewById(R.id.loadingOverlay)
+        btnDaftar      = findViewById(id("btnDaftar"))
+        loadingOverlay = findViewById(id("loadingOverlay"))
 
         // Date field: non-editable, buka picker saat diklik
-        etDob.isFocusable  = false
-        etDob.isClickable  = true
+        etDob.isFocusable = false
+        etDob.isClickable = true
     }
 
     private fun setupListeners() {
-        findViewById<View>(R.id.ivBack).setOnClickListener { finish() }
+        findViewById<View>(id("ivBack")).setOnClickListener { finish() }
 
         etDob.setOnClickListener            { showDatePicker() }
         tilDob.setEndIconOnClickListener    { showDatePicker() }
