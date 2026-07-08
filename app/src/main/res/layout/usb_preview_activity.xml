@@ -90,6 +90,29 @@
                 android:visibility="gone"
                 android:maxLines="1"
                 android:ellipsize="end"/>
+        <!-- Kamera HP fallback: muncul otomatis jika tidak ada kamera USB -->
+        <TextureView
+            android:id="@+id/phone_camera_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+        <!-- Badge mode kamera aktif -->
+        <TextView
+            android:id="@+id/tv_camera_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="12dp"
+            android:background="#CC1565C0"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="📱 Mode Kamera HP"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:visibility="gone"/>
         </RelativeLayout>
 
         <LinearLayout

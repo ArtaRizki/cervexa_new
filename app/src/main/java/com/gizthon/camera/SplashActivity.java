@@ -45,7 +45,8 @@ public class SplashActivity extends CameraBaseActivity {
                 tvConnect.setOnClickListener(new android.view.View.OnClickListener() {
                     @Override
                     public void onClick(android.view.View view) {
-                        onClickUsb();
+                        // Langsung ke form pasien tanpa menunggu kamera USB
+                        PatientActivity.start(SplashActivity.this);
                     }
                 });
             }

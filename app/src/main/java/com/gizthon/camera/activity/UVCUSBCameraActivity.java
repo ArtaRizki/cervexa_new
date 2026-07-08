@@ -30,6 +30,20 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraDevice;
+import android.hardware.camera2.CameraMetadata;
+import android.hardware.camera2.CaptureRequest;
+import android.os.HandlerThread;
+import android.view.Surface;
+import android.view.TextureView;
+import android.widget.TextView;
+import java.io.FileOutputStream;
+import java.util.Collections;
 
 /* JADX INFO: loaded from: classes.dex */
 public class UVCUSBCameraActivity extends CameraBaseActivity {
@@ -64,6 +78,15 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
     private UVCCameraHelper mCameraHelper;
     private int position;
     private long startTime;
+
+    // ── Phone Camera (fallback jika tidak ada kamera USB) ─────────────────────
+    private boolean usePhoneCameraMode = false;
+    private boolean uvcCameraConnected = false;
+    private TextureView phoneTextureView;
+    private CameraDevice phoneCameraDevice;
+    private android.hardware.camera2.CameraCaptureSession phoneCaptureSession;
+    private HandlerThread phoneCameraThread;
+    private android.os.Handler phoneCameraHandler;
     protected Handler handler = new Handler();
     protected Runnable updateTimer = new Runnable() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.14
         @Override // java.lang.Runnable
@@ -114,6 +137,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         dbExecutor = Executors.newSingleThreadExecutor();
         readPatientExtras();
         initDate();
+        initPhoneCameraView();
     }
 
     /** Baca data pasien dari Intent dan tampilkan di overlay kamera. */
@@ -267,6 +291,11 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
 
         @Override // android.view.View.OnClickListener
         public void onClick(View view) {
+            // Jika mode kamera HP, tampilkan info
+            if (UVCUSBCameraActivity.this.usePhoneCameraMode) {
+                UVCUSBCameraActivity.this.showShortMsg("Rekam video: hanya tersedia pada kamera USB");
+                return;
+            }
             if (UVCUSBCameraActivity.this.mCameraHelper == null || !UVCUSBCameraActivity.this.mCameraHelper.isCameraOpened()) {
                 UVCUSBCameraActivity.this.showShortMsg("sorry,camera open failed");
                 return;
@@ -311,6 +340,14 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
 
     @Override // com.gizthon.camera.activity.CameraBaseActivity
     public void onClickTakePhoto() {
+        if (usePhoneCameraMode) {
+            takePhonePhoto();
+            return;
+        }
+        if (mCameraHelper == null || !mCameraHelper.isCameraOpened()) {
+            showShortMsg("Kamera tidak tersambung");
+            return;
+        }
         final String str = UVCCameraHelper.ROOT_PATH + CameraApplication.DIRECTORY_NAME + System.currentTimeMillis() + UVCCameraHelper.SUFFIX_JPEG;
         this.mCameraHelper.capturePicture(str, new AbstractUVCCameraHandler.OnCaptureListener() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.11
             @Override // com.serenegiant.usb.common.AbstractUVCCameraHandler.OnCaptureListener
@@ -356,6 +393,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         this.cameraManager.getUVCUSBCamera().setListener(new OnCameraConnectedListener() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.13
             @Override // com.gizthon.camera.core.OnCameraConnectedListener
             public void onConnectedSuccess(int i) {
+                UVCUSBCameraActivity.this.uvcCameraConnected = true;
                 if (i == 20003) {
                     new Handler(UVCUSBCameraActivity.this.getMainLooper()).postDelayed(new Runnable() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.13.1
                         @Override // java.lang.Runnable
@@ -377,10 +415,16 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
 
             @Override // com.gizthon.camera.core.OnCameraConnectedListener
             public void onConnectedFailed(int i) {
-                new Handler(UVCUSBCameraActivity.this.getMainLooper()).postDelayed(new Runnable() { // from class: com.gizthon.camera.activity.UVCUSBCameraActivity.13.3
-                    @Override // java.lang.Runnable
+                new Handler(UVCUSBCameraActivity.this.getMainLooper()).postDelayed(new Runnable() {
+                    @Override
                     public void run() {
-                        UVCUSBCameraActivity.this.binding.ivBroken.setVisibility(0);
+                        if (!UVCUSBCameraActivity.this.uvcCameraConnected) {
+                            // Tidak ada kamera USB — fallback otomatis ke kamera HP
+                            UVCUSBCameraActivity.this.usePhoneCameraMode = true;
+                            UVCUSBCameraActivity.this.startPhoneCamera();
+                        } else {
+                            UVCUSBCameraActivity.this.binding.ivBroken.setVisibility(0);
+                        }
                     }
                 }, 2000L);
             }
@@ -388,6 +432,16 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         this.cameraManager.getUVCUSBCamera().connectDevice();
         this.cameraManager.getUVCUSBCamera().onStart();
         this.mCameraHelper = this.cameraManager.getUVCUSBCamera().getCameraHelper();
+        // Safety timeout: jika 5 detik tidak ada kamera USB, fallback ke kamera HP
+        new Handler(getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (!uvcCameraConnected && !usePhoneCameraMode) {
+                    usePhoneCameraMode = true;
+                    startPhoneCamera();
+                }
+            }
+        }, 5000L);
     }
 
     @Override // com.gizthon.camera.activity.CameraBaseActivity
@@ -400,6 +454,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         super.onDestroy();
         FileUtils.releaseFile();
         this.cameraManager.getUVCUSBCamera().destroyDevice();
+        stopPhoneCamera();
         if (dbExecutor != null) {
             dbExecutor.shutdown();
         }
@@ -446,6 +501,8 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
 
     /* JADX INFO: Access modifiers changed from: private */
     public List<String> getResolutionList() {
+        // Guard: kembalikan null jika kamera USB tidak aktif (mode HP atau belum siap)
+        if (mCameraHelper == null) return null;
         List<Size> supportedPreviewSizes = this.mCameraHelper.getSupportedPreviewSizes();
         if (supportedPreviewSizes == null || supportedPreviewSizes.size() == 0) {
             return null;
@@ -468,5 +525,219 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         Intent intent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
         intent.setData(Uri.fromFile(file));
         sendBroadcast(intent);
+    }
+
+    // ── Phone Camera Methods ──────────────────────────────────────────────────
+
+    /** Inisialisasi TextureView kamera HP dari layout. */
+    private void initPhoneCameraView() {
+        int phoneViewId = getResources().getIdentifier("phone_camera_view", "id", getPackageName());
+        if (phoneViewId != 0) {
+            phoneTextureView = findViewById(phoneViewId);
+        }
+    }
+
+    /** Aktifkan mode kamera HP sebagai pengganti kamera USB. */
+    void startPhoneCamera() {
+        // Guard: cegah dipanggil dua kali (dari onConnectedFailed DAN timeout sekaligus)
+        if (phoneTextureView == null || phoneCameraThread != null) return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                phoneTextureView.setVisibility(View.VISIBLE);
+                binding.ivBroken.setVisibility(View.GONE);
+                // Sembunyikan juga icon UVC camera view yang lama
+                if (binding.cameraView != null) binding.cameraView.setVisibility(View.GONE);
+                int modeId = getResources().getIdentifier("tv_camera_mode", "id", getPackageName());
+                if (modeId != 0) {
+                    View tvMode = findViewById(modeId);
+                    if (tvMode != null) tvMode.setVisibility(View.VISIBLE);
+                }
+                Toast.makeText(UVCUSBCameraActivity.this,
+                    "📱 Kamera HP aktif (mode sementara)", Toast.LENGTH_LONG).show();
+            }
+        });
+        phoneCameraThread = new HandlerThread("PhoneCameraThread");
+        phoneCameraThread.start();
+        phoneCameraHandler = new android.os.Handler(phoneCameraThread.getLooper());
+        if (phoneTextureView.isAvailable()) {
+            openPhoneCamera();
+        } else {
+            phoneTextureView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
+                @Override
+                public void onSurfaceTextureAvailable(SurfaceTexture st, int w, int h) {
+                    openPhoneCamera();
+                }
+                @Override public void onSurfaceTextureSizeChanged(SurfaceTexture st, int w, int h) {}
+                @Override public boolean onSurfaceTextureDestroyed(SurfaceTexture st) { return true; }
+                @Override public void onSurfaceTextureUpdated(SurfaceTexture st) {}
+            });
+        }
+    }
+
+    /** Buka kamera belakang HP menggunakan Camera2 API. */
+    private void openPhoneCamera() {
+        try {
+            android.hardware.camera2.CameraManager cm =
+                (android.hardware.camera2.CameraManager) getSystemService(Context.CAMERA_SERVICE);
+            if (cm == null) return;
+            String[] ids = cm.getCameraIdList();
+            if (ids.length == 0) return;
+            // Pilih kamera belakang
+            String selectedId = ids[0];
+            for (String id : ids) {
+                CameraCharacteristics ch = cm.getCameraCharacteristics(id);
+                Integer facing = ch.get(CameraCharacteristics.LENS_FACING);
+                if (facing != null && facing == CameraCharacteristics.LENS_FACING_BACK) {
+                    selectedId = id;
+                    break;
+                }
+            }
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                if (checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
+                    checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Mohon izinkan akses Kamera & Storage", Toast.LENGTH_SHORT).show();
+                    requestPermissions(new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1001);
+                    return;
+                }
+            }
+            cm.openCamera(selectedId, new CameraDevice.StateCallback() {
+                @Override
+                public void onOpened(CameraDevice camera) {
+                    phoneCameraDevice = camera;
+                    createPhoneCameraPreview();
+                }
+                @Override
+                public void onDisconnected(CameraDevice camera) {
+                    camera.close();
+                    phoneCameraDevice = null;
+                }
+                @Override
+                public void onError(CameraDevice camera, int error) {
+                    camera.close();
+                    phoneCameraDevice = null;
+                }
+            }, phoneCameraHandler);
+        } catch (CameraAccessException | SecurityException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /** Buat sesi preview kamera HP. */
+    private void createPhoneCameraPreview() {
+        if (phoneCameraDevice == null || phoneTextureView == null) return;
+        try {
+            SurfaceTexture texture = phoneTextureView.getSurfaceTexture();
+            if (texture == null) return;
+            texture.setDefaultBufferSize(1280, 720);
+            Surface surface = new Surface(texture);
+            final CaptureRequest.Builder builder =
+                phoneCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
+            builder.addTarget(surface);
+            builder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
+            phoneCameraDevice.createCaptureSession(
+                Collections.singletonList(surface),
+                new android.hardware.camera2.CameraCaptureSession.StateCallback() {
+                    @Override
+                    public void onConfigured(android.hardware.camera2.CameraCaptureSession session) {
+                        phoneCaptureSession = session;
+                        try {
+                            session.setRepeatingRequest(builder.build(), null, phoneCameraHandler);
+                        } catch (CameraAccessException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    @Override
+                    public void onConfigureFailed(android.hardware.camera2.CameraCaptureSession session) {}
+                },
+                phoneCameraHandler
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /** Ambil foto dari preview kamera HP (capture bitmap dari TextureView). */
+    private void takePhonePhoto() {
+        if (phoneTextureView == null) { showShortMsg("Kamera HP tidak tersedia"); return; }
+        final Bitmap bitmap = phoneTextureView.getBitmap();
+        if (bitmap == null) { showShortMsg("Gagal mengambil gambar"); return; }
+        final String path = UVCCameraHelper.ROOT_PATH + CameraApplication.DIRECTORY_NAME
+            + System.currentTimeMillis() + UVCCameraHelper.SUFFIX_JPEG;
+        dbExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    File file = new File(path);
+                    if (file.getParentFile() != null) file.getParentFile().mkdirs();
+                    FileOutputStream fos = new FileOutputStream(file);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+                    fos.close();
+                    bitmap.recycle();
+                    if (currentPatientId != -1) {
+                        CervexaDatabase db = CervexaDatabase.getInstance(UVCUSBCameraActivity.this);
+                        db.patientDao().updateLastPhoto(currentPatientId, path,
+                            System.currentTimeMillis());
+                    }
+                    runOnUiThread(new Runnable() {
+                        @Override public void run() {
+                            Toast.makeText(UVCUSBCameraActivity.this,
+                                "📸 Foto tersimpan", Toast.LENGTH_SHORT).show();
+                            refresh(path);
+                        }
+                    });
+                } catch (final Exception e) {
+                    e.printStackTrace();
+                    runOnUiThread(new Runnable() {
+                        @Override public void run() {
+                            showShortMsg("Gagal simpan foto: " + e.getMessage());
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    /** Hentikan dan bebaskan semua resource kamera HP. */
+    private void stopPhoneCamera() {
+        try {
+            if (phoneCaptureSession != null) {
+                phoneCaptureSession.close();
+                phoneCaptureSession = null;
+            }
+            if (phoneCameraDevice != null) {
+                phoneCameraDevice.close();
+                phoneCameraDevice = null;
+            }
+            if (phoneCameraThread != null) {
+                phoneCameraThread.quitSafely();
+                phoneCameraThread.join();
+                phoneCameraThread = null;
+                phoneCameraHandler = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1001) {
+            boolean allGranted = true;
+            for (int res : grantResults) {
+                if (res != PackageManager.PERMISSION_GRANTED) {
+                    allGranted = false;
+                    break;
+                }
+            }
+            if (allGranted) {
+                if (usePhoneCameraMode) {
+                    openPhoneCamera();
+                }
+            } else {
+                Toast.makeText(this, "Izin ditolak, kamera tidak bisa digunakan", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
