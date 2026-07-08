@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 /* JADX INFO: loaded from: classes.dex */
 public class CameraApplication extends MainApplication {
-    public static final String DIRECTORY_NAME = "/MergeCamera/Media/Photo/Screen/";
+    public static final String DIRECTORY_NAME = "/Pictures/MergeCamera/Media/Photo/Screen/";
 
     @Override // com.jieli.stream.p016dv.running2.p017ui.MainApplication, android.app.Application
     public void onCreate() {

@@ -301,7 +301,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                 return;
             }
             if (!UVCUSBCameraActivity.this.mCameraHelper.isPushing()) {
-                String str = UVCCameraHelper.ROOT_PATH + "/MergeCamera/Media/Video/" + System.currentTimeMillis();
+                String str = UVCCameraHelper.ROOT_PATH + "/Movies/MergeCamera/Media/Video/" + System.currentTimeMillis();
                 RecordParams recordParams = new RecordParams();
                 recordParams.setRecordPath(str);
                 recordParams.setVoiceClose(true);

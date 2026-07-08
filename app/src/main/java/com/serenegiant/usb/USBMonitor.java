@@ -395,7 +395,9 @@ public final class USBMonitor {
             throw new IllegalStateException("already destroyed");
         }
         HashMap<String, UsbDevice> deviceList = this.mUsbManager.getDeviceList();
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/USBCamera/failed_devices.txt");
+        Context context = this.mWeakContext != null ? this.mWeakContext.get() : null;
+        String basePath = context != null && context.getExternalFilesDir(null) != null ? context.getExternalFilesDir(null).getAbsolutePath() : Environment.getExternalStorageDirectory().getAbsolutePath();
+        File file = new File(basePath + "/USBCamera/failed_devices.txt");
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
         }
