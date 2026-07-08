@@ -14,6 +14,18 @@ public class CameraApplication extends MainApplication {
         super.onCreate();
         CrashReport.initCrashReport(getApplicationContext(), "319a06884a", false);
         closeAndroid10Dialog();
+        
+        // Inject decompiled DataBinderMapperImpl into the global DataBindingUtil mapper
+        try {
+            java.lang.reflect.Field mapperField = androidx.databinding.DataBindingUtil.class.getDeclaredField("sMapper");
+            mapperField.setAccessible(true);
+            Object mapper = mapperField.get(null);
+            if (mapper instanceof androidx.databinding.MergedDataBinderMapper) {
+                ((androidx.databinding.MergedDataBinderMapper) mapper).addMapper(new com.gizthon.camera.DataBinderMapperImpl());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void closeAndroid10Dialog() {

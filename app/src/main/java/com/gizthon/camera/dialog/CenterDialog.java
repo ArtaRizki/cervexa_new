@@ -86,16 +86,7 @@ public abstract class CenterDialog extends DialogFragment {
     }
 
     public ViewDataBinding getLayoutBind() {
-        android.view.View view = getActivity().getLayoutInflater().inflate(getLayoutId(), null, false);
-        if (view.getTag() == null) {
-            String entryName = getActivity().getResources().getResourceEntryName(getLayoutId());
-            view.setTag("layout/" + entryName + "_0");
-        }
-        ViewDataBinding binding = new com.gizthon.camera.DataBinderMapperImpl().getDataBinder(DataBindingUtil.getDefaultComponent(), view, getLayoutId());
-        if (binding == null) {
-            binding = DataBindingUtil.bind(view);
-        }
-        return binding;
+        return DataBindingUtil.inflate(getActivity().getLayoutInflater(), getLayoutId(), null, false);
     }
 
     public void show(Object obj) {

@@ -6,7 +6,7 @@ public final class C0886R {
 
     /* JADX INFO: renamed from: com.baoyz.swipemenulistview.R$string */
     public static final class string {
-        public static final int app_name = 2131820586;
+        public static final int app_name = 0x7f11002b;
 
         private string() {
         }

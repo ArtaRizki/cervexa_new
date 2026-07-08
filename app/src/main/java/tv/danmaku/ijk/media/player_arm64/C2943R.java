@@ -6,7 +6,7 @@ public final class C2943R {
 
     /* JADX INFO: renamed from: tv.danmaku.ijk.media.player_arm64.R$string */
     public static final class string {
-        public static final int ijkplayer_dummy = 2131820712;
+        public static final int ijkplayer_dummy = 0x7f1100ab;
 
         private string() {
         }
