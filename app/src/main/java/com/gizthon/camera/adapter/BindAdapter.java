@@ -28,7 +28,12 @@ public class BindAdapter<T> extends RecyclerView.Adapter<BindAdapter.ViewHolder<
 
     @Override // androidx.recyclerview.widget.RecyclerView.Adapter
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        return new ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), this.layoutId, viewGroup, false));
+        android.view.View view = LayoutInflater.from(viewGroup.getContext()).inflate(this.layoutId, viewGroup, false);
+        ViewDataBinding binding = new com.gizthon.camera.DataBinderMapperImpl().getDataBinder(DataBindingUtil.getDefaultComponent(), view, this.layoutId);
+        if (binding == null) {
+            binding = DataBindingUtil.bind(view);
+        }
+        return new ViewHolder(binding);
     }
 
     @Override // androidx.recyclerview.widget.RecyclerView.Adapter
