@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.core.internal.view.SupportMenu;
 import androidx.core.view.InputDeviceCompat;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
 import com.jieli.stream.p016dv.running2.util.Dbug;
 import com.jieli.stream.p016dv.running2.util.IConstant;
@@ -178,7 +177,7 @@ public class TLView extends ViewGroup implements IConstant {
         this.mBackgroundPaint = paint;
         paint.setStrokeWidth(1.0f);
         this.mBackgroundPaint.setAntiAlias(true);
-        this.mBackgroundPaint.setColor(getResources().getColor(C1438R.color.half_transparent));
+        this.mBackgroundPaint.setColor(getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.half_transparent));
         TextPaint textPaint = new TextPaint(1);
         this.textPaint = textPaint;
         textPaint.setColor(-1);
@@ -191,7 +190,7 @@ public class TLView extends ViewGroup implements IConstant {
         this.mSelectedPaint = paint2;
         paint2.setStrokeWidth(1.0f);
         this.mSelectedPaint.setAntiAlias(true);
-        this.mSelectedPaint.setColor(getResources().getColor(C1438R.color.half_transparent));
+        this.mSelectedPaint.setColor(getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.half_transparent));
         Paint paint3 = new Paint();
         this.eventPaint = paint3;
         paint3.setStrokeWidth(1.0f);

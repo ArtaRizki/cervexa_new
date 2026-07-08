@@ -11,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import com.generalplus.GoPlusDrone.Activity.FullImageActivity;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.generalplus.GoPlusDrone.Fragment.BaseFragment;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.stream.p016dv.running2.util.IConstant;
@@ -90,15 +89,15 @@ public class PhotoListFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1021R.layout.activity_filelist, viewGroup, false);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.activity_filelist, viewGroup, false);
         this.mContext = getActivity();
-        GridView gridView = (GridView) viewInflate.findViewById(C1021R.id.gridView);
+        GridView gridView = (GridView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.gridView);
         this.m_GridView = gridView;
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() { // from class: com.generalplus.GoPlusDrone.Fragment.PhotoListFragment.1
             @Override // android.widget.AdapterView.OnItemClickListener
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
                 if (PhotoListFragment.this.m_bEdit) {
-                    CheckBox checkBox = (CheckBox) view.findViewById(C1021R.id.checkBox);
+                    CheckBox checkBox = (CheckBox) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.checkBox);
                     checkBox.toggle();
                     if (checkBox.isChecked()) {
                         PhotoListFragment.this.m_HashMap.put(Integer.valueOf(i), Integer.valueOf(i));
@@ -116,7 +115,7 @@ public class PhotoListFragment extends BaseFragment {
             }
         });
         getFile();
-        this.m_Adapter = new BaseFragment.ListViewItemAdapter(this.mContext, this.listImageItem, C1021R.layout.downloaded_filelist, new String[]{"KEY_ThumbnailFilePath", "KEY_FileName", "KEY_FileIndex"}, new int[]{C1021R.id.imageView1, C1021R.id.textView1});
+        this.m_Adapter = new BaseFragment.ListViewItemAdapter(this.mContext, this.listImageItem, com.weioa.KmedHealthIndonesia.R.layout.downloaded_filelist, new String[]{"KEY_ThumbnailFilePath", "KEY_FileName", "KEY_FileIndex"}, new int[]{com.weioa.KmedHealthIndonesia.R.id.imageView1, com.weioa.KmedHealthIndonesia.R.id.textView1});
         this.m_GridView.setAdapter((ListAdapter) this.m_Adapter);
         this.m_Adapter.notifyDataSetChanged();
         return viewInflate;

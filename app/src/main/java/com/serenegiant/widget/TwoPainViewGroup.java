@@ -14,7 +14,6 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.FrameLayout;
 import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
-import com.serenegiant.common.C1831R;
 import com.serenegiant.utils.BuildCheck;
 
 /* JADX INFO: loaded from: classes2.dex */
@@ -80,12 +79,12 @@ public class TwoPainViewGroup extends FrameLayout {
                 TwoPainViewGroup.this.requestLayout();
             }
         };
-        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C1831R.styleable.TwoPainViewGroup, i, 0);
-        this.mOrientation = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.TwoPainViewGroup_orientation, 0);
-        this.mDisplayMode = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.TwoPainViewGroup_displayMode, 0);
-        this.mEnableSubWindow = typedArrayObtainStyledAttributes.getBoolean(C1831R.styleable.TwoPainViewGroup_enableSubWindow, true);
-        this.mFlipChildPos = typedArrayObtainStyledAttributes.getBoolean(C1831R.styleable.TwoPainViewGroup_flipChildPos, false);
-        float f = typedArrayObtainStyledAttributes.getFloat(C1831R.styleable.TwoPainViewGroup_subWindowScale, 0.2f);
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.TwoPainViewGroup, i, 0);
+        this.mOrientation = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.TwoPainViewGroup_orientation, 0);
+        this.mDisplayMode = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.TwoPainViewGroup_displayMode, 0);
+        this.mEnableSubWindow = typedArrayObtainStyledAttributes.getBoolean(com.weioa.KmedHealthIndonesia.R.styleable.TwoPainViewGroup_enableSubWindow, true);
+        this.mFlipChildPos = typedArrayObtainStyledAttributes.getBoolean(com.weioa.KmedHealthIndonesia.R.styleable.TwoPainViewGroup_flipChildPos, false);
+        float f = typedArrayObtainStyledAttributes.getFloat(com.weioa.KmedHealthIndonesia.R.styleable.TwoPainViewGroup_subWindowScale, 0.2f);
         this.mSubWindowScale = f;
         if (f <= 0.0f || f >= 1.0f) {
             this.mSubWindowScale = 0.2f;

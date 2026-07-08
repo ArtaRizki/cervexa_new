@@ -7,8 +7,6 @@ import android.view.WindowManager;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.jieli.stream.p016dv.running2.C1438R;
-
 /* JADX INFO: loaded from: classes.dex */
 public class BaseDialogFragment extends DialogFragment {
     private Bundle bundle;
@@ -24,7 +22,7 @@ public class BaseDialogFragment extends DialogFragment {
         WindowManager.LayoutParams attributes = window.getAttributes();
         attributes.dimAmount = 0.5f;
         attributes.flags |= 2;
-        attributes.windowAnimations = C1438R.style.MyDialogTheme;
+        attributes.windowAnimations = com.weioa.KmedHealthIndonesia.R.style.MyDialogTheme;
         window.setAttributes(attributes);
     }
 

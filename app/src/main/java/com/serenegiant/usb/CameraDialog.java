@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
-import com.jiangdg.libusbcamera.C1401R;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,10 +112,10 @@ public class CameraDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle bundle) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(initView());
-        builder.setTitle(C1401R.string.select);
+        builder.setTitle(com.weioa.KmedHealthIndonesia.R.string.select);
         builder.setPositiveButton(R.string.ok, this.mOnDialogClickListener);
         builder.setNegativeButton(R.string.cancel, this.mOnDialogClickListener);
-        builder.setNeutralButton(C1401R.string.refresh, (DialogInterface.OnClickListener) null);
+        builder.setNeutralButton(com.weioa.KmedHealthIndonesia.R.string.refresh, (DialogInterface.OnClickListener) null);
         AlertDialog alertDialogCreate = builder.create();
         alertDialogCreate.setCancelable(true);
         alertDialogCreate.setCanceledOnTouchOutside(true);
@@ -124,8 +123,8 @@ public class CameraDialog extends DialogFragment {
     }
 
     private final View initView() {
-        View viewInflate = getActivity().getLayoutInflater().inflate(C1401R.layout.dialog_camera, (ViewGroup) null);
-        this.mSpinner = (Spinner) viewInflate.findViewById(C1401R.id.spinner1);
+        View viewInflate = getActivity().getLayoutInflater().inflate(com.weioa.KmedHealthIndonesia.R.layout.dialog_camera, (ViewGroup) null);
+        this.mSpinner = (Spinner) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.spinner1);
         this.mSpinner.setEmptyView(viewInflate.findViewById(R.id.empty));
         return viewInflate;
     }
@@ -147,7 +146,7 @@ public class CameraDialog extends DialogFragment {
     }
 
     public void updateDevices() {
-        DeviceListAdapter deviceListAdapter = new DeviceListAdapter(getActivity(), this.mUSBMonitor.getDeviceList(DeviceFilter.getDeviceFilters(getActivity(), C1401R.xml.device_filter).get(0)));
+        DeviceListAdapter deviceListAdapter = new DeviceListAdapter(getActivity(), this.mUSBMonitor.getDeviceList(DeviceFilter.getDeviceFilters(getActivity(), com.weioa.KmedHealthIndonesia.R.xml.device_filter).get(0)));
         this.mDeviceListAdapter = deviceListAdapter;
         this.mSpinner.setAdapter((SpinnerAdapter) deviceListAdapter);
     }
@@ -182,7 +181,7 @@ public class CameraDialog extends DialogFragment {
         @Override // android.widget.Adapter
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
-                view = this.mInflater.inflate(C1401R.layout.listitem_device, viewGroup, false);
+                view = this.mInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.listitem_device, viewGroup, false);
             }
             if (view instanceof CheckedTextView) {
                 UsbDevice item = getItem(i);

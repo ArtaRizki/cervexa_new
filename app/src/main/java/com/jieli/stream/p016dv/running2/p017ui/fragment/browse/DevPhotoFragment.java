@@ -20,7 +20,6 @@ import com.jieli.lib.p015dv.control.json.bean.NotifyInfo;
 import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Topic;
 import com.jieli.lib.p015dv.control.utils.TopicKey;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
 import com.jieli.stream.p016dv.running2.bean.ItemBean;
 import com.jieli.stream.p016dv.running2.bean.MediaTaskInfo;
@@ -98,22 +97,22 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_dev_photo, viewGroup, false);
-        this.normalLayout = (RelativeLayout) viewInflate.findViewById(C1438R.id.dev_photo_normal_layout);
-        this.editLayout = (RelativeLayout) viewInflate.findViewById(C1438R.id.dev_photo_edit_layout);
-        this.bottomBar = (LinearLayout) viewInflate.findViewById(C1438R.id.dev_photo_bottom_bar);
-        this.tvSelectAll = (TextView) viewInflate.findViewById(C1438R.id.dev_photo_select_all);
-        this.tvSelected = (TextView) viewInflate.findViewById(C1438R.id.dev_photo_select_num);
-        this.tvExitMode = (TextView) viewInflate.findViewById(C1438R.id.dev_photo_exit_mode);
-        ImageView imageView = (ImageView) viewInflate.findViewById(C1438R.id.dev_photo_return);
-        ImageView imageView2 = (ImageView) viewInflate.findViewById(C1438R.id.dev_photo_edit);
-        this.emptyView = (LinearLayout) viewInflate.findViewById(C1438R.id.view_empty);
-        this.mListView = (ListView) viewInflate.findViewById(C1438R.id.dev_photo_view);
-        this.footerView = (ExpandFooterView) viewInflate.findViewById(C1438R.id.dev_photo_footer);
-        ((LinearLayout) viewInflate.findViewById(C1438R.id.pop_bottom_bar_share)).setVisibility(8);
-        LinearLayout linearLayout = (LinearLayout) viewInflate.findViewById(C1438R.id.pop_bottom_bar_download);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_dev_photo, viewGroup, false);
+        this.normalLayout = (RelativeLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dev_photo_normal_layout);
+        this.editLayout = (RelativeLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dev_photo_edit_layout);
+        this.bottomBar = (LinearLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dev_photo_bottom_bar);
+        this.tvSelectAll = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dev_photo_select_all);
+        this.tvSelected = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dev_photo_select_num);
+        this.tvExitMode = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dev_photo_exit_mode);
+        ImageView imageView = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dev_photo_return);
+        ImageView imageView2 = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dev_photo_edit);
+        this.emptyView = (LinearLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.view_empty);
+        this.mListView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dev_photo_view);
+        this.footerView = (ExpandFooterView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dev_photo_footer);
+        ((LinearLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_share)).setVisibility(8);
+        LinearLayout linearLayout = (LinearLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_download);
         linearLayout.setVisibility(0);
-        LinearLayout linearLayout2 = (LinearLayout) viewInflate.findViewById(C1438R.id.pop_bottom_bar_delete);
+        LinearLayout linearLayout2 = (LinearLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_delete);
         imageView.setOnClickListener(this);
         imageView2.setOnClickListener(this);
         this.tvSelectAll.setOnClickListener(this);
@@ -199,11 +198,11 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
             return;
         }
         int id = view.getId();
-        if (id == C1438R.id.dev_photo_return) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dev_photo_return) {
             getActivity().onBackPressed();
             return;
         }
-        if (id == C1438R.id.dev_photo_edit) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dev_photo_edit) {
             List<FileInfo> list = this.photoInfoList;
             if (list != null && list.size() > 0) {
                 this.isEditMode = true;
@@ -220,10 +219,10 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
                 }
                 return;
             }
-            ToastUtil.showToastShort(getString(C1438R.string.no_data_tip));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.no_data_tip));
             return;
         }
-        if (id == C1438R.id.dev_photo_exit_mode) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dev_photo_exit_mode) {
             this.isEditMode = false;
             this.isSelectAll = false;
             List<FileInfo> list3 = this.selectedList;
@@ -247,7 +246,7 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
             this.fileOp = 0;
             return;
         }
-        if (id == C1438R.id.dev_photo_select_all) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dev_photo_select_all) {
             boolean z = !this.isSelectAll;
             this.isSelectAll = z;
             if (z) {
@@ -284,24 +283,24 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
             }
             return;
         }
-        if (id == C1438R.id.pop_bottom_bar_download) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_download) {
             List<FileInfo> list5 = this.selectedList;
             if (list5 != null && list5.size() > 0) {
                 this.fileOp = IConstant.OP_DOWNLOAD_FILES;
-                showWaitingDialog(getString(C1438R.string.downloading_tip));
+                showWaitingDialog(getString(com.weioa.KmedHealthIndonesia.R.string.downloading_tip));
                 handlerTaskList(false);
                 return;
             }
-            ToastUtil.showToastShort(getString(C1438R.string.selected_file_empty_tip));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.selected_file_empty_tip));
             return;
         }
-        if (id == C1438R.id.pop_bottom_bar_delete) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_delete) {
             List<FileInfo> list6 = this.selectedList;
             if (list6 != null && list6.size() > 0) {
-                showWaitingDialog(getString(C1438R.string.deleting_tip));
+                showWaitingDialog(getString(com.weioa.KmedHealthIndonesia.R.string.deleting_tip));
                 handlerDeleteFiles();
             } else {
-                ToastUtil.showToastShort(getString(C1438R.string.selected_file_empty_tip));
+                ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.selected_file_empty_tip));
             }
         }
     }
@@ -338,7 +337,7 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
         }
         String str = this.downloadDir + File.separator + AppUtils.getDownloadFilename(fileInfo);
         if (!AppUtils.checkFileExist(str)) {
-            showWaitingDialog(getString(C1438R.string.downloading_tip));
+            showWaitingDialog(getString(com.weioa.KmedHealthIndonesia.R.string.downloading_tip));
             this.selectedList.add(fileInfo);
             this.fileOp = IConstant.OP_DOWNLOAD_FILES;
             handlerTaskList(false);
@@ -368,7 +367,7 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
     private void setSelectNum(int i) {
         TextView textView = this.tvSelected;
         if (textView != null) {
-            textView.setText(getString(C1438R.string.selected_num, Integer.valueOf(i)));
+            textView.setText(getString(com.weioa.KmedHealthIndonesia.R.string.selected_num, Integer.valueOf(i)));
         }
     }
 
@@ -433,7 +432,7 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
                     this.emptyView.setVisibility(0);
                     return;
                 }
-                ToastUtil.showToastShort(getString(C1438R.string.no_more_data));
+                ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.no_more_data));
                 return;
             }
             return;
@@ -473,7 +472,7 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
             if (linearLayout == null || linearLayout.getVisibility() == 0) {
                 return;
             }
-            this.bottomBar.setAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(), C1438R.anim.slide_in_bottom));
+            this.bottomBar.setAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(), com.weioa.KmedHealthIndonesia.R.anim.slide_in_bottom));
             this.bottomBar.setVisibility(0);
             return;
         }
@@ -482,7 +481,7 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
         }
         LinearLayout linearLayout2 = this.bottomBar;
         if (linearLayout2 != null && linearLayout2.getVisibility() != 8) {
-            this.bottomBar.setAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(), C1438R.anim.slide_out_bottom));
+            this.bottomBar.setAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(), com.weioa.KmedHealthIndonesia.R.anim.slide_out_bottom));
             this.bottomBar.setVisibility(8);
         }
         if (this.normalLayout.getVisibility() != 0) {
@@ -492,7 +491,7 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
 
     private void handlerSelectAllUI() {
         if (this.isSelectAll) {
-            this.tvSelectAll.setText(getString(C1438R.string.cancel_all_select));
+            this.tvSelectAll.setText(getString(com.weioa.KmedHealthIndonesia.R.string.cancel_all_select));
             List<FileInfo> list = this.selectedList;
             if (list != null) {
                 setSelectNum(list.size());
@@ -500,7 +499,7 @@ public class DevPhotoFragment extends BaseFragment implements View.OnClickListen
             }
             return;
         }
-        this.tvSelectAll.setText(getString(C1438R.string.all_select));
+        this.tvSelectAll.setText(getString(com.weioa.KmedHealthIndonesia.R.string.all_select));
     }
 
     /* JADX INFO: Access modifiers changed from: private */

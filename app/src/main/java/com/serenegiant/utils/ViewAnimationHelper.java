@@ -5,8 +5,6 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.util.Log;
 import android.view.View;
-import com.serenegiant.common.C1831R;
-
 /* JADX INFO: loaded from: classes2.dex */
 public class ViewAnimationHelper {
     public static final int ANIMATION_FADE_IN = 1;
@@ -53,8 +51,8 @@ public class ViewAnimationHelper {
             @Override // java.lang.Runnable
             public void run() {
                 view.setVisibility(0);
-                view.setTag(C1831R.id.anim_type, 1);
-                view.setTag(C1831R.id.anim_listener, viewAnimationListener);
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.anim_type, 1);
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.anim_listener, viewAnimationListener);
                 view.setScaleX(1.0f);
                 view.setScaleY(1.0f);
                 view.setAlpha(0.0f);
@@ -82,8 +80,8 @@ public class ViewAnimationHelper {
         view.postDelayed(new Runnable() { // from class: com.serenegiant.utils.ViewAnimationHelper.2
             @Override // java.lang.Runnable
             public void run() {
-                view.setTag(C1831R.id.anim_type, 0);
-                view.setTag(C1831R.id.anim_listener, viewAnimationListener);
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.anim_type, 0);
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.anim_listener, viewAnimationListener);
                 view.setScaleX(1.0f);
                 view.setScaleY(1.0f);
                 view.setAlpha(1.0f);
@@ -112,8 +110,8 @@ public class ViewAnimationHelper {
             @Override // java.lang.Runnable
             public void run() {
                 view.setVisibility(0);
-                view.setTag(C1831R.id.anim_type, 2);
-                view.setTag(C1831R.id.anim_listener, viewAnimationListener);
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.anim_type, 2);
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.anim_listener, viewAnimationListener);
                 view.setScaleX(0.0f);
                 view.setScaleY(0.0f);
                 view.setAlpha(1.0f);
@@ -142,8 +140,8 @@ public class ViewAnimationHelper {
             @Override // java.lang.Runnable
             public void run() {
                 view.setVisibility(0);
-                view.setTag(C1831R.id.anim_type, 3);
-                view.setTag(C1831R.id.anim_listener, viewAnimationListener);
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.anim_type, 3);
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.anim_listener, viewAnimationListener);
                 view.setScaleX(1.0f);
                 view.setScaleY(1.0f);
                 view.setAlpha(1.0f);
@@ -172,9 +170,9 @@ public class ViewAnimationHelper {
             if (view == null) {
                 return;
             }
-            final ViewAnimationListener viewAnimationListener = (ViewAnimationListener) view.getTag(C1831R.id.anim_listener);
+            final ViewAnimationListener viewAnimationListener = (ViewAnimationListener) view.getTag(com.weioa.KmedHealthIndonesia.R.id.anim_listener);
             try {
-                final int iIntValue = ((Integer) view.getTag(C1831R.id.anim_type)).intValue();
+                final int iIntValue = ((Integer) view.getTag(com.weioa.KmedHealthIndonesia.R.id.anim_type)).intValue();
                 if (viewAnimationListener != null) {
                     view.postDelayed(new Runnable() { // from class: com.serenegiant.utils.ViewAnimationHelper.6
                         @Override // java.lang.Runnable

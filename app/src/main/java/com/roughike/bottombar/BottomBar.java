@@ -94,29 +94,29 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
     }
 
     private void populateAttributes(Context context, AttributeSet attributeSet) {
-        this.primaryColor = MiscUtils.getColor(getContext(), C1826R.attr.colorPrimary);
+        this.primaryColor = MiscUtils.getColor(getContext(), com.weioa.KmedHealthIndonesia.R.attr.colorPrimary);
         this.screenWidth = MiscUtils.getScreenWidth(getContext());
         this.tenDp = MiscUtils.dpToPixel(getContext(), 10.0f);
         this.maxFixedItemWidth = MiscUtils.dpToPixel(getContext(), 168.0f);
-        TypedArray typedArrayObtainStyledAttributes = context.getTheme().obtainStyledAttributes(attributeSet, C1826R.styleable.BottomBar, 0, 0);
+        TypedArray typedArrayObtainStyledAttributes = context.getTheme().obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.BottomBar, 0, 0);
         try {
-            this.tabXmlResource = typedArrayObtainStyledAttributes.getResourceId(C1826R.styleable.BottomBar_bb_tabXmlResource, 0);
-            this.isTabletMode = typedArrayObtainStyledAttributes.getBoolean(C1826R.styleable.BottomBar_bb_tabletMode, false);
-            this.behaviors = typedArrayObtainStyledAttributes.getInteger(C1826R.styleable.BottomBar_bb_behavior, 0);
-            this.inActiveTabAlpha = typedArrayObtainStyledAttributes.getFloat(C1826R.styleable.BottomBar_bb_inActiveTabAlpha, isShiftingMode() ? DEFAULT_INACTIVE_SHIFTING_TAB_ALPHA : 1.0f);
-            this.activeTabAlpha = typedArrayObtainStyledAttributes.getFloat(C1826R.styleable.BottomBar_bb_activeTabAlpha, 1.0f);
+            this.tabXmlResource = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_tabXmlResource, 0);
+            this.isTabletMode = typedArrayObtainStyledAttributes.getBoolean(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_tabletMode, false);
+            this.behaviors = typedArrayObtainStyledAttributes.getInteger(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_behavior, 0);
+            this.inActiveTabAlpha = typedArrayObtainStyledAttributes.getFloat(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_inActiveTabAlpha, isShiftingMode() ? DEFAULT_INACTIVE_SHIFTING_TAB_ALPHA : 1.0f);
+            this.activeTabAlpha = typedArrayObtainStyledAttributes.getFloat(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_activeTabAlpha, 1.0f);
             int i = -1;
-            int color = isShiftingMode() ? -1 : ContextCompat.getColor(context, C1826R.color.bb_inActiveBottomBarItemColor);
+            int color = isShiftingMode() ? -1 : ContextCompat.getColor(context, com.weioa.KmedHealthIndonesia.R.color.bb_inActiveBottomBarItemColor);
             if (!isShiftingMode()) {
                 i = this.primaryColor;
             }
-            this.inActiveTabColor = typedArrayObtainStyledAttributes.getColor(C1826R.styleable.BottomBar_bb_inActiveTabColor, color);
-            this.activeTabColor = typedArrayObtainStyledAttributes.getColor(C1826R.styleable.BottomBar_bb_activeTabColor, i);
-            this.badgeBackgroundColor = typedArrayObtainStyledAttributes.getColor(C1826R.styleable.BottomBar_bb_badgeBackgroundColor, SupportMenu.CATEGORY_MASK);
-            this.hideBadgeWhenActive = typedArrayObtainStyledAttributes.getBoolean(C1826R.styleable.BottomBar_bb_badgesHideWhenActive, true);
-            this.titleTextAppearance = typedArrayObtainStyledAttributes.getResourceId(C1826R.styleable.BottomBar_bb_titleTextAppearance, 0);
-            this.titleTypeFace = getTypeFaceFromAsset(typedArrayObtainStyledAttributes.getString(C1826R.styleable.BottomBar_bb_titleTypeFace));
-            this.showShadow = typedArrayObtainStyledAttributes.getBoolean(C1826R.styleable.BottomBar_bb_showShadow, true);
+            this.inActiveTabColor = typedArrayObtainStyledAttributes.getColor(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_inActiveTabColor, color);
+            this.activeTabColor = typedArrayObtainStyledAttributes.getColor(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_activeTabColor, i);
+            this.badgeBackgroundColor = typedArrayObtainStyledAttributes.getColor(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_badgeBackgroundColor, SupportMenu.CATEGORY_MASK);
+            this.hideBadgeWhenActive = typedArrayObtainStyledAttributes.getBoolean(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_badgesHideWhenActive, true);
+            this.titleTextAppearance = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_titleTextAppearance, 0);
+            this.titleTypeFace = getTypeFaceFromAsset(typedArrayObtainStyledAttributes.getString(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_titleTypeFace));
+            this.showShadow = typedArrayObtainStyledAttributes.getBoolean(com.weioa.KmedHealthIndonesia.R.styleable.BottomBar_bb_showShadow, true);
         } finally {
             typedArrayObtainStyledAttributes.recycle();
         }
@@ -151,12 +151,12 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
         setLayoutParams(layoutParams);
         setOrientation(!this.isTabletMode ? 1 : 0);
         ViewCompat.setElevation(this, MiscUtils.dpToPixel(getContext(), 8.0f));
-        View viewInflate = inflate(getContext(), this.isTabletMode ? C1826R.layout.bb_bottom_bar_item_container_tablet : C1826R.layout.bb_bottom_bar_item_container, this);
+        View viewInflate = inflate(getContext(), this.isTabletMode ? com.weioa.KmedHealthIndonesia.R.layout.bb_bottom_bar_item_container_tablet : com.weioa.KmedHealthIndonesia.R.layout.bb_bottom_bar_item_container, this);
         viewInflate.setLayoutParams(layoutParams);
-        this.backgroundOverlay = viewInflate.findViewById(C1826R.id.bb_bottom_bar_background_overlay);
-        this.outerContainer = (ViewGroup) viewInflate.findViewById(C1826R.id.bb_bottom_bar_outer_container);
-        this.tabContainer = (ViewGroup) viewInflate.findViewById(C1826R.id.bb_bottom_bar_item_container);
-        View viewFindViewById = viewInflate.findViewById(C1826R.id.bb_bottom_bar_shadow);
+        this.backgroundOverlay = viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.bb_bottom_bar_background_overlay);
+        this.outerContainer = (ViewGroup) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.bb_bottom_bar_outer_container);
+        this.tabContainer = (ViewGroup) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.bb_bottom_bar_item_container);
+        View viewFindViewById = viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.bb_bottom_bar_shadow);
         this.shadowView = viewFindViewById;
         if (this.showShadow) {
             return;
@@ -243,7 +243,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
         double d = iMin;
         this.inActiveShiftingItemWidth = (int) (0.9d * d);
         this.activeShiftingItemWidth = (int) (d + (((double) (bottomBarTabArr.length - 1)) * 0.1d * d));
-        int iRound = Math.round(getContext().getResources().getDimension(C1826R.dimen.bb_height));
+        int iRound = Math.round(getContext().getResources().getDimension(com.weioa.KmedHealthIndonesia.R.dimen.bb_height));
         for (BottomBarTab bottomBarTab : bottomBarTabArr) {
             ViewGroup.LayoutParams layoutParams = bottomBarTab.getLayoutParams();
             layoutParams.height = iRound;

@@ -17,7 +17,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import com.serenegiant.common.C1831R;
 import com.serenegiant.utils.BuildCheck;
 import com.serenegiant.utils.HandlerThreadHandler;
 import java.util.Iterator;
@@ -29,7 +28,7 @@ public abstract class BaseService extends Service {
     private volatile boolean mDestroyed;
     private LocalBroadcastManager mLocalBroadcastManager;
     private static final String TAG = BaseService.class.getSimpleName();
-    private static final int NOTIFICATION_ID = C1831R.string.service_name;
+    private static final int NOTIFICATION_ID = com.weioa.KmedHealthIndonesia.R.string.service_name;
     protected final Object mSync = new Object();
     private final Handler mUIHandler = new Handler(Looper.getMainLooper());
     private final BroadcastReceiver mLocalBroadcastReceiver = new BroadcastReceiver() { // from class: com.serenegiant.service.BaseService.1
@@ -130,7 +129,7 @@ public abstract class BaseService extends Service {
 
         /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
         public NotificationFactory(String str, String str2, int i) {
-            this(str, str, 0, null, null, i, C1831R.drawable.ic_notification);
+            this(str, str, 0, null, null, i, com.weioa.KmedHealthIndonesia.R.drawable.ic_notification);
             BuildCheck.isAndroid7();
         }
 
@@ -216,11 +215,11 @@ public abstract class BaseService extends Service {
     }
 
     protected void showNotification(int i, CharSequence charSequence, CharSequence charSequence2, PendingIntent pendingIntent) {
-        showNotification(NOTIFICATION_ID, getString(C1831R.string.service_name), null, null, i, C1831R.drawable.ic_notification, charSequence, charSequence2, true, pendingIntent);
+        showNotification(NOTIFICATION_ID, getString(com.weioa.KmedHealthIndonesia.R.string.service_name), null, null, i, com.weioa.KmedHealthIndonesia.R.drawable.ic_notification, charSequence, charSequence2, true, pendingIntent);
     }
 
     protected void showNotification(int i, CharSequence charSequence, CharSequence charSequence2, boolean z, PendingIntent pendingIntent) {
-        showNotification(NOTIFICATION_ID, getString(C1831R.string.service_name), null, null, i, C1831R.drawable.ic_notification, charSequence, charSequence2, z, pendingIntent);
+        showNotification(NOTIFICATION_ID, getString(com.weioa.KmedHealthIndonesia.R.string.service_name), null, null, i, com.weioa.KmedHealthIndonesia.R.drawable.ic_notification, charSequence, charSequence2, z, pendingIntent);
     }
 
     protected void showNotification(int i, String str, int i2, int i3, CharSequence charSequence, CharSequence charSequence2, PendingIntent pendingIntent) {
@@ -255,7 +254,7 @@ public abstract class BaseService extends Service {
     }
 
     protected void releaseNotification() {
-        releaseNotification(NOTIFICATION_ID, getString(C1831R.string.service_name), C1831R.drawable.ic_notification, C1831R.drawable.ic_notification, getString(C1831R.string.service_name), getString(C1831R.string.service_stop));
+        releaseNotification(NOTIFICATION_ID, getString(com.weioa.KmedHealthIndonesia.R.string.service_name), com.weioa.KmedHealthIndonesia.R.drawable.ic_notification, com.weioa.KmedHealthIndonesia.R.drawable.ic_notification, getString(com.weioa.KmedHealthIndonesia.R.string.service_name), getString(com.weioa.KmedHealthIndonesia.R.string.service_stop));
     }
 
     protected void releaseNotification(int i, String str, int i2, int i3, CharSequence charSequence, CharSequence charSequence2) {

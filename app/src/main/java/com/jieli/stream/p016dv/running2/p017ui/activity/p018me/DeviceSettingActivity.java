@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import androidx.fragment.app.Fragment;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity;
 import com.jieli.stream.p016dv.running2.p017ui.fragment.settings.DeviceAdvancedSettingFragment;
 import com.jieli.stream.p016dv.running2.p017ui.fragment.settings.DeviceCameraModeFragment;
@@ -30,89 +29,89 @@ public class DeviceSettingActivity extends BaseActivity {
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1438R.layout.activity_generic);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_generic);
         toDeviceSettingFragment();
     }
 
     public void toDeviceSettingFragment() {
-        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
         if (!(fragmentFindFragmentById instanceof DeviceSettingFragment) && (fragmentFindFragmentById = getSupportFragmentManager().findFragmentByTag(DeviceSettingFragment.class.getSimpleName())) == null) {
             fragmentFindFragmentById = new DeviceSettingFragment();
         }
-        changeFragment(C1438R.id.generic_fragment_layout, fragmentFindFragmentById);
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, fragmentFindFragmentById);
     }
 
     public void toDeviceNameFragment() {
         Dbug.m1388e(this.tag, "toDeviceNameFragment");
-        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
         if (!(fragmentFindFragmentById instanceof DeviceNameFragment) && (fragmentFindFragmentById = getSupportFragmentManager().findFragmentByTag(DeviceNameFragment.class.getSimpleName())) == null) {
             fragmentFindFragmentById = new DeviceNameFragment();
         }
-        changeFragment(C1438R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     public void toDevicePwdFragment() {
-        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
         if (!(fragmentFindFragmentById instanceof DevicePwdFragment) && (fragmentFindFragmentById = getSupportFragmentManager().findFragmentByTag(DevicePwdFragment.class.getSimpleName())) == null) {
             fragmentFindFragmentById = new DevicePwdFragment();
         }
-        changeFragment(C1438R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     public void toDeviceVolumeFragment() {
-        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
         if (!(fragmentFindFragmentById instanceof DeviceVolumeFragment) && (fragmentFindFragmentById = getSupportFragmentManager().findFragmentByTag(DeviceVolumeFragment.class.getSimpleName())) == null) {
             fragmentFindFragmentById = new DeviceVolumeFragment();
         }
-        changeFragment(C1438R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     public void toDevicePictureQualityFragment() {
-        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
         if (!(fragmentFindFragmentById instanceof DevicePhotoQualityFragment) && (fragmentFindFragmentById = getSupportFragmentManager().findFragmentByTag(DevicePhotoQualityFragment.class.getSimpleName())) == null) {
             fragmentFindFragmentById = new DevicePhotoQualityFragment();
         }
-        changeFragment(C1438R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     public void toDeviceRecordQualityFragment() {
-        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
         if (!(fragmentFindFragmentById instanceof RecordQualityFragment) && (fragmentFindFragmentById = getSupportFragmentManager().findFragmentByTag(RecordQualityFragment.class.getSimpleName())) == null) {
             fragmentFindFragmentById = new RecordQualityFragment();
         }
-        changeFragment(C1438R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     public void toDeviceCameraModeFragment() {
-        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
         if (!(fragmentFindFragmentById instanceof DeviceCameraModeFragment) && (fragmentFindFragmentById = getSupportFragmentManager().findFragmentByTag(DeviceCameraModeFragment.class.getSimpleName())) == null) {
             fragmentFindFragmentById = new DeviceCameraModeFragment();
         }
-        changeFragment(C1438R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     public void toDeviceAdvancedSettingFragment() {
-        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
         if (!(fragmentFindFragmentById instanceof DeviceAdvancedSettingFragment) && (fragmentFindFragmentById = getSupportFragmentManager().findFragmentByTag(DeviceAdvancedSettingFragment.class.getSimpleName())) == null) {
             fragmentFindFragmentById = new DeviceAdvancedSettingFragment();
         }
-        changeFragment(C1438R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     public void toDeviceStorageManageFragment() {
-        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
         if (!(fragmentFindFragmentById instanceof DeviceStorageManageFragment) && (fragmentFindFragmentById = getSupportFragmentManager().findFragmentByTag(DeviceStorageManageFragment.class.getSimpleName())) == null) {
             fragmentFindFragmentById = new DeviceStorageManageFragment();
         }
-        changeFragment(C1438R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     public void toDeviceStaModeFragment() {
-        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+        Fragment fragmentFindFragmentById = getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
         if (!(fragmentFindFragmentById instanceof DeviceStaModeFragment) && (fragmentFindFragmentById = getSupportFragmentManager().findFragmentByTag(DeviceStaModeFragment.class.getSimpleName())) == null) {
             fragmentFindFragmentById = new DeviceStaModeFragment();
         }
-        changeFragment(C1438R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     public void returnBtnClick(View view) {

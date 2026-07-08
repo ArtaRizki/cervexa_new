@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.generalplus.GoPlusDrone.Fragment.TabFragment;
 import java.util.Locale;
 
@@ -18,9 +17,9 @@ public class MainOldActivity extends AppCompatActivity {
     @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1021R.layout.content_main);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.content_main);
         this.m_bIsCard = getIntent().getExtras().getBoolean("IsCard");
-        displayView(C1021R.id.nav_camera);
+        displayView(com.weioa.KmedHealthIndonesia.R.id.nav_camera);
     }
 
     @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
@@ -38,7 +37,7 @@ public class MainOldActivity extends AppCompatActivity {
 
     public void displayView(int i) {
         TabFragment tabFragment;
-        if (i == C1021R.id.nav_slideshow) {
+        if (i == com.weioa.KmedHealthIndonesia.R.id.nav_slideshow) {
             if (this.m_TabFragment == null) {
                 this.m_TabFragment = new TabFragment();
             }
@@ -48,7 +47,7 @@ public class MainOldActivity extends AppCompatActivity {
         }
         if (tabFragment != null) {
             FragmentTransaction fragmentTransactionBeginTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransactionBeginTransaction.replace(C1021R.id.content_frame, tabFragment);
+            fragmentTransactionBeginTransaction.replace(com.weioa.KmedHealthIndonesia.R.id.content_frame, tabFragment);
             fragmentTransactionBeginTransaction.commit();
         }
         if (getSupportActionBar() != null) {

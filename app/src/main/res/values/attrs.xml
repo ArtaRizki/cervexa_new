@@ -28,4 +28,72 @@
         <enum name="CW270" value="270" />
         <enum name="CW90" value="90" />
     </attr>
+
+    <declare-styleable name="IAspectRatioView">
+        <attr name="aspect_ratio" />
+    </declare-styleable>
+    <declare-styleable name="SwitchButton">
+        <attr name="kswAnimationDuration" />
+        <attr name="kswBackColor" />
+        <attr name="kswBackDrawable" />
+        <attr name="kswBackMeasureRatio" />
+        <attr name="kswBackRadius" />
+        <attr name="kswFadeBack" />
+        <attr name="kswTextMarginH" />
+        <attr name="kswTextOff" />
+        <attr name="kswTextOn" />
+        <attr name="kswThumbColor" />
+        <attr name="kswThumbDrawable" />
+        <attr name="kswThumbHeight" />
+        <attr name="kswThumbMargin" />
+        <attr name="kswThumbMarginBottom" />
+        <attr name="kswThumbMarginLeft" />
+        <attr name="kswThumbMarginRight" />
+        <attr name="kswThumbMarginTop" />
+        <attr name="kswThumbRadius" />
+        <attr name="kswThumbWidth" />
+        <attr name="kswTintColor" />
+    </declare-styleable>
+    <declare-styleable name="ItemPicker">
+        <attr name="ItemPickerDecrementBackground" />
+        <attr name="ItemPickerDecrementSrc" />
+        <attr name="ItemPickerDisplayedValue" />
+        <attr name="ItemPickerEditTextBackground" />
+        <attr name="ItemPickerIncrementBackground" />
+        <attr name="ItemPickerIncrementSrc" />
+        <attr name="ItemPickerMaxItemValue" />
+        <attr name="ItemPickerMinItemValue" />
+    </declare-styleable>
+    <declare-styleable name="BottomBar">
+        <attr name="bb_activeTabAlpha" />
+        <attr name="bb_activeTabColor" />
+        <attr name="bb_badgeBackgroundColor" />
+        <attr name="bb_badgesHideWhenActive" />
+        <attr name="bb_behavior" />
+        <attr name="bb_inActiveTabAlpha" />
+        <attr name="bb_inActiveTabColor" />
+        <attr name="bb_showShadow" />
+        <attr name="bb_tabXmlResource" />
+        <attr name="bb_tabletMode" />
+        <attr name="bb_titleTextAppearance" />
+        <attr name="bb_titleTypeFace" />
+    </declare-styleable>
+    <declare-styleable name="VerticalSeekBar">
+        <attr name="seekBarRotation" />
+    </declare-styleable>
+    <declare-styleable name="FrameView">
+        <attr name="frame_color" />
+        <attr name="frame_type" />
+        <attr name="frame_width" />
+        <attr name="scale_color" />
+        <attr name="scale_rotation" />
+        <attr name="scale_scale" />
+        <attr name="scale_type" />
+        <attr name="scale_width" />
+        <attr name="tick_color" />
+    </declare-styleable>
+    <declare-styleable name="AspectScaledTextureView">
+        <attr name="aspect_ratio" />
+        <attr name="scale_mode" />
+    </declare-styleable>
 </resources>

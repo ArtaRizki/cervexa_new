@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
-
 /* JADX INFO: loaded from: classes.dex */
 public class TableLayoutBinder {
     private Context mContext;
@@ -16,14 +14,14 @@ public class TableLayoutBinder {
     public ViewGroup mTableView;
 
     public TableLayoutBinder(Context context) {
-        this(context, C1438R.layout.table_media_info);
+        this(context, com.weioa.KmedHealthIndonesia.R.layout.table_media_info);
     }
 
     public TableLayoutBinder(Context context, int i) {
         this.mContext = context;
         ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(i, (ViewGroup) null);
         this.mTableView = viewGroup;
-        this.mTableLayout = (TableLayout) viewGroup.findViewById(C1438R.id.table);
+        this.mTableLayout = (TableLayout) viewGroup.findViewById(com.weioa.KmedHealthIndonesia.R.id.table);
     }
 
     public TableLayoutBinder(Context context, TableLayout tableLayout) {
@@ -33,7 +31,7 @@ public class TableLayoutBinder {
     }
 
     public View appendRow1(String str, String str2) {
-        return appendRow(C1438R.layout.table_media_info_row1, str, str2);
+        return appendRow(com.weioa.KmedHealthIndonesia.R.layout.table_media_info_row1, str, str2);
     }
 
     public View appendRow1(int i, String str) {
@@ -41,7 +39,7 @@ public class TableLayoutBinder {
     }
 
     public View appendRow2(String str, String str2) {
-        return appendRow(C1438R.layout.table_media_info_row2, str, str2);
+        return appendRow(com.weioa.KmedHealthIndonesia.R.layout.table_media_info_row2, str, str2);
     }
 
     public View appendRow2(int i, String str) {
@@ -49,7 +47,7 @@ public class TableLayoutBinder {
     }
 
     public View appendSection(String str) {
-        return appendRow(C1438R.layout.table_media_info_section, str, null);
+        return appendRow(com.weioa.KmedHealthIndonesia.R.layout.table_media_info_section, str, null);
     }
 
     public View appendSection(int i) {
@@ -69,8 +67,8 @@ public class TableLayoutBinder {
             return viewHolder;
         }
         ViewHolder viewHolder2 = new ViewHolder();
-        viewHolder2.mNameTextView = (TextView) view.findViewById(C1438R.id.name);
-        viewHolder2.mValueTextView = (TextView) view.findViewById(C1438R.id.value);
+        viewHolder2.mNameTextView = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.name);
+        viewHolder2.mValueTextView = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.value);
         view.setTag(viewHolder2);
         return viewHolder2;
     }

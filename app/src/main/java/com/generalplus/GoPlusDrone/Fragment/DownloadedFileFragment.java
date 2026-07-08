@@ -22,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import generalplus.com.GPCamLib.CamWrapper;
 import java.io.File;
@@ -66,9 +65,9 @@ public class DownloadedFileFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1021R.layout.fragment_downloadedfile, viewGroup, false);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_downloadedfile, viewGroup, false);
         this.mContext = getActivity();
-        this.m_GridView = (GridView) viewInflate.findViewById(C1021R.id.gridView);
+        this.m_GridView = (GridView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.gridView);
         this.listImageItem.clear();
         this.strSaveDirectory = Environment.getExternalStorageDirectory().getPath() + "/GoPlus_Drone/Photo/";
         this.strDevicePICLocation = Environment.getExternalStorageDirectory().getPath() + CamWrapper.SaveFileToDevicePath;
@@ -106,13 +105,13 @@ public class DownloadedFileFragment extends BaseFragment {
                 }
             }
         }
-        ListViewItemAdapter listViewItemAdapter = new ListViewItemAdapter(this.mContext, this.listImageItem, C1021R.layout.downloaded_filelist, new String[]{"KEY_ThumbnailFilePath", "KEY_FileName", "KEY_FileIndex"}, new int[]{C1021R.id.imageView1, C1021R.id.textView1});
+        ListViewItemAdapter listViewItemAdapter = new ListViewItemAdapter(this.mContext, this.listImageItem, com.weioa.KmedHealthIndonesia.R.layout.downloaded_filelist, new String[]{"KEY_ThumbnailFilePath", "KEY_FileName", "KEY_FileIndex"}, new int[]{com.weioa.KmedHealthIndonesia.R.id.imageView1, com.weioa.KmedHealthIndonesia.R.id.textView1});
         this.m_Adapter = listViewItemAdapter;
         this.m_GridView.setAdapter((ListAdapter) listViewItemAdapter);
         this.m_GridView.setOnItemClickListener(new AdapterView.OnItemClickListener() { // from class: com.generalplus.GoPlusDrone.Fragment.DownloadedFileFragment.1
             @Override // android.widget.AdapterView.OnItemClickListener
             public void onItemClick(AdapterView<?> adapterView, View view, int i3, long j) {
-                CheckBox checkBox = (CheckBox) view.findViewById(C1021R.id.checkBox);
+                CheckBox checkBox = (CheckBox) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.checkBox);
                 checkBox.toggle();
                 if (checkBox.isChecked()) {
                     DownloadedFileFragment.this.m_HashMap.put(Integer.valueOf(i3), Integer.valueOf(i3));
@@ -127,14 +126,14 @@ public class DownloadedFileFragment extends BaseFragment {
 
     @Override // com.generalplus.GoPlusDrone.Fragment.BaseFragment, androidx.fragment.app.Fragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
-        menuInflater.inflate(C1021R.menu.menu_downloaded, menu);
+        menuInflater.inflate(com.weioa.KmedHealthIndonesia.R.menu.menu_downloaded, menu);
         super.onCreateOptionsMenu(menu, menuInflater);
     }
 
     @Override // com.generalplus.GoPlusDrone.Fragment.BaseFragment, androidx.fragment.app.Fragment
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         int itemId = menuItem.getItemId();
-        if (itemId == C1021R.id.action_Select) {
+        if (itemId == com.weioa.KmedHealthIndonesia.R.id.action_Select) {
             this.m_HashMap.clear();
             if (!this.m_bSelect) {
                 for (int i = 0; i < this.listImageItem.size(); i++) {
@@ -143,9 +142,9 @@ public class DownloadedFileFragment extends BaseFragment {
             }
             this.m_Adapter.notifyDataSetChanged();
             this.m_bSelect = !this.m_bSelect;
-        } else if (itemId == C1021R.id.action_delete) {
+        } else if (itemId == com.weioa.KmedHealthIndonesia.R.id.action_delete) {
             ShowDeleteDialog();
-        } else if (itemId == C1021R.id.action_copy) {
+        } else if (itemId == com.weioa.KmedHealthIndonesia.R.id.action_copy) {
             ShowCopyDialog();
         }
         return super.onOptionsItemSelected(menuItem);
@@ -294,10 +293,10 @@ public class DownloadedFileFragment extends BaseFragment {
             ViewHolder viewHolder;
             if (view == null) {
                 viewHolder = new ViewHolder();
-                viewInflate = LayoutInflater.from(this.context).inflate(C1021R.layout.downloaded_filelist, viewGroup, false);
-                viewHolder.myImage = (ImageView) viewInflate.findViewById(C1021R.id.imageView1);
-                viewHolder.checkBox = (CheckBox) viewInflate.findViewById(C1021R.id.checkBox);
-                viewHolder.m_iVideo = (ImageView) viewInflate.findViewById(C1021R.id.ivVideo);
+                viewInflate = LayoutInflater.from(this.context).inflate(com.weioa.KmedHealthIndonesia.R.layout.downloaded_filelist, viewGroup, false);
+                viewHolder.myImage = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.imageView1);
+                viewHolder.checkBox = (CheckBox) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.checkBox);
+                viewHolder.m_iVideo = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.ivVideo);
                 viewInflate.setTag(viewHolder);
             } else {
                 viewInflate = view;

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.generalplus.GoPlusDrone.View.MultiTouchZoomableImageView;
 import com.jieli.stream.p016dv.running2.util.IConstant;
 import java.util.ArrayList;
@@ -24,8 +23,8 @@ public class FullImageActivity extends Activity {
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1021R.layout.activity_fullscreen_view);
-        this.viewPager = (ViewPager) findViewById(C1021R.id.pager);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_fullscreen_view);
+        this.viewPager = (ViewPager) findViewById(com.weioa.KmedHealthIndonesia.R.id.pager);
         Intent intent = getIntent();
         int i = intent.getExtras().getInt(IConstant.KEY_POSITION);
         ArrayList<String> stringArrayListExtra = intent.getStringArrayListExtra("FilePath");
@@ -60,8 +59,8 @@ public class FullImageActivity extends Activity {
         public Object instantiateItem(ViewGroup viewGroup, int i) {
             LayoutInflater layoutInflater = (LayoutInflater) this._activity.getSystemService("layout_inflater");
             this.inflater = layoutInflater;
-            View viewInflate = layoutInflater.inflate(C1021R.layout.layout_fullscreen_image, viewGroup, false);
-            ((MultiTouchZoomableImageView) viewInflate.findViewById(C1021R.id.imgDisplay)).setImageBitmap(BitmapFactory.decodeFile(this._imagePaths.get(i)));
+            View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.layout_fullscreen_image, viewGroup, false);
+            ((MultiTouchZoomableImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.imgDisplay)).setImageBitmap(BitmapFactory.decodeFile(this._imagePaths.get(i)));
             ((ViewPager) viewGroup).addView(viewInflate);
             return viewInflate;
         }

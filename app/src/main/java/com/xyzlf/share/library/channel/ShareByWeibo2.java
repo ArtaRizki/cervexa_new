@@ -10,7 +10,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
 import androidx.core.content.ContextCompat;
-import com.xyzlf.com.share.library.C2095R;
 import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.interfaces.OnShareListener;
 import com.xyzlf.share.library.interfaces.ShareConstant;
@@ -36,7 +35,7 @@ public class ShareByWeibo2 extends ShareBase {
         boolean zIsWeiboInstall = ChannelUtil.isWeiboInstall(this.context);
         boolean zIsWeiboLiteInstall = !zIsWeiboInstall ? ChannelUtil.isWeiboLiteInstall(this.context) : false;
         if (!zIsWeiboInstall && !zIsWeiboLiteInstall) {
-            ToastUtil.showToast(this.context, C2095R.string.share_no_weibo_client, true);
+            ToastUtil.showToast(this.context, com.weioa.KmedHealthIndonesia.R.string.share_no_weibo_client, true);
             onShareListener.onShare(4, 2);
             return;
         }
@@ -177,6 +176,6 @@ public class ShareByWeibo2 extends ShareBase {
         if (applicationIcon != null && (applicationIcon instanceof BitmapDrawable)) {
             return ((BitmapDrawable) applicationIcon).getBitmap();
         }
-        return BitmapFactory.decodeResource(context.getResources(), C2095R.drawable.share_default);
+        return BitmapFactory.decodeResource(context.getResources(), com.weioa.KmedHealthIndonesia.R.drawable.share_default);
     }
 }

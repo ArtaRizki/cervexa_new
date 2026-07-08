@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import com.xyzlf.com.share.library.C2095R;
 import com.xyzlf.share.library.ShareDialogActivity;
 import com.xyzlf.share.library.ShareHandlerActivity;
 import com.xyzlf.share.library.bean.ShareEntity;
@@ -91,11 +90,11 @@ public class ShareUtil {
             return null;
         }
         if (bitmap == null) {
-            ToastUtil.showToast(context, C2095R.string.share_save_bitmap_failed, true);
+            ToastUtil.showToast(context, com.weioa.KmedHealthIndonesia.R.string.share_save_bitmap_failed, true);
             return null;
         }
         if (!"mounted".equals(Environment.getExternalStorageState())) {
-            ToastUtil.showToast(context, C2095R.string.share_save_bitmap_no_sdcard, true);
+            ToastUtil.showToast(context, com.weioa.KmedHealthIndonesia.R.string.share_save_bitmap_no_sdcard, true);
             return null;
         }
         File externalFilesDir = context.getExternalFilesDir(null);

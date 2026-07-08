@@ -14,7 +14,6 @@ import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Code;
 import com.jieli.lib.p015dv.control.utils.Topic;
 import com.jieli.lib.p015dv.control.utils.TopicKey;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
 import com.jieli.stream.p016dv.running2.p017ui.dialog.NotifyDialog;
 import com.jieli.stream.p016dv.running2.p017ui.dialog.PasswordConfirmDialog;
@@ -43,7 +42,7 @@ public class DevicePwdFragment extends BaseFragment {
         public void onNotify(NotifyInfo notifyInfo) {
             if (notifyInfo.getErrorType() != 0) {
                 Dbug.m1388e(DevicePwdFragment.this.tag, Code.getCodeDescription(notifyInfo.getErrorType()));
-                ToastUtil.showToastShort(DevicePwdFragment.this.getString(C1438R.string.setting_failed));
+                ToastUtil.showToastShort(DevicePwdFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_failed));
                 return;
             }
             String topic = notifyInfo.getTopic();
@@ -56,7 +55,7 @@ public class DevicePwdFragment extends BaseFragment {
             }
             if (DevicePwdFragment.this.isChanged) {
                 DevicePwdFragment.this.isChanged = false;
-                ToastUtil.showToastShort(DevicePwdFragment.this.getString(C1438R.string.setting_successed));
+                ToastUtil.showToastShort(DevicePwdFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_successed));
             }
             DevicePwdFragment.this.currentSsid = notifyInfo.getParams().get(TopicKey.SSID);
             DevicePwdFragment.this.currentPwd = notifyInfo.getParams().get(TopicKey.PWD);
@@ -72,10 +71,10 @@ public class DevicePwdFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_device_setting_pwd, viewGroup, false);
-        Button button = (Button) viewInflate.findViewById(C1438R.id.pwd_setting_save_btn);
-        this.pwdEditText = (EditText) viewInflate.findViewById(C1438R.id.pwd_setting_et);
-        this.pwdConfirmEditText = (EditText) viewInflate.findViewById(C1438R.id.pwd_setting_comfir_et);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_device_setting_pwd, viewGroup, false);
+        Button button = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.pwd_setting_save_btn);
+        this.pwdEditText = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.pwd_setting_et);
+        this.pwdConfirmEditText = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.pwd_setting_comfir_et);
         ClientManager.getClient().tryToRequestApInfo(new SendResponse() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DevicePwdFragment.1
             @Override // com.jieli.lib.p015dv.control.connect.response.Response
             public void onResponse(Integer num) {
@@ -94,23 +93,23 @@ public class DevicePwdFragment extends BaseFragment {
                         DevicePwdFragment.this.showChoseDialog();
                         return;
                     } else {
-                        ToastUtil.showToastShort(DevicePwdFragment.this.getString(C1438R.string.new_and_old_pwd_consistent));
+                        ToastUtil.showToastShort(DevicePwdFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.new_and_old_pwd_consistent));
                         return;
                     }
                 }
                 if (string.equals(string2)) {
                     if (DevicePwdFragment.this.currentPwd != null && DevicePwdFragment.this.currentPwd.equals(string)) {
-                        ToastUtil.showToastShort(DevicePwdFragment.this.getString(C1438R.string.new_and_old_pwd_consistent));
+                        ToastUtil.showToastShort(DevicePwdFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.new_and_old_pwd_consistent));
                         return;
                     } else if (string.length() >= 8) {
                         DevicePwdFragment.this.showChoseDialog();
                         return;
                     } else {
-                        ToastUtil.showToastShort(DevicePwdFragment.this.getString(C1438R.string.pwd_lenth_limits));
+                        ToastUtil.showToastShort(DevicePwdFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.pwd_lenth_limits));
                         return;
                     }
                 }
-                ToastUtil.showToastShort(DevicePwdFragment.this.getString(C1438R.string.pwd_check_fail));
+                ToastUtil.showToastShort(DevicePwdFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.pwd_check_fail));
             }
         });
         return viewInflate;
@@ -119,7 +118,7 @@ public class DevicePwdFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void showPwdInputDialog(boolean z) {
         if (this.changePwdDialog == null) {
-            PasswordConfirmDialog passwordConfirmDialogNewInstance = PasswordConfirmDialog.newInstance(getString(C1438R.string.input_old_pwd));
+            PasswordConfirmDialog passwordConfirmDialogNewInstance = PasswordConfirmDialog.newInstance(getString(com.weioa.KmedHealthIndonesia.R.string.input_old_pwd));
             this.changePwdDialog = passwordConfirmDialogNewInstance;
             passwordConfirmDialogNewInstance.setOnInputCompletionListener(new C16843(z));
         }
@@ -138,13 +137,13 @@ public class DevicePwdFragment extends BaseFragment {
         public void onCompletion(String str, String str2) {
             if ((!TextUtils.isEmpty(str2) || !TextUtils.isEmpty(DevicePwdFragment.this.currentPwd)) && (TextUtils.isEmpty(str2) || !str2.equals(DevicePwdFragment.this.currentPwd))) {
                 Dbug.m1388e(DevicePwdFragment.this.tag, "Error:current pwd=" + DevicePwdFragment.this.currentPwd + ", password=" + str2);
-                ToastUtil.showToastShort(DevicePwdFragment.this.getString(C1438R.string.input_pld_pws_error));
+                ToastUtil.showToastShort(DevicePwdFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.input_pld_pws_error));
                 return;
             }
             if (this.val$immediateEffect) {
                 if (DevicePwdFragment.this.waitingDialog == null) {
                     DevicePwdFragment.this.waitingDialog = new WaitingDialog();
-                    DevicePwdFragment.this.waitingDialog.setNotifyContent(DevicePwdFragment.this.getString(C1438R.string.dialod_wait));
+                    DevicePwdFragment.this.waitingDialog.setNotifyContent(DevicePwdFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.dialod_wait));
                 }
                 DevicePwdFragment.this.waitingDialog.show(DevicePwdFragment.this.getFragmentManager(), "change_name_wait_dialog");
             }
@@ -190,7 +189,7 @@ public class DevicePwdFragment extends BaseFragment {
                     }
                     return;
                 }
-                ToastUtil.showToastShort(DevicePwdFragment.this.getString(C1438R.string.setting_failed));
+                ToastUtil.showToastShort(DevicePwdFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_failed));
             }
         }
     }
@@ -198,7 +197,7 @@ public class DevicePwdFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void showChoseDialog() {
         if (this.notifyDialog == null) {
-            this.notifyDialog = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.immediate_effect, C1438R.string.dialog_no, C1438R.string.dialog_yes, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DevicePwdFragment.4
+            this.notifyDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.immediate_effect, com.weioa.KmedHealthIndonesia.R.string.dialog_no, com.weioa.KmedHealthIndonesia.R.string.dialog_yes, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DevicePwdFragment.4
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     DevicePwdFragment.this.showPwdInputDialog(false);

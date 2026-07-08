@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseDialogFragment;
 import com.jieli.stream.p016dv.running2.util.QRCode;
 import com.jieli.stream.p016dv.running2.util.json.listener.OnCompletedListener;
@@ -41,11 +40,11 @@ public class QRCodeDialog extends BaseDialogFragment implements View.OnClickList
         if (getDialog() != null) {
             getDialog().requestWindowFeature(1);
         }
-        View viewInflate = layoutInflater.inflate(C1438R.layout.dialog_qr_code, viewGroup, false);
-        Button button = (Button) viewInflate.findViewById(C1438R.id.start_search_btn);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.dialog_qr_code, viewGroup, false);
+        Button button = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.start_search_btn);
         this.mStartSearchButton = button;
         button.setOnClickListener(this);
-        ImageView imageView = (ImageView) viewInflate.findViewById(C1438R.id.qr_code_view);
+        ImageView imageView = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.qr_code_view);
         Bundle arguments = getArguments();
         if (arguments != null) {
             imageView.setImageBitmap(QRCode.createQRCode("{\"SSID\":\"" + arguments.getString(WIFI_NAME) + "\",\"PWD\":\"" + arguments.getString(HOT_SPOT) + "\",\"SAVE\":" + (arguments.getBoolean(SAVE_INFO, false) ? 1 : 0) + ",\"AUTH\":\"JL_ONLY\"}"));

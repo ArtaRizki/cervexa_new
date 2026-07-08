@@ -7,8 +7,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.serenegiant.common.C1831R;
-
 /* JADX INFO: loaded from: classes2.dex */
 public class RecycleViewWithEmptyView extends RecyclerView {
     private static final boolean DEBUG = false;
@@ -47,10 +45,10 @@ public class RecycleViewWithEmptyView extends RecyclerView {
         };
         Drawable drawable = null;
         if (attributeSet != null) {
-            TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C1831R.styleable.RecycleViewWithEmptyView, i, 0);
+            TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.RecycleViewWithEmptyView, i, 0);
             try {
-                if (typedArrayObtainStyledAttributes.hasValue(C1831R.styleable.RecycleViewWithEmptyView_listDivider)) {
-                    drawable = typedArrayObtainStyledAttributes.getDrawable(C1831R.styleable.RecycleViewWithEmptyView_listDivider);
+                if (typedArrayObtainStyledAttributes.hasValue(com.weioa.KmedHealthIndonesia.R.styleable.RecycleViewWithEmptyView_listDivider)) {
+                    drawable = typedArrayObtainStyledAttributes.getDrawable(com.weioa.KmedHealthIndonesia.R.styleable.RecycleViewWithEmptyView_listDivider);
                 }
             } catch (Exception unused) {
             }

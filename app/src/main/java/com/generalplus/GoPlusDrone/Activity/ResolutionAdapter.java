@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generalplus.GoPlusDrone.C1021R;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +45,7 @@ public class ResolutionAdapter extends RecyclerView.Adapter<ResolutionAdapter.Re
 
     @Override // androidx.recyclerview.widget.RecyclerView.Adapter
     public RecyclerHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        return new RecyclerHolder(LayoutInflater.from(this.mContext).inflate(C1021R.layout.item_resolution, viewGroup, false));
+        return new RecyclerHolder(LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_resolution, viewGroup, false));
     }
 
     @Override // androidx.recyclerview.widget.RecyclerView.Adapter
@@ -71,7 +70,7 @@ public class ResolutionAdapter extends RecyclerView.Adapter<ResolutionAdapter.Re
 
         private RecyclerHolder(View view) {
             super(view);
-            this.textView = (TextView) view.findViewById(C1021R.id.tv_name);
+            this.textView = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_name);
         }
 
         public void bind(String str, boolean z) {

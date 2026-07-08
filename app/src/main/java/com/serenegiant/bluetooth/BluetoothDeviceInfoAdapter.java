@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.serenegiant.common.C1831R;
 import java.util.List;
 
 /* JADX INFO: loaded from: classes.dex */
@@ -40,9 +39,9 @@ public class BluetoothDeviceInfoAdapter extends ArrayAdapter<BluetoothDeviceInfo
         if (view == null) {
             view = this.mInflater.inflate(this.mLayoutId, viewGroup, false);
             ViewHolder viewHolder = new ViewHolder();
-            viewHolder.nameTv = (TextView) view.findViewById(C1831R.id.name);
-            viewHolder.addressTv = (TextView) view.findViewById(C1831R.id.address);
-            viewHolder.icon = (ImageView) view.findViewById(C1831R.id.icon);
+            viewHolder.nameTv = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.name);
+            viewHolder.addressTv = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.address);
+            viewHolder.icon = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.icon);
             view.setTag(viewHolder);
         }
         ViewHolder viewHolder2 = (ViewHolder) view.getTag();

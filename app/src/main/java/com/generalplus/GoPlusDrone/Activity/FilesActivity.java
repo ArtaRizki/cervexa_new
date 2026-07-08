@@ -23,8 +23,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-import com.generalplus.GoPlusDrone.C1021R;
-
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.stream.p016dv.running2.util.IConstant;
 import generalplus.com.GPCamLib.CamWrapper;
@@ -109,14 +107,14 @@ public class FilesActivity extends Activity {
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1021R.layout.activity_filelist);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_filelist);
         this.m_Context = this;
         getWindow().addFlags(128);
         this.strDevicePICLocation = Environment.getExternalStorageDirectory().getPath() + CamWrapper.SaveFileToDevicePath;
         if (this.m_handler == null) {
             this.m_handler = new Handler();
         }
-        GridView gridView = (GridView) findViewById(C1021R.id.gridView);
+        GridView gridView = (GridView) findViewById(com.weioa.KmedHealthIndonesia.R.id.gridView);
         this.m_Gridview = gridView;
         gridView.setOnScrollListener(new AbsListView.OnScrollListener() { // from class: com.generalplus.GoPlusDrone.Activity.FilesActivity.1
             @Override // android.widget.AbsListView.OnScrollListener
@@ -298,7 +296,7 @@ public class FilesActivity extends Activity {
                     if (FilesActivity.listImageItem == null) {
                         return;
                     }
-                    FilesActivity.this.m_saImageItems = new SimpleAdapter(FilesActivity.this.m_Context, FilesActivity.listImageItem, C1021R.layout.files_program_list, new String[]{"ThumbnailFilePath", "FileName", CamWrapper.GPFILECALLBACKTYPE_FILEINDEX}, new int[]{C1021R.id.imageView1, C1021R.id.textView1});
+                    FilesActivity.this.m_saImageItems = new SimpleAdapter(FilesActivity.this.m_Context, FilesActivity.listImageItem, com.weioa.KmedHealthIndonesia.R.layout.files_program_list, new String[]{"ThumbnailFilePath", "FileName", CamWrapper.GPFILECALLBACKTYPE_FILEINDEX}, new int[]{com.weioa.KmedHealthIndonesia.R.id.imageView1, com.weioa.KmedHealthIndonesia.R.id.textView1});
                     FilesActivity.this.m_Gridview.setAdapter((ListAdapter) FilesActivity.this.m_saImageItems);
                 }
                 FilesActivity.this.m_saImageItems.notifyDataSetChanged();
@@ -700,7 +698,7 @@ public class FilesActivity extends Activity {
                 bIsStopDownload = false;
                 while (i6 < i) {
                     HashMap<String, Object> map = new HashMap<>();
-                    map.put("ThumbnailFilePath", Integer.valueOf(C1021R.mipmap.loading));
+                    map.put("ThumbnailFilePath", Integer.valueOf(com.weioa.KmedHealthIndonesia.R.mipmap.loading));
                     map.put("FileName", "Unknown");
                     map.put(CamWrapper.GPFILECALLBACKTYPE_FILEINDEX, String.valueOf(i6));
                     map.put("FileSize", "0");

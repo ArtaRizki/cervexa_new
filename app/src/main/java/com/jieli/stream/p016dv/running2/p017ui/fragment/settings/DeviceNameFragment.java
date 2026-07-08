@@ -19,7 +19,6 @@ import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Code;
 import com.jieli.lib.p015dv.control.utils.Topic;
 import com.jieli.lib.p015dv.control.utils.TopicKey;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
 import com.jieli.stream.p016dv.running2.p017ui.dialog.NotifyDialog;
 import com.jieli.stream.p016dv.running2.p017ui.dialog.WaitingDialog;
@@ -55,7 +54,7 @@ public class DeviceNameFragment extends BaseFragment {
                 if (DeviceNameFragment.this.notifyDialog != null && DeviceNameFragment.this.notifyDialog.isShowing()) {
                     DeviceNameFragment.this.notifyDialog.dismiss();
                 }
-                ToastUtil.showToastShort(DeviceNameFragment.this.getString(C1438R.string.setting_failed));
+                ToastUtil.showToastShort(DeviceNameFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_failed));
                 return;
             }
             String topic = notifyInfo.getTopic();
@@ -69,7 +68,7 @@ public class DeviceNameFragment extends BaseFragment {
             String str = "";
             if (DeviceNameFragment.this.isModified) {
                 DeviceNameFragment.this.isModified = false;
-                ToastUtil.showToastShort(DeviceNameFragment.this.getString(C1438R.string.setting_successed));
+                ToastUtil.showToastShort(DeviceNameFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_successed));
                 WifiHelper.getInstance(DeviceNameFragment.this.getContext()).removeSavedNetWork(PreferencesHelper.getSharedPreferences(DeviceNameFragment.this.getContext()).getString(IConstant.CURRENT_WIFI_SSID, ""));
                 PreferencesHelper.putStringValue(DeviceNameFragment.this.getActivity().getApplicationContext(), IConstant.CURRENT_WIFI_SSID, IConstant.WIFI_PREFIX + DeviceNameFragment.this.nameEditText.getText().toString().trim());
                 return;
@@ -86,11 +85,11 @@ public class DeviceNameFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_device_setting_name, viewGroup, false);
-        this.saveBtn = (Button) viewInflate.findViewById(C1438R.id.device_setting_name_save_btn);
-        this.nameEditText = (EditText) viewInflate.findViewById(C1438R.id.device_setting_name_et);
-        this.tipTv = (TextView) viewInflate.findViewById(C1438R.id.tip_tv);
-        ((TextView) viewInflate.findViewById(C1438R.id.wifi_ssid_prefix_tv)).setText(IConstant.WIFI_PREFIX);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_device_setting_name, viewGroup, false);
+        this.saveBtn = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.device_setting_name_save_btn);
+        this.nameEditText = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.device_setting_name_et);
+        this.tipTv = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.tip_tv);
+        ((TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.wifi_ssid_prefix_tv)).setText(IConstant.WIFI_PREFIX);
         String ssid = WifiHelper.formatSSID(this.mWifiHelper.getWifiConnectionInfo().getSSID());
         if (!TextUtils.isEmpty(ssid)) {
             this.nameEditText.setText(ssid.substring(this.prefixLen));
@@ -104,7 +103,7 @@ public class DeviceNameFragment extends BaseFragment {
             }
         });
         try {
-            String str = String.format(getString(C1438R.string.device_name_input_limit), Integer.valueOf(31 - this.prefixLen), Integer.valueOf(this.nameEditText.getText().toString().getBytes("utf-8").length));
+            String str = String.format(getString(com.weioa.KmedHealthIndonesia.R.string.device_name_input_limit), Integer.valueOf(31 - this.prefixLen), Integer.valueOf(this.nameEditText.getText().toString().getBytes("utf-8").length));
             this.tipString = str;
             this.tipTv.setText(str);
         } catch (UnsupportedEncodingException e) {
@@ -141,11 +140,11 @@ public class DeviceNameFragment extends BaseFragment {
                             editable.delete(i, editable.length());
                         }
                     } else {
-                        DeviceNameFragment.this.tipTv.setText(C1438R.string.device_name_input_limit);
-                        DeviceNameFragment.this.tipTv.setTextColor(DeviceNameFragment.this.getResources().getColor(C1438R.color.text_press_gray));
+                        DeviceNameFragment.this.tipTv.setText(com.weioa.KmedHealthIndonesia.R.string.device_name_input_limit);
+                        DeviceNameFragment.this.tipTv.setTextColor(DeviceNameFragment.this.getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.text_press_gray));
                     }
                     try {
-                        DeviceNameFragment.this.tipString = String.format(DeviceNameFragment.this.getString(C1438R.string.device_name_input_limit), Integer.valueOf(31 - DeviceNameFragment.this.prefixLen), Integer.valueOf(editable.toString().getBytes("utf-8").length));
+                        DeviceNameFragment.this.tipString = String.format(DeviceNameFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.device_name_input_limit), Integer.valueOf(31 - DeviceNameFragment.this.prefixLen), Integer.valueOf(editable.toString().getBytes("utf-8").length));
                         DeviceNameFragment.this.tipTv.setText(DeviceNameFragment.this.tipString);
                         return;
                     } catch (UnsupportedEncodingException e3) {
@@ -165,7 +164,7 @@ public class DeviceNameFragment extends BaseFragment {
                 if (length >= 1 && length <= 31 - DeviceNameFragment.this.prefixLen) {
                     DeviceNameFragment.this.showChoseDialog();
                 } else {
-                    ToastUtil.showToastShort(DeviceNameFragment.this.getString(C1438R.string.name_format_error));
+                    ToastUtil.showToastShort(DeviceNameFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.name_format_error));
                 }
             }
         });
@@ -285,7 +284,7 @@ public class DeviceNameFragment extends BaseFragment {
                 }
                 return;
             }
-            ToastUtil.showToastShort(DeviceNameFragment.this.getString(C1438R.string.save_fail));
+            ToastUtil.showToastShort(DeviceNameFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.save_fail));
         }
     }
 
@@ -297,7 +296,7 @@ public class DeviceNameFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void showChoseDialog() {
         if (this.notifyDialog == null) {
-            this.notifyDialog = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.immediate_effect, C1438R.string.dialog_no, C1438R.string.dialog_yes, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceNameFragment.5
+            this.notifyDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.immediate_effect, com.weioa.KmedHealthIndonesia.R.string.dialog_no, com.weioa.KmedHealthIndonesia.R.string.dialog_yes, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceNameFragment.5
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     DeviceNameFragment.this.changeName(false);
@@ -310,7 +309,7 @@ public class DeviceNameFragment extends BaseFragment {
                     DeviceNameFragment.this.notifyDialog.dismiss();
                     if (DeviceNameFragment.this.waitingDialog == null) {
                         DeviceNameFragment.this.waitingDialog = new WaitingDialog();
-                        DeviceNameFragment.this.waitingDialog.setNotifyContent(DeviceNameFragment.this.getString(C1438R.string.dialod_wait));
+                        DeviceNameFragment.this.waitingDialog.setNotifyContent(DeviceNameFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.dialod_wait));
                     }
                     DeviceNameFragment.this.waitingDialog.show(DeviceNameFragment.this.getFragmentManager(), "change_name_wait_dialog");
                 }

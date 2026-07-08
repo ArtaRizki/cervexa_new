@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.core.app.NotificationManagerCompat;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
 import com.jieli.stream.p016dv.running2.p017ui.widget.BrightnessToast;
 import com.jieli.stream.p016dv.running2.p017ui.widget.VideoProgressToast;
@@ -74,7 +73,7 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
                         break;
                     case VideoPlayerFragment.MSG_UPDATE_PROGRESS /* 178 */:
                         if (message.arg1 == VideoPlayerFragment.this.videoView.getDuration()) {
-                            VideoPlayerFragment.this.ivPlayOrPause.setImageResource(C1438R.drawable.drawable_btn_play);
+                            VideoPlayerFragment.this.ivPlayOrPause.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.drawable_btn_play);
                         }
                         int iFloor = (int) Math.floor(message.arg1 / 1000.0f);
                         VideoPlayerFragment.this.sbProgress.setProgress(iFloor);
@@ -84,13 +83,13 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
                         }
                         break;
                     case VideoPlayerFragment.MSG_VIDEO_PAUSE /* 179 */:
-                        VideoPlayerFragment.this.ivPlayOrPause.setImageResource(C1438R.drawable.drawable_btn_play);
+                        VideoPlayerFragment.this.ivPlayOrPause.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.drawable_btn_play);
                         VideoPlayerFragment.this.videoView.requestFocus();
                         break;
                     case VideoPlayerFragment.MSG_VIDEO_RESUME /* 180 */:
-                        VideoPlayerFragment.this.ivPlayOrPause.setImageResource(C1438R.drawable.drawable_btn_pause);
+                        VideoPlayerFragment.this.ivPlayOrPause.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.drawable_btn_pause);
                         VideoPlayerFragment.this.videoView.requestFocus();
-                        VideoPlayerFragment.this.tvCurrentTime.setText(VideoPlayerFragment.this.getString(C1438R.string.default_time_format));
+                        VideoPlayerFragment.this.tvCurrentTime.setText(VideoPlayerFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.default_time_format));
                         break;
                 }
             }
@@ -108,16 +107,16 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_video_player, viewGroup, false);
-        this.videoView = (IjkVideoView) viewInflate.findViewById(C1438R.id.video_player_media);
-        this.topBar = (RelativeLayout) viewInflate.findViewById(C1438R.id.video_player_top_layout);
-        this.bottomBar = (RelativeLayout) viewInflate.findViewById(C1438R.id.video_player_bottom_bar);
-        this.tvTitle = (TextView) viewInflate.findViewById(C1438R.id.video_player_top_tv);
-        this.tvCurrentTime = (TextView) viewInflate.findViewById(C1438R.id.video_player_current_time);
-        this.tvTotalTime = (TextView) viewInflate.findViewById(C1438R.id.video_player_total_time);
-        this.sbProgress = (SeekBar) viewInflate.findViewById(C1438R.id.video_player_progress);
-        this.ivPlayOrPause = (ImageView) viewInflate.findViewById(C1438R.id.video_player_play_btn);
-        this.ivFullScreen = (ImageView) viewInflate.findViewById(C1438R.id.video_player_full_screen);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_video_player, viewGroup, false);
+        this.videoView = (IjkVideoView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_player_media);
+        this.topBar = (RelativeLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_player_top_layout);
+        this.bottomBar = (RelativeLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_player_bottom_bar);
+        this.tvTitle = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_player_top_tv);
+        this.tvCurrentTime = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_player_current_time);
+        this.tvTotalTime = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_player_total_time);
+        this.sbProgress = (SeekBar) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_player_progress);
+        this.ivPlayOrPause = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_player_play_btn);
+        this.ivFullScreen = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_player_full_screen);
         this.ivPlayOrPause.setOnClickListener(this);
         this.ivFullScreen.setOnClickListener(this);
         this.sbProgress.setOnSeekBarChangeListener(this);
@@ -187,7 +186,7 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
             Dbug.m1388e(this.TAG, "loadLibraries error : " + th.getMessage());
         }
         if (!this.playerSupport) {
-            ToastUtil.showToastShort(getString(C1438R.string.player_not_support_dev));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.player_not_support_dev));
             if (getActivity() != null) {
                 getActivity().finish();
                 return;
@@ -211,7 +210,7 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
                 if (i2 == -10000) {
                     return true;
                 }
-                ToastUtil.showToastShort(VideoPlayerFragment.this.getString(C1438R.string.player_not_support_media));
+                ToastUtil.showToastShort(VideoPlayerFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.player_not_support_media));
                 if (VideoPlayerFragment.this.getActivity() != null) {
                     VideoPlayerFragment.this.getActivity().finish();
                 }
@@ -303,12 +302,12 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
         if (TextUtils.isEmpty(this.videoPath)) {
             return;
         }
-        this.ivPlayOrPause.setImageResource(C1438R.drawable.drawable_btn_pause);
+        this.ivPlayOrPause.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.drawable_btn_pause);
         this.videoView.requestFocus();
         this.sbProgress.setMax(this.videoView.getDuration() / 1000);
         this.sbProgress.setProgress(0);
         this.tvTitle.setText(formatTitle(this.videoPath));
-        this.tvCurrentTime.setText(getString(C1438R.string.default_time_format));
+        this.tvCurrentTime.setText(getString(com.weioa.KmedHealthIndonesia.R.string.default_time_format));
         this.tvTotalTime.setText(TimeFormate.getTimeFormatValue((int) Math.floor(this.videoView.getDuration() / 1000.0f)));
     }
 
@@ -326,11 +325,11 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
         if (getActivity().getRequestedOrientation() == 1) {
             this.videoView.setAspectRatio(3);
             getActivity().setRequestedOrientation(6);
-            this.ivFullScreen.setImageResource(C1438R.mipmap.ic_no_fullscreen);
+            this.ivFullScreen.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_no_fullscreen);
         } else {
             this.videoView.setAspectRatio(0);
             getActivity().setRequestedOrientation(1);
-            this.ivFullScreen.setImageResource(C1438R.mipmap.ic_fullscreen);
+            this.ivFullScreen.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_fullscreen);
         }
     }
 
@@ -463,9 +462,9 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
             return;
         }
         int id = view.getId();
-        if (id == C1438R.id.video_player_play_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.video_player_play_btn) {
             playOrPause();
-        } else if (id == C1438R.id.video_player_full_screen) {
+        } else if (id == com.weioa.KmedHealthIndonesia.R.id.video_player_full_screen) {
             changeOrientation();
         }
     }
@@ -483,6 +482,6 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
             return;
         }
         this.sbProgress.setProgress(0);
-        this.tvCurrentTime.setText(getString(C1438R.string.default_time_format));
+        this.tvCurrentTime.setText(getString(com.weioa.KmedHealthIndonesia.R.string.default_time_format));
     }
 }

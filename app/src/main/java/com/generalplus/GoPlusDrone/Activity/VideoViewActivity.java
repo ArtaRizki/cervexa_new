@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.jieli.stream.p016dv.running2.util.IConstant;
 import java.util.ArrayList;
 
@@ -18,8 +17,8 @@ public class VideoViewActivity extends Activity {
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1021R.layout.activity_videoview);
-        this.m_videoView = (VideoView) findViewById(C1021R.id.videoView);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_videoview);
+        this.m_videoView = (VideoView) findViewById(com.weioa.KmedHealthIndonesia.R.id.videoView);
         this.m_mediaController = new MediaController(this);
         Intent intent = getIntent();
         int i = intent.getExtras().getInt(IConstant.KEY_POSITION);

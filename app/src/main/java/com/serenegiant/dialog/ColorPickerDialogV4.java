@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import com.serenegiant.common.C1831R;
 import com.serenegiant.widget.ColorPickerView;
 
 /* JADX INFO: loaded from: classes.dex */
@@ -137,16 +136,16 @@ public class ColorPickerDialogV4 extends DialogFragmentEx {
     @Override // androidx.fragment.app.DialogFragment
     public Dialog onCreateDialog(Bundle bundle) {
         FragmentActivity fragmentActivityRequireActivity = requireActivity();
-        FrameLayout frameLayout = (FrameLayout) LayoutInflater.from(fragmentActivityRequireActivity).inflate(C1831R.layout.color_picker, (ViewGroup) null);
+        FrameLayout frameLayout = (FrameLayout) LayoutInflater.from(fragmentActivityRequireActivity).inflate(com.weioa.KmedHealthIndonesia.R.layout.color_picker, (ViewGroup) null);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-1, -1);
         ColorPickerView colorPickerView = new ColorPickerView(fragmentActivityRequireActivity);
         colorPickerView.setColor(this.mCurrentColor);
         colorPickerView.setColorPickerListener(this.mColorPickerListener);
         frameLayout.addView(colorPickerView, layoutParams);
-        AlertDialog.Builder negativeButton = new AlertDialog.Builder(fragmentActivityRequireActivity).setPositiveButton(C1831R.string.color_picker_select, this.mOnClickListener).setNegativeButton(C1831R.string.color_picker_cancel, this.mOnClickListener);
+        AlertDialog.Builder negativeButton = new AlertDialog.Builder(fragmentActivityRequireActivity).setPositiveButton(com.weioa.KmedHealthIndonesia.R.string.color_picker_select, this.mOnClickListener).setNegativeButton(com.weioa.KmedHealthIndonesia.R.string.color_picker_cancel, this.mOnClickListener);
         int i = this.mTitleResId;
         if (i == 0) {
-            i = C1831R.string.color_picker_default_title;
+            i = com.weioa.KmedHealthIndonesia.R.string.color_picker_default_title;
         }
         AlertDialog alertDialogCreate = negativeButton.setTitle(i).setView(frameLayout).create();
         alertDialogCreate.setCanceledOnTouchOutside(true);

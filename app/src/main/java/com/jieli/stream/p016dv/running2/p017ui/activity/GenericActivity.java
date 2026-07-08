@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.jieli.lib.p015dv.control.connect.listener.OnConnectStateListener;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
@@ -29,7 +28,7 @@ public class GenericActivity extends BaseActivity {
             int iIntValue = num.intValue();
             if (iIntValue == -1 || iIntValue == 1 || iIntValue == 3 || iIntValue == 4) {
                 Dbug.m1388e(GenericActivity.this.tag, "state=" + num);
-                BaseFragment baseFragment = (BaseFragment) GenericActivity.this.getSupportFragmentManager().findFragmentById(C1438R.id.generic_fragment_layout);
+                BaseFragment baseFragment = (BaseFragment) GenericActivity.this.getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout);
                 if (baseFragment instanceof DevPhotoFragment) {
                     ((DevPhotoFragment) baseFragment).dismissWaitingDialog();
                 }
@@ -44,7 +43,7 @@ public class GenericActivity extends BaseActivity {
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1438R.layout.activity_generic);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_generic);
         ClientManager.getClient().registerConnectStateListener(this.connectStateListener);
         Intent intent = getIntent();
         if (intent != null) {
@@ -136,9 +135,9 @@ public class GenericActivity extends BaseActivity {
                 baseFragment.setBundle(bundle);
             }
             if (!TextUtils.isEmpty(simpleName)) {
-                changeFragment(C1438R.id.generic_fragment_layout, baseFragment, simpleName);
+                changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, baseFragment, simpleName);
             } else {
-                changeFragment(C1438R.id.generic_fragment_layout, baseFragment);
+                changeFragment(com.weioa.KmedHealthIndonesia.R.id.generic_fragment_layout, baseFragment);
             }
         }
     }

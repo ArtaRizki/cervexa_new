@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import com.generalplus.GoPlusDrone.Activity.GalleryActivity;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import generalplus.com.GPCamLib.CamWrapper;
 import java.io.File;
@@ -93,9 +92,9 @@ public class BaseFragment extends Fragment {
     @Override // androidx.fragment.app.Fragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         if (this.m_bEdit) {
-            menuInflater.inflate(C1021R.menu.menu_downloaded, menu);
+            menuInflater.inflate(com.weioa.KmedHealthIndonesia.R.menu.menu_downloaded, menu);
         } else {
-            menuInflater.inflate(C1021R.menu.menu_edit, menu);
+            menuInflater.inflate(com.weioa.KmedHealthIndonesia.R.menu.menu_edit, menu);
         }
         super.onCreateOptionsMenu(menu, menuInflater);
     }
@@ -110,7 +109,7 @@ public class BaseFragment extends Fragment {
     @Override // androidx.fragment.app.Fragment
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         int itemId = menuItem.getItemId();
-        if (itemId == C1021R.id.action_edit) {
+        if (itemId == com.weioa.KmedHealthIndonesia.R.id.action_edit) {
             this.m_bEdit = true;
             GalleryActivity.m_bEdit = true;
             getActivity().invalidateOptionsMenu();
@@ -126,14 +125,14 @@ public class BaseFragment extends Fragment {
                 e2.printStackTrace();
             }
         } else {
-            if (itemId == C1021R.id.action_done) {
+            if (itemId == com.weioa.KmedHealthIndonesia.R.id.action_done) {
                 this.m_bSelect = false;
                 this.m_HashMap.clear();
                 this.m_bEdit = false;
                 GalleryActivity.m_bEdit = false;
                 getActivity().invalidateOptionsMenu();
                 this.m_Adapter.notifyDataSetChanged();
-            } else if (itemId == C1021R.id.action_Select) {
+            } else if (itemId == com.weioa.KmedHealthIndonesia.R.id.action_Select) {
                 this.m_HashMap.clear();
                 if (!this.m_bSelect) {
                     for (int i = 0; i < this.listImageItem.size(); i++) {
@@ -142,9 +141,9 @@ public class BaseFragment extends Fragment {
                 }
                 this.m_Adapter.notifyDataSetChanged();
                 this.m_bSelect = !this.m_bSelect;
-            } else if (itemId == C1021R.id.action_delete) {
+            } else if (itemId == com.weioa.KmedHealthIndonesia.R.id.action_delete) {
                 ShowDeleteDialog();
-            } else if (itemId == C1021R.id.action_copy) {
+            } else if (itemId == com.weioa.KmedHealthIndonesia.R.id.action_copy) {
                 ShowCopyDialog();
             }
         }
@@ -317,11 +316,11 @@ public class BaseFragment extends Fragment {
             ViewHolder viewHolder;
             if (view == null) {
                 viewHolder = new ViewHolder();
-                viewInflate = LayoutInflater.from(this.context).inflate(C1021R.layout.downloaded_filelist, viewGroup, false);
-                viewHolder.myImage = (ImageView) viewInflate.findViewById(C1021R.id.imageView1);
-                viewHolder.txtFileName = (TextView) viewInflate.findViewById(C1021R.id.textView1);
-                viewHolder.checkBox = (CheckBox) viewInflate.findViewById(C1021R.id.checkBox);
-                viewHolder.m_iVideo = (ImageView) viewInflate.findViewById(C1021R.id.ivVideo);
+                viewInflate = LayoutInflater.from(this.context).inflate(com.weioa.KmedHealthIndonesia.R.layout.downloaded_filelist, viewGroup, false);
+                viewHolder.myImage = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.imageView1);
+                viewHolder.txtFileName = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.textView1);
+                viewHolder.checkBox = (CheckBox) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.checkBox);
+                viewHolder.m_iVideo = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.ivVideo);
                 viewInflate.setTag(viewHolder);
             } else {
                 viewInflate = view;
@@ -346,7 +345,7 @@ public class BaseFragment extends Fragment {
                     e.printStackTrace();
                 }
             } else {
-                viewHolder.myImage.setImageResource(C1021R.drawable.broken);
+                viewHolder.myImage.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.broken);
             }
             if (BaseFragment.this.m_bEdit) {
                 viewHolder.checkBox.setVisibility(0);

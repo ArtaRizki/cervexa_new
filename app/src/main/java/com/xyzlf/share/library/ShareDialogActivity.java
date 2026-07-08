@@ -17,7 +17,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import com.xyzlf.com.share.library.C2095R;
 import com.xyzlf.share.library.bean.ChannelEntity;
 import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.interfaces.ShareConstant;
@@ -38,7 +37,7 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
     protected void onCreate(Bundle bundle) {
         Object data;
         super.onCreate(bundle);
-        setContentView(C2095R.layout.share_activity_dialog);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.share_activity_dialog);
         if (getIntent().hasExtra(ShareConstant.EXTRA_SHARE_DATA)) {
             Bundle bundleExtra = getIntent().getBundleExtra(ShareConstant.EXTRA_SHARE_DATA);
             if (bundleExtra != null) {
@@ -57,7 +56,7 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
             data = getIntent().getData();
         }
         if (data == null) {
-            ToastUtil.showToast((Context) this, getString(C2095R.string.share_empty_tip), true);
+            ToastUtil.showToast((Context) this, getString(com.weioa.KmedHealthIndonesia.R.string.share_empty_tip), true);
             finish();
             return;
         }
@@ -67,7 +66,7 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
             this.sparseArray = (SparseArray) data;
         }
         if (this.data == null && this.sparseArray == null) {
-            ToastUtil.showToast((Context) this, getString(C2095R.string.share_empty_tip), true);
+            ToastUtil.showToast((Context) this, getString(com.weioa.KmedHealthIndonesia.R.string.share_empty_tip), true);
             finish();
             return;
         }
@@ -83,12 +82,12 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
         this.channelEntities = new ArrayList();
         if (ChannelUtil.isWeixinInstall(this)) {
             if ((this.channel & 1) > 0 && isShowChannel(1)) {
-                this.channelEntities.add(new ChannelEntity(1, C2095R.drawable.share_wechat, getString(C2095R.string.share_channel_weixin_friend)));
+                this.channelEntities.add(new ChannelEntity(1, com.weioa.KmedHealthIndonesia.R.drawable.share_wechat, getString(com.weioa.KmedHealthIndonesia.R.string.share_channel_weixin_friend)));
             }
             if ((this.channel & 2) <= 0 || !isShowChannel(2)) {
                 return;
             }
-            this.channelEntities.add(new ChannelEntity(2, C2095R.drawable.share_wxcircle, getString(C2095R.string.share_channel_weixin_circle)));
+            this.channelEntities.add(new ChannelEntity(2, com.weioa.KmedHealthIndonesia.R.drawable.share_wxcircle, getString(com.weioa.KmedHealthIndonesia.R.string.share_channel_weixin_circle)));
         }
     }
 
@@ -99,7 +98,7 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
 
     private void initView() {
         AppGridAdapter appGridAdapter = new AppGridAdapter();
-        GridView gridView = (GridView) findViewById(C2095R.id.share_grid);
+        GridView gridView = (GridView) findViewById(com.weioa.KmedHealthIndonesia.R.id.share_grid);
         gridView.setAdapter((ListAdapter) appGridAdapter);
         gridView.setOnItemClickListener(this);
     }
@@ -232,9 +231,9 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
             ViewHolder viewHolder;
             if (view == null) {
                 viewHolder = new ViewHolder();
-                viewInflate = ShareDialogActivity.this.getLayoutInflater().inflate(C2095R.layout.share_gridview_item, viewGroup, false);
-                viewHolder.textView = (TextView) viewInflate.findViewById(C2095R.id.text);
-                viewHolder.imageView = (ImageView) viewInflate.findViewById(C2095R.id.image);
+                viewInflate = ShareDialogActivity.this.getLayoutInflater().inflate(com.weioa.KmedHealthIndonesia.R.layout.share_gridview_item, viewGroup, false);
+                viewHolder.textView = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.text);
+                viewHolder.imageView = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.image);
                 viewInflate.setTag(viewHolder);
             } else {
                 viewInflate = view;

@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.SettingItem;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.p017ui.activity.GenericActivity;
@@ -74,36 +73,36 @@ public class SettingFragment extends BaseFragment {
                 Dbug.m1388e(SettingFragment.tag, "item.getType() " + settingItem.getType() + ", position " + i);
                 return;
             }
-            if (settingItem.getName().equals(SettingFragment.this.getString(C1438R.string.device_setting))) {
+            if (settingItem.getName().equals(SettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.device_setting))) {
                 if (ClientManager.getClient().isConnected()) {
                     DeviceSettingActivity.start(SettingFragment.this.getActivity());
                     return;
                 } else {
-                    ToastUtil.showToastShort(SettingFragment.this.getString(C1438R.string.please_connect_device_to_use));
+                    ToastUtil.showToastShort(SettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.please_connect_device_to_use));
                     return;
                 }
             }
-            if (settingItem.getName().equals(SettingFragment.this.getString(C1438R.string.language))) {
+            if (settingItem.getName().equals(SettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.language))) {
                 if (ClientManager.getClient().isConnected()) {
                     LanguageActivity.start(SettingFragment.this.getContext());
                     return;
                 } else {
-                    ToastUtil.showToastShort(SettingFragment.this.getString(C1438R.string.please_connect_device_to_use));
+                    ToastUtil.showToastShort(SettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.please_connect_device_to_use));
                     return;
                 }
             }
-            if (settingItem.getName().equals(SettingFragment.this.getString(C1438R.string.app_advanced_settings))) {
+            if (settingItem.getName().equals(SettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.app_advanced_settings))) {
                 if (ClientManager.getClient().isConnected()) {
                     APPAdvancedSettingActivity.start(SettingFragment.this.getContext());
                     return;
                 } else {
-                    ToastUtil.showToastShort(SettingFragment.this.getString(C1438R.string.please_connect_device_to_use));
+                    ToastUtil.showToastShort(SettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.please_connect_device_to_use));
                     return;
                 }
             }
-            if (settingItem.getName().equals(SettingFragment.this.getString(C1438R.string.about_app))) {
+            if (settingItem.getName().equals(SettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.about_app))) {
                 SettingFragment.this.goToAbout();
-            } else if (!settingItem.getName().equals(SettingFragment.this.getString(C1438R.string.help)) && settingItem.getName().equals(SettingFragment.this.getString(C1438R.string.app_storage_manager))) {
+            } else if (!settingItem.getName().equals(SettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.help)) && settingItem.getName().equals(SettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.app_storage_manager))) {
                 AppStorageManageActivity.start(SettingFragment.this.getContext());
             }
         }
@@ -127,9 +126,9 @@ public class SettingFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_setting, viewGroup, false);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_setting, viewGroup, false);
         this.mView = viewInflate;
-        this.listView = (ListView) viewInflate.findViewById(C1438R.id.setting_list_view);
+        this.listView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.setting_list_view);
         return this.mView;
     }
 
@@ -141,35 +140,35 @@ public class SettingFragment extends BaseFragment {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void initUI() {
-        ((TextView) this.mView.findViewById(C1438R.id.setting_top_tv)).setText(C1438R.string.tab_me);
-        String[] stringArray = getResources().getStringArray(C1438R.array.setting_list);
+        ((TextView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.setting_top_tv)).setText(com.weioa.KmedHealthIndonesia.R.string.tab_me);
+        String[] stringArray = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.setting_list);
         ArrayList arrayList = new ArrayList();
-        int dimension = (int) getResources().getDimension(C1438R.dimen.list_marginTop);
+        int dimension = (int) getResources().getDimension(com.weioa.KmedHealthIndonesia.R.dimen.list_marginTop);
         for (int i = 0; i < stringArray.length; i++) {
             String str = stringArray[i];
             if (!TextUtils.isEmpty(str)) {
                 SettingItem settingItem = new SettingItem();
-                if (str.equals(getString(C1438R.string.device_setting)) || str.equals(getString(C1438R.string.app_storage_manager)) || str.equals(getString(C1438R.string.about_app)) || str.equals(getString(C1438R.string.help))) {
+                if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.device_setting)) || str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.app_storage_manager)) || str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.about_app)) || str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.help))) {
                     settingItem.setType(0);
-                } else if (str.equals(getString(C1438R.string.language))) {
+                } else if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.language))) {
                     settingItem.setType(0);
                     if (ClientManager.getClient().isConnected()) {
-                        String[] stringArray2 = getResources().getStringArray(C1438R.array.language);
+                        String[] stringArray2 = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.language);
                         String string = PreferencesHelper.getSharedPreferences(this.mApplication).getString(IConstant.KEY_APP_LANGUAGE_CODE, "-1");
                         int i2 = TextUtils.isDigitsOnly(string) ? Integer.parseInt(string) - 1 : 0;
                         if (i2 > -1 && i2 < stringArray2.length) {
                             settingItem.setValue(stringArray2[i2]);
                         }
                     }
-                } else if (str.equals(getString(C1438R.string.save_picture_in_phone))) {
+                } else if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.save_picture_in_phone))) {
                     settingItem.setType(1);
                     settingItem.setValue(Boolean.valueOf(PreferencesHelper.getSharedPreferences(getContext()).getBoolean(IConstant.KEY_SAVE_PICTURE, false)));
                     settingItem.setOnSwitchListener(this.savePictureInPhoneOnSwitchListener);
-                } else if (str.equals(getString(C1438R.string.auto_download_the_photo_files))) {
+                } else if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.auto_download_the_photo_files))) {
                     settingItem.setType(1);
                     settingItem.setValue(Boolean.valueOf(PreferencesHelper.getSharedPreferences(getContext()).getBoolean(IConstant.KEY_AUTO_DOWNLOAG_PICTURE, false)));
                     settingItem.setOnSwitchListener(this.downLoadPhotoOnSwitchListener);
-                } else if (getString(C1438R.string.app_advanced_settings).equals(str)) {
+                } else if (getString(com.weioa.KmedHealthIndonesia.R.string.app_advanced_settings).equals(str)) {
                     settingItem.setType(0);
                 }
                 if (i == 0 || i == 1 || i == 3 || i == 4 || i == 5) {

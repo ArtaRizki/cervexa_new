@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.SettingItem;
 import com.jieli.stream.p016dv.running2.p017ui.widget.SwitchButton;
 import java.util.List;
@@ -73,11 +72,11 @@ public class SettingAdapter extends BaseAdapter {
         final SettingItem settingItem = (SettingItem) getItem(i);
         if (itemViewType == 0) {
             if (view == null) {
-                view = LayoutInflater.from(this.mContext).inflate(C1438R.layout.item_device_setting_one, viewGroup, false);
+                view = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_device_setting_one, viewGroup, false);
                 view.setPadding(0, settingItem.getMarginTop(), 0, 0);
                 viewHelper = new ViewHelper();
-                viewHelper.tv1 = (TextView) view.findViewById(C1438R.id.item_setting_one_tv1);
-                viewHelper.tv2 = (TextView) view.findViewById(C1438R.id.item_setting_one_tv2);
+                viewHelper.tv1 = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_setting_one_tv1);
+                viewHelper.tv2 = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_setting_one_tv2);
                 view.setTag(viewHelper);
             } else {
                 viewHelper = (ViewHelper) view.getTag();
@@ -88,11 +87,11 @@ public class SettingAdapter extends BaseAdapter {
             }
         } else if (itemViewType == 1) {
             if (view == null) {
-                view = LayoutInflater.from(this.mContext).inflate(C1438R.layout.item_device_setting_two, viewGroup, false);
+                view = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_device_setting_two, viewGroup, false);
                 view.setPadding(0, settingItem.getMarginTop(), 0, 0);
                 viewHelper1 = new ViewHelper1();
-                viewHelper1.tv1 = (TextView) view.findViewById(C1438R.id.item_setting_three_tv1);
-                viewHelper1.switchButton = (SwitchButton) view.findViewById(C1438R.id.item_setting_three_icon);
+                viewHelper1.tv1 = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_setting_three_tv1);
+                viewHelper1.switchButton = (SwitchButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_setting_three_icon);
                 view.setTag(viewHelper1);
                 viewHelper1.switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: com.jieli.stream.dv.running2.ui.adapter.SettingAdapter.1
                     @Override // android.widget.CompoundButton.OnCheckedChangeListener
@@ -112,11 +111,11 @@ public class SettingAdapter extends BaseAdapter {
             }
         } else if (itemViewType == 2) {
             if (view == null) {
-                view = LayoutInflater.from(this.mContext).inflate(C1438R.layout.item_device_setting_three, viewGroup, false);
+                view = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_device_setting_three, viewGroup, false);
                 view.setPadding(0, settingItem.getMarginTop(), 0, 0);
                 viewHelper2 = new ViewHelper();
-                viewHelper2.tv1 = (TextView) view.findViewById(C1438R.id.item_setting_three_tv1);
-                viewHelper2.tv2 = (TextView) view.findViewById(C1438R.id.item_setting_three_tv2);
+                viewHelper2.tv1 = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_setting_three_tv1);
+                viewHelper2.tv2 = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_setting_three_tv2);
                 view.setTag(viewHelper2);
             } else {
                 viewHelper2 = (ViewHelper) view.getTag();

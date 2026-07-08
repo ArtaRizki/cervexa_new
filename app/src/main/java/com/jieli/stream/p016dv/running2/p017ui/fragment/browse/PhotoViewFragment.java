@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
 import com.jieli.stream.p016dv.running2.util.IConstant;
 import com.jieli.stream.p016dv.running2.util.ImageLoader;
@@ -36,10 +35,10 @@ public class PhotoViewFragment extends BaseFragment implements ViewPager.OnPageC
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_photo_view, viewGroup, false);
-        this.mViewPager = (ViewPager) viewInflate.findViewById(C1438R.id.photo_view_pager);
-        this.tvCounter = (TextView) viewInflate.findViewById(C1438R.id.photo_view_counter);
-        this.tvTitle = (TextView) viewInflate.findViewById(C1438R.id.photo_view_title);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_photo_view, viewGroup, false);
+        this.mViewPager = (ViewPager) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.photo_view_pager);
+        this.tvCounter = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.photo_view_counter);
+        this.tvTitle = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.photo_view_title);
         this.mViewPager.setPageMargin((int) (getResources().getDisplayMetrics().density * 15.0f));
         this.mViewPager.setOnPageChangeListener(this);
         return viewInflate;
@@ -81,7 +80,7 @@ public class PhotoViewFragment extends BaseFragment implements ViewPager.OnPageC
     }
 
     private void setCounter(int i, int i2) {
-        String string = getString(C1438R.string.counter_format, Integer.valueOf(i + 1), Integer.valueOf(i2));
+        String string = getString(com.weioa.KmedHealthIndonesia.R.string.counter_format, Integer.valueOf(i + 1), Integer.valueOf(i2));
         TextView textView = this.tvCounter;
         if (textView != null) {
             textView.setText(string);
@@ -155,7 +154,7 @@ public class PhotoViewFragment extends BaseFragment implements ViewPager.OnPageC
             if (!TextUtils.isEmpty(item)) {
                 loadThumbs(photoView, item);
             } else {
-                photoView.setImageResource(C1438R.mipmap.ic_default_picture);
+                photoView.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
             }
             viewGroup.addView(photoView);
             return photoView;

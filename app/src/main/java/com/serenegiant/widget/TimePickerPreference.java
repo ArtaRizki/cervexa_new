@@ -8,7 +8,6 @@ import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TimePicker;
-import com.serenegiant.common.C1831R;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -30,8 +29,8 @@ public class TimePickerPreference extends DialogPreference {
     public TimePickerPreference(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
         this.picker = null;
-        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C1831R.styleable.TimePicker, i, 0);
-        this.mDefaultValue = (long) typedArrayObtainStyledAttributes.getFloat(C1831R.styleable.TimePicker_TimePickerDefaultValue, -1.0f);
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.TimePicker, i, 0);
+        this.mDefaultValue = (long) typedArrayObtainStyledAttributes.getFloat(com.weioa.KmedHealthIndonesia.R.styleable.TimePicker_TimePickerDefaultValue, -1.0f);
         typedArrayObtainStyledAttributes.recycle();
         setPositiveButtonText(R.string.ok);
         setNegativeButtonText(R.string.cancel);

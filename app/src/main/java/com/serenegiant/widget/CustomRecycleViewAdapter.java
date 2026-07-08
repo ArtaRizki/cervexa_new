@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Checkable;
 import androidx.recyclerview.widget.RecyclerView;
-import com.serenegiant.common.C1831R;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -40,7 +39,7 @@ public abstract class CustomRecycleViewAdapter<T> extends RecyclerView.Adapter<C
                     }, 100L);
                 }
                 if (CustomRecycleViewAdapter.this.mCustomRecycleViewListener != null) {
-                    Integer num = (Integer) view.getTag(C1831R.id.position);
+                    Integer num = (Integer) view.getTag(com.weioa.KmedHealthIndonesia.R.id.position);
                     if (num != null) {
                         try {
                             CustomRecycleViewAdapter.this.mCustomRecycleViewListener.onItemClick(CustomRecycleViewAdapter.this, view, num.intValue(), CustomRecycleViewAdapter.this.getItem(num.intValue()));
@@ -202,7 +201,7 @@ public abstract class CustomRecycleViewAdapter<T> extends RecyclerView.Adapter<C
             if (view instanceof Dividable) {
                 ((Dividable) view).hasDivider(z);
             } else {
-                view.setTag(C1831R.id.has_divider, Boolean.valueOf(z));
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.has_divider, Boolean.valueOf(z));
             }
         }
 
@@ -212,7 +211,7 @@ public abstract class CustomRecycleViewAdapter<T> extends RecyclerView.Adapter<C
             if (view instanceof Dividable) {
                 return ((Dividable) view).hasDivider();
             }
-            Boolean bool = (Boolean) view.getTag(C1831R.id.has_divider);
+            Boolean bool = (Boolean) view.getTag(com.weioa.KmedHealthIndonesia.R.id.has_divider);
             return bool != null && bool.booleanValue();
         }
     }

@@ -14,7 +14,6 @@ import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Code;
 import com.jieli.lib.p015dv.control.utils.Topic;
 import com.jieli.lib.p015dv.control.utils.TopicKey;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.DeviceSettingInfo;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
@@ -136,13 +135,13 @@ public class RecordQualityFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_record_resolution, viewGroup, false);
-        this.mFrontRadioGroup = (RadioGroup) viewInflate.findViewById(C1438R.id.record_quality_radio_group);
-        RadioGroup radioGroup = (RadioGroup) viewInflate.findViewById(C1438R.id.rear_record_res_radio_group);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_record_resolution, viewGroup, false);
+        this.mFrontRadioGroup = (RadioGroup) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.record_quality_radio_group);
+        RadioGroup radioGroup = (RadioGroup) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.rear_record_res_radio_group);
         this.mRearRadioGroup = radioGroup;
         radioGroup.setOnCheckedChangeListener(this.mRearDeviceOnCheckedChangeListener);
-        TextView textView = (TextView) viewInflate.findViewById(C1438R.id.front_camera_name);
-        this.mRearDeviceName = (TextView) viewInflate.findViewById(C1438R.id.rear_camera_name);
+        TextView textView = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.front_camera_name);
+        this.mRearDeviceName = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.rear_camera_name);
         DeviceSettingInfo deviceSettingInfo = this.mApplication.getDeviceSettingInfo();
         if (deviceSettingInfo != null && deviceSettingInfo.isExistRearView()) {
             showRearCameraUI();

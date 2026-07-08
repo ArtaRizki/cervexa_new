@@ -15,7 +15,6 @@ import android.widget.TextView;
 import androidx.core.internal.view.SupportMenu;
 import androidx.core.view.InputDeviceCompat;
 import androidx.core.view.ViewCompat;
-import com.serenegiant.common.C1831R;
 import java.util.Locale;
 
 /* JADX INFO: loaded from: classes2.dex */
@@ -49,23 +48,23 @@ public class FrameSelectorView extends LinearLayout {
     static {
         SparseIntArray sparseIntArray = new SparseIntArray();
         sBUTTONS = sparseIntArray;
-        sparseIntArray.put(C1831R.id.color1_button, 0);
-        sBUTTONS.put(C1831R.id.color2_button, 1);
-        sBUTTONS.put(C1831R.id.color3_button, 2);
-        sBUTTONS.put(C1831R.id.color4_button, 3);
-        sBUTTONS.put(C1831R.id.color5_button, 4);
-        sBUTTONS.put(C1831R.id.color6_button, 5);
-        sBUTTONS.put(C1831R.id.color7_button, 6);
-        sBUTTONS.put(C1831R.id.color8_button, 7);
-        sBUTTONS.put(C1831R.id.color_select_button, -1);
-        sBUTTONS.put(C1831R.id.frame_frame_button, 1);
-        sBUTTONS.put(C1831R.id.frame_cross_button, 2);
-        sBUTTONS.put(C1831R.id.frame_cross_quarter_button, 3);
-        sBUTTONS.put(C1831R.id.frame_circle_button, 4);
-        sBUTTONS.put(C1831R.id.frame_circle2_button, 6);
-        sBUTTONS.put(C1831R.id.frame_cross_circle_button, 5);
-        sBUTTONS.put(C1831R.id.frame_cross_circle2_button, 7);
-        COLOR_BTN_IDS = new int[]{C1831R.id.color1_button, C1831R.id.color2_button, C1831R.id.color3_button, C1831R.id.color4_button, C1831R.id.color5_button, C1831R.id.color6_button, C1831R.id.color7_button, C1831R.id.color8_button};
+        sparseIntArray.put(com.weioa.KmedHealthIndonesia.R.id.color1_button, 0);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.color2_button, 1);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.color3_button, 2);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.color4_button, 3);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.color5_button, 4);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.color6_button, 5);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.color7_button, 6);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.color8_button, 7);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.color_select_button, -1);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.frame_frame_button, 1);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.frame_cross_button, 2);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.frame_cross_quarter_button, 3);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.frame_circle_button, 4);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.frame_circle2_button, 6);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.frame_cross_circle_button, 5);
+        sBUTTONS.put(com.weioa.KmedHealthIndonesia.R.id.frame_cross_circle2_button, 7);
+        COLOR_BTN_IDS = new int[]{com.weioa.KmedHealthIndonesia.R.id.color1_button, com.weioa.KmedHealthIndonesia.R.id.color2_button, com.weioa.KmedHealthIndonesia.R.id.color3_button, com.weioa.KmedHealthIndonesia.R.id.color4_button, com.weioa.KmedHealthIndonesia.R.id.color5_button, com.weioa.KmedHealthIndonesia.R.id.color6_button, com.weioa.KmedHealthIndonesia.R.id.color7_button, com.weioa.KmedHealthIndonesia.R.id.color8_button};
     }
 
     public FrameSelectorView(Context context) {
@@ -113,10 +112,10 @@ public class FrameSelectorView extends LinearLayout {
             @Override // android.widget.RadioGroup.OnCheckedChangeListener
             public void onCheckedChanged(RadioGroup radioGroup, int i2) {
                 int i3;
-                if (i2 == C1831R.id.scale_type_inch_radiobutton) {
+                if (i2 == com.weioa.KmedHealthIndonesia.R.id.scale_type_inch_radiobutton) {
                     i3 = 1;
                 } else {
-                    i3 = i2 == C1831R.id.scale_type_mm_radiobutton ? 2 : 0;
+                    i3 = i2 == com.weioa.KmedHealthIndonesia.R.id.scale_type_mm_radiobutton ? 2 : 0;
                 }
                 if (FrameSelectorView.this.mCallback != null) {
                     try {
@@ -160,7 +159,7 @@ public class FrameSelectorView extends LinearLayout {
         };
         setOrientation(1);
         try {
-            initView(LayoutInflater.from(context).inflate(C1831R.layout.view_frame_selector, (ViewGroup) this, true));
+            initView(LayoutInflater.from(context).inflate(com.weioa.KmedHealthIndonesia.R.layout.view_frame_selector, (ViewGroup) this, true));
         } catch (Exception unused) {
         }
     }
@@ -187,11 +186,11 @@ public class FrameSelectorView extends LinearLayout {
         RadioGroup radioGroup = this.mScaleTypeRadioGroup;
         if (radioGroup != null) {
             if (i == 1) {
-                radioGroup.check(C1831R.id.scale_type_inch_radiobutton);
+                radioGroup.check(com.weioa.KmedHealthIndonesia.R.id.scale_type_inch_radiobutton);
             } else if (i == 2) {
-                radioGroup.check(C1831R.id.scale_type_mm_radiobutton);
+                radioGroup.check(com.weioa.KmedHealthIndonesia.R.id.scale_type_mm_radiobutton);
             } else {
-                radioGroup.check(C1831R.id.scale_type_non_radiobutton);
+                radioGroup.check(com.weioa.KmedHealthIndonesia.R.id.scale_type_non_radiobutton);
             }
         }
     }
@@ -254,34 +253,34 @@ public class FrameSelectorView extends LinearLayout {
     }
 
     private void initView(View view) {
-        this.mFrameButtons[0] = (ImageButton) view.findViewById(C1831R.id.frame_frame_button);
+        this.mFrameButtons[0] = (ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.frame_frame_button);
         this.mFrameButtons[0].setOnClickListener(this.mOnFrameClickListener);
-        this.mFrameButtons[1] = (ImageButton) view.findViewById(C1831R.id.frame_cross_button);
+        this.mFrameButtons[1] = (ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.frame_cross_button);
         this.mFrameButtons[1].setOnClickListener(this.mOnFrameClickListener);
-        this.mFrameButtons[2] = (ImageButton) view.findViewById(C1831R.id.frame_cross_quarter_button);
+        this.mFrameButtons[2] = (ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.frame_cross_quarter_button);
         this.mFrameButtons[2].setOnClickListener(this.mOnFrameClickListener);
-        this.mFrameButtons[3] = (ImageButton) view.findViewById(C1831R.id.frame_circle_button);
+        this.mFrameButtons[3] = (ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.frame_circle_button);
         this.mFrameButtons[3].setOnClickListener(this.mOnFrameClickListener);
-        this.mFrameButtons[4] = (ImageButton) view.findViewById(C1831R.id.frame_circle2_button);
+        this.mFrameButtons[4] = (ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.frame_circle2_button);
         this.mFrameButtons[4].setOnClickListener(this.mOnFrameClickListener);
-        this.mFrameButtons[5] = (ImageButton) view.findViewById(C1831R.id.frame_cross_circle_button);
+        this.mFrameButtons[5] = (ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.frame_cross_circle_button);
         this.mFrameButtons[5].setOnClickListener(this.mOnFrameClickListener);
-        this.mFrameButtons[6] = (ImageButton) view.findViewById(C1831R.id.frame_cross_circle2_button);
+        this.mFrameButtons[6] = (ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.frame_cross_circle2_button);
         this.mFrameButtons[6].setOnClickListener(this.mOnFrameClickListener);
-        ((ImageButton) view.findViewById(C1831R.id.color1_button)).setOnClickListener(this.mOnColorClickListener);
-        ((ImageButton) view.findViewById(C1831R.id.color2_button)).setOnClickListener(this.mOnColorClickListener);
-        ((ImageButton) view.findViewById(C1831R.id.color3_button)).setOnClickListener(this.mOnColorClickListener);
-        ((ImageButton) view.findViewById(C1831R.id.color4_button)).setOnClickListener(this.mOnColorClickListener);
-        ((ImageButton) view.findViewById(C1831R.id.color5_button)).setOnClickListener(this.mOnColorClickListener);
-        ((ImageButton) view.findViewById(C1831R.id.color6_button)).setOnClickListener(this.mOnColorClickListener);
-        ((ImageButton) view.findViewById(C1831R.id.color7_button)).setOnClickListener(this.mOnColorClickListener);
-        ((ImageButton) view.findViewById(C1831R.id.color8_button)).setOnClickListener(this.mOnColorClickListener);
-        ((ImageButton) view.findViewById(C1831R.id.color_select_button)).setOnClickListener(this.mOnColorClickListener);
-        RadioGroup radioGroup = (RadioGroup) view.findViewById(C1831R.id.scale_type_radiogroup);
+        ((ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.color1_button)).setOnClickListener(this.mOnColorClickListener);
+        ((ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.color2_button)).setOnClickListener(this.mOnColorClickListener);
+        ((ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.color3_button)).setOnClickListener(this.mOnColorClickListener);
+        ((ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.color4_button)).setOnClickListener(this.mOnColorClickListener);
+        ((ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.color5_button)).setOnClickListener(this.mOnColorClickListener);
+        ((ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.color6_button)).setOnClickListener(this.mOnColorClickListener);
+        ((ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.color7_button)).setOnClickListener(this.mOnColorClickListener);
+        ((ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.color8_button)).setOnClickListener(this.mOnColorClickListener);
+        ((ImageButton) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.color_select_button)).setOnClickListener(this.mOnColorClickListener);
+        RadioGroup radioGroup = (RadioGroup) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.scale_type_radiogroup);
         this.mScaleTypeRadioGroup = radioGroup;
         radioGroup.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
-        this.mLineWidthTv = (TextView) view.findViewById(C1831R.id.line_width_textview);
-        SeekBar seekBar = (SeekBar) view.findViewById(C1831R.id.line_width_seekbar);
+        this.mLineWidthTv = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.line_width_textview);
+        SeekBar seekBar = (SeekBar) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.line_width_seekbar);
         this.mSeekBar = seekBar;
         seekBar.setOnSeekBarChangeListener(this.mOnSeekBarChangeListener);
     }

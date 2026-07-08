@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.generalplus.ffmpegLib.ffmpegWrapper;
 import generalplus.com.GPCamLib.CamWrapper;
 
@@ -65,13 +64,13 @@ public class FileViewController extends Activity implements SurfaceHolder.Callba
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1021R.layout.activity_files_vlc_player);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_files_vlc_player);
         getWindow().addFlags(128);
         this.m_Context = this;
-        this.vlcContainer = (LinearLayout) findViewById(C1021R.id.vlc_container);
-        this.mSurfaceView = (GLSurfaceView) findViewById(C1021R.id.vlc_surface);
-        this.vlcOverlay = (FrameLayout) findViewById(C1021R.id.vlc_overlay);
-        this.imgbtn_playpause = (ImageButton) findViewById(C1021R.id.imgbtn_playpause);
+        this.vlcContainer = (LinearLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.vlc_container);
+        this.mSurfaceView = (GLSurfaceView) findViewById(com.weioa.KmedHealthIndonesia.R.id.vlc_surface);
+        this.vlcOverlay = (FrameLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.vlc_overlay);
+        this.imgbtn_playpause = (ImageButton) findViewById(com.weioa.KmedHealthIndonesia.R.id.imgbtn_playpause);
         this.mSurfaceView.setEGLContextClientVersion(2);
         this.mSurfaceView.setRenderer(ffmpegWrapper.getInstance());
         this.mSurfaceView.setKeepScreenOn(true);

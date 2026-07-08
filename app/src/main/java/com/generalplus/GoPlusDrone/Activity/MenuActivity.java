@@ -23,7 +23,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
-import com.generalplus.GoPlusDrone.C1021R;
 import java.io.File;
 import org.apache.commons.net.ftp.FTPReply;
 
@@ -44,15 +43,15 @@ public class MenuActivity extends Activity {
 
     /* JADX INFO: renamed from: n */
     int f1932n = 0;
-    int[] images1 = {C1021R.drawable.main_menu_help_1, C1021R.drawable.main_menu_preview_1, C1021R.drawable.main_menu_file_1, C1021R.drawable.main_menu_setting_1};
-    int[] images2 = {C1021R.drawable.main_menu_help_2, C1021R.drawable.main_menu_preview_2, C1021R.drawable.main_menu_file_2, C1021R.drawable.main_menu_setting_2};
+    int[] images1 = {com.weioa.KmedHealthIndonesia.R.drawable.main_menu_help_1, com.weioa.KmedHealthIndonesia.R.drawable.main_menu_preview_1, com.weioa.KmedHealthIndonesia.R.drawable.main_menu_file_1, com.weioa.KmedHealthIndonesia.R.drawable.main_menu_setting_1};
+    int[] images2 = {com.weioa.KmedHealthIndonesia.R.drawable.main_menu_help_2, com.weioa.KmedHealthIndonesia.R.drawable.main_menu_preview_2, com.weioa.KmedHealthIndonesia.R.drawable.main_menu_file_2, com.weioa.KmedHealthIndonesia.R.drawable.main_menu_setting_2};
     private int selectedTag = 0;
 
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1021R.layout.menu);
-        this.layout = (LinearLayout) findViewById(C1021R.id.linlay);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.menu);
+        this.layout = (LinearLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.linlay);
         this.mScreenWidth = getResources().getDisplayMetrics().widthPixels;
         this.mScreenHigth = getResources().getDisplayMetrics().heightPixels;
         setBitmap();
@@ -67,21 +66,21 @@ public class MenuActivity extends Activity {
         int i = this.mScreenWidth;
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((i * 2) / 10, (i * 2) / 10);
         Button button = new Button(this);
-        button.setBackgroundResource(C1021R.drawable.main_menu_help_1);
+        button.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.main_menu_help_1);
         button.setId(101);
         this.layout.addView(button, layoutParams);
         int i2 = this.mScreenWidth;
         LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams((i2 * 2) / 10, (i2 * 2) / 10);
         layoutParams2.leftMargin = (this.mScreenWidth * 1) / 10;
         Button button2 = new Button(this);
-        button2.setBackgroundResource(C1021R.drawable.main_menu_preview_1);
+        button2.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.main_menu_preview_1);
         button2.setId(102);
         this.layout.addView(button2, layoutParams2);
         int i3 = this.mScreenWidth;
         LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams((i3 * 2) / 10, (i3 * 2) / 10);
         layoutParams3.leftMargin = (this.mScreenWidth * 1) / 10;
         Button button3 = new Button(this);
-        button3.setBackgroundResource(C1021R.drawable.main_menu_file_1);
+        button3.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.main_menu_file_1);
         button3.setId(103);
         this.layout.addView(button3, layoutParams3);
         button.setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.MenuActivity.1
@@ -132,7 +131,7 @@ public class MenuActivity extends Activity {
         options.inPreferredConfig = Bitmap.Config.RGB_565;
         options.inInputShareable = true;
         options.inPurgeable = true;
-        this.bitmap = BitmapFactory.decodeResource(getResources(), C1021R.drawable.main_menu_bg, options);
+        this.bitmap = BitmapFactory.decodeResource(getResources(), com.weioa.KmedHealthIndonesia.R.drawable.main_menu_bg, options);
         this.layout.setBackgroundDrawable(new BitmapDrawable(getResources(), this.bitmap));
     }
 
@@ -158,52 +157,52 @@ public class MenuActivity extends Activity {
         layoutParams.gravity = 17;
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setLayoutParams(layoutParams);
-        linearLayout.setBackgroundResource(C1021R.drawable.file_style);
+        linearLayout.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.file_style);
         linearLayout.setOrientation(1);
         LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams((this.mScreenWidth * 3) / 7, (this.mScreenHigth * 3) / 15);
         TextView textView = new TextView(this);
         textView.setLayoutParams(layoutParams2);
         textView.setGravity(17);
-        textView.setText(C1021R.string.language5);
+        textView.setText(com.weioa.KmedHealthIndonesia.R.string.language5);
         textView.setTextColor(-16645630);
         textView.setTextSize((this.mScreenWidth * 4) / 200);
         linearLayout.addView(textView);
         LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams((this.mScreenWidth * 3) / 7, (this.mScreenHigth * 1) / FTPReply.FILE_STATUS_OK);
         ImageView imageView = new ImageView(this);
         imageView.setLayoutParams(layoutParams3);
-        imageView.setBackgroundResource(C1021R.drawable.lin1);
+        imageView.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.lin1);
         linearLayout.addView(imageView);
         LinearLayout.LayoutParams layoutParams4 = new LinearLayout.LayoutParams((this.mScreenWidth * 3) / 7, (this.mScreenHigth * 2) / 15);
         TextView textView2 = new TextView(this);
         textView2.setLayoutParams(layoutParams4);
         textView2.setGravity(17);
-        textView2.setText(C1021R.string.language6);
+        textView2.setText(com.weioa.KmedHealthIndonesia.R.string.language6);
         textView2.setTextColor(-16645630);
         textView2.setTextSize((this.mScreenWidth * 3) / 200);
         linearLayout.addView(textView2);
         LinearLayout.LayoutParams layoutParams5 = new LinearLayout.LayoutParams((this.mScreenWidth * 3) / 7, (this.mScreenHigth * 1) / FTPReply.FILE_STATUS_OK);
         ImageView imageView2 = new ImageView(this);
         imageView2.setLayoutParams(layoutParams5);
-        imageView2.setBackgroundResource(C1021R.drawable.lin1);
+        imageView2.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.lin1);
         linearLayout.addView(imageView2);
         LinearLayout.LayoutParams layoutParams6 = new LinearLayout.LayoutParams((this.mScreenWidth * 3) / 7, (this.mScreenHigth * 2) / 15);
         TextView textView3 = new TextView(this);
         textView3.setLayoutParams(layoutParams6);
         textView3.setGravity(17);
-        textView3.setText(C1021R.string.language7);
+        textView3.setText(com.weioa.KmedHealthIndonesia.R.string.language7);
         textView3.setTextColor(-16645630);
         textView3.setTextSize((this.mScreenWidth * 3) / 200);
         linearLayout.addView(textView3);
         LinearLayout.LayoutParams layoutParams7 = new LinearLayout.LayoutParams((this.mScreenWidth * 3) / 7, (this.mScreenHigth * 1) / FTPReply.FILE_STATUS_OK);
         ImageView imageView3 = new ImageView(this);
         imageView3.setLayoutParams(layoutParams7);
-        imageView3.setBackgroundResource(C1021R.drawable.lin1);
+        imageView3.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.lin1);
         linearLayout.addView(imageView3);
         LinearLayout.LayoutParams layoutParams8 = new LinearLayout.LayoutParams((this.mScreenWidth * 3) / 7, (this.mScreenHigth * 2) / 15);
         TextView textView4 = new TextView(this);
         textView4.setLayoutParams(layoutParams8);
         textView4.setGravity(17);
-        textView4.setText(C1021R.string.language8);
+        textView4.setText(com.weioa.KmedHealthIndonesia.R.string.language8);
         textView4.setTextColor(-16645630);
         textView4.setTextSize((this.mScreenWidth * 3) / 200);
         linearLayout.addView(textView4);
@@ -241,7 +240,7 @@ public class MenuActivity extends Activity {
             file.mkdirs();
             return;
         }
-        Toast.makeText(this, getResources().getString(C1021R.string.language16), 1).show();
+        Toast.makeText(this, getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language16), 1).show();
     }
 
     @Override // android.app.Activity

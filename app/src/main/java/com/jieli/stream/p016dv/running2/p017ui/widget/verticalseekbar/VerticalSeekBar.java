@@ -12,7 +12,6 @@ import android.view.ViewParent;
 import android.widget.ProgressBar;
 import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.core.view.ViewCompat;
-import com.jieli.stream.p016dv.running2.C1438R;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -50,8 +49,8 @@ public class VerticalSeekBar extends AppCompatSeekBar {
     private void initialize(Context context, AttributeSet attributeSet, int i, int i2) {
         ViewCompat.setLayoutDirection(this, 0);
         if (attributeSet != null) {
-            TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C1438R.styleable.VerticalSeekBar, i, i2);
-            int integer = typedArrayObtainStyledAttributes.getInteger(C1438R.styleable.VerticalSeekBar_seekBarRotation, 0);
+            TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.VerticalSeekBar, i, i2);
+            int integer = typedArrayObtainStyledAttributes.getInteger(com.weioa.KmedHealthIndonesia.R.styleable.VerticalSeekBar_seekBarRotation, 0);
             if (isValidRotationAngle(integer)) {
                 this.mRotationAngle = integer;
             }

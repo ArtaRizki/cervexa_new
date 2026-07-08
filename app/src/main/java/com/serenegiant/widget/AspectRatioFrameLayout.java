@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import com.serenegiant.common.C1831R;
-
 /* JADX INFO: loaded from: classes2.dex */
 public class AspectRatioFrameLayout extends FrameLayout implements IAspectRatioView {
     private double mRequestedAspect;
@@ -22,9 +20,9 @@ public class AspectRatioFrameLayout extends FrameLayout implements IAspectRatioV
     public AspectRatioFrameLayout(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
         this.mRequestedAspect = -1.0d;
-        TypedArray typedArrayObtainStyledAttributes = context.getTheme().obtainStyledAttributes(attributeSet, C1831R.styleable.IAspectRatioView, i, 0);
+        TypedArray typedArrayObtainStyledAttributes = context.getTheme().obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.IAspectRatioView, i, 0);
         try {
-            this.mRequestedAspect = typedArrayObtainStyledAttributes.getFloat(C1831R.styleable.IAspectRatioView_aspect_ratio, -1.0f);
+            this.mRequestedAspect = typedArrayObtainStyledAttributes.getFloat(com.weioa.KmedHealthIndonesia.R.styleable.IAspectRatioView_aspect_ratio, -1.0f);
         } finally {
             typedArrayObtainStyledAttributes.recycle();
         }

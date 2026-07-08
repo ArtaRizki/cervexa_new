@@ -3,7 +3,6 @@ package com.xyzlf.share.library.channel;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.xyzlf.com.share.library.C2095R;
 import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.interfaces.OnShareListener;
 import com.xyzlf.share.library.util.ShareUtil;
@@ -19,7 +18,7 @@ public class ShareBySystem extends ShareBase {
     public void share(ShareEntity shareEntity, OnShareListener onShareListener) {
         String str;
         if (shareEntity == null || TextUtils.isEmpty(shareEntity.getContent())) {
-            ToastUtil.showToast(this.context, C2095R.string.share_empty_tip, true);
+            ToastUtil.showToast(this.context, com.weioa.KmedHealthIndonesia.R.string.share_empty_tip, true);
             return;
         }
         if (TextUtils.isEmpty(shareEntity.getContent())) {
@@ -31,7 +30,7 @@ public class ShareBySystem extends ShareBase {
         intent.setAction("android.intent.action.SEND");
         intent.putExtra("android.intent.extra.TEXT", str);
         intent.setType("text/plain");
-        if (ShareUtil.startActivity(this.context, Intent.createChooser(intent, this.context.getString(C2095R.string.share_to)))) {
+        if (ShareUtil.startActivity(this.context, Intent.createChooser(intent, this.context.getString(com.weioa.KmedHealthIndonesia.R.string.share_to)))) {
             if (onShareListener != null) {
                 onShareListener.onShare(1024, 1);
             }

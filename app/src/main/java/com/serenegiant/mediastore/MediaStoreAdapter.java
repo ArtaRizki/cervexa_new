@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.collection.LruCache;
 import androidx.cursoradapter.widget.CursorAdapter;
-import com.serenegiant.common.C1831R;
 import com.serenegiant.mediastore.MediaStoreHelper;
 import com.serenegiant.utils.ThreadPool;
 import java.io.FileNotFoundException;
@@ -92,22 +91,22 @@ public class MediaStoreAdapter extends CursorAdapter {
     }
 
     private ViewHolder getViewHolder(View view) {
-        ViewHolder viewHolder = (ViewHolder) view.getTag(C1831R.id.mediastorephotoadapter);
+        ViewHolder viewHolder = (ViewHolder) view.getTag(com.weioa.KmedHealthIndonesia.R.id.mediastorephotoadapter);
         if (viewHolder == null) {
             viewHolder = new ViewHolder();
             if (view instanceof ImageView) {
                 viewHolder.mImageView = (ImageView) view;
-                view.setTag(C1831R.id.mediastorephotoadapter, viewHolder);
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.mediastorephotoadapter, viewHolder);
             } else {
-                View viewFindViewById = view.findViewById(C1831R.id.thumbnail);
+                View viewFindViewById = view.findViewById(com.weioa.KmedHealthIndonesia.R.id.thumbnail);
                 if (viewFindViewById instanceof ImageView) {
                     viewHolder.mImageView = (ImageView) viewFindViewById;
                 }
-                View viewFindViewById2 = view.findViewById(C1831R.id.title);
+                View viewFindViewById2 = view.findViewById(com.weioa.KmedHealthIndonesia.R.id.title);
                 if (viewFindViewById2 instanceof TextView) {
                     viewHolder.mTitleView = (TextView) viewFindViewById2;
                 }
-                view.setTag(C1831R.id.mediastorephotoadapter, viewHolder);
+                view.setTag(com.weioa.KmedHealthIndonesia.R.id.mediastorephotoadapter, viewHolder);
             }
         }
         return viewHolder;

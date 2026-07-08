@@ -42,7 +42,6 @@ import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Dlog;
 import com.jieli.media.codec.FrameCodec;
 import com.jieli.media.codec.bean.MediaMeta;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.audio.AudioRecordManager;
 import com.jieli.stream.p016dv.running2.bean.DeviceDesc;
 import com.jieli.stream.p016dv.running2.bean.DeviceSettingInfo;
@@ -183,7 +182,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                         if (MainApplication.getApplication().isSdcardExist()) {
                             int i = PlaybackActivity.this.recordStatus;
                             if (i == 0) {
-                                ToastUtil.showToastShort(PlaybackActivity.this.getString(C1438R.string.open_video_tip));
+                                ToastUtil.showToastShort(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.open_video_tip));
                             } else {
                                 if (i == 1) {
                                     z = false;
@@ -200,7 +199,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                             }
                         } else if (PlaybackActivity.this.isPlaying()) {
                             if (PlaybackActivity.this.isRtspEnable) {
-                                ToastUtil.showToastLong(PlaybackActivity.this.getString(C1438R.string.not_supported_in_rtsp_mode));
+                                ToastUtil.showToastLong(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.not_supported_in_rtsp_mode));
                             } else if (!AppUtils.isFastDoubleClick(UIMsg.m_AppUI.MSG_APP_DATA_OK)) {
                                 if (PlaybackActivity.this.isRecordPrepared) {
                                     PlaybackActivity.this.stopLocalRecording();
@@ -208,10 +207,10 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                                     PlaybackActivity.this.showLocalRecordDialog();
                                 }
                             } else {
-                                ToastUtil.showToastShort(PlaybackActivity.this.getString(C1438R.string.dialod_wait));
+                                ToastUtil.showToastShort(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.dialod_wait));
                             }
                         } else {
-                            ToastUtil.showToastShort(PlaybackActivity.this.getString(C1438R.string.open_rts_tip));
+                            ToastUtil.showToastShort(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.open_rts_tip));
                         }
                         break;
                     case PlaybackActivity.MSG_TAKE_PHOTO /* 2561 */:
@@ -229,17 +228,17 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                                             @Override // com.jieli.stream.p016dv.running2.data.OnVideoCaptureListener
                                             public void onFailed() {
                                                 PlaybackActivity.this.isCapturePrepared = false;
-                                                ToastUtil.showToastShort(PlaybackActivity.this.getString(C1438R.string.failure_photo));
+                                                ToastUtil.showToastShort(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.failure_photo));
                                             }
                                         });
                                     }
                                     PlaybackActivity.this.shootSound();
                                     PlaybackActivity.this.isCapturePrepared = true;
                                 } else {
-                                    ToastUtil.showToastLong(PlaybackActivity.this.getString(C1438R.string.not_supported_in_rtsp_mode));
+                                    ToastUtil.showToastLong(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.not_supported_in_rtsp_mode));
                                 }
                             } else if (!PlaybackActivity.this.isAdjustResolution) {
-                                ToastUtil.showToastShort(PlaybackActivity.this.getString(C1438R.string.open_rts_tip));
+                                ToastUtil.showToastShort(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.open_rts_tip));
                             }
                         } else {
                             ClientManager.getClient().tryToTakePhoto(new SendResponse() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.1.2
@@ -276,7 +275,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                                 }
                             });
                         } else {
-                            ToastUtil.showToastLong(PlaybackActivity.this.getString(C1438R.string.not_supported_in_rtsp_mode));
+                            ToastUtil.showToastLong(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.not_supported_in_rtsp_mode));
                         }
                         break;
                     case PlaybackActivity.MSG_CYC_SAVE_VIDEO /* 2564 */:
@@ -290,7 +289,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                                 }
                             });
                         } else {
-                            ToastUtil.showToastShort(PlaybackActivity.this.getString(C1438R.string.no_video_tip));
+                            ToastUtil.showToastShort(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.no_video_tip));
                         }
                         break;
                     case PlaybackActivity.MSG_FPS_COUNT /* 2565 */:
@@ -382,7 +381,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                     PlaybackActivity.this.enterVideosBrowserMode();
                     return;
                 } else {
-                    ToastUtil.showToastLong(PlaybackActivity.this.getString(C1438R.string.sdcard_offline));
+                    ToastUtil.showToastLong(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.sdcard_offline));
                     return;
                 }
             }
@@ -464,7 +463,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                         return;
                     }
                 }
-                ToastUtil.showToastShort(PlaybackActivity.this.getString(C1438R.string.null_data));
+                ToastUtil.showToastShort(PlaybackActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.null_data));
             }
         }
     };
@@ -566,7 +565,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
             }
             PlaybackActivity.this.closeRTS();
             PlaybackActivity playbackActivity = PlaybackActivity.this;
-            playbackActivity.showErrorDialog(playbackActivity.getString(C1438R.string.fail_to_play));
+            playbackActivity.showErrorDialog(playbackActivity.getString(com.weioa.KmedHealthIndonesia.R.string.fail_to_play));
             return true;
         }
     };
@@ -658,7 +657,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         requestWindowFeature(1);
         attributes.flags = 1024;
         getWindow().setAttributes(attributes);
-        setContentView(C1438R.layout.activity_playback);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_playback);
         this.isRtspEnable = PreferencesHelper.getSharedPreferences(this.mApplication).getBoolean(IConstant.KEY_RTSP, false);
         PowerManager powerManager = (PowerManager) getSystemService("power");
         if (powerManager != null) {
@@ -750,11 +749,11 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void initUI() {
-        this.topBar = (RelativeLayout) findViewById(C1438R.id.playback_top_bar);
-        this.mReturn = (ImageView) findViewById(C1438R.id.return_back);
-        this.tvTop = (TextView) findViewById(C1438R.id.playback_top_tv);
-        this.mCancel = (ImageView) findViewById(C1438R.id.cancle_time_select_ibtn);
-        IjkVideoView ijkVideoView = (IjkVideoView) findViewById(C1438R.id.playback_rt_stream_view);
+        this.topBar = (RelativeLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.playback_top_bar);
+        this.mReturn = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.return_back);
+        this.tvTop = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.playback_top_tv);
+        this.mCancel = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.cancle_time_select_ibtn);
+        IjkVideoView ijkVideoView = (IjkVideoView) findViewById(com.weioa.KmedHealthIndonesia.R.id.playback_rt_stream_view);
         this.mStreamView = ijkVideoView;
         ijkVideoView.setAspectRatio(3);
         this.mStreamView.setOnErrorListener(this.mOnErrorListener);
@@ -762,29 +761,29 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         this.mStreamView.setOnTouchListener(this.mOnTouchListener);
         this.mStreamView.setOnCompletionListener(this.onCompletionListener);
         this.mStreamView.setOnPreparedListener(this.onPreparedListener);
-        this.mLoadingView = (ProgressBar) findViewById(C1438R.id.playback_rt_stream_loading);
-        this.layoutPreview = (RelativeLayout) findViewById(C1438R.id.playback_preview_mode);
-        this.leftControlBar = (LinearLayout) findViewById(C1438R.id.preview_mode_left_bar);
-        this.mAdjustResolutionBtn = (ImageView) findViewById(C1438R.id.left_bar_adjust_resolution_btn);
-        this.mProjectionBtn = (ImageView) findViewById(C1438R.id.left_bar_projection_btn);
-        this.mBrowseGallery = (ImageView) findViewById(C1438R.id.left_bar_browse_photo_btn);
-        this.centerControlBar = (LinearLayout) findViewById(C1438R.id.preview_mode_center_bar);
-        this.mPhotoBtn = (ImageView) findViewById(C1438R.id.center_bar_photo_btn);
-        this.mVoiceBtn = (ImageView) findViewById(C1438R.id.center_bar_voice_btn);
-        this.mVideoBtn = (ImageView) findViewById(C1438R.id.center_bar_video_btn);
-        this.mRecordFlag = (ImageView) findViewById(C1438R.id.status_bar_record_flag);
-        this.mProjectionFlag = (ImageView) findViewById(C1438R.id.status_bar_projection_flag);
-        this.mSwitchCameraBtn = (ImageView) findViewById(C1438R.id.left_bar_switch_camera_btn);
-        this.mCycSaveVideo = (ImageView) findViewById(C1438R.id.left_bar_cyc_save_video);
-        this.mRTSPlayButton = (ImageButton) findViewById(C1438R.id.rts_play);
-        this.layoutBrowse = (RelativeLayout) findViewById(C1438R.id.playback_browse_mode);
-        this.mPositionTime = (TextView) findViewById(C1438R.id.position_of_time);
-        this.tvAutoPlayTip = (TextView) findViewById(C1438R.id.auto_play_tip);
-        this.mCoverFlowCarousel = (RecyclerCoverFlow) findViewById(C1438R.id.carousel);
-        this.playbackSeekbar = (PlaybackSeekbar) findViewById(C1438R.id.time_seekbar);
-        this.mLockFileBtn = (ImageView) findViewById(C1438R.id.left_bar_lock_btn);
-        this.mDeleteFileBtn = (ImageView) findViewById(C1438R.id.left_bar_delete_file_btn);
-        this.mHudView = (TableLayout) findViewById(C1438R.id.hud_view);
+        this.mLoadingView = (ProgressBar) findViewById(com.weioa.KmedHealthIndonesia.R.id.playback_rt_stream_loading);
+        this.layoutPreview = (RelativeLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.playback_preview_mode);
+        this.leftControlBar = (LinearLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.preview_mode_left_bar);
+        this.mAdjustResolutionBtn = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.left_bar_adjust_resolution_btn);
+        this.mProjectionBtn = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.left_bar_projection_btn);
+        this.mBrowseGallery = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.left_bar_browse_photo_btn);
+        this.centerControlBar = (LinearLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.preview_mode_center_bar);
+        this.mPhotoBtn = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.center_bar_photo_btn);
+        this.mVoiceBtn = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.center_bar_voice_btn);
+        this.mVideoBtn = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.center_bar_video_btn);
+        this.mRecordFlag = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.status_bar_record_flag);
+        this.mProjectionFlag = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.status_bar_projection_flag);
+        this.mSwitchCameraBtn = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.left_bar_switch_camera_btn);
+        this.mCycSaveVideo = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.left_bar_cyc_save_video);
+        this.mRTSPlayButton = (ImageButton) findViewById(com.weioa.KmedHealthIndonesia.R.id.rts_play);
+        this.layoutBrowse = (RelativeLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.playback_browse_mode);
+        this.mPositionTime = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.position_of_time);
+        this.tvAutoPlayTip = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.auto_play_tip);
+        this.mCoverFlowCarousel = (RecyclerCoverFlow) findViewById(com.weioa.KmedHealthIndonesia.R.id.carousel);
+        this.playbackSeekbar = (PlaybackSeekbar) findViewById(com.weioa.KmedHealthIndonesia.R.id.time_seekbar);
+        this.mLockFileBtn = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.left_bar_lock_btn);
+        this.mDeleteFileBtn = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.left_bar_delete_file_btn);
+        this.mHudView = (TableLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.hud_view);
         this.tvAutoPlayTip.setVisibility(4);
         this.mReturn.setOnClickListener(this);
         this.mCancel.setOnClickListener(this);
@@ -811,7 +810,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         CoverAdapter coverAdapter = new CoverAdapter(this);
         this.mAdapter = coverAdapter;
         this.mCoverFlowCarousel.setAdapter(coverAdapter);
-        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.loading, true, -1, C1438R.string.dialog_cancel, new NotifyDialog.OnConfirmClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.6
+        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.loading, true, -1, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, new NotifyDialog.OnConfirmClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.6
             @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnConfirmClickListener
             public void onClick() {
                 PlaybackActivity.this.mLoadingDialog.dismiss();
@@ -995,14 +994,14 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         if (view == this.mAdjustResolutionBtn) {
             if (this.mStreamView.isPlaying() || isPlaying()) {
                 if ("1".equals(this.mApplication.getDeviceDesc().getDevice_type()) && this.recordStatus == 1) {
-                    ToastUtil.showToastShort(getString(C1438R.string.stop_recording_first));
+                    ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.stop_recording_first));
                     return;
                 } else {
                     showPopupMenu(view);
                     return;
                 }
             }
-            ToastUtil.showToastShort(getString(C1438R.string.open_rts_tip));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.open_rts_tip));
             return;
         }
         if (view == this.mProjectionBtn) {
@@ -1375,11 +1374,11 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
             if (i != 0) {
                 if (i == 1) {
                     if (fileInfo.getType() == 2) {
-                        i2 = C1438R.string.unlock_file_tip;
+                        i2 = com.weioa.KmedHealthIndonesia.R.string.unlock_file_tip;
                     } else {
-                        i2 = C1438R.string.lock_file_tip;
+                        i2 = com.weioa.KmedHealthIndonesia.R.string.lock_file_tip;
                     }
-                    this.operationFileDialog = NotifyDialog.newInstance(C1438R.string.dialog_tips, i2, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.27
+                    this.operationFileDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, i2, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.27
                         @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                         public void onClick() {
                             if (PlaybackActivity.this.operationFileDialog == null || !PlaybackActivity.this.operationFileDialog.isShowing()) {
@@ -1409,7 +1408,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                     });
                 }
             } else {
-                this.operationFileDialog = NotifyDialog.newInstance(C1438R.string.dialog_warning, C1438R.string.delete_emergency_video_tip, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.25
+                this.operationFileDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_warning, com.weioa.KmedHealthIndonesia.R.string.delete_emergency_video_tip, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.25
                     @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                     public void onClick() {
                         if (PlaybackActivity.this.operationFileDialog == null || !PlaybackActivity.this.operationFileDialog.isShowing()) {
@@ -1497,7 +1496,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         if (this.mWaitingDialog == null) {
             WaitingDialog waitingDialog = new WaitingDialog();
             this.mWaitingDialog = waitingDialog;
-            waitingDialog.setNotifyContent(getString(C1438R.string.deleting_tip));
+            waitingDialog.setNotifyContent(getString(com.weioa.KmedHealthIndonesia.R.string.deleting_tip));
         }
         if (this.mWaitingDialog.isShowing()) {
             return;
@@ -1532,7 +1531,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         if (TextUtils.isEmpty(str)) {
             return;
         }
-        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(getString(C1438R.string.dialog_tips), str, C1438R.string.dialog_ok, new NotifyDialog.OnConfirmClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.31
+        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(getString(com.weioa.KmedHealthIndonesia.R.string.dialog_tips), str, com.weioa.KmedHealthIndonesia.R.string.dialog_ok, new NotifyDialog.OnConfirmClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.31
             @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnConfirmClickListener
             public void onClick() {
                 PlaybackActivity.this.dismissErrorDialog();
@@ -1765,7 +1764,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
 
     public void requestCapturePermission() {
         if (Build.VERSION.SDK_INT < 21) {
-            ToastUtil.showToastLong(getString(C1438R.string.projection_not_support));
+            ToastUtil.showToastLong(getString(com.weioa.KmedHealthIndonesia.R.string.projection_not_support));
             return;
         }
         this.isProjection = true;
@@ -1778,7 +1777,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
 
     private boolean isSdOnline() {
         if (!MainApplication.getApplication().isSdcardExist()) {
-            ToastUtil.showToastShort(getResources().getString(C1438R.string.sdcard_offline));
+            ToastUtil.showToastShort(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.sdcard_offline));
         }
         return MainApplication.getApplication().isSdcardExist();
     }
@@ -1808,7 +1807,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         int streamVolume = audioManager != null ? audioManager.getStreamVolume(4) : 0;
         Dbug.m1389i(this.tag, "volume=:" + streamVolume);
         if (streamVolume != 0) {
-            MediaPlayer mediaPlayerCreate = MediaPlayer.create(this, C1438R.raw.camera_click);
+            MediaPlayer mediaPlayerCreate = MediaPlayer.create(this, com.weioa.KmedHealthIndonesia.R.raw.camera_click);
             mediaPlayerCreate.setOnCompletionListener(new MediaPlayer.OnCompletionListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.35
                 @Override // android.media.MediaPlayer.OnCompletionListener
                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -1827,11 +1826,11 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         ImageView imageView;
         if (this.playbackMode == 257 && (imageView = this.mProjectionFlag) != null) {
             if (this.isProjection) {
-                this.mProjectionBtn.setImageResource(C1438R.mipmap.ic_projection_selected);
+                this.mProjectionBtn.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_projection_selected);
                 this.mProjectionFlag.setVisibility(0);
             } else {
                 imageView.setVisibility(8);
-                this.mProjectionBtn.setImageResource(C1438R.drawable.drawable_projection);
+                this.mProjectionBtn.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.drawable_projection);
             }
         }
     }
@@ -1842,9 +1841,9 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
             return;
         }
         if (this.isRtVoiceOpen) {
-            this.mVoiceBtn.setImageResource(C1438R.mipmap.ic_hor_voice_selected);
+            this.mVoiceBtn.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_hor_voice_selected);
         } else {
-            this.mVoiceBtn.setImageResource(C1438R.drawable.drawable_hor_voice);
+            this.mVoiceBtn.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.drawable_hor_voice);
         }
     }
 
@@ -1867,7 +1866,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
             wakeLock.acquire(216000L);
         }
         this.mRecordFlag.setVisibility(0);
-        this.mVideoBtn.setImageResource(C1438R.mipmap.ic_record_selected);
+        this.mVideoBtn.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_record_selected);
         AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
         alphaAnimation.setDuration(500L);
         alphaAnimation.setInterpolator(new LinearInterpolator());
@@ -1884,7 +1883,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         }
         this.mRecordFlag.clearAnimation();
         this.mRecordFlag.setVisibility(8);
-        this.mVideoBtn.setImageResource(C1438R.drawable.drawable_record_control);
+        this.mVideoBtn.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.drawable_record_control);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -1895,24 +1894,24 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         if (z) {
             RelativeLayout relativeLayout = this.topBar;
             if (relativeLayout != null && relativeLayout.getVisibility() != 0) {
-                this.topBar.setAnimation(AnimationUtils.loadAnimation(this, C1438R.anim.slide_in_top));
+                this.topBar.setAnimation(AnimationUtils.loadAnimation(this, com.weioa.KmedHealthIndonesia.R.anim.slide_in_top));
                 this.topBar.setVisibility(0);
             }
             LinearLayout linearLayout2 = this.leftControlBar;
             if (linearLayout2 != null && linearLayout2.getVisibility() != 0) {
-                this.leftControlBar.setAnimation(AnimationUtils.loadAnimation(this, C1438R.anim.left_enter));
+                this.leftControlBar.setAnimation(AnimationUtils.loadAnimation(this, com.weioa.KmedHealthIndonesia.R.anim.left_enter));
                 this.leftControlBar.setVisibility(0);
             }
             LinearLayout linearLayout3 = this.centerControlBar;
             if (linearLayout3 != null && linearLayout3.getVisibility() != 0) {
-                this.centerControlBar.setAnimation(AnimationUtils.loadAnimation(this, C1438R.anim.right_enter));
+                this.centerControlBar.setAnimation(AnimationUtils.loadAnimation(this, com.weioa.KmedHealthIndonesia.R.anim.right_enter));
                 this.centerControlBar.setVisibility(0);
             }
             PlaybackSeekbar playbackSeekbar = this.playbackSeekbar;
             if (playbackSeekbar == null || playbackSeekbar.getVisibility() == 0 || !zIsSdcardExist) {
                 return;
             }
-            this.playbackSeekbar.setAnimation(AnimationUtils.loadAnimation(this, C1438R.anim.slide_in_bottom));
+            this.playbackSeekbar.setAnimation(AnimationUtils.loadAnimation(this, com.weioa.KmedHealthIndonesia.R.anim.slide_in_bottom));
             this.playbackSeekbar.setVisibility(0);
             return;
         }
@@ -1921,24 +1920,24 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         }
         RelativeLayout relativeLayout2 = this.topBar;
         if (relativeLayout2 != null && relativeLayout2.getVisibility() != 4) {
-            this.topBar.setAnimation(AnimationUtils.loadAnimation(this, C1438R.anim.slide_out_top));
+            this.topBar.setAnimation(AnimationUtils.loadAnimation(this, com.weioa.KmedHealthIndonesia.R.anim.slide_out_top));
             this.topBar.setVisibility(4);
         }
         LinearLayout linearLayout4 = this.leftControlBar;
         if (linearLayout4 != null && linearLayout4.getVisibility() != 4) {
-            this.leftControlBar.setAnimation(AnimationUtils.loadAnimation(this, C1438R.anim.left_exit));
+            this.leftControlBar.setAnimation(AnimationUtils.loadAnimation(this, com.weioa.KmedHealthIndonesia.R.anim.left_exit));
             this.leftControlBar.setVisibility(4);
         }
         LinearLayout linearLayout5 = this.centerControlBar;
         if (linearLayout5 != null && linearLayout5.getVisibility() != 4) {
-            this.centerControlBar.setAnimation(AnimationUtils.loadAnimation(this, C1438R.anim.right_exit));
+            this.centerControlBar.setAnimation(AnimationUtils.loadAnimation(this, com.weioa.KmedHealthIndonesia.R.anim.right_exit));
             this.centerControlBar.setVisibility(4);
         }
         PlaybackSeekbar playbackSeekbar2 = this.playbackSeekbar;
         if (playbackSeekbar2 == null || playbackSeekbar2.getVisibility() == 4) {
             return;
         }
-        this.playbackSeekbar.setAnimation(AnimationUtils.loadAnimation(this, C1438R.anim.slide_out_bottom));
+        this.playbackSeekbar.setAnimation(AnimationUtils.loadAnimation(this, com.weioa.KmedHealthIndonesia.R.anim.slide_out_bottom));
         this.playbackSeekbar.setVisibility(4);
     }
 
@@ -1999,9 +1998,9 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
             return;
         }
         if (fileInfo.getType() == 2) {
-            i = C1438R.drawable.drawable_unlock;
+            i = com.weioa.KmedHealthIndonesia.R.drawable.drawable_unlock;
         } else {
-            i = C1438R.drawable.drawable_lock;
+            i = com.weioa.KmedHealthIndonesia.R.drawable.drawable_lock;
         }
         this.mLockFileBtn.setImageResource(i);
     }
@@ -2034,13 +2033,13 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     private void updateTopTv() {
         String string;
         if (this.playbackMode == 257) {
-            string = getString(C1438R.string.live_preview);
+            string = getString(com.weioa.KmedHealthIndonesia.R.string.live_preview);
         } else {
-            string = getString(C1438R.string.playback);
+            string = getString(com.weioa.KmedHealthIndonesia.R.string.playback);
         }
-        String str = "(" + getString(C1438R.string.front_view) + ")";
+        String str = "(" + getString(com.weioa.KmedHealthIndonesia.R.string.front_view) + ")";
         if (this.mCameraType == 2) {
-            str = "(" + getString(C1438R.string.rear_view) + ")";
+            str = "(" + getString(com.weioa.KmedHealthIndonesia.R.string.rear_view) + ")";
         }
         this.tvTop.setText(string + str);
     }
@@ -2097,12 +2096,12 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     /* JADX INFO: Access modifiers changed from: private */
     public int getLevelResId(int i) {
         if (i == 0) {
-            return C1438R.drawable.drawable_resolution_sd;
+            return com.weioa.KmedHealthIndonesia.R.drawable.drawable_resolution_sd;
         }
         if (i == 2) {
-            return C1438R.drawable.drawable_resolution_fhd;
+            return com.weioa.KmedHealthIndonesia.R.drawable.drawable_resolution_fhd;
         }
-        return C1438R.drawable.drawable_resolution_hd;
+        return com.weioa.KmedHealthIndonesia.R.drawable.drawable_resolution_hd;
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -2197,7 +2196,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     /* JADX INFO: Access modifiers changed from: private */
     public void showLocalRecordDialog() {
         if (this.mLocalRecordingDialog == null) {
-            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.no_card_record_tip, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.44
+            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.no_card_record_tip, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.44
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     PlaybackActivity.this.mLocalRecordingDialog.dismiss();
@@ -2272,7 +2271,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     /* JADX INFO: Access modifiers changed from: private */
     public void showDeleteFileDialog() {
         if (this.mDeleteFileDialog == null) {
-            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.sure_to_delete, true, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.47
+            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.sure_to_delete, true, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.47
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     PlaybackActivity.this.mDeleteFileDialog.dismiss();
@@ -2306,7 +2305,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void showStopRecordingDialog(final OnClickStateListener onClickStateListener) {
-        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.recording_will_stop, C1438R.string.dialog_no, C1438R.string.dialog_yes, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.50
+        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.recording_will_stop, com.weioa.KmedHealthIndonesia.R.string.dialog_no, com.weioa.KmedHealthIndonesia.R.string.dialog_yes, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackActivity.50
             @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
             public void onClick() {
                 PlaybackActivity.this.mStopLocalRecordingDialog.dismiss();
@@ -2401,8 +2400,8 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         if (ijkVideoView == null || (hudView = ijkVideoView.getHudView()) == null) {
             return;
         }
-        hudView.setRowValue(C1438R.string.drop_packet_count, i + "");
-        hudView.setRowValue(C1438R.string.drop_packet_sum, i2 + "");
+        hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.drop_packet_count, i + "");
+        hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.drop_packet_sum, i2 + "");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -2412,6 +2411,6 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         if (ijkVideoView == null || (hudView = ijkVideoView.getHudView()) == null) {
             return;
         }
-        hudView.setRowValue(C1438R.string.fps, i + "");
+        hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.fps, i + "");
     }
 }

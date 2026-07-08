@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.p017ui.service.CommunicationService;
 import com.jieli.stream.p016dv.running2.util.AppUtils;
@@ -71,7 +70,7 @@ public final class DeviceDescription extends Thread {
                                     return;
                                 }
                                 String strCheckUpdateFilePath = AppUtils.checkUpdateFilePath((Context) DeviceDescription.this.mServiceRef.get(), 2);
-                                if (!TextUtils.isEmpty(strCheckUpdateFilePath) && !strCheckUpdateFilePath.equals(((CommunicationService) DeviceDescription.this.mServiceRef.get()).getString(C1438R.string.latest_version))) {
+                                if (!TextUtils.isEmpty(strCheckUpdateFilePath) && !strCheckUpdateFilePath.equals(((CommunicationService) DeviceDescription.this.mServiceRef.get()).getString(com.weioa.KmedHealthIndonesia.R.string.latest_version))) {
                                     Dbug.m1391w(DeviceDescription.this.tag, "sdk upgradePath = " + strCheckUpdateFilePath);
                                     ArrayList<String> arrayList = new ArrayList<>();
                                     arrayList.add(strCheckUpdateFilePath);

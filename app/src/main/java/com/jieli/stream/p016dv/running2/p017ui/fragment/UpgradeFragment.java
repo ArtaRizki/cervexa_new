@@ -23,7 +23,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.jieli.lib.p015dv.control.connect.response.SendResponse;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.UpgradeStep;
 import com.jieli.stream.p016dv.running2.interfaces.OnWifiCallBack;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
@@ -83,7 +82,7 @@ public class UpgradeFragment extends BaseFragment {
                             if (i3 < UpgradeFragment.this.dataList.size()) {
                                 ((UpgradeStep) UpgradeFragment.this.dataList.get(i3)).setState(i4);
                                 UpgradeFragment.this.tvTip.setVisibility(0);
-                                UpgradeFragment.this.tvTip.setText(UpgradeFragment.this.getString(C1438R.string.executing_step, ((UpgradeStep) UpgradeFragment.this.dataList.get(i3)).getDescription()));
+                                UpgradeFragment.this.tvTip.setText(UpgradeFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.executing_step, ((UpgradeStep) UpgradeFragment.this.dataList.get(i3)).getDescription()));
                                 if (UpgradeFragment.this.mAdapter != null) {
                                     UpgradeFragment.this.mAdapter.notifyDataSetChanged();
                                 }
@@ -122,7 +121,7 @@ public class UpgradeFragment extends BaseFragment {
                                 }
                                 UpgradeFragment.this.getActivity().sendBroadcast(new Intent(IActions.ACTION_SDK_UPGRADE_SUCCESS));
                             } else {
-                                ToastUtil.showToastLong(UpgradeFragment.this.getString(C1438R.string.upgrade_failed_tip));
+                                ToastUtil.showToastLong(UpgradeFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.upgrade_failed_tip));
                             }
                             UpgradeFragment.this.getActivity().finish();
                             break;
@@ -173,11 +172,11 @@ public class UpgradeFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_upgrade, viewGroup, false);
-        TextView textView = (TextView) viewInflate.findViewById(C1438R.id.upgrade_tip);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_upgrade, viewGroup, false);
+        TextView textView = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.upgrade_tip);
         this.tvTip = textView;
         textView.setVisibility(8);
-        ListView listView = (ListView) viewInflate.findViewById(C1438R.id.upgrade_list_view);
+        ListView listView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.upgrade_list_view);
         this.mListView = listView;
         listView.setEnabled(false);
         return viewInflate;
@@ -205,7 +204,7 @@ public class UpgradeFragment extends BaseFragment {
             } else if (this.mApplication.isSdcardExist()) {
                 this.service.submit(new UpgradeSDK(this.mHandler));
             } else {
-                ToastUtil.showToastShort(getString(C1438R.string.sdcard_online));
+                ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.sdcard_online));
                 getActivity().finish();
             }
         }
@@ -256,9 +255,9 @@ public class UpgradeFragment extends BaseFragment {
         String[] stringArray;
         this.dataList = new ArrayList();
         if (this.upgradeType == 1) {
-            stringArray = getResources().getStringArray(C1438R.array.upgrade_apk_steps);
+            stringArray = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.upgrade_apk_steps);
         } else {
-            stringArray = getResources().getStringArray(C1438R.array.upgrade_sdk_steps);
+            stringArray = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.upgrade_sdk_steps);
         }
         for (int i = 0; i < stringArray.length; i++) {
             String str = stringArray[i];
@@ -325,7 +324,7 @@ public class UpgradeFragment extends BaseFragment {
         public View getView(int i, View view, ViewGroup viewGroup) {
             ViewHolder viewHolder;
             if (view == null) {
-                view = LayoutInflater.from(this.mContext).inflate(C1438R.layout.item_upgrade, viewGroup, false);
+                view = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_upgrade, viewGroup, false);
                 viewHolder = new ViewHolder(view);
             } else {
                 viewHolder = (ViewHolder) view.getTag();
@@ -335,18 +334,18 @@ public class UpgradeFragment extends BaseFragment {
                 viewHolder.tvStep.setText(upgradeStep.getDescription());
                 int state = upgradeStep.getState();
                 if (state == 0) {
-                    viewHolder.ivState.setImageResource(C1438R.mipmap.ic_gary_dot);
-                    viewHolder.tvStep.setTextColor(UpgradeFragment.this.getResources().getColor(C1438R.color.text_gray));
+                    viewHolder.ivState.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_gary_dot);
+                    viewHolder.tvStep.setTextColor(UpgradeFragment.this.getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.text_gray));
                 } else if (state == 1) {
-                    viewHolder.ivState.setImageResource(C1438R.mipmap.ic_refresh_green);
-                    viewHolder.tvStep.setTextColor(UpgradeFragment.this.getResources().getColor(C1438R.color.text_black));
-                    Animation animationLoadAnimation = AnimationUtils.loadAnimation(this.mContext, C1438R.anim.rotate_forevery);
+                    viewHolder.ivState.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_refresh_green);
+                    viewHolder.tvStep.setTextColor(UpgradeFragment.this.getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.text_black));
+                    Animation animationLoadAnimation = AnimationUtils.loadAnimation(this.mContext, com.weioa.KmedHealthIndonesia.R.anim.rotate_forevery);
                     animationLoadAnimation.setInterpolator(new LinearInterpolator());
                     viewHolder.ivState.startAnimation(animationLoadAnimation);
                 } else if (state == 2) {
-                    viewHolder.tvStep.setTextColor(UpgradeFragment.this.getResources().getColor(C1438R.color.text_black));
+                    viewHolder.tvStep.setTextColor(UpgradeFragment.this.getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.text_black));
                     viewHolder.ivState.clearAnimation();
-                    viewHolder.ivState.setImageResource(C1438R.mipmap.ic_complete);
+                    viewHolder.ivState.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_complete);
                 }
                 if (upgradeStep.isNeedPb()) {
                     viewHolder.progressBar.setVisibility(0);
@@ -368,9 +367,9 @@ public class UpgradeFragment extends BaseFragment {
             private TextView tvStep;
 
             ViewHolder(View view) {
-                this.ivState = (ImageView) view.findViewById(C1438R.id.item_upgrade_state);
-                this.tvStep = (TextView) view.findViewById(C1438R.id.item_upgrade_step);
-                ProgressBar progressBar = (ProgressBar) view.findViewById(C1438R.id.item_upgrade_pb);
+                this.ivState = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_upgrade_state);
+                this.tvStep = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_upgrade_step);
+                ProgressBar progressBar = (ProgressBar) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_upgrade_pb);
                 this.progressBar = progressBar;
                 progressBar.setMax(100);
                 view.setTag(this);

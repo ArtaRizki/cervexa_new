@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseDialogFragment;
 import com.jieli.stream.p016dv.running2.util.IConstant;
 import com.jieli.stream.p016dv.running2.util.ToastUtil;
@@ -57,11 +56,11 @@ public class InputPasswordDialog extends BaseDialogFragment implements IConstant
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.input_password_dialog, viewGroup, false);
-        this.mContent = (EditText) viewInflate.findViewById(C1438R.id.et_password);
-        this.mConfirm = (TextView) viewInflate.findViewById(C1438R.id.tv_confirm);
-        this.mCancel = (TextView) viewInflate.findViewById(C1438R.id.tv_cancel);
-        this.mTitle = (TextView) viewInflate.findViewById(C1438R.id.tv_title);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.input_password_dialog, viewGroup, false);
+        this.mContent = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.et_password);
+        this.mConfirm = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_confirm);
+        this.mCancel = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_cancel);
+        this.mTitle = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_title);
         this.mConfirm.setOnClickListener(this.mOnClickListener);
         this.mCancel.setOnClickListener(this.mOnClickListener);
         this.mTitle.setText(this.mTextTitle);
@@ -93,11 +92,11 @@ public class InputPasswordDialog extends BaseDialogFragment implements IConstant
     public void commitPassword() {
         String strTrim = this.mContent.getText().toString().trim();
         if (TextUtils.isEmpty(strTrim)) {
-            ToastUtil.showToastLong(getString(C1438R.string.name_empty_error));
+            ToastUtil.showToastLong(getString(com.weioa.KmedHealthIndonesia.R.string.name_empty_error));
             strTrim = "";
         }
         if (strTrim.length() < 8 || strTrim.length() > 63) {
-            ToastUtil.showToastLong(getString(C1438R.string.input_pwd_error));
+            ToastUtil.showToastLong(getString(com.weioa.KmedHealthIndonesia.R.string.input_pwd_error));
             return;
         }
         dismiss();

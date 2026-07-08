@@ -18,8 +18,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.preference.Preference;
 import androidx.preference.R;
-import com.serenegiant.common.C1831R;
-
 /* JADX INFO: loaded from: classes2.dex */
 public class DialogPreferenceV7 extends Preference implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener {
     private AlertDialog.Builder mBuilder;
@@ -181,7 +179,7 @@ public class DialogPreferenceV7 extends Preference implements DialogInterface.On
     }
 
     protected void onBindDialogView(View view) {
-        View viewFindViewById = view.findViewById(C1831R.id.message);
+        View viewFindViewById = view.findViewById(com.weioa.KmedHealthIndonesia.R.id.message);
         if (viewFindViewById != null) {
             CharSequence dialogMessage = getDialogMessage();
             int i = 8;

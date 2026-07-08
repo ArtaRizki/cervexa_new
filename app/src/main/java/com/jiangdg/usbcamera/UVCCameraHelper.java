@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.SurfaceTexture;
 import android.hardware.usb.UsbDevice;
 import android.os.Environment;
-import com.jiangdg.libusbcamera.C1401R;
 import com.serenegiant.usb.DeviceFilter;
 import com.serenegiant.usb.IButtonCallback;
 import com.serenegiant.usb.Size;
@@ -229,7 +228,7 @@ public class UVCCameraHelper {
     }
 
     public List<UsbDevice> getUsbDeviceList() {
-        List<DeviceFilter> deviceFilters = DeviceFilter.getDeviceFilters(this.mActivity.getApplicationContext(), C1401R.xml.device_filter);
+        List<DeviceFilter> deviceFilters = DeviceFilter.getDeviceFilters(this.mActivity.getApplicationContext(), com.weioa.KmedHealthIndonesia.R.xml.device_filter);
         USBMonitor uSBMonitor = this.mUSBMonitor;
         if (uSBMonitor == null || deviceFilters == null) {
             return null;

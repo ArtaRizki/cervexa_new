@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity;
 import com.jieli.stream.p016dv.running2.p017ui.dialog.NotifyDialog;
 import com.jieli.stream.p016dv.running2.util.Dbug;
@@ -38,9 +37,9 @@ public class FlashActivity extends BaseActivity implements View.OnClickListener 
             FlashActivity.this.mStartButton.setEnabled(z);
             PreferencesHelper.putBooleanValue(FlashActivity.this.mApplication, IConstant.KEY_HAS_AGREED, z);
             if (z) {
-                FlashActivity.this.mStartButton.setBackground(FlashActivity.this.getResources().getDrawable(C1438R.drawable.bg_orange_gradient));
+                FlashActivity.this.mStartButton.setBackground(FlashActivity.this.getResources().getDrawable(com.weioa.KmedHealthIndonesia.R.drawable.bg_orange_gradient));
             } else {
-                FlashActivity.this.mStartButton.setBackground(FlashActivity.this.getResources().getDrawable(C1438R.drawable.bg_gray_gradient));
+                FlashActivity.this.mStartButton.setBackground(FlashActivity.this.getResources().getDrawable(com.weioa.KmedHealthIndonesia.R.drawable.bg_gray_gradient));
             }
         }
     };
@@ -53,9 +52,9 @@ public class FlashActivity extends BaseActivity implements View.OnClickListener 
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1438R.layout.activity_flash);
-        LinearLayout linearLayout = (LinearLayout) findViewById(C1438R.id.agreement_layout);
-        ImageView imageView = (ImageView) findViewById(C1438R.id.welcome_view);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_flash);
+        LinearLayout linearLayout = (LinearLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.agreement_layout);
+        ImageView imageView = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.welcome_view);
         if (PreferencesHelper.getSharedPreferences(this.mApplication).getBoolean(IConstant.KEY_HAS_AGREED, false)) {
             linearLayout.setVisibility(8);
             imageView.setVisibility(0);
@@ -63,9 +62,9 @@ public class FlashActivity extends BaseActivity implements View.OnClickListener 
             linearLayout.setVisibility(0);
             imageView.setVisibility(8);
         }
-        this.mUserAgreementText = (TextView) findViewById(C1438R.id.user_agreement_text);
-        ((CheckBox) findViewById(C1438R.id.agreement_checkbox)).setOnCheckedChangeListener(this.onCheckedChangeListener);
-        Button button = (Button) findViewById(C1438R.id.start_button);
+        this.mUserAgreementText = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.user_agreement_text);
+        ((CheckBox) findViewById(com.weioa.KmedHealthIndonesia.R.id.agreement_checkbox)).setOnCheckedChangeListener(this.onCheckedChangeListener);
+        Button button = (Button) findViewById(com.weioa.KmedHealthIndonesia.R.id.start_button);
         this.mStartButton = button;
         button.setEnabled(false);
         this.mUserAgreementText.getPaint().setFlags(8);
@@ -154,7 +153,7 @@ public class FlashActivity extends BaseActivity implements View.OnClickListener 
 
     private void showNotifyGPSDialog() {
         if (this.notifyGpsDialog == null) {
-            this.notifyGpsDialog = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.open_gpg_tip, C1438R.string.dialog_exit, C1438R.string.comfirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.FlashActivity.3
+            this.notifyGpsDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.open_gpg_tip, com.weioa.KmedHealthIndonesia.R.string.dialog_exit, com.weioa.KmedHealthIndonesia.R.string.comfirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.FlashActivity.3
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     FlashActivity.this.notifyGpsDialog.dismiss();
@@ -178,7 +177,7 @@ public class FlashActivity extends BaseActivity implements View.OnClickListener 
 
     private void showNotifyDialog() {
         if (this.notifyDialog == null) {
-            this.notifyDialog = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.open_wifi, C1438R.string.dialog_no, C1438R.string.dialog_yes, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.FlashActivity.5
+            this.notifyDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.open_wifi, com.weioa.KmedHealthIndonesia.R.string.dialog_no, com.weioa.KmedHealthIndonesia.R.string.dialog_yes, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.FlashActivity.5
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     FlashActivity.this.notifyDialog.dismiss();
@@ -208,26 +207,26 @@ public class FlashActivity extends BaseActivity implements View.OnClickListener 
         }
         switch (i) {
             case 110:
-                string = getString(C1438R.string.request_location_permission);
+                string = getString(com.weioa.KmedHealthIndonesia.R.string.request_location_permission);
                 break;
             case 111:
-                string = getString(C1438R.string.request_sdcard_permission);
+                string = getString(com.weioa.KmedHealthIndonesia.R.string.request_sdcard_permission);
                 break;
             case 112:
-                string = getString(C1438R.string.request_write_setting_permission);
+                string = getString(com.weioa.KmedHealthIndonesia.R.string.request_write_setting_permission);
                 break;
             case 113:
-                string = getString(C1438R.string.request_camera_permission);
+                string = getString(com.weioa.KmedHealthIndonesia.R.string.request_camera_permission);
                 break;
             case 114:
-                string = getString(C1438R.string.request_microphone_permission);
+                string = getString(com.weioa.KmedHealthIndonesia.R.string.request_microphone_permission);
                 break;
             default:
                 string = "";
                 break;
         }
         if (this.requestPermissionDialog == null) {
-            this.requestPermissionDialog = NotifyDialog.newInstance(getString(C1438R.string.dialog_tips), string, C1438R.string.dialog_exit, C1438R.string.grant, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.FlashActivity.7
+            this.requestPermissionDialog = NotifyDialog.newInstance(getString(com.weioa.KmedHealthIndonesia.R.string.dialog_tips), string, com.weioa.KmedHealthIndonesia.R.string.dialog_exit, com.weioa.KmedHealthIndonesia.R.string.grant, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.FlashActivity.7
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     FlashActivity.this.requestPermissionDialog.dismiss();

@@ -46,7 +46,7 @@ class BottomBarBadge extends TextView {
     void attachToTab(BottomBarTab bottomBarTab, int i) {
         setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
         setGravity(17);
-        MiscUtils.setTextAppearance(this, C1826R.style.BB_BottomBarBadge_Text);
+        MiscUtils.setTextAppearance(this, com.weioa.KmedHealthIndonesia.R.style.BB_BottomBarBadge_Text);
         setColoredCircleBackground(i);
         wrapTabAndBadgeInSameContainer(bottomBarTab);
     }

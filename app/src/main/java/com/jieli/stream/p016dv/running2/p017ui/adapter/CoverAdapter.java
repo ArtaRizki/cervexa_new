@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.ThumbnailInfo;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.util.Dbug;
@@ -96,7 +95,7 @@ public class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.ViewHolder> 
 
     @Override // androidx.recyclerview.widget.RecyclerView.Adapter
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        return new ViewHolder(LayoutInflater.from(this.mContext).inflate(C1438R.layout.cover_flow_item, viewGroup, false));
+        return new ViewHolder(LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.cover_flow_item, viewGroup, false));
     }
 
     @Override // androidx.recyclerview.widget.RecyclerView.Adapter
@@ -108,7 +107,7 @@ public class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.ViewHolder> 
             viewHolder.img.setBackgroundColor(-1);
         }
         if (bitmap == null || bitmap.isRecycled()) {
-            Glide.with(MainApplication.getApplication()).setDefaultRequestOptions(new RequestOptions().placeholder(C1438R.mipmap.bg_thumbnail_default)).load(this.mDataList.get(i).getSaveUrl()).apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE)).into(viewHolder.img);
+            Glide.with(MainApplication.getApplication()).setDefaultRequestOptions(new RequestOptions().placeholder(com.weioa.KmedHealthIndonesia.R.mipmap.bg_thumbnail_default)).load(this.mDataList.get(i).getSaveUrl()).apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE)).into(viewHolder.img);
         } else {
             viewHolder.img.setImageBitmap(bitmap);
         }
@@ -143,7 +142,7 @@ public class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.ViewHolder> 
 
         public ViewHolder(View view) {
             super(view);
-            this.img = (ImageView) view.findViewById(C1438R.id.cover_image);
+            this.img = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.cover_image);
         }
     }
 

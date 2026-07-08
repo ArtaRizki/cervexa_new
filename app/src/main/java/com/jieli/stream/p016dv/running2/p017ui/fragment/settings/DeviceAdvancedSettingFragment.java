@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.core.view.ViewCompat;
 import com.jieli.lib.p015dv.control.connect.response.SendResponse;
 import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.SettingItem;
 import com.jieli.stream.p016dv.running2.p017ui.adapter.SettingAdapter;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
@@ -39,7 +38,7 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
                 @Override // com.jieli.lib.p015dv.control.connect.response.Response
                 public void onResponse(Integer num) {
                     if (num.intValue() != 1) {
-                        ToastUtil.showToastShort(DeviceAdvancedSettingFragment.this.getString(C1438R.string.setting_failed));
+                        ToastUtil.showToastShort(DeviceAdvancedSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_failed));
                         switchButton.setCheckedImmediatelyNoEvent(true ^ z);
                     }
                 }
@@ -53,7 +52,7 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
                 @Override // com.jieli.lib.p015dv.control.connect.response.Response
                 public void onResponse(Integer num) {
                     if (num.intValue() != 1) {
-                        ToastUtil.showToastShort(DeviceAdvancedSettingFragment.this.getString(C1438R.string.setting_failed));
+                        ToastUtil.showToastShort(DeviceAdvancedSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_failed));
                         switchButton.setCheckedImmediatelyNoEvent(true ^ z);
                     }
                 }
@@ -67,7 +66,7 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
                 @Override // com.jieli.lib.p015dv.control.connect.response.Response
                 public void onResponse(Integer num) {
                     if (num.intValue() != 1) {
-                        ToastUtil.showToastShort(DeviceAdvancedSettingFragment.this.getString(C1438R.string.setting_failed));
+                        ToastUtil.showToastShort(DeviceAdvancedSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_failed));
                         switchButton.setCheckedImmediatelyNoEvent(true ^ z);
                     }
                 }
@@ -87,7 +86,7 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
                 @Override // com.jieli.lib.p015dv.control.connect.response.Response
                 public void onResponse(Integer num) {
                     if (num.intValue() != 1) {
-                        ToastUtil.showToastShort(DeviceAdvancedSettingFragment.this.getString(C1438R.string.setting_failed));
+                        ToastUtil.showToastShort(DeviceAdvancedSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_failed));
                         switchButton.setCheckedImmediatelyNoEvent(true ^ z);
                     }
                 }
@@ -119,18 +118,18 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_device_advanced_settings, viewGroup, false);
-        this.listView = (ListView) viewInflate.findViewById(C1438R.id.device_advanced_setting_list_view);
-        this.hourTextView = (TextView) viewInflate.findViewById(C1438R.id.hour_tv);
-        this.senorTextView = (TextView) viewInflate.findViewById(C1438R.id.senor_tv);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_device_advanced_settings, viewGroup, false);
+        this.listView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.device_advanced_setting_list_view);
+        this.hourTextView = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.hour_tv);
+        this.senorTextView = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.senor_tv);
         initUI();
         return viewInflate;
     }
 
     private void initUI() {
-        String[] stringArray = getResources().getStringArray(C1438R.array.device_advanced_setting_list);
+        String[] stringArray = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.device_advanced_setting_list);
         ArrayList arrayList = new ArrayList();
-        int dimension = (int) getResources().getDimension(C1438R.dimen.list_marginTop);
+        int dimension = (int) getResources().getDimension(com.weioa.KmedHealthIndonesia.R.dimen.list_marginTop);
         for (String str : stringArray) {
             if (!TextUtils.isEmpty(str)) {
                 SettingItem settingItem = new SettingItem();
@@ -138,20 +137,20 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
                 settingItem.setType(1);
                 settingItem.setValue(true);
                 arrayList.add(settingItem);
-                if (str.equals(getString(C1438R.string.parking_monitoring))) {
+                if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.parking_monitoring))) {
                     settingItem.setMarginTop(dimension);
                     settingItem.setValue(Boolean.valueOf(this.mApplication.getDeviceSettingInfo().isVideoParCar()));
                     settingItem.setOnSwitchListener(this.parkingMonitoringOnSwitchListener);
-                } else if (str.equals(getString(C1438R.string.time_the_watermark))) {
+                } else if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.time_the_watermark))) {
                     settingItem.setValue(Boolean.valueOf(this.mApplication.getDeviceSettingInfo().isVideoDate()));
                     settingItem.setOnSwitchListener(this.timeTheWatermarkOnSwitchListener);
-                } else if (str.equals(getString(C1438R.string.boot_prompt))) {
+                } else if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.boot_prompt))) {
                     settingItem.setValue(Boolean.valueOf(this.mApplication.getDeviceSettingInfo().isOpenBootSound()));
                     settingItem.setOnSwitchListener(this.bootPromptoOnSwitchListener);
                 } else if (IConstant.STR_RTSP.equals(str)) {
                     settingItem.setValue(Boolean.valueOf(PreferencesHelper.getSharedPreferences(this.mApplication).getBoolean(IConstant.KEY_RTSP, false)));
                     settingItem.setOnSwitchListener(this.rtspOnSwitchListener);
-                } else if (str.equals(getString(C1438R.string.sound_recording))) {
+                } else if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.sound_recording))) {
                     settingItem.setValue(Boolean.valueOf(this.mApplication.getDeviceSettingInfo().isVideoMic()));
                     settingItem.setOnSwitchListener(this.recordingOnSwitchListener);
                 }
@@ -162,18 +161,18 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 TextView textView = (TextView) view;
-                DeviceAdvancedSettingFragment.this.showPopupWindow(textView, DeviceAdvancedSettingFragment.this.getResources().getStringArray(C1438R.array.after_parking_recorder_time), new OnselectedListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceAdvancedSettingFragment.1.1
+                DeviceAdvancedSettingFragment.this.showPopupWindow(textView, DeviceAdvancedSettingFragment.this.getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.after_parking_recorder_time), new OnselectedListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceAdvancedSettingFragment.1.1
                     @Override // com.jieli.stream.dv.running2.ui.fragment.settings.DeviceAdvancedSettingFragment.OnselectedListener
                     public void onSelected(String str2, int i) {
-                        DeviceAdvancedSettingFragment.this.hourTextView.setText(String.format(DeviceAdvancedSettingFragment.this.getString(C1438R.string.hour), str2));
+                        DeviceAdvancedSettingFragment.this.hourTextView.setText(String.format(DeviceAdvancedSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.hour), str2));
                     }
                 });
-                Drawable drawable = DeviceAdvancedSettingFragment.this.getResources().getDrawable(C1438R.mipmap.ic_up);
+                Drawable drawable = DeviceAdvancedSettingFragment.this.getResources().getDrawable(com.weioa.KmedHealthIndonesia.R.mipmap.ic_up);
                 drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
                 textView.setCompoundDrawables(null, null, drawable, null);
             }
         });
-        String[] stringArray2 = getResources().getStringArray(C1438R.array.collision_induction_sensitivity_value);
+        String[] stringArray2 = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.collision_induction_sensitivity_value);
         this.senors = stringArray2;
         this.senorTextView.setText(stringArray2[this.mApplication.getDeviceSettingInfo().getGravitySensor()]);
         this.senorTextView.setOnClickListener(new ViewOnClickListenerC16642());
@@ -195,13 +194,13 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
                         @Override // com.jieli.lib.p015dv.control.connect.response.Response
                         public void onResponse(Integer num) {
                             if (num.intValue() != 1) {
-                                ToastUtil.showToastShort(DeviceAdvancedSettingFragment.this.getString(C1438R.string.setting_failed));
+                                ToastUtil.showToastShort(DeviceAdvancedSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_failed));
                             }
                         }
                     });
                 }
             });
-            Drawable drawable = DeviceAdvancedSettingFragment.this.getResources().getDrawable(C1438R.mipmap.ic_up);
+            Drawable drawable = DeviceAdvancedSettingFragment.this.getResources().getDrawable(com.weioa.KmedHealthIndonesia.R.mipmap.ic_up);
             drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
             textView.setCompoundDrawables(null, null, drawable, null);
         }
@@ -262,11 +261,11 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
             i = -2;
         }
         popupWindow.setTouchable(true);
-        popupWindow.setBackgroundDrawable(getResources().getDrawable(C1438R.drawable.bg_pupop_window));
+        popupWindow.setBackgroundDrawable(getResources().getDrawable(com.weioa.KmedHealthIndonesia.R.drawable.bg_pupop_window));
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceAdvancedSettingFragment.10
             @Override // android.widget.PopupWindow.OnDismissListener
             public void onDismiss() {
-                Drawable drawable = DeviceAdvancedSettingFragment.this.getResources().getDrawable(C1438R.mipmap.ic_down);
+                Drawable drawable = DeviceAdvancedSettingFragment.this.getResources().getDrawable(com.weioa.KmedHealthIndonesia.R.mipmap.ic_down);
                 drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
                 textView.setCompoundDrawables(null, null, drawable, null);
             }

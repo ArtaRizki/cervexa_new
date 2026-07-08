@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.SettingItem;
 import com.jieli.stream.p016dv.running2.p017ui.adapter.SettingAdapter;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity;
@@ -28,7 +27,7 @@ public class APPAdvancedSettingActivity extends BaseActivity {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
             SettingItem settingItem = (SettingItem) APPAdvancedSettingActivity.this.listView.getAdapter().getItem(i);
             if (settingItem.getType() == 0) {
-                settingItem.getName().equals(APPAdvancedSettingActivity.this.getString(C1438R.string.time_format));
+                settingItem.getName().equals(APPAdvancedSettingActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.time_format));
             }
         }
     };
@@ -52,31 +51,31 @@ public class APPAdvancedSettingActivity extends BaseActivity {
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1438R.layout.activity_app_advanced_settings);
-        this.listView = (ListView) findViewById(C1438R.id.app_advanced_setting_list_view);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_app_advanced_settings);
+        this.listView = (ListView) findViewById(com.weioa.KmedHealthIndonesia.R.id.app_advanced_setting_list_view);
         initUI();
     }
 
     private void initUI() {
-        String[] stringArray = getResources().getStringArray(C1438R.array.app_advanced_setting_list);
+        String[] stringArray = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.app_advanced_setting_list);
         ArrayList arrayList = new ArrayList();
-        int dimension = (int) getResources().getDimension(C1438R.dimen.list_marginTop);
+        int dimension = (int) getResources().getDimension(com.weioa.KmedHealthIndonesia.R.dimen.list_marginTop);
         for (int i = 0; i < stringArray.length; i++) {
             String str = stringArray[i];
             if (!TextUtils.isEmpty(str)) {
-                if (str.equals(getString(C1438R.string.time_format))) {
+                if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.time_format))) {
                     SettingItem settingItem = new SettingItem();
                     settingItem.setName(str);
                     settingItem.setType(0);
                     arrayList.add(settingItem);
-                } else if (str.equals(getString(C1438R.string.using_hard_codec))) {
+                } else if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.using_hard_codec))) {
                     SettingItem settingItem2 = new SettingItem();
                     settingItem2.setName(str);
                     settingItem2.setType(1);
                     settingItem2.setValue(Boolean.valueOf(PreferencesHelper.getSharedPreferences(getApplicationContext()).getBoolean(IConstant.KEY_HARD_CODEC, true)));
                     arrayList.add(settingItem2);
                     settingItem2.setOnSwitchListener(this.usingHardCodecListener);
-                } else if (str.equals(getString(C1438R.string.open_debug))) {
+                } else if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.open_debug))) {
                     SettingItem settingItem3 = new SettingItem();
                     settingItem3.setName(str);
                     settingItem3.setType(1);

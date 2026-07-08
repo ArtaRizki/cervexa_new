@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.layout.BaseHeaderView;
 import com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.layout.PullRefreshLayout;
 import com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.utils.AnimUtil;
@@ -41,10 +40,10 @@ public class ExpandHeaderView extends BaseHeaderView {
     }
 
     private void init() {
-        LayoutInflater.from(getContext()).inflate(C1438R.layout.view_header_expand, (ViewGroup) this, true);
-        this.progress = findViewById(C1438R.id.progress);
-        this.stateImg = findViewById(C1438R.id.state);
-        this.loadBox = findViewById(C1438R.id.load_box);
+        LayoutInflater.from(getContext()).inflate(com.weioa.KmedHealthIndonesia.R.layout.view_header_expand, (ViewGroup) this, true);
+        this.progress = findViewById(com.weioa.KmedHealthIndonesia.R.id.progress);
+        this.stateImg = findViewById(com.weioa.KmedHealthIndonesia.R.id.state);
+        this.loadBox = findViewById(com.weioa.KmedHealthIndonesia.R.id.load_box);
         setLayoutParams(new ViewGroup.LayoutParams(-1, IjkMediaCodecInfo.RANK_SECURE));
     }
 

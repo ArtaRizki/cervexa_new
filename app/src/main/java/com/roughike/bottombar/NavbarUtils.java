@@ -25,7 +25,7 @@ final class NavbarUtils {
     }
 
     private static boolean isPortrait(Context context) {
-        return context.getResources().getBoolean(C1826R.bool.bb_bottom_bar_is_portrait_mode);
+        return context.getResources().getBoolean(com.weioa.KmedHealthIndonesia.R.bool.bb_bottom_bar_is_portrait_mode);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:8:0x0032  */

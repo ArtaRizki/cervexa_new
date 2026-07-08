@@ -19,7 +19,6 @@ import android.text.TextUtils;
 import com.jieli.lib.p015dv.control.connect.listener.OnConnectStateListener;
 import com.jieli.lib.p015dv.control.connect.response.SendResponse;
 import com.jieli.lib.p015dv.control.utils.Constants;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.interfaces.OnWifiCallBack;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
@@ -157,7 +156,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
             boolean booleanExtra = intent.getBooleanExtra(IActions.KEY_ALLOW_ACCESS, false);
             Dbug.m1391w(MainActivity.this.tag, "isAllow : " + booleanExtra);
             if (booleanExtra) {
-                BaseFragment baseFragment = (BaseFragment) MainActivity.this.getSupportFragmentManager().findFragmentById(C1438R.id.container);
+                BaseFragment baseFragment = (BaseFragment) MainActivity.this.getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.container);
                 Dbug.m1391w(MainActivity.this.tag, "ACTION_DEV_ACCESS : " + baseFragment);
                 if ((baseFragment instanceof DeviceListFragment) || (baseFragment instanceof StaDeviceListFragment)) {
                     if (PreferencesHelper.getSharedPreferences(MainActivity.this.mApplication).getBoolean(AppUtils.getAutoRearCameraKey(MainActivity.this.mApplication.getUUID()), false)) {
@@ -206,7 +205,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
                 }
             }
             Dbug.m1388e(MainActivity.this.tag, "Disconnect with device!!! Code=" + num);
-            BaseFragment baseFragment = (BaseFragment) MainActivity.this.getSupportFragmentManager().findFragmentById(C1438R.id.container);
+            BaseFragment baseFragment = (BaseFragment) MainActivity.this.getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.container);
             Dbug.m1388e(MainActivity.this.tag, "normal disconnected fragment=" + baseFragment);
             if ((baseFragment instanceof BrowseFileFragment) || (baseFragment instanceof SettingFragment)) {
                 Dbug.m1391w(MainActivity.this.tag, "Stay!!");
@@ -304,7 +303,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
         super.onCreate(bundle);
         Dbug.m1389i(this.tag, "main activity running....");
         this.mActivityManager = ActivityManager.getInstance();
-        setContentView(C1438R.layout.activity_main);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_main);
         WifiP2pHelper wifiP2pHelper = WifiP2pHelper.getInstance(this.mApplication.getApplicationContext());
         this.mWifiP2pHelper = wifiP2pHelper;
         if (wifiP2pHelper != null) {
@@ -316,7 +315,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
         getApplicationContext().registerReceiver(this.mainReceiver, intentFilter);
         this.mWifiHelper.registerOnWifiCallback(this);
         Locale.getDefault().getLanguage();
-        changeFragment(C1438R.id.container, new VideoFragment(), VideoFragment.class.getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, new VideoFragment(), VideoFragment.class.getSimpleName());
     }
 
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
@@ -358,11 +357,11 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
             return;
         }
         if (this.mActivityManager.getTopActivity() instanceof MainActivity) {
-            BaseFragment baseFragment = (BaseFragment) getSupportFragmentManager().findFragmentById(C1438R.id.container);
+            BaseFragment baseFragment = (BaseFragment) getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.container);
             Dbug.m1388e(this.tag, "Current fragment=" + baseFragment);
             if (baseFragment == null) {
                 VideoFragment videoFragment = new VideoFragment();
-                changeFragment(C1438R.id.container, videoFragment, videoFragment.getClass().getSimpleName());
+                changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, videoFragment, videoFragment.getClass().getSimpleName());
                 return;
             }
             return;

@@ -19,7 +19,6 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.SettingItem;
 import com.jieli.stream.p016dv.running2.p017ui.adapter.SettingAdapter;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity;
@@ -54,10 +53,10 @@ public class AppStorageManageActivity extends BaseActivity implements BrowseFile
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1438R.layout.activity_app_storage_manage);
-        this.mChart = (PieChart) findViewById(C1438R.id.app_pie_chart);
-        ((TextView) findViewById(C1438R.id.app_storage_tv)).setText(AppUtils.getExternalMemorySize(getApplicationContext()));
-        ListView listView = (ListView) findViewById(C1438R.id.app_storage_view);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_app_storage_manage);
+        this.mChart = (PieChart) findViewById(com.weioa.KmedHealthIndonesia.R.id.app_pie_chart);
+        ((TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.app_storage_tv)).setText(AppUtils.getExternalMemorySize(getApplicationContext()));
+        ListView listView = (ListView) findViewById(com.weioa.KmedHealthIndonesia.R.id.app_storage_view);
         this.settingListView = listView;
         listView.setOnItemClickListener(this);
         initListView();
@@ -84,15 +83,15 @@ public class AppStorageManageActivity extends BaseActivity implements BrowseFile
 
     private void setData(float f, float f2) {
         ArrayList arrayList = new ArrayList();
-        PieEntry pieEntry = new PieEntry(f, getString(C1438R.string.remaining_storage));
-        PieEntry pieEntry2 = new PieEntry(f2, getString(C1438R.string.used_storage));
+        PieEntry pieEntry = new PieEntry(f, getString(com.weioa.KmedHealthIndonesia.R.string.remaining_storage));
+        PieEntry pieEntry2 = new PieEntry(f2, getString(com.weioa.KmedHealthIndonesia.R.string.used_storage));
         arrayList.add(pieEntry);
         arrayList.add(pieEntry2);
         PieDataSet pieDataSet = new PieDataSet(arrayList, "");
         pieDataSet.setSelectionShift(0.0f);
         ArrayList arrayList2 = new ArrayList();
-        arrayList2.add(Integer.valueOf(getResources().getColor(C1438R.color.bg_pie_chart_rest)));
-        arrayList2.add(Integer.valueOf(getResources().getColor(C1438R.color.bg_pie_chart_used)));
+        arrayList2.add(Integer.valueOf(getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.bg_pie_chart_rest)));
+        arrayList2.add(Integer.valueOf(getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.bg_pie_chart_used)));
         pieDataSet.setColors(arrayList2);
         PieData pieData = new PieData(pieDataSet);
         pieData.setValueFormatter(new ValueFormatter() { // from class: com.jieli.stream.dv.running2.ui.activity.me.AppStorageManageActivity.1
@@ -102,7 +101,7 @@ public class AppStorageManageActivity extends BaseActivity implements BrowseFile
             }
         });
         pieData.setValueTextSize(10.0f);
-        pieData.setValueTextColor(getResources().getColor(C1438R.color.text_white));
+        pieData.setValueTextColor(getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.text_white));
         this.mChart.setEntryLabelTextSize(0.0f);
         this.mChart.setData(pieData);
         this.mChart.highlightValues(null);
@@ -133,23 +132,23 @@ public class AppStorageManageActivity extends BaseActivity implements BrowseFile
             settingItem.setValue(ROOT_PATH + File.separator + this.mApplication.getAppName());
             this.mAdapter.notifyDataSetChanged();
         }
-        ToastUtil.showToastLong(getString(C1438R.string.modify_storage_url_success));
+        ToastUtil.showToastLong(getString(com.weioa.KmedHealthIndonesia.R.string.modify_storage_url_success));
     }
 
     private void initListView() {
         String cache;
-        String[] stringArray = getResources().getStringArray(C1438R.array.storage_operation);
+        String[] stringArray = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.storage_operation);
         ArrayList arrayList = new ArrayList();
         for (String str : stringArray) {
             SettingItem settingItem = new SettingItem();
             settingItem.setName(str);
-            if (str.equals(getString(C1438R.string.storage_size))) {
+            if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.storage_size))) {
                 cache = AppUtils.getFormatSize(2.097152E8d);
                 settingItem.setType(2);
-            } else if (str.equals(getString(C1438R.string.storage_path))) {
+            } else if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.storage_path))) {
                 cache = ROOT_PATH + File.separator + this.mApplication.getAppName();
                 this.storagePathItem = settingItem;
-            } else if (str.equals(getString(C1438R.string.clean_cache))) {
+            } else if (str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.clean_cache))) {
                 cache = getCache();
                 this.cacheSizeItem = settingItem;
             } else {
@@ -208,24 +207,24 @@ public class AppStorageManageActivity extends BaseActivity implements BrowseFile
             return;
         }
         String name = settingItem.getName();
-        if (name.equals(getString(C1438R.string.storage_size))) {
+        if (name.equals(getString(com.weioa.KmedHealthIndonesia.R.string.storage_size))) {
             return;
         }
-        if (name.equals(getString(C1438R.string.storage_path))) {
+        if (name.equals(getString(com.weioa.KmedHealthIndonesia.R.string.storage_path))) {
             BrowseFileDialog browseFileDialog = new BrowseFileDialog();
             this.browseFileDialog = browseFileDialog;
             browseFileDialog.setOnSelectResultListener(this);
             this.browseFileDialog.show(getSupportFragmentManager(), "browse_file_dialog");
             return;
         }
-        if (name.equals(getString(C1438R.string.clean_cache))) {
+        if (name.equals(getString(com.weioa.KmedHealthIndonesia.R.string.clean_cache))) {
             showClearCacheDialog();
         }
     }
 
     private void showClearCacheDialog() {
         if (this.cleanCacheDialog == null) {
-            this.cleanCacheDialog = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.clean_cache_content, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.me.AppStorageManageActivity.2
+            this.cleanCacheDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.clean_cache_content, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.activity.me.AppStorageManageActivity.2
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     AppStorageManageActivity.this.cleanCacheDialog.dismiss();

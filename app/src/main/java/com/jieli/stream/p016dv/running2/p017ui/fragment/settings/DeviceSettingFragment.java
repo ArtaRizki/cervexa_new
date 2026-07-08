@@ -17,7 +17,6 @@ import com.jieli.lib.p015dv.control.json.bean.NotifyInfo;
 import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Code;
 import com.jieli.lib.p015dv.control.utils.Topic;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.SettingItem;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.p017ui.activity.p018me.DeviceSettingActivity;
@@ -66,33 +65,33 @@ public class DeviceSettingFragment extends BaseFragment {
             SettingItem settingItem = (SettingItem) DeviceSettingFragment.this.listView.getAdapter().getItem(i);
             if (settingItem.getType() == 0) {
                 DeviceSettingActivity deviceSettingActivity = (DeviceSettingActivity) DeviceSettingFragment.this.getActivity();
-                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.device_name))) {
+                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.device_name))) {
                     deviceSettingActivity.toDeviceNameFragment();
                     return;
                 }
-                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.device_password))) {
+                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.device_password))) {
                     if (TextUtils.isEmpty(DeviceSettingFragment.this.getDeviceName())) {
-                        ToastUtil.showToastShort(DeviceSettingFragment.this.getString(C1438R.string.name_empty_error));
+                        ToastUtil.showToastShort(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.name_empty_error));
                         return;
                     } else {
                         deviceSettingActivity.toDevicePwdFragment();
                         return;
                     }
                 }
-                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.volume_adjustment))) {
+                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.volume_adjustment))) {
                     deviceSettingActivity.toDeviceVolumeFragment();
                     return;
                 }
-                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.photo_quality))) {
+                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.photo_quality))) {
                     deviceSettingActivity.toDevicePictureQualityFragment();
                     return;
                 }
-                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.setting_record_quality))) {
+                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_record_quality))) {
                     if (DeviceSettingFragment.this.mApplication.getDeviceDesc() != null) {
                         String[] recordFrontSupport = DeviceSettingFragment.this.mApplication.getDeviceDesc().getRecordFrontSupport();
                         String[] recordRearSupport = DeviceSettingFragment.this.mApplication.getDeviceDesc().getRecordRearSupport();
                         if ((recordFrontSupport == null || recordFrontSupport.length <= 0) && (recordRearSupport == null || recordRearSupport.length > 0)) {
-                            ToastUtil.showToastLong(DeviceSettingFragment.this.getString(C1438R.string.curr_dev_not_support));
+                            ToastUtil.showToastLong(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.curr_dev_not_support));
                             return;
                         }
                     }
@@ -104,11 +103,11 @@ public class DeviceSettingFragment extends BaseFragment {
                         return;
                     }
                 }
-                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.camera_model))) {
+                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.camera_model))) {
                     deviceSettingActivity.toDeviceCameraModeFragment();
                     return;
                 }
-                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.advanced_settings))) {
+                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.advanced_settings))) {
                     if (1 == DeviceSettingFragment.this.mApplication.getDeviceSettingInfo().getRecordState()) {
                         DeviceSettingFragment.this.showStopRecordingDialog(deviceSettingActivity, 0);
                         return;
@@ -117,22 +116,22 @@ public class DeviceSettingFragment extends BaseFragment {
                         return;
                     }
                 }
-                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.device_storage_manage))) {
+                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.device_storage_manage))) {
                     if (DeviceSettingFragment.this.mApplication.isSdcardExist()) {
                         deviceSettingActivity.toDeviceStorageManageFragment();
                         return;
                     } else {
-                        ToastUtil.showToastShort(DeviceSettingFragment.this.getString(C1438R.string.sdcard_offline));
+                        ToastUtil.showToastShort(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.sdcard_offline));
                         return;
                     }
                 }
-                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.switch_sta_mode))) {
+                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.switch_sta_mode))) {
                     deviceSettingActivity.toDeviceStaModeFragment();
                     return;
                 }
-                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.switch_ap_mode))) {
+                if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.switch_ap_mode))) {
                     DeviceSettingFragment.this.showNotifyDialog();
-                } else if (settingItem.getName().equals(DeviceSettingFragment.this.getString(C1438R.string.factory_reset))) {
+                } else if (settingItem.getName().equals(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.factory_reset))) {
                     if (1 == DeviceSettingFragment.this.mApplication.getDeviceSettingInfo().getRecordState()) {
                         DeviceSettingFragment.this.showStopRecordingDialog(deviceSettingActivity, 1);
                     } else {
@@ -157,7 +156,7 @@ public class DeviceSettingFragment extends BaseFragment {
             if (b != 0) {
                 return;
             }
-            ToastUtil.showToastShort(DeviceSettingFragment.this.getString(C1438R.string.setting_successed));
+            ToastUtil.showToastShort(DeviceSettingFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_successed));
         }
     };
 
@@ -176,8 +175,8 @@ public class DeviceSettingFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_device_setting, viewGroup, false);
-        this.listView = (ListView) viewInflate.findViewById(C1438R.id.device_setting_list_view);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_device_setting, viewGroup, false);
+        this.listView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.device_setting_list_view);
         initUI();
         return viewInflate;
     }
@@ -185,17 +184,17 @@ public class DeviceSettingFragment extends BaseFragment {
     private void initUI() {
         String[] stringArray;
         if (this.mApplication.getSearchMode() == 1) {
-            stringArray = getResources().getStringArray(C1438R.array.device_setting_list_sta);
+            stringArray = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.device_setting_list_sta);
         } else {
-            stringArray = getResources().getStringArray(C1438R.array.device_setting_list);
+            stringArray = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.device_setting_list);
         }
         ArrayList arrayList = new ArrayList();
-        int dimension = (int) getResources().getDimension(C1438R.dimen.list_marginTop);
+        int dimension = (int) getResources().getDimension(com.weioa.KmedHealthIndonesia.R.dimen.list_marginTop);
         for (int i = 0; i < stringArray.length; i++) {
             String str = stringArray[i];
             if (!TextUtils.isEmpty(str)) {
                 SettingItem settingItem = new SettingItem();
-                if (!str.equals(getString(C1438R.string.device_password)) && !str.equals(getString(C1438R.string.photo_quality)) && !str.equals(getString(C1438R.string.setting_record_quality)) && !str.equals(getString(C1438R.string.advanced_settings)) && !str.equals(getString(C1438R.string.device_storage_manage)) && !str.equals(getString(C1438R.string.factory_reset)) && !str.equals(getString(C1438R.string.switch_sta_mode)) && !str.equals(getString(C1438R.string.switch_ap_mode)) && str.equals(getString(C1438R.string.device_name))) {
+                if (!str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.device_password)) && !str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.photo_quality)) && !str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.setting_record_quality)) && !str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.advanced_settings)) && !str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.device_storage_manage)) && !str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.factory_reset)) && !str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.switch_sta_mode)) && !str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.switch_ap_mode)) && str.equals(getString(com.weioa.KmedHealthIndonesia.R.string.device_name))) {
                     settingItem.setType(0);
                     settingItem.setValue(getDeviceName());
                 }
@@ -240,7 +239,7 @@ public class DeviceSettingFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void showFactoryResetDialog() {
         if (this.mResetDialog == null) {
-            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.factory_reset_tips, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceSettingFragment.5
+            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.factory_reset_tips, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceSettingFragment.5
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     DeviceSettingFragment.this.mResetDialog.dismiss();
@@ -262,7 +261,7 @@ public class DeviceSettingFragment extends BaseFragment {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void showStopRecordingDialog(final DeviceSettingActivity deviceSettingActivity, final int i) {
-        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.stop_recording_tips, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceSettingFragment.7
+        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.stop_recording_tips, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceSettingFragment.7
             @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
             public void onClick() {
                 if (DeviceSettingFragment.this.mNotifyDialog != null) {
@@ -361,7 +360,7 @@ public class DeviceSettingFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void showNotifyDialog() {
         if (this.notifyDialog == null) {
-            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.dialog_warning, C1438R.string.waring_operation_tip, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceSettingFragment.10
+            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_warning, com.weioa.KmedHealthIndonesia.R.string.waring_operation_tip, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceSettingFragment.10
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     DeviceSettingFragment.this.dismissNotifyDialog();
@@ -432,7 +431,7 @@ public class DeviceSettingFragment extends BaseFragment {
         if (this.mWaitingDialog == null) {
             WaitingDialog waitingDialog = new WaitingDialog();
             this.mWaitingDialog = waitingDialog;
-            waitingDialog.setNotifyContent(getString(C1438R.string.dialod_wait));
+            waitingDialog.setNotifyContent(getString(com.weioa.KmedHealthIndonesia.R.string.dialod_wait));
         }
         if (this.mWaitingDialog.isShowing()) {
             return;

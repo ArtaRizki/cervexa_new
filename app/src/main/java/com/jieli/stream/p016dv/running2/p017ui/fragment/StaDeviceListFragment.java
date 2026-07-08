@@ -21,7 +21,6 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.jieli.lib.p015dv.control.mssdp.Discovery;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.DeviceBean;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.p017ui.activity.MainActivity;
@@ -102,11 +101,11 @@ public class StaDeviceListFragment extends BaseFragment implements View.OnClickL
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.sta_device_list_fragment, viewGroup, false);
-        ImageView imageView = (ImageView) viewInflate.findViewById(C1438R.id.device_list_switch_search_mode);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.sta_device_list_fragment, viewGroup, false);
+        ImageView imageView = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.device_list_switch_search_mode);
         this.deviceListView = (ListView) viewInflate.findViewById(R.id.list);
-        this.mSwipeRefreshLayout = (SwipeRefreshLayout) viewInflate.findViewById(C1438R.id.swipe_refresh);
-        this.tvPullToRefresh = (TextView) viewInflate.findViewById(C1438R.id.pull_to_refresh);
+        this.mSwipeRefreshLayout = (SwipeRefreshLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.swipe_refresh);
+        this.tvPullToRefresh = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.pull_to_refresh);
         imageView.setOnClickListener(this);
         this.deviceListView.setOnItemClickListener(this);
         return viewInflate;
@@ -123,7 +122,7 @@ public class StaDeviceListFragment extends BaseFragment implements View.OnClickL
         this.mSwipeRefreshLayout.setSize(1);
         this.mSwipeRefreshLayout.setOnRefreshListener(this.onRefreshListener);
         if (this.mAdapter == null) {
-            this.mAdapter = new DeviceListAdapter(getActivity(), C1438R.layout.item_device_list);
+            this.mAdapter = new DeviceListAdapter(getActivity(), com.weioa.KmedHealthIndonesia.R.layout.item_device_list);
         }
         this.deviceListView.setAdapter((ListAdapter) this.mAdapter);
     }
@@ -133,7 +132,7 @@ public class StaDeviceListFragment extends BaseFragment implements View.OnClickL
         super.onResume();
         Dbug.m1389i(tag, "onResume: current mode=" + this.mApplication.getSearchMode());
         if (WifiHelper.getInstance(getContext()).isWifiClosed()) {
-            ToastUtil.showToastShort(getString(C1438R.string.tip_open_wifi));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.tip_open_wifi));
             this.mAdapter.clear();
             this.mStationList.clear();
             this.mAdapter.notifyDataSetChanged();
@@ -184,7 +183,7 @@ public class StaDeviceListFragment extends BaseFragment implements View.OnClickL
 
     @Override // android.view.View.OnClickListener
     public void onClick(View view) {
-        if (view == null || getActivity() == null || view.getId() != C1438R.id.device_list_switch_search_mode || getActivity() == null) {
+        if (view == null || getActivity() == null || view.getId() != com.weioa.KmedHealthIndonesia.R.id.device_list_switch_search_mode || getActivity() == null) {
             return;
         }
         getActivity().getSupportFragmentManager().popBackStack();
@@ -222,7 +221,7 @@ public class StaDeviceListFragment extends BaseFragment implements View.OnClickL
         if (videoFragment == null) {
             videoFragment = new VideoFragment();
         }
-        ((MainActivity) getActivity()).changeFragment(C1438R.id.container, videoFragment, videoFragment.getClass().getSimpleName());
+        ((MainActivity) getActivity()).changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, videoFragment, videoFragment.getClass().getSimpleName());
     }
 
     @Override // androidx.fragment.app.Fragment
@@ -258,15 +257,15 @@ public class StaDeviceListFragment extends BaseFragment implements View.OnClickL
                 if (TextUtils.isEmpty(wifiSSID)) {
                     WeakReference<Context> weakReference = this.mContextWeakRef;
                     if (weakReference != null && weakReference.get() != null) {
-                        viewHolder.devNameTv.setText(this.mContextWeakRef.get().getString(C1438R.string.unknown_device_name));
+                        viewHolder.devNameTv.setText(this.mContextWeakRef.get().getString(com.weioa.KmedHealthIndonesia.R.string.unknown_device_name));
                     }
                 } else {
                     viewHolder.devNameTv.setText(wifiSSID);
                 }
                 if (checkDeviceConnected(item.getMode(), item.getWifiSSID())) {
-                    viewHolder.devStateIcon.setImageResource(C1438R.mipmap.ic_device_selected);
+                    viewHolder.devStateIcon.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_device_selected);
                 } else {
-                    viewHolder.devStateIcon.setImageResource(C1438R.mipmap.ic_device_unselected);
+                    viewHolder.devStateIcon.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_device_unselected);
                 }
             }
             return view;
@@ -277,8 +276,8 @@ public class StaDeviceListFragment extends BaseFragment implements View.OnClickL
             private ImageView devStateIcon;
 
             ViewHolder(View view) {
-                this.devStateIcon = (ImageView) view.findViewById(C1438R.id.device_state_icon);
-                this.devNameTv = (TextView) view.findViewById(C1438R.id.device_name_text);
+                this.devStateIcon = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.device_state_icon);
+                this.devNameTv = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.device_name_text);
                 view.setTag(this);
             }
         }

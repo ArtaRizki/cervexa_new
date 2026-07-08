@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.viewpager.widget.PagerAdapter;
-import com.serenegiant.common.C1831R;
 import com.serenegiant.mediastore.MediaStoreHelper;
 import java.io.IOException;
 
@@ -80,9 +79,9 @@ public class MediaStoreImageAdapter extends PagerAdapter {
             if (viewHolder == null) {
                 viewHolder = new ViewHolder();
             }
-            TextView textView = (TextView) viewInflate.findViewById(C1831R.id.title);
+            TextView textView = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.title);
             viewHolder.mTitleView = textView;
-            ImageView imageView = (ImageView) viewInflate.findViewById(C1831R.id.thumbnail);
+            ImageView imageView = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.thumbnail);
             viewHolder.mImageView = imageView;
             if (viewHolder.info == null) {
                 viewHolder.info = new MediaStoreHelper.MediaInfo();

@@ -12,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseDialogFragment;
 import com.jieli.stream.p016dv.running2.util.Dbug;
 
@@ -285,22 +284,22 @@ public class NotifyDialog extends BaseDialogFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.notify_dialog, viewGroup, false);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.notify_dialog, viewGroup, false);
         if (getDialog() != null) {
             getDialog().requestWindowFeature(1);
         }
-        this.mTitle = (TextView) viewInflate.findViewById(C1438R.id.tv_title);
-        this.mContent = (TextView) viewInflate.findViewById(C1438R.id.tv_content);
-        this.mProgressBar = (ProgressBar) viewInflate.findViewById(C1438R.id.progressBar);
-        this.mHorizontalProgressBar = (ProgressBar) viewInflate.findViewById(C1438R.id.progressBar_horizon);
-        this.mNegativeButtonText = (TextView) viewInflate.findViewById(C1438R.id.tv_left);
-        this.mConfirmButtonText = (TextView) viewInflate.findViewById(C1438R.id.tv_middle);
-        this.mPositiveButtonText = (TextView) viewInflate.findViewById(C1438R.id.tv_right);
-        this.mDividerView = viewInflate.findViewById(C1438R.id.divider_id);
-        CheckBox checkBox = (CheckBox) viewInflate.findViewById(C1438R.id.checkbox);
+        this.mTitle = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_title);
+        this.mContent = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_content);
+        this.mProgressBar = (ProgressBar) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.progressBar);
+        this.mHorizontalProgressBar = (ProgressBar) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.progressBar_horizon);
+        this.mNegativeButtonText = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_left);
+        this.mConfirmButtonText = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_middle);
+        this.mPositiveButtonText = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_right);
+        this.mDividerView = viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.divider_id);
+        CheckBox checkBox = (CheckBox) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.checkbox);
         this.mCheckBox = checkBox;
         checkBox.setOnCheckedChangeListener(this.onCheckedChangeListener);
-        View viewFindViewById = viewInflate.findViewById(C1438R.id.line_id);
+        View viewFindViewById = viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.line_id);
         this.mContent.setMovementMethod(ScrollingMovementMethod.getInstance());
         int i = this.mTitleId;
         if (i != 0) {

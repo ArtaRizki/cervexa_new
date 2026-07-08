@@ -74,11 +74,11 @@ public class BottomBarTab extends LinearLayout {
         setOrientation(1);
         setGravity(1);
         setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-        AppCompatImageView appCompatImageView = (AppCompatImageView) findViewById(C1826R.id.bb_bottom_bar_icon);
+        AppCompatImageView appCompatImageView = (AppCompatImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.bb_bottom_bar_icon);
         this.iconView = appCompatImageView;
         appCompatImageView.setImageResource(this.iconResId);
         if (this.type != Type.TABLET) {
-            this.titleView = (TextView) findViewById(C1826R.id.bb_bottom_bar_title);
+            this.titleView = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.bb_bottom_bar_title);
             updateTitle();
         }
         updateCustomTextAppearance();
@@ -110,13 +110,13 @@ public class BottomBarTab extends LinearLayout {
     int getLayoutResource() {
         int i = C18245.$SwitchMap$com$roughike$bottombar$BottomBarTab$Type[this.type.ordinal()];
         if (i == 1) {
-            return C1826R.layout.bb_bottom_bar_item_fixed;
+            return com.weioa.KmedHealthIndonesia.R.layout.bb_bottom_bar_item_fixed;
         }
         if (i == 2) {
-            return C1826R.layout.bb_bottom_bar_item_shifting;
+            return com.weioa.KmedHealthIndonesia.R.layout.bb_bottom_bar_item_shifting;
         }
         if (i == 3) {
-            return C1826R.layout.bb_bottom_bar_item_fixed_tablet;
+            return com.weioa.KmedHealthIndonesia.R.layout.bb_bottom_bar_item_fixed_tablet;
         }
         throw new RuntimeException("Unknown BottomBarTab type.");
     }

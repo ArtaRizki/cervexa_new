@@ -5,8 +5,6 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import androidx.appcompat.widget.AppCompatImageButton;
-import com.serenegiant.common.C1831R;
-
 /* JADX INFO: loaded from: classes2.dex */
 public final class ItemPickerButton extends AppCompatImageButton {
     private ItemPicker mNumberPicker;
@@ -54,9 +52,9 @@ public final class ItemPickerButton extends AppCompatImageButton {
     }
 
     private void cancelLongpress() {
-        if (C1831R.id.increment == getId()) {
+        if (com.weioa.KmedHealthIndonesia.R.id.increment == getId()) {
             this.mNumberPicker.cancelIncrement();
-        } else if (C1831R.id.decrement == getId()) {
+        } else if (com.weioa.KmedHealthIndonesia.R.id.decrement == getId()) {
             this.mNumberPicker.cancelDecrement();
         }
     }

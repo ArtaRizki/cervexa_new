@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.TableLayout;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.task.DebugHelper;
 import java.util.Locale;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
@@ -48,13 +47,13 @@ public class InfoHudViewHolder {
             }
             int videoDecoder = ijkMediaPlayer.getVideoDecoder();
             if (videoDecoder == 1) {
-                InfoHudViewHolder.this.setRowValue(C1438R.string.vdec, "avcodec");
+                InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.vdec, "avcodec");
             } else if (videoDecoder == 2) {
-                InfoHudViewHolder.this.setRowValue(C1438R.string.vdec, "MediaCodec");
+                InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.vdec, "MediaCodec");
             } else {
-                InfoHudViewHolder.this.setRowValue(C1438R.string.vdec, "");
+                InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.vdec, "");
             }
-            InfoHudViewHolder.this.setRowValue(C1438R.string.audio_decoder, ijkMediaPlayer.getMediaInfo().mAudioDecoder);
+            InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.audio_decoder, ijkMediaPlayer.getMediaInfo().mAudioDecoder);
             long videoCachedDuration = ijkMediaPlayer.getVideoCachedDuration();
             long audioCachedDuration = ijkMediaPlayer.getAudioCachedDuration();
             long videoCachedBytes = ijkMediaPlayer.getVideoCachedBytes();
@@ -75,22 +74,22 @@ public class InfoHudViewHolder {
                 str2 = str;
                 i = 0;
             }
-            InfoHudViewHolder.this.setRowValue(C1438R.string.video_rate, videoWidth + "x" + videoHeight);
+            InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.video_rate, videoWidth + "x" + videoHeight);
             if (i > 0) {
-                InfoHudViewHolder.this.setRowValue(C1438R.string.audio_sample_rate, i + "");
+                InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.audio_sample_rate, i + "");
             }
             if (!TextUtils.isEmpty(str2)) {
-                InfoHudViewHolder.this.setRowValue(C1438R.string.v_codec, str2);
+                InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.v_codec, str2);
             }
             if (!TextUtils.isEmpty(str)) {
-                InfoHudViewHolder.this.setRowValue(C1438R.string.a_codec, str);
+                InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.a_codec, str);
             }
-            InfoHudViewHolder.this.setRowValue(C1438R.string.v_cache, String.format(Locale.getDefault(), "%s, %s", InfoHudViewHolder.formatedDurationMilli(videoCachedDuration), InfoHudViewHolder.formatedSize(videoCachedBytes)));
-            InfoHudViewHolder.this.setRowValue(C1438R.string.a_cache, String.format(Locale.getDefault(), "%s, %s", InfoHudViewHolder.formatedDurationMilli(audioCachedDuration), InfoHudViewHolder.formatedSize(audioCachedBytes)));
+            InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.v_cache, String.format(Locale.getDefault(), "%s, %s", InfoHudViewHolder.formatedDurationMilli(videoCachedDuration), InfoHudViewHolder.formatedSize(videoCachedBytes)));
+            InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.a_cache, String.format(Locale.getDefault(), "%s, %s", InfoHudViewHolder.formatedDurationMilli(audioCachedDuration), InfoHudViewHolder.formatedSize(audioCachedBytes)));
             InfoHudViewHolder.access$308();
             if (InfoHudViewHolder.count >= 2) {
                 int unused = InfoHudViewHolder.count = 0;
-                InfoHudViewHolder.this.setRowValue(C1438R.string.bit_rate, DebugHelper.getNetSpeed(InfoHudViewHolder.this.mContext));
+                InfoHudViewHolder.this.setRowValue(com.weioa.KmedHealthIndonesia.R.string.bit_rate, DebugHelper.getNetSpeed(InfoHudViewHolder.this.mContext));
             }
             InfoHudViewHolder.this.mHandler.removeMessages(1);
             InfoHudViewHolder.this.mHandler.sendEmptyMessageDelayed(1, 500L);

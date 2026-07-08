@@ -24,7 +24,6 @@ import android.view.WindowManager;
 import androidx.core.content.FileProvider;
 import com.generalplus.GoPlusDrone.Fragment.BaseFragment;
 import com.jiangdg.usbcamera.UVCCameraHelper;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.AppInfo;
 import com.jieli.stream.p016dv.running2.bean.DeviceDesc;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
@@ -1567,14 +1566,14 @@ public class AppUtils implements IConstant {
         int cameraType = application.getDeviceSettingInfo().getCameraType();
         if (1 == getRtsFormat()) {
             if (cameraType == 1) {
-                stringArray = application.getResources().getStringArray(C1438R.array.rtsp_h264_front_url);
+                stringArray = application.getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.rtsp_h264_front_url);
             } else {
-                stringArray = application.getResources().getStringArray(C1438R.array.rtsp_h264_rear_url);
+                stringArray = application.getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.rtsp_h264_rear_url);
             }
         } else if (cameraType == 1) {
-            stringArray = application.getResources().getStringArray(C1438R.array.rtsp_jpeg_front_url);
+            stringArray = application.getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.rtsp_jpeg_front_url);
         } else {
-            stringArray = application.getResources().getStringArray(C1438R.array.rtsp_jpeg_rear_url);
+            stringArray = application.getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.rtsp_jpeg_rear_url);
         }
         return String.format(stringArray[rtspResolutionLevel], ClientManager.getClient().getAddress());
     }

@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.serenegiant.common.C1831R;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -125,9 +124,9 @@ public class BluetoothDeviceInfoRecyclerAdapter extends RecyclerView.Adapter<Blu
         public ViewHolder(View view) {
             super(view);
             this.mView = view;
-            this.nameTv = (TextView) view.findViewById(C1831R.id.name);
-            this.addressTv = (TextView) view.findViewById(C1831R.id.address);
-            this.icon = (ImageView) view.findViewById(C1831R.id.icon);
+            this.nameTv = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.name);
+            this.addressTv = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.address);
+            this.icon = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.icon);
         }
     }
 }

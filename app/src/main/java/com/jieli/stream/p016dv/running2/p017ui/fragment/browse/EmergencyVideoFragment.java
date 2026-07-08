@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
 import com.jieli.stream.p016dv.running2.bean.ItemBean;
 import com.jieli.stream.p016dv.running2.bean.MediaTaskInfo;
@@ -99,7 +98,7 @@ public class EmergencyVideoFragment extends BaseFragment implements BaseFooterVi
     public void updateTextUI() {
         LinearLayout linearLayout = this.emptyView;
         if (linearLayout != null) {
-            ((TextView) linearLayout.findViewById(C1438R.id.text_empty_tips)).setText(C1438R.string.no_data_tip);
+            ((TextView) linearLayout.findViewById(com.weioa.KmedHealthIndonesia.R.id.text_empty_tips)).setText(com.weioa.KmedHealthIndonesia.R.string.no_data_tip);
         }
     }
 
@@ -109,10 +108,10 @@ public class EmergencyVideoFragment extends BaseFragment implements BaseFooterVi
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_emergency_video, viewGroup, false);
-        this.mListView = (ListView) viewInflate.findViewById(C1438R.id.emergency_video_view);
-        this.emptyView = (LinearLayout) viewInflate.findViewById(C1438R.id.view_empty);
-        ExpandFooterView expandFooterView = (ExpandFooterView) viewInflate.findViewById(C1438R.id.emergency_video_footer);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_emergency_video, viewGroup, false);
+        this.mListView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.emergency_video_view);
+        this.emptyView = (LinearLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.view_empty);
+        ExpandFooterView expandFooterView = (ExpandFooterView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.emergency_video_footer);
         this.footerView = expandFooterView;
         expandFooterView.setOnLoadListener(this);
         return viewInflate;
@@ -259,7 +258,7 @@ public class EmergencyVideoFragment extends BaseFragment implements BaseFooterVi
             if (i2 <= 0) {
                 if (i2 == 0) {
                     if (size > 0) {
-                        ToastUtil.showToastShort(getString(C1438R.string.no_more_data));
+                        ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.no_more_data));
                         return;
                     } else {
                         this.emptyView.setVisibility(0);
@@ -391,7 +390,7 @@ public class EmergencyVideoFragment extends BaseFragment implements BaseFooterVi
     /* JADX INFO: Access modifiers changed from: private */
     public void showNotifyDialog() {
         if (this.notifyDialog == null) {
-            this.notifyDialog = NotifyDialog.newInstance(C1438R.string.dialog_warning, C1438R.string.delete_emergency_video_tip, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.browse.EmergencyVideoFragment.3
+            this.notifyDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_warning, com.weioa.KmedHealthIndonesia.R.string.delete_emergency_video_tip, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.browse.EmergencyVideoFragment.3
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     if (EmergencyVideoFragment.this.notifyDialog != null) {

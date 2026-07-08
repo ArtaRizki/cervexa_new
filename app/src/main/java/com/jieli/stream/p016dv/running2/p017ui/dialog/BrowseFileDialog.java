@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.SDFileInfo;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseDialogFragment;
@@ -67,7 +66,7 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
                 BrowseFileDialog.this.dismiss();
                 return false;
             }
-            ToastUtil.showToastShort(BrowseFileDialog.this.getString(C1438R.string.modify_storage_url_failed));
+            ToastUtil.showToastShort(BrowseFileDialog.this.getString(com.weioa.KmedHealthIndonesia.R.string.modify_storage_url_failed));
             return false;
         }
     });
@@ -89,13 +88,13 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.dialog_browse_file, viewGroup, false);
-        this.currentPathTv = (TextView) viewInflate.findViewById(C1438R.id.dialog_file_path);
-        ImageView imageView = (ImageView) viewInflate.findViewById(C1438R.id.create_dir_btn);
-        ImageView imageView2 = (ImageView) viewInflate.findViewById(C1438R.id.dialog_return_path);
-        this.mListView = (ListView) viewInflate.findViewById(C1438R.id.dialog_file_list);
-        Button button = (Button) viewInflate.findViewById(C1438R.id.dialog_file_cancel_btn);
-        Button button2 = (Button) viewInflate.findViewById(C1438R.id.dialog_file_confirm_btn);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.dialog_browse_file, viewGroup, false);
+        this.currentPathTv = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_file_path);
+        ImageView imageView = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.create_dir_btn);
+        ImageView imageView2 = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_return_path);
+        this.mListView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_file_list);
+        Button button = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_file_cancel_btn);
+        Button button2 = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_file_confirm_btn);
         this.mListView.setOnItemClickListener(this);
         this.mListView.setOnItemLongClickListener(this);
         imageView.setOnClickListener(this);
@@ -186,7 +185,7 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
             return;
         }
         int id = view.getId();
-        if (id == C1438R.id.create_dir_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.create_dir_btn) {
             InputContentDialog inputContentDialog = new InputContentDialog();
             inputContentDialog.setOnContentListener(new InputContentDialog.OnContentListener() { // from class: com.jieli.stream.dv.running2.ui.dialog.BrowseFileDialog.3
                 @Override // com.jieli.stream.dv.running2.ui.dialog.InputContentDialog.OnContentListener
@@ -196,7 +195,7 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
                     }
                     String str2 = BrowseFileDialog.this.currentPath + File.separator + str;
                     if (new File(str2).mkdir()) {
-                        ToastUtil.showToastShort(BrowseFileDialog.this.getString(C1438R.string.create_dir_success));
+                        ToastUtil.showToastShort(BrowseFileDialog.this.getString(com.weioa.KmedHealthIndonesia.R.string.create_dir_success));
                         BrowseFileDialog.this.currentPath = str2;
                         BrowseFileDialog browseFileDialog = BrowseFileDialog.this;
                         browseFileDialog.viewFiles(browseFileDialog.currentPath);
@@ -206,17 +205,17 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
             inputContentDialog.show(getActivity().getSupportFragmentManager(), "input_content_dialog");
             return;
         }
-        if (id == C1438R.id.dialog_return_path) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dialog_return_path) {
             onKeyBack();
             return;
         }
-        if (id == C1438R.id.dialog_file_cancel_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dialog_file_cancel_btn) {
             dismiss();
             return;
         }
-        if (id == C1438R.id.dialog_file_confirm_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dialog_file_confirm_btn) {
             if (ROOT_PATH.equals(this.currentPath)) {
-                ToastUtil.showToastShort(getString(C1438R.string.select_dir_error));
+                ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.select_dir_error));
                 return;
             }
             if (AppUtils.checkIsEmptyFolder(this.currentPath)) {
@@ -229,7 +228,7 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
                 }
                 return;
             }
-            ToastUtil.showToastShort(getString(C1438R.string.select_dir_tip));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.select_dir_tip));
         }
     }
 
@@ -273,7 +272,7 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
             return;
         }
         if (this.movingDialog == null) {
-            this.movingDialog = NotifyDialog.newInstance(C1438R.string.moving_dir_tip, true);
+            this.movingDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.moving_dir_tip, true);
         }
         if (i == 0) {
             if (this.movingDialog.isShowing() || getActivity().isFinishing()) {
@@ -292,9 +291,9 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
         if (getActivity() == null) {
             return;
         }
-        String str2 = String.format(getString(C1438R.string.delete_dir_tip), str);
+        String str2 = String.format(getString(com.weioa.KmedHealthIndonesia.R.string.delete_dir_tip), str);
         if (this.deleteDirDialog == null) {
-            this.deleteDirDialog = NotifyDialog.newInstance(getString(C1438R.string.dialog_tips), str2, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.dialog.BrowseFileDialog.4
+            this.deleteDirDialog = NotifyDialog.newInstance(getString(com.weioa.KmedHealthIndonesia.R.string.dialog_tips), str2, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.dialog.BrowseFileDialog.4
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     BrowseFileDialog.this.deleteDirDialog.dismiss();
@@ -307,11 +306,11 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
                         String string = bundle.getString(IConstant.KEY_DIR_PATH, null);
                         if (!TextUtils.isEmpty(string)) {
                             if (FileUtil.deleteFile(new File(string))) {
-                                ToastUtil.showToastShort(BrowseFileDialog.this.getString(C1438R.string.delete_dir_success));
+                                ToastUtil.showToastShort(BrowseFileDialog.this.getString(com.weioa.KmedHealthIndonesia.R.string.delete_dir_success));
                                 BrowseFileDialog browseFileDialog = BrowseFileDialog.this;
                                 browseFileDialog.viewFiles(browseFileDialog.currentPath);
                             } else {
-                                ToastUtil.showToastShort(BrowseFileDialog.this.getString(C1438R.string.delete_dir_failed));
+                                ToastUtil.showToastShort(BrowseFileDialog.this.getString(com.weioa.KmedHealthIndonesia.R.string.delete_dir_failed));
                             }
                         }
                     }
@@ -398,10 +397,10 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
         public View getView(int i, View view, ViewGroup viewGroup) {
             ViewHolder viewHolder;
             if (view == null) {
-                view = this.inflater.inflate(C1438R.layout.item_file_path, viewGroup, false);
+                view = this.inflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.item_file_path, viewGroup, false);
                 viewHolder = new ViewHolder();
-                viewHolder.icon = (ImageView) view.findViewById(C1438R.id.file_icon);
-                viewHolder.name = (TextView) view.findViewById(C1438R.id.file_name);
+                viewHolder.icon = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.file_icon);
+                viewHolder.name = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.file_name);
                 view.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) view.getTag();
@@ -410,9 +409,9 @@ public class BrowseFileDialog extends BaseDialogFragment implements IConstant, V
             if (sDFileInfo != null) {
                 viewHolder.name.setText(sDFileInfo.Name);
                 if (sDFileInfo.IsDirectory) {
-                    viewHolder.icon.setImageResource(C1438R.mipmap.ic_folder);
+                    viewHolder.icon.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_folder);
                 } else {
-                    viewHolder.icon.setImageResource(C1438R.mipmap.ic_file_icon);
+                    viewHolder.icon.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_file_icon);
                 }
             }
             return view;

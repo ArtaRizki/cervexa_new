@@ -20,7 +20,6 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
 import com.jieli.stream.p016dv.running2.p017ui.dialog.NotifyDialog;
 import com.jieli.stream.p016dv.running2.p017ui.dialog.WaitingDialog;
@@ -92,7 +91,7 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
                 b = 1;
             }
             if (b == 0) {
-                BrowseFileFragment.this.tvCenter.setText(BrowseFileFragment.this.getString(C1438R.string.selected_num, Integer.valueOf(intent.getIntExtra(IConstant.KEY_SELECT_FILES_NUM, 0))));
+                BrowseFileFragment.this.tvCenter.setText(BrowseFileFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.selected_num, Integer.valueOf(intent.getIntExtra(IConstant.KEY_SELECT_FILES_NUM, 0))));
                 return;
             }
             if (b != 1) {
@@ -123,16 +122,16 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_browse_file, viewGroup, false);
-        ImageView imageView = (ImageView) viewInflate.findViewById(C1438R.id.operation_edit_btn);
-        ViewPager viewPager = (ViewPager) viewInflate.findViewById(C1438R.id.file_view_pager);
-        this.normalModeLayout = (RelativeLayout) viewInflate.findViewById(C1438R.id.top_normal_mode_layout);
-        this.editModeLayout = (RelativeLayout) viewInflate.findViewById(C1438R.id.top_edit_mode_layout);
-        this.tvAllSelect = (TextView) viewInflate.findViewById(C1438R.id.edit_all_select);
-        this.tvCenter = (TextView) viewInflate.findViewById(C1438R.id.edit_center_tv);
-        this.tvExit = (TextView) viewInflate.findViewById(C1438R.id.edit_exit);
-        FixedIndicatorView fixedIndicatorView = (FixedIndicatorView) viewInflate.findViewById(C1438R.id.file_indicator);
-        fixedIndicatorView.setOnTransitionListener(new OnTransitionTextListener().setColorId(getActivity(), C1438R.color.text_orange, C1438R.color.text_white).setSizeId(getActivity(), C1438R.dimen.text_normal, C1438R.dimen.text_smaller_x));
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_browse_file, viewGroup, false);
+        ImageView imageView = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.operation_edit_btn);
+        ViewPager viewPager = (ViewPager) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.file_view_pager);
+        this.normalModeLayout = (RelativeLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.top_normal_mode_layout);
+        this.editModeLayout = (RelativeLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.top_edit_mode_layout);
+        this.tvAllSelect = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.edit_all_select);
+        this.tvCenter = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.edit_center_tv);
+        this.tvExit = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.edit_exit);
+        FixedIndicatorView fixedIndicatorView = (FixedIndicatorView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.file_indicator);
+        fixedIndicatorView.setOnTransitionListener(new OnTransitionTextListener().setColorId(getActivity(), com.weioa.KmedHealthIndonesia.R.color.text_orange, com.weioa.KmedHealthIndonesia.R.color.text_white).setSizeId(getActivity(), com.weioa.KmedHealthIndonesia.R.dimen.text_normal, com.weioa.KmedHealthIndonesia.R.dimen.text_smaller_x));
         fixedIndicatorView.setDividerPadding(5);
         fixedIndicatorView.setScrollBar(new ColorBar(getActivity(), -32985, 5));
         viewPager.setOffscreenPageLimit(3);
@@ -149,8 +148,8 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
         if (getActivity() != null) {
-            LinearLayout linearLayout = (LinearLayout) getActivity().findViewById(C1438R.id.pop_bottom_bar_share);
-            LinearLayout linearLayout2 = (LinearLayout) getActivity().findViewById(C1438R.id.pop_bottom_bar_delete);
+            LinearLayout linearLayout = (LinearLayout) getActivity().findViewById(com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_share);
+            LinearLayout linearLayout2 = (LinearLayout) getActivity().findViewById(com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_delete);
             linearLayout.setOnClickListener(this);
             linearLayout2.setOnClickListener(this);
             initViewPager();
@@ -201,7 +200,7 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
         if (getActivity() == null) {
             return;
         }
-        this.tabNames = getActivity().getResources().getStringArray(C1438R.array.browse_file_list);
+        this.tabNames = getActivity().getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.browse_file_list);
         if (this.mAdapter == null) {
             FileBrowseAdapter fileBrowseAdapter = new FileBrowseAdapter(getActivity().getApplicationContext(), getChildFragmentManager());
             this.mAdapter = fileBrowseAdapter;
@@ -216,20 +215,20 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
             return;
         }
         int id = view.getId();
-        if (id == C1438R.id.operation_edit_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.operation_edit_btn) {
             sendOperation(IConstant.OP_ENTER_EDIT_MODE);
             return;
         }
-        if (id == C1438R.id.edit_exit) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.edit_exit) {
             updateTopBarUI(false);
             sendOperation(IConstant.OP_EXIT_EDIT_MODE);
             return;
         }
-        if (id == C1438R.id.edit_all_select) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.edit_all_select) {
             this.isSelectAll = !this.isSelectAll;
             updateAllSelectUI(true);
         } else {
-            if (id == C1438R.id.pop_bottom_bar_share) {
+            if (id == com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_share) {
                 if (ClientManager.getClient().isConnected()) {
                     showShareTipsDialog();
                     return;
@@ -238,7 +237,7 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
                     return;
                 }
             }
-            if (id == C1438R.id.pop_bottom_bar_delete) {
+            if (id == com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_delete) {
                 sendOperation(IConstant.OP_DELETE_FILES);
             }
         }
@@ -252,7 +251,7 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
             if (relativeLayout != null && relativeLayout.getVisibility() != 8) {
                 this.normalModeLayout.setVisibility(8);
             }
-            this.tvCenter.setText(getString(C1438R.string.selected_num, 0));
+            this.tvCenter.setText(getString(com.weioa.KmedHealthIndonesia.R.string.selected_num, 0));
             RelativeLayout relativeLayout2 = this.editModeLayout;
             if (relativeLayout2 != null && relativeLayout2.getVisibility() != 0) {
                 this.editModeLayout.setVisibility(0);
@@ -283,13 +282,13 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
             if (linearLayout == null || linearLayout.getVisibility() == 0) {
                 return;
             }
-            this.editLayout.setAnimation(AnimationUtils.loadAnimation(getActivity(), C1438R.anim.slide_in_bottom));
+            this.editLayout.setAnimation(AnimationUtils.loadAnimation(getActivity(), com.weioa.KmedHealthIndonesia.R.anim.slide_in_bottom));
             this.editLayout.setVisibility(0);
             return;
         }
         LinearLayout linearLayout2 = this.editLayout;
         if (linearLayout2 != null && linearLayout2.getVisibility() != 8) {
-            this.editLayout.setAnimation(AnimationUtils.loadAnimation(getActivity(), C1438R.anim.slide_out_bottom));
+            this.editLayout.setAnimation(AnimationUtils.loadAnimation(getActivity(), com.weioa.KmedHealthIndonesia.R.anim.slide_out_bottom));
             this.editLayout.setVisibility(8);
         }
         BottomBar bottomBar2 = this.bottomBar;
@@ -302,14 +301,14 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
     /* JADX INFO: Access modifiers changed from: private */
     public void updateAllSelectUI(boolean z) {
         if (this.isSelectAll) {
-            this.tvAllSelect.setText(getString(C1438R.string.cancel_all_select));
+            this.tvAllSelect.setText(getString(com.weioa.KmedHealthIndonesia.R.string.cancel_all_select));
             if (z) {
                 sendOperation(IConstant.OP_SELECT_ALL);
                 return;
             }
             return;
         }
-        this.tvAllSelect.setText(getString(C1438R.string.all_select));
+        this.tvAllSelect.setText(getString(com.weioa.KmedHealthIndonesia.R.string.all_select));
         if (z) {
             sendOperation(IConstant.OP_CANCEL_SELECT_ALL);
         }
@@ -335,7 +334,7 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
     @Override // com.shizhefei.view.indicator.IndicatorViewPager.OnIndicatorPageChangeListener
     public void onIndicatorPageChange(int i, int i2) {
         Fragment fragmentForPage = this.mAdapter.getFragmentForPage(i2);
-        LinearLayout linearLayout = (LinearLayout) getActivity().findViewById(C1438R.id.pop_bottom_bar_share);
+        LinearLayout linearLayout = (LinearLayout) getActivity().findViewById(com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_share);
         if (fragmentForPage != null && (fragmentForPage instanceof LocalPhotoFragment)) {
             linearLayout.setVisibility(0);
         } else {
@@ -365,7 +364,7 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
         @Override // com.shizhefei.view.indicator.IndicatorViewPager.IndicatorFragmentPagerAdapter
         public View getViewForTab(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
-                view = LayoutInflater.from(this.mContext).inflate(C1438R.layout.main_tab_view, viewGroup, false);
+                view = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.main_tab_view, viewGroup, false);
             }
             TextView textView = (TextView) view;
             if (BrowseFileFragment.this.tabNames != null && i < BrowseFileFragment.this.tabNames.length) {
@@ -383,17 +382,17 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
                 return baseFragment;
             }
             String str = BrowseFileFragment.this.tabNames[i];
-            if (str.equals(BrowseFileFragment.this.getString(C1438R.string.tab_image))) {
+            if (str.equals(BrowseFileFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.tab_image))) {
                 LocalPhotoFragment localPhotoFragment = new LocalPhotoFragment();
                 localPhotoFragment.setParentFragment(BrowseFileFragment.this);
                 return localPhotoFragment;
             }
-            if (str.equals(BrowseFileFragment.this.getString(C1438R.string.tab_video))) {
+            if (str.equals(BrowseFileFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.tab_video))) {
                 LocalVideoFragment localVideoFragment = new LocalVideoFragment();
                 localVideoFragment.setParentFragment(BrowseFileFragment.this);
                 return localVideoFragment;
             }
-            if (!str.equals(BrowseFileFragment.this.getString(C1438R.string.tab_protected))) {
+            if (!str.equals(BrowseFileFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.tab_protected))) {
                 return baseFragment;
             }
             EmergencyVideoFragment emergencyVideoFragment = new EmergencyVideoFragment();
@@ -417,7 +416,7 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
             WaitingDialog waitingDialog = new WaitingDialog();
             this.waitingDialog = waitingDialog;
             waitingDialog.setCancelable(false);
-            this.waitingDialog.setNotifyContent(getString(C1438R.string.deleting_tip));
+            this.waitingDialog.setNotifyContent(getString(com.weioa.KmedHealthIndonesia.R.string.deleting_tip));
             this.waitingDialog.setOnWaitingDialog(new WaitingDialog.OnWaitingDialog() { // from class: com.jieli.stream.dv.running2.ui.fragment.browse.BrowseFileFragment.2
                 @Override // com.jieli.stream.dv.running2.ui.dialog.WaitingDialog.OnWaitingDialog
                 public void onCancelDialog() {
@@ -450,7 +449,7 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
     }
 
     private void showShareTipsDialog() {
-        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.sharing_needs_disconnect, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.browse.BrowseFileFragment.3
+        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.sharing_needs_disconnect, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.browse.BrowseFileFragment.3
             @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
             public void onClick() {
                 BrowseFileFragment.this.mShareTipsDialog.dismiss();

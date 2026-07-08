@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import com.serenegiant.common.C1831R;
 import com.serenegiant.widget.ColorPickerView;
 
 /* JADX INFO: loaded from: classes.dex */
@@ -140,16 +139,16 @@ public class ColorPickerDialog extends DialogFragment {
     @Override // android.app.DialogFragment
     public Dialog onCreateDialog(Bundle bundle) {
         Activity activity = getActivity();
-        FrameLayout frameLayout = (FrameLayout) LayoutInflater.from(activity).inflate(C1831R.layout.color_picker, (ViewGroup) null);
+        FrameLayout frameLayout = (FrameLayout) LayoutInflater.from(activity).inflate(com.weioa.KmedHealthIndonesia.R.layout.color_picker, (ViewGroup) null);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-1, -1);
         ColorPickerView colorPickerView = new ColorPickerView(getActivity());
         colorPickerView.setColor(this.mCurrentColor);
         colorPickerView.setColorPickerListener(this.mColorPickerListener);
         frameLayout.addView(colorPickerView, layoutParams);
-        AlertDialog.Builder negativeButton = new AlertDialog.Builder(activity).setPositiveButton(C1831R.string.color_picker_select, this.mOnClickListner).setNegativeButton(C1831R.string.color_picker_cancel, this.mOnClickListner);
+        AlertDialog.Builder negativeButton = new AlertDialog.Builder(activity).setPositiveButton(com.weioa.KmedHealthIndonesia.R.string.color_picker_select, this.mOnClickListner).setNegativeButton(com.weioa.KmedHealthIndonesia.R.string.color_picker_cancel, this.mOnClickListner);
         int i = this.mTitleResId;
         if (i == 0) {
-            i = C1831R.string.color_picker_default_title;
+            i = com.weioa.KmedHealthIndonesia.R.string.color_picker_default_title;
         }
         AlertDialog alertDialogCreate = negativeButton.setTitle(i).setView(frameLayout).create();
         alertDialogCreate.setCanceledOnTouchOutside(true);

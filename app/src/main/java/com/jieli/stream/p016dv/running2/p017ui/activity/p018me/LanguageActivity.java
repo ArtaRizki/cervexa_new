@@ -18,7 +18,6 @@ import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Code;
 import com.jieli.lib.p015dv.control.utils.Topic;
 import com.jieli.lib.p015dv.control.utils.TopicKey;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.p017ui.activity.MainActivity;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity;
@@ -71,8 +70,8 @@ public class LanguageActivity extends BaseActivity {
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1438R.layout.activity_language);
-        RadioGroup radioGroup = (RadioGroup) findViewById(C1438R.id.language_radio_group);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_language);
+        RadioGroup radioGroup = (RadioGroup) findViewById(com.weioa.KmedHealthIndonesia.R.id.language_radio_group);
         this.radioGroup = radioGroup;
         radioGroup.removeAllViews();
         initLanguage();
@@ -98,9 +97,9 @@ public class LanguageActivity extends BaseActivity {
         }
         LayoutInflater layoutInflaterFrom = LayoutInflater.from(this);
         int i2 = 0;
-        for (String str : getResources().getStringArray(C1438R.array.language)) {
+        for (String str : getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.language)) {
             if (i2 == 0 || i2 == 4) {
-                RadioButton radioButton = (RadioButton) layoutInflaterFrom.inflate(C1438R.layout.item_radiobuttom, (ViewGroup) this.radioGroup, false);
+                RadioButton radioButton = (RadioButton) layoutInflaterFrom.inflate(com.weioa.KmedHealthIndonesia.R.layout.item_radiobuttom, (ViewGroup) this.radioGroup, false);
                 radioButton.setText(str);
                 if (i == i2) {
                     radioButton.setChecked(true);
@@ -131,7 +130,7 @@ public class LanguageActivity extends BaseActivity {
                     @Override // com.jieli.lib.p015dv.control.connect.response.Response
                     public void onResponse(Integer num) {
                         if (num.intValue() != 1) {
-                            ToastUtil.showToastShort(LanguageActivity.this.getString(C1438R.string.setting_failed));
+                            ToastUtil.showToastShort(LanguageActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.setting_failed));
                         }
                     }
                 });
@@ -142,7 +141,7 @@ public class LanguageActivity extends BaseActivity {
                 sendBroadcast(new Intent(IActions.ACTION_LANGUAAGE_CHANGE));
                 PreferencesHelper.putStringValue(getApplicationContext(), IConstant.KEY_APP_LANGUAGE_CODE, this.mLastLanguage);
             }
-            ToastUtil.showToastShort(getString(C1438R.string.setting_successed));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.setting_successed));
         }
     }
 

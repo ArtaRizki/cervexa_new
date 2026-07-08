@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.UiError;
-import com.xyzlf.com.share.library.C2095R;
 import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.interfaces.OnShareListener;
 import com.xyzlf.share.library.util.ToastUtil;
@@ -40,7 +39,7 @@ public class ShareByQZone extends ShareByQQ {
                 if (onShareListener2 != null) {
                     onShareListener2.onShare(16, 1);
                 }
-                ToastUtil.showToast(ShareByQZone.this.context, C2095R.string.share_success, true);
+                ToastUtil.showToast(ShareByQZone.this.context, com.weioa.KmedHealthIndonesia.R.string.share_success, true);
             }
 
             @Override // com.tencent.tauth.IUiListener
@@ -60,7 +59,7 @@ public class ShareByQZone extends ShareByQQ {
                 if (onShareListener2 != null) {
                     onShareListener2.onShare(16, 3);
                 }
-                ToastUtil.showToast(ShareByQZone.this.context, C2095R.string.share_cancel, true);
+                ToastUtil.showToast(ShareByQZone.this.context, com.weioa.KmedHealthIndonesia.R.string.share_cancel, true);
             }
         });
     }

@@ -9,7 +9,6 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import com.serenegiant.common.C1831R;
 import com.serenegiant.glutils.IRendererCommon;
 
 /* JADX INFO: loaded from: classes2.dex */
@@ -87,9 +86,9 @@ public class ZoomAspectScaledTextureView extends AspectScaledTextureView impleme
         this.mMinScale = DEFAULT_MIN_SCALE;
         this.mState = -1;
         this.mMirrorMode = 0;
-        TypedArray typedArrayObtainStyledAttributes = context.getTheme().obtainStyledAttributes(attributeSet, C1831R.styleable.ZoomAspectScaledTextureView, i, 0);
+        TypedArray typedArrayObtainStyledAttributes = context.getTheme().obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.ZoomAspectScaledTextureView, i, 0);
         try {
-            this.mHandleTouchEvent = typedArrayObtainStyledAttributes.getBoolean(C1831R.styleable.ZoomAspectScaledTextureView_handle_touch_event, true);
+            this.mHandleTouchEvent = typedArrayObtainStyledAttributes.getBoolean(com.weioa.KmedHealthIndonesia.R.styleable.ZoomAspectScaledTextureView_handle_touch_event, true);
         } finally {
             typedArrayObtainStyledAttributes.recycle();
         }

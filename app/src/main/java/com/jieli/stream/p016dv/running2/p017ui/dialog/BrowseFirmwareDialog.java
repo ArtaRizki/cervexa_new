@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.SDFileInfo;
 import com.jieli.stream.p016dv.running2.interfaces.OnSelectedListener;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseDialogFragment;
@@ -54,12 +53,12 @@ public class BrowseFirmwareDialog extends BaseDialogFragment implements IConstan
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.dialog_browse_firmware, viewGroup, false);
-        this.currentPathTv = (TextView) viewInflate.findViewById(C1438R.id.dialog_file_path);
-        ImageView imageView = (ImageView) viewInflate.findViewById(C1438R.id.dialog_return_path);
-        this.mListView = (ListView) viewInflate.findViewById(C1438R.id.dialog_file_list);
-        Button button = (Button) viewInflate.findViewById(C1438R.id.dialog_file_cancel_btn);
-        Button button2 = (Button) viewInflate.findViewById(C1438R.id.dialog_file_confirm_btn);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.dialog_browse_firmware, viewGroup, false);
+        this.currentPathTv = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_file_path);
+        ImageView imageView = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_return_path);
+        this.mListView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_file_list);
+        Button button = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_file_cancel_btn);
+        Button button2 = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_file_confirm_btn);
         this.mListView.setOnItemClickListener(this);
         imageView.setOnClickListener(this);
         button.setOnClickListener(this);
@@ -144,15 +143,15 @@ public class BrowseFirmwareDialog extends BaseDialogFragment implements IConstan
             return;
         }
         int id = view.getId();
-        if (id == C1438R.id.dialog_return_path) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dialog_return_path) {
             onKeyBack();
             return;
         }
-        if (id == C1438R.id.dialog_file_cancel_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dialog_file_cancel_btn) {
             dismiss();
             return;
         }
-        if (id == C1438R.id.dialog_file_confirm_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dialog_file_confirm_btn) {
             SDFileInfo sDFileInfo = this.mSelectedFile;
             if (sDFileInfo != null) {
                 ToastUtil.showToastShort(sDFileInfo.Name);
@@ -164,7 +163,7 @@ public class BrowseFirmwareDialog extends BaseDialogFragment implements IConstan
                 }
                 return;
             }
-            ToastUtil.showToastShort(getString(C1438R.string.selected_file_empty_tip));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.selected_file_empty_tip));
         }
     }
 
@@ -238,11 +237,11 @@ public class BrowseFirmwareDialog extends BaseDialogFragment implements IConstan
         public View getView(int i, View view, ViewGroup viewGroup) {
             ViewHolder viewHolder;
             if (view == null) {
-                view = this.inflater.inflate(C1438R.layout.item_file_path, viewGroup, false);
+                view = this.inflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.item_file_path, viewGroup, false);
                 viewHolder = new ViewHolder();
-                viewHolder.icon = (ImageView) view.findViewById(C1438R.id.file_icon);
-                viewHolder.name = (TextView) view.findViewById(C1438R.id.file_name);
-                viewHolder.flag = (ImageView) view.findViewById(C1438R.id.file_selected);
+                viewHolder.icon = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.file_icon);
+                viewHolder.name = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.file_name);
+                viewHolder.flag = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.file_selected);
                 view.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) view.getTag();
@@ -251,9 +250,9 @@ public class BrowseFirmwareDialog extends BaseDialogFragment implements IConstan
             if (sDFileInfo != null) {
                 viewHolder.name.setText(sDFileInfo.Name);
                 if (sDFileInfo.IsDirectory) {
-                    viewHolder.icon.setImageResource(C1438R.mipmap.ic_folder);
+                    viewHolder.icon.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_folder);
                 } else {
-                    viewHolder.icon.setImageResource(C1438R.mipmap.ic_file_icon);
+                    viewHolder.icon.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_file_icon);
                 }
                 if (sDFileInfo.equals(BrowseFirmwareDialog.this.mSelectedFile)) {
                     viewHolder.flag.setVisibility(0);

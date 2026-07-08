@@ -18,7 +18,6 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.jieli.lib.p015dv.control.connect.response.SendResponse;
 import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
 import com.jieli.stream.p016dv.running2.p017ui.dialog.NotifyDialog;
 import com.jieli.stream.p016dv.running2.util.ClientManager;
@@ -55,12 +54,12 @@ public class DeviceStorageManageFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_device_storage_manage, viewGroup, false);
-        this.delPhotoIbtn = (ImageButton) viewInflate.findViewById(C1438R.id.photo_del_ibtn);
-        this.delVideoIbtn = (ImageButton) viewInflate.findViewById(C1438R.id.video_del_ibtn);
-        this.formatBtn = (Button) viewInflate.findViewById(C1438R.id.device_storage_format_btn);
-        this.tfCapTextView = (TextView) viewInflate.findViewById(C1438R.id.tf_cap_tv);
-        this.mChart = (PieChart) viewInflate.findViewById(C1438R.id.pie_chart);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_device_storage_manage, viewGroup, false);
+        this.delPhotoIbtn = (ImageButton) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.photo_del_ibtn);
+        this.delVideoIbtn = (ImageButton) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_del_ibtn);
+        this.formatBtn = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.device_storage_format_btn);
+        this.tfCapTextView = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.tf_cap_tv);
+        this.mChart = (PieChart) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.pie_chart);
         int leftStorage = this.mApplication.getDeviceSettingInfo().getLeftStorage();
         int totalStorage = this.mApplication.getDeviceSettingInfo().getTotalStorage();
         if (totalStorage > 1024) {
@@ -83,13 +82,13 @@ public class DeviceStorageManageFragment extends BaseFragment {
         this.delPhotoIbtn.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStorageManageFragment.2
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
-                ToastUtil.showToastShort(DeviceStorageManageFragment.this.getString(C1438R.string.save_success));
+                ToastUtil.showToastShort(DeviceStorageManageFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.save_success));
             }
         });
         this.delVideoIbtn.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStorageManageFragment.3
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
-                ToastUtil.showToastShort(DeviceStorageManageFragment.this.getString(C1438R.string.save_success));
+                ToastUtil.showToastShort(DeviceStorageManageFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.save_success));
             }
         });
         return viewInflate;
@@ -110,13 +109,13 @@ public class DeviceStorageManageFragment extends BaseFragment {
     public void setData(float f, float f2) {
         this.mChart.clear();
         ArrayList arrayList = new ArrayList();
-        arrayList.add(new PieEntry(f, getString(C1438R.string.remaining_storage)));
-        arrayList.add(new PieEntry(f2, getString(C1438R.string.used_storage)));
+        arrayList.add(new PieEntry(f, getString(com.weioa.KmedHealthIndonesia.R.string.remaining_storage)));
+        arrayList.add(new PieEntry(f2, getString(com.weioa.KmedHealthIndonesia.R.string.used_storage)));
         PieDataSet pieDataSet = new PieDataSet(arrayList, "");
         pieDataSet.setSelectionShift(0.0f);
         ArrayList arrayList2 = new ArrayList();
-        arrayList2.add(Integer.valueOf(getResources().getColor(C1438R.color.bg_pie_chart_rest)));
-        arrayList2.add(Integer.valueOf(getResources().getColor(C1438R.color.bg_pie_chart_used)));
+        arrayList2.add(Integer.valueOf(getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.bg_pie_chart_rest)));
+        arrayList2.add(Integer.valueOf(getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.bg_pie_chart_used)));
         pieDataSet.setColors(arrayList2);
         PieData pieData = new PieData(pieDataSet);
         pieData.setValueFormatter(new ValueFormatter() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStorageManageFragment.4
@@ -132,7 +131,7 @@ public class DeviceStorageManageFragment extends BaseFragment {
             }
         });
         pieData.setValueTextSize(10.0f);
-        pieData.setValueTextColor(getResources().getColor(C1438R.color.text_white));
+        pieData.setValueTextColor(getResources().getColor(com.weioa.KmedHealthIndonesia.R.color.text_white));
         this.mChart.setEntryLabelTextSize(0.0f);
         this.mChart.setData(pieData);
         this.mChart.highlightValues(null);
@@ -159,7 +158,7 @@ public class DeviceStorageManageFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void showFormatDevice() {
         if (this.formatDialog == null) {
-            this.formatDialog = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.format, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStorageManageFragment.6
+            this.formatDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.format, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStorageManageFragment.6
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     DeviceStorageManageFragment.this.formatDialog.dismiss();
@@ -171,7 +170,7 @@ public class DeviceStorageManageFragment extends BaseFragment {
                         @Override // com.jieli.lib.p015dv.control.connect.response.Response
                         public void onResponse(Integer num) {
                             if (num.intValue() != 1) {
-                                ToastUtil.showToastShort(DeviceStorageManageFragment.this.getString(C1438R.string.format_failed));
+                                ToastUtil.showToastShort(DeviceStorageManageFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.format_failed));
                             }
                         }
                     });
@@ -188,7 +187,7 @@ public class DeviceStorageManageFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void showStopRecordingDialog() {
         if (this.mNotifyDialog == null) {
-            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.stop_recording_tips, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStorageManageFragment.8
+            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.stop_recording_tips, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceStorageManageFragment.8
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     DeviceStorageManageFragment.this.mNotifyDialog.dismiss();
@@ -201,7 +200,7 @@ public class DeviceStorageManageFragment extends BaseFragment {
                         public void onResponse(Integer num) {
                             if (num.intValue() != 1) {
                                 DeviceStorageManageFragment.this.mNotifyDialog.dismiss();
-                                ToastUtil.showToastShort(DeviceStorageManageFragment.this.getString(C1438R.string.operation_failed_and_try_again));
+                                ToastUtil.showToastShort(DeviceStorageManageFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.operation_failed_and_try_again));
                                 Dbug.m1388e(DeviceStorageManageFragment.this.tag, "Send failed");
                             }
                         }

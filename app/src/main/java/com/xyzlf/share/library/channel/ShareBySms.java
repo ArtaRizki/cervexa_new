@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import com.xyzlf.com.share.library.C2095R;
 import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.interfaces.OnShareListener;
 import com.xyzlf.share.library.util.ShareUtil;
@@ -20,7 +19,7 @@ public class ShareBySms extends ShareBase {
     public void share(ShareEntity shareEntity, OnShareListener onShareListener) {
         String str;
         if (shareEntity == null || TextUtils.isEmpty(shareEntity.getContent())) {
-            ToastUtil.showToast(this.context, C2095R.string.share_empty_tip, true);
+            ToastUtil.showToast(this.context, com.weioa.KmedHealthIndonesia.R.string.share_empty_tip, true);
             return;
         }
         if (TextUtils.isEmpty(shareEntity.getContent())) {

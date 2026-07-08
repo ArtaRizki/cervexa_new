@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
 import com.jieli.stream.p016dv.running2.bean.ItemBean;
 import com.jieli.stream.p016dv.running2.p017ui.widget.NoScrollGridView;
@@ -90,7 +89,7 @@ public class TimeLineAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         ItemBean itemBean = (ItemBean) getItem(i);
         if (view == null) {
-            view = LayoutInflater.from(this.mContext).inflate(C1438R.layout.item_time_line, viewGroup, false);
+            view = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_time_line, viewGroup, false);
             viewHolder = new ViewHolder(view);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -124,8 +123,8 @@ public class TimeLineAdapter extends BaseAdapter {
         private TextView tvDate;
 
         ViewHolder(View view) {
-            this.tvDate = (TextView) view.findViewById(C1438R.id.item_time_line_tv);
-            this.subGridView = (NoScrollGridView) view.findViewById(C1438R.id.item_time_line_grid_view);
+            this.tvDate = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_time_line_tv);
+            this.subGridView = (NoScrollGridView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_time_line_grid_view);
             SubGridViewAdapter subGridViewAdapter = new SubGridViewAdapter(TimeLineAdapter.this.mContext, this.subGridView);
             this.mAdapter = subGridViewAdapter;
             this.subGridView.setAdapter((ListAdapter) subGridViewAdapter);

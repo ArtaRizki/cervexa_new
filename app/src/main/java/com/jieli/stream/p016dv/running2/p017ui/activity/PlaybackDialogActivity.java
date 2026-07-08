@@ -38,7 +38,6 @@ import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Code;
 import com.jieli.lib.p015dv.control.utils.Topic;
 import com.jieli.lib.p015dv.control.utils.TopicKey;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.baidu.utils.BitmapUtil;
 import com.jieli.stream.p016dv.running2.baidu.utils.MapUtil;
 import com.jieli.stream.p016dv.running2.bean.DeviceSettingInfo;
@@ -99,7 +98,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
     private boolean isRecordPrepared = false;
     private boolean isUseMap = false;
     private boolean isDebugOpen = false;
-    private int[] fastForwardRes = {C1438R.mipmap.ic_fast_forward_1, C1438R.mipmap.ic_fast_forward_2, C1438R.mipmap.ic_fast_forward_4, C1438R.mipmap.ic_fast_forward_8, C1438R.mipmap.ic_fast_forward_16, C1438R.mipmap.ic_fast_forward_32, C1438R.mipmap.ic_fast_forward_64};
+    private int[] fastForwardRes = {com.weioa.KmedHealthIndonesia.R.mipmap.ic_fast_forward_1, com.weioa.KmedHealthIndonesia.R.mipmap.ic_fast_forward_2, com.weioa.KmedHealthIndonesia.R.mipmap.ic_fast_forward_4, com.weioa.KmedHealthIndonesia.R.mipmap.ic_fast_forward_8, com.weioa.KmedHealthIndonesia.R.mipmap.ic_fast_forward_16, com.weioa.KmedHealthIndonesia.R.mipmap.ic_fast_forward_32, com.weioa.KmedHealthIndonesia.R.mipmap.ic_fast_forward_64};
     private List<LatLng> trackPoints = new ArrayList();
     private MapUtil mapUtil = null;
     private Handler mHandler = new Handler(new Handler.Callback() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackDialogActivity.1
@@ -284,13 +283,13 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
             }
             if (i == 2) {
                 Dbug.m1389i(PlaybackDialogActivity.this.tag, "playing-------");
-                PlaybackDialogActivity.this.mPlayPause.setImageResource(C1438R.mipmap.ic_playback_pause);
+                PlaybackDialogActivity.this.mPlayPause.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_playback_pause);
                 PlaybackDialogActivity.this.mHandler.sendEmptyMessage(1);
                 return;
             }
             if (i == 4) {
                 Dbug.m1389i(PlaybackDialogActivity.this.tag, "pause-------");
-                PlaybackDialogActivity.this.mPlayPause.setImageResource(C1438R.mipmap.ic_playback_play);
+                PlaybackDialogActivity.this.mPlayPause.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_playback_play);
                 PlaybackDialogActivity.this.mHandler.removeMessages(1);
             } else {
                 if (i != 5) {
@@ -307,7 +306,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
                 PlaybackDialogActivity.this.stopLocalRecording();
                 PlaybackDialogActivity.this.mHandler.removeCallbacksAndMessages(null);
                 PlaybackDialogActivity.this.mPlayPause.setVisibility(8);
-                ToastUtil.showToastShort(PlaybackDialogActivity.this.getString(C1438R.string.play_over));
+                ToastUtil.showToastShort(PlaybackDialogActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.play_over));
                 PlaybackDialogActivity.this.onBackPressed();
             }
         }
@@ -318,7 +317,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
                 PlaybackDialogActivity.this.runOnUiThread(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.activity.PlaybackDialogActivity.10.1
                     @Override // java.lang.Runnable
                     public void run() {
-                        ToastUtil.showToastShort(PlaybackDialogActivity.this.getString(C1438R.string.connection_timeout));
+                        ToastUtil.showToastShort(PlaybackDialogActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.connection_timeout));
                     }
                 });
             } else {
@@ -394,21 +393,21 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1438R.layout.activity_playback_dialog);
-        this.mVideoView = (IjkVideoView) findViewById(C1438R.id.video_view);
-        this.mPlayPause = (ImageButton) findViewById(C1438R.id.play_pause);
-        this.mCancelPlayback = (ImageView) findViewById(C1438R.id.cancel_playback);
-        this.mFastForward = (ImageButton) findViewById(C1438R.id.fast_forward);
-        this.mMovRecordBtn = (ImageButton) findViewById(C1438R.id.mov_record_btn);
-        this.stopFastForwardIbtn = (ImageButton) findViewById(C1438R.id.stop_fast_forward_btn);
-        this.mTimeTextView = (TextView) findViewById(C1438R.id.play_back_time_tv);
-        this.widgetParent = (LinearLayout) findViewById(C1438R.id.playback_widget_parent);
-        this.mBufferingProg = (ProgressBar) findViewById(C1438R.id.rts_buffering);
-        this.mPlaybackProg = (ProgressBar) findViewById(C1438R.id.playback_progress);
-        this.mShrinkButton = (ImageView) findViewById(C1438R.id.shrink_button);
-        this.mExpandButton = (ImageView) findViewById(C1438R.id.expand_button);
-        this.mapView = (MapView) findViewById(C1438R.id.track_query_mapView);
-        this.mHudView = (TableLayout) findViewById(C1438R.id.hud_view);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_playback_dialog);
+        this.mVideoView = (IjkVideoView) findViewById(com.weioa.KmedHealthIndonesia.R.id.video_view);
+        this.mPlayPause = (ImageButton) findViewById(com.weioa.KmedHealthIndonesia.R.id.play_pause);
+        this.mCancelPlayback = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.cancel_playback);
+        this.mFastForward = (ImageButton) findViewById(com.weioa.KmedHealthIndonesia.R.id.fast_forward);
+        this.mMovRecordBtn = (ImageButton) findViewById(com.weioa.KmedHealthIndonesia.R.id.mov_record_btn);
+        this.stopFastForwardIbtn = (ImageButton) findViewById(com.weioa.KmedHealthIndonesia.R.id.stop_fast_forward_btn);
+        this.mTimeTextView = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.play_back_time_tv);
+        this.widgetParent = (LinearLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.playback_widget_parent);
+        this.mBufferingProg = (ProgressBar) findViewById(com.weioa.KmedHealthIndonesia.R.id.rts_buffering);
+        this.mPlaybackProg = (ProgressBar) findViewById(com.weioa.KmedHealthIndonesia.R.id.playback_progress);
+        this.mShrinkButton = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.shrink_button);
+        this.mExpandButton = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.expand_button);
+        this.mapView = (MapView) findViewById(com.weioa.KmedHealthIndonesia.R.id.track_query_mapView);
+        this.mHudView = (TableLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.hud_view);
         this.mVideoView.setMediaController(this.iMediaController);
         this.mVideoView.setAspectRatio(3);
         this.mPlayPause.setOnClickListener(this);
@@ -523,8 +522,8 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
         if (ijkVideoView == null || (hudView = ijkVideoView.getHudView()) == null) {
             return;
         }
-        hudView.setRowValue(C1438R.string.drop_packet_count, i + "");
-        hudView.setRowValue(C1438R.string.drop_packet_sum, i2 + "");
+        hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.drop_packet_count, i + "");
+        hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.drop_packet_sum, i2 + "");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -534,7 +533,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
         if (ijkVideoView == null || (hudView = ijkVideoView.getHudView()) == null) {
             return;
         }
-        hudView.setRowValue(C1438R.string.fps, this.mFps + "");
+        hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.fps, this.mFps + "");
         this.mFps = 0;
     }
 
@@ -667,7 +666,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
         }
         if (view == this.mFastForward) {
             if (this.isUseMap) {
-                ToastUtil.showToastLong(getString(C1438R.string.stop_trajectory_tracking));
+                ToastUtil.showToastLong(getString(com.weioa.KmedHealthIndonesia.R.string.stop_trajectory_tracking));
                 return;
             } else {
                 fastForward();
@@ -684,7 +683,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
                 this.mHandler.post(this.handlerRecord);
                 return;
             } else {
-                ToastUtil.showToastShort(getString(C1438R.string.wait_a_moment));
+                ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.wait_a_moment));
                 return;
             }
         }
@@ -702,7 +701,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
         }
         if (view == this.mExpandButton) {
             if (this.fastForwardLevel > 0) {
-                ToastUtil.showToastLong(getString(C1438R.string.resume_normal_playback_speed));
+                ToastUtil.showToastLong(getString(com.weioa.KmedHealthIndonesia.R.string.resume_normal_playback_speed));
                 return;
             }
             this.mapView.setVisibility(0);
@@ -730,7 +729,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
 
             @Override // com.jieli.stream.p016dv.running2.data.OnRecordStateListener
             public void onCompletion(String str) {
-                ToastUtil.showToastShort(PlaybackDialogActivity.this.getString(C1438R.string.record_success));
+                ToastUtil.showToastShort(PlaybackDialogActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.record_success));
             }
 
             @Override // com.jieli.stream.p016dv.running2.data.OnRecordStateListener
@@ -753,7 +752,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
                     }
                 }
                 PlaybackDialogActivity.this.handleStopRecode();
-                ToastUtil.showToastShort(PlaybackDialogActivity.this.getString(C1438R.string.record_fail));
+                ToastUtil.showToastShort(PlaybackDialogActivity.this.getString(com.weioa.KmedHealthIndonesia.R.string.record_fail));
                 PlaybackDialogActivity.this.mRecordVideo = null;
                 PlaybackDialogActivity.this.isRecordPrepared = false;
             }
@@ -790,7 +789,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
     /* JADX INFO: Access modifiers changed from: private */
     public void handleStartRecode() {
         this.mCancelPlayback.setVisibility(4);
-        this.mMovRecordBtn.setImageResource(C1438R.mipmap.ic_cuting_mov);
+        this.mMovRecordBtn.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_cuting_mov);
         this.mFastForward.setVisibility(4);
         this.mPlayPause.setVisibility(4);
         this.stopFastForwardIbtn.setVisibility(4);
@@ -799,7 +798,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
     /* JADX INFO: Access modifiers changed from: private */
     public void handleStopRecode() {
         this.mCancelPlayback.setVisibility(0);
-        this.mMovRecordBtn.setImageResource(C1438R.mipmap.ic_cut_mov);
+        this.mMovRecordBtn.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_cut_mov);
         this.mFastForward.setVisibility(0);
         this.mPlayPause.setVisibility(0);
         this.stopFastForwardIbtn.setVisibility(0);

@@ -21,7 +21,6 @@ import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Code;
 import com.jieli.lib.p015dv.control.utils.Topic;
 import com.jieli.lib.p015dv.control.utils.VersionHelper;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.SettingItem;
 import com.jieli.stream.p016dv.running2.interfaces.OnSelectedListener;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
@@ -81,7 +80,7 @@ public class AboutFragment extends BaseFragment {
                 if (AboutFragment.this.mUploadDialog != null && AboutFragment.this.mUploadDialog.isShowing()) {
                     AboutFragment.this.mUploadDialog.dismiss();
                 }
-                ToastUtil.showToastLong(AboutFragment.this.getString(C1438R.string.upload_failed));
+                ToastUtil.showToastLong(AboutFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.upload_failed));
                 return false;
             }
             if (i != AboutFragment.MSG_UPGRADE_FILE) {
@@ -105,7 +104,7 @@ public class AboutFragment extends BaseFragment {
                     string = AppUtils.readTxtFile(stringArrayList.get(1));
                 }
             } else {
-                string = AboutFragment.this.getString(C1438R.string.firmware_upgrade_tip);
+                string = AboutFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.firmware_upgrade_tip);
             }
             if (TextUtils.isEmpty(string)) {
                 return false;
@@ -122,7 +121,7 @@ public class AboutFragment extends BaseFragment {
                 return;
             }
             String name = settingItem.getName();
-            if (AboutFragment.this.getString(C1438R.string.check_app_upgrade).equals(name)) {
+            if (AboutFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.check_app_upgrade).equals(name)) {
                 if (AboutFragment.this.mCheckAppUpgrade == null) {
                     AboutFragment.this.mCheckAppUpgrade = new CheckAppUpgrade();
                     AboutFragment.this.mCheckAppUpgrade.execute(new Void[0]);
@@ -130,14 +129,14 @@ public class AboutFragment extends BaseFragment {
                 }
                 return;
             }
-            if (AboutFragment.this.getString(C1438R.string.upload_firmware).equals(name)) {
+            if (AboutFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.upload_firmware).equals(name)) {
                 if (ClientManager.getClient().isConnected()) {
                     BrowseFirmwareDialog browseFirmwareDialog = new BrowseFirmwareDialog();
                     browseFirmwareDialog.setOnSelectedListener(AboutFragment.this.onSelectedFileListener);
                     browseFirmwareDialog.show(AboutFragment.this.getFragmentManager(), "browse_firmware_file_dialog");
                     return;
                 }
-                ToastUtil.showToastShort(AboutFragment.this.getString(C1438R.string.please_connect_device_to_use));
+                ToastUtil.showToastShort(AboutFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.please_connect_device_to_use));
             }
         }
     };
@@ -169,15 +168,15 @@ public class AboutFragment extends BaseFragment {
                         AboutFragment.this.pressCount = 0;
                     }
                     AboutFragment.access$1508(AboutFragment.this);
-                    ToastUtil.showToastShort(String.format(Locale.getDefault(), AboutFragment.this.getString(C1438R.string.open_debug_tip), Integer.valueOf(3 - AboutFragment.this.pressCount)));
+                    ToastUtil.showToastShort(String.format(Locale.getDefault(), AboutFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.open_debug_tip), Integer.valueOf(3 - AboutFragment.this.pressCount)));
                 } else {
                     AboutFragment.access$1508(AboutFragment.this);
                     if (AboutFragment.this.pressCount == 3) {
                         AboutFragment.this.pressCount = 0;
                         PreferencesHelper.putBooleanValue(AboutFragment.this.mApplication, IConstant.DEBUG_SETTINGS, true ^ PreferencesHelper.getSharedPreferences(AboutFragment.this.mApplication).getBoolean(IConstant.DEBUG_SETTINGS, false));
-                        ToastUtil.showToastShort(AboutFragment.this.getString(C1438R.string.open_debug_ok));
+                        ToastUtil.showToastShort(AboutFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.open_debug_ok));
                     } else {
-                        ToastUtil.showToastShort(String.format(Locale.getDefault(), AboutFragment.this.getString(C1438R.string.open_debug_tip), Integer.valueOf(3 - AboutFragment.this.pressCount)));
+                        ToastUtil.showToastShort(String.format(Locale.getDefault(), AboutFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.open_debug_tip), Integer.valueOf(3 - AboutFragment.this.pressCount)));
                     }
                 }
                 AboutFragment.this.mBackPressedTimes = System.currentTimeMillis();
@@ -197,19 +196,19 @@ public class AboutFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_about, viewGroup, false);
-        this.tvAppVersionName = (TextView) viewInflate.findViewById(C1438R.id.about_app_version);
-        this.mListView = (ListView) viewInflate.findViewById(C1438R.id.about_list_view);
-        this.tvAppVersionName.setText(getResources().getString(C1438R.string.app_version) + " " + MainApplication.getApplication().getAppVersionName());
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_about, viewGroup, false);
+        this.tvAppVersionName = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.about_app_version);
+        this.mListView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.about_list_view);
+        this.tvAppVersionName.setText(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.app_version) + " " + MainApplication.getApplication().getAppVersionName());
         String sdkVersionName = VersionHelper.getSdkVersionName(MainApplication.getApplication());
         if (!TextUtils.isEmpty(sdkVersionName)) {
-            ((TextView) viewInflate.findViewById(C1438R.id.about_sdk_version)).setText(getResources().getString(C1438R.string.sdk_version) + " " + sdkVersionName);
+            ((TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.about_sdk_version)).setText(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.sdk_version) + " " + sdkVersionName);
         }
         String firmware_version = this.mApplication.getDeviceDesc() != null ? this.mApplication.getDeviceDesc().getFirmware_version() : null;
         if (!TextUtils.isEmpty(firmware_version)) {
-            ((TextView) viewInflate.findViewById(C1438R.id.about_fw_version)).setText(getResources().getString(C1438R.string.firmware_version) + " " + firmware_version);
+            ((TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.about_fw_version)).setText(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.firmware_version) + " " + firmware_version);
         }
-        ((ImageView) viewInflate.findViewById(C1438R.id.about_return)).setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.2
+        ((ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.about_return)).setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.2
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 if (AboutFragment.this.getActivity() != null) {
@@ -245,7 +244,7 @@ public class AboutFragment extends BaseFragment {
     }
 
     private void initVersion() {
-        String[] stringArray = getResources().getStringArray(C1438R.array.about_list);
+        String[] stringArray = getResources().getStringArray(com.weioa.KmedHealthIndonesia.R.array.about_list);
         ArrayList arrayList = new ArrayList();
         for (String str : stringArray) {
             if (!TextUtils.isEmpty(str)) {
@@ -273,7 +272,7 @@ public class AboutFragment extends BaseFragment {
                 return;
             }
             if (AboutFragment.this.mUploadDialog == null) {
-                AboutFragment.this.mUploadDialog = NotifyDialog.newInstance(C1438R.string.dialog_tips, 2, C1438R.string.uploading);
+                AboutFragment.this.mUploadDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, 2, com.weioa.KmedHealthIndonesia.R.string.uploading);
             }
             if (AboutFragment.this.mUploadDialog != null && !AboutFragment.this.mUploadDialog.isShowing()) {
                 AboutFragment.this.mUploadDialog.show(AboutFragment.this.getFragmentManager(), "Upload_Firmware");
@@ -328,7 +327,7 @@ public class AboutFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void showUpgradeCompleteDialog() {
         if (this.mUpgradeCompleteDialog == null) {
-            this.mUpgradeCompleteDialog = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.upgrade_step_6, C1438R.string.comfirm, new NotifyDialog.OnConfirmClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.6
+            this.mUpgradeCompleteDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.upgrade_step_6, com.weioa.KmedHealthIndonesia.R.string.comfirm, new NotifyDialog.OnConfirmClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.6
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnConfirmClickListener
                 public void onClick() {
                     AboutFragment.this.mUpgradeCompleteDialog.dismiss();
@@ -344,7 +343,7 @@ public class AboutFragment extends BaseFragment {
     /* JADX INFO: Access modifiers changed from: private */
     public void showNotifyDialog(String str, Bundle bundle) {
         if (this.upgradeNotifyDialog == null) {
-            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(getString(C1438R.string.upgrade_desc), str, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.7
+            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(getString(com.weioa.KmedHealthIndonesia.R.string.upgrade_desc), str, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.7
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     AboutFragment.this.dismissNotifyDialog();
@@ -394,7 +393,7 @@ public class AboutFragment extends BaseFragment {
             WaitingDialog waitingDialog = new WaitingDialog();
             this.mWaitingDialog = waitingDialog;
             waitingDialog.setCancelable(false);
-            this.mWaitingDialog.setNotifyContent(getString(C1438R.string.check_app_upgrade));
+            this.mWaitingDialog.setNotifyContent(getString(com.weioa.KmedHealthIndonesia.R.string.check_app_upgrade));
             this.mWaitingDialog.setOnWaitingDialog(new WaitingDialog.OnWaitingDialog() { // from class: com.jieli.stream.dv.running2.ui.fragment.AboutFragment.9
                 @Override // com.jieli.stream.dv.running2.ui.dialog.WaitingDialog.OnWaitingDialog
                 public void onCancelDialog() {
@@ -450,7 +449,7 @@ public class AboutFragment extends BaseFragment {
                 ToastUtil.showToastShort(arrayList.get(0));
                 return;
             }
-            ToastUtil.showToastShort(AboutFragment.this.getString(C1438R.string.upgrade_failed_tip));
+            ToastUtil.showToastShort(AboutFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.upgrade_failed_tip));
         }
 
         /* JADX INFO: Access modifiers changed from: protected */
@@ -478,7 +477,7 @@ public class AboutFragment extends BaseFragment {
                 return null;
             }
             ArrayList<String> arrayList = new ArrayList<>();
-            if (strCheckUpdateFilePath.equals(AboutFragment.this.getString(C1438R.string.latest_version))) {
+            if (strCheckUpdateFilePath.equals(AboutFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.latest_version))) {
                 arrayList.add(strCheckUpdateFilePath);
             } else {
                 Dbug.m1391w(AboutFragment.this.TAG, "有APK更新,更新路径：" + strCheckUpdateFilePath);

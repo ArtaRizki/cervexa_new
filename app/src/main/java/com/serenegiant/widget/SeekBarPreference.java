@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import com.serenegiant.common.C1831R;
 import java.util.Locale;
 
 /* JADX INFO: loaded from: classes2.dex */
@@ -60,15 +59,15 @@ public final class SeekBarPreference extends Preference {
                 seekBarPreference.setValueLabel(i2 + seekBarPreference.mMinValue, z);
             }
         };
-        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C1831R.styleable.SeekBarPreference, i, 0);
-        this.mSeekbarLayoutId = typedArrayObtainStyledAttributes.getResourceId(C1831R.styleable.SeekBarPreference_seekbar_layout, C1831R.layout.seekbar_preference);
-        this.mSeekbarId = typedArrayObtainStyledAttributes.getResourceId(C1831R.styleable.SeekBarPreference_seekbar_id, C1831R.id.seekbar);
-        this.mLabelTvId = typedArrayObtainStyledAttributes.getResourceId(C1831R.styleable.SeekBarPreference_seekbar_label_id, C1831R.id.seekbar_value_label);
-        this.mMinValue = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.SeekBarPreference_min_value, 0);
-        this.mMaxValue = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.SeekBarPreference_max_value, 100);
-        this.mDefaultValue = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.SeekBarPreference_default_value, this.mMinValue);
-        this.mScaleValue = typedArrayObtainStyledAttributes.getFloat(C1831R.styleable.SeekBarPreference_scale_value, 1.0f);
-        String string = typedArrayObtainStyledAttributes.getString(C1831R.styleable.SeekBarPreference_value_format);
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.SeekBarPreference, i, 0);
+        this.mSeekbarLayoutId = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.SeekBarPreference_seekbar_layout, com.weioa.KmedHealthIndonesia.R.layout.seekbar_preference);
+        this.mSeekbarId = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.SeekBarPreference_seekbar_id, com.weioa.KmedHealthIndonesia.R.id.seekbar);
+        this.mLabelTvId = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.SeekBarPreference_seekbar_label_id, com.weioa.KmedHealthIndonesia.R.id.seekbar_value_label);
+        this.mMinValue = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.SeekBarPreference_min_value, 0);
+        this.mMaxValue = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.SeekBarPreference_max_value, 100);
+        this.mDefaultValue = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.SeekBarPreference_default_value, this.mMinValue);
+        this.mScaleValue = typedArrayObtainStyledAttributes.getFloat(com.weioa.KmedHealthIndonesia.R.styleable.SeekBarPreference_scale_value, 1.0f);
+        String string = typedArrayObtainStyledAttributes.getString(com.weioa.KmedHealthIndonesia.R.styleable.SeekBarPreference_value_format);
         try {
             String.format(string, Float.valueOf(1.0f));
         } catch (Exception unused) {
@@ -114,7 +113,7 @@ public final class SeekBarPreference extends Preference {
             seekBar.setOnSeekBarChangeListener(this.mOnSeekBarChangeListener);
             seekBar.setEnabled(isEnabled());
         }
-        TextView textView = (TextView) viewInflate.findViewById(C1831R.id.seekbar_value_label);
+        TextView textView = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.seekbar_value_label);
         this.mTextView = textView;
         if (textView != null) {
             setValueLabel(this.preferenceValue, false);

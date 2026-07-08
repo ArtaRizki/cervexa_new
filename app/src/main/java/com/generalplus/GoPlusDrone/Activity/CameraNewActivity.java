@@ -29,7 +29,6 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.generalplus.GoPlusDrone.Activity.ResolutionAdapter;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.generalplus.ffmpegLib.ZoomableSurfaceView;
 import com.generalplus.ffmpegLib.ffmpegWrapper;
 
@@ -188,8 +187,8 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                     }
                 }).start();
                 CameraNewActivity cameraNewActivity = CameraNewActivity.this;
-                Toast.makeText(cameraNewActivity, cameraNewActivity.getResources().getString(C1021R.string.language22), 0).show();
-                CameraNewActivity.this.iv_record.setBackgroundResource(C1021R.mipmap.icon_record);
+                Toast.makeText(cameraNewActivity, cameraNewActivity.getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language22), 0).show();
+                CameraNewActivity.this.iv_record.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.mipmap.icon_record);
             }
         }
     };
@@ -231,7 +230,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1021R.layout.camera_activity_new);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.camera_activity_new);
         this.mStartTime = getTick();
         getWindow().addFlags(128);
         this.isImgTipShow = false;
@@ -251,7 +250,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
         if (this.m_CamWrapper == null) {
             this.m_CamWrapper = new CamWrapper();
         }
-        ZoomableSurfaceView zoomableSurfaceView = (ZoomableSurfaceView) findViewById(C1021R.id.surfaceView);
+        ZoomableSurfaceView zoomableSurfaceView = (ZoomableSurfaceView) findViewById(com.weioa.KmedHealthIndonesia.R.id.surfaceView);
         this.mSurfaceView = zoomableSurfaceView;
         zoomableSurfaceView.setEGLContextClientVersion(2);
         this.mSurfaceView.setRenderer(ffmpegWrapper.getInstance());
@@ -262,8 +261,8 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                 return false;
             }
         });
-        this.ivBroken = (TextView) findViewById(C1021R.id.ivBroken);
-        ImageView imageView = (ImageView) findViewById(C1021R.id.iv_zoom_in);
+        this.ivBroken = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.ivBroken);
+        ImageView imageView = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_zoom_in);
         this.iv_zoom_in = imageView;
         imageView.setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.2
             @Override // android.view.View.OnClickListener
@@ -299,7 +298,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                 CameraNewActivity.this.mSurfaceView.setLayoutParams(new FrameLayout.LayoutParams((int) (((float) CameraNewActivity.this.mWidth) * CameraNewActivity.this.mScale), (int) (((float) CameraNewActivity.this.mHeight) * CameraNewActivity.this.mScale), 17));
             }
         });
-        ImageView imageView2 = (ImageView) findViewById(C1021R.id.iv_zoom_out);
+        ImageView imageView2 = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_zoom_out);
         this.iv_zoom_out = imageView2;
         imageView2.setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.3
             @Override // android.view.View.OnClickListener
@@ -336,8 +335,8 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                 Log.e("onDraw", "onDrawonDrawonDraw3333");
             }
         });
-        this.iv_focus_img = (ImageView) findViewById(C1021R.id.iv_focus_img);
-        ImageView imageView3 = (ImageView) findViewById(C1021R.id.iv_zoom_focus);
+        this.iv_focus_img = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_focus_img);
+        ImageView imageView3 = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_zoom_focus);
         this.iv_zoom_focus = imageView3;
         imageView3.setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.4
             @Override // android.view.View.OnClickListener
@@ -349,15 +348,15 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                 }
             }
         });
-        this.iv_record = (ImageView) findViewById(C1021R.id.iv_record);
-        this.tv_record_time = (TextView) findViewById(C1021R.id.tv_record_time);
+        this.iv_record = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_record);
+        this.tv_record_time = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_record_time);
         this.iv_record.setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.5
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 CameraNewActivity.this.pressRecord(view);
             }
         });
-        ImageView imageView4 = (ImageView) findViewById(C1021R.id.iv_picture);
+        ImageView imageView4 = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_picture);
         this.iv_picture = imageView4;
         imageView4.setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.6
             @Override // android.view.View.OnClickListener
@@ -368,7 +367,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
             }
         });
         ArrayList arrayList = new ArrayList();
-        ImageView imageView5 = (ImageView) findViewById(C1021R.id.iv_resolution);
+        ImageView imageView5 = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_resolution);
         this.iv_resolution = imageView5;
         imageView5.setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.7
             @Override // android.view.View.OnClickListener
@@ -376,7 +375,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                 CameraNewActivity.this.ll_resolution.setVisibility(0);
             }
         });
-        this.rc_resolution = (RecyclerView) findViewById(C1021R.id.rc_resolution);
+        this.rc_resolution = (RecyclerView) findViewById(com.weioa.KmedHealthIndonesia.R.id.rc_resolution);
         ResolutionAdapter resolutionAdapter = new ResolutionAdapter(this);
         this.mSaveType = 1;
         textSave(14);
@@ -404,12 +403,12 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                 String[] strArrSplit = str.split("\\*");
                 CameraNewActivity.this.selectedWidth = Integer.parseInt(strArrSplit[0]);
                 CameraNewActivity.this.selectedHeight = Integer.parseInt(strArrSplit[1]);
-                Toast.makeText(CameraNewActivity.this, CameraNewActivity.this.getResources().getString(C1021R.string.haveto_switch) + str, 1).show();
+                Toast.makeText(CameraNewActivity.this, CameraNewActivity.this.getResources().getString(com.weioa.KmedHealthIndonesia.R.string.haveto_switch) + str, 1).show();
             }
         });
         this.rc_resolution.setLayoutManager(new LinearLayoutManager(this));
         this.rc_resolution.setAdapter(resolutionAdapter);
-        LinearLayout linearLayout = (LinearLayout) findViewById(C1021R.id.ll_resolution);
+        LinearLayout linearLayout = (LinearLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.ll_resolution);
         this.ll_resolution = linearLayout;
         linearLayout.setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.9
             @Override // android.view.View.OnClickListener
@@ -417,13 +416,13 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                 CameraNewActivity.this.ll_resolution.setVisibility(8);
             }
         });
-        ((ImageView) findViewById(C1021R.id.back)).setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.10
+        ((ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.back)).setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.10
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 CameraNewActivity.this.finish();
             }
         });
-        ImageView imageView6 = (ImageView) findViewById(C1021R.id.take_photo);
+        ImageView imageView6 = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.take_photo);
         this.take_photo = imageView6;
         imageView6.setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraNewActivity.11
             @Override // android.view.View.OnClickListener
@@ -771,7 +770,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
         String str = this.strSaveDirectory + "/Photo/Screen/" + getTime() + UVCCameraHelper.SUFFIX_JPEG;
         ffmpegWrapper.getInstance();
         ffmpegWrapper.naSaveSnapshot(str, this.mSaveType);
-        Toast.makeText(this, C1021R.string.capture_successfully, 0).show();
+        Toast.makeText(this, com.weioa.KmedHealthIndonesia.R.string.capture_successfully, 0).show();
         sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.parse("file://" + str)));
     }
 
@@ -779,7 +778,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
         this.handler.removeCallbacks(this.updateTimer);
         this.tv_record_time.setVisibility(4);
         this.tv_record_time.setText("00:00:00");
-        this.iv_record.setImageResource(C1021R.mipmap.icon_record);
+        this.iv_record.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.icon_record);
         if (z || this.mSaveType < 3) {
             ffmpegWrapper.getInstance();
             return ffmpegWrapper.naStopSaveVideo();
@@ -812,7 +811,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
                 ffmpegWrapper.getInstance();
                 ffmpegWrapper.naStopSaveVideo();
             }
-            Toast.makeText(this, C1021R.string.start_recorder, 0).show();
+            Toast.makeText(this, com.weioa.KmedHealthIndonesia.R.string.start_recorder, 0).show();
             String time = getTime();
             ffmpegWrapper.getInstance();
             ffmpegWrapper.naSaveSnapshot(this.strSaveDirectory + "/Video/thumbnails/" + time + UVCCameraHelper.SUFFIX_JPEG, 1);
@@ -823,12 +822,12 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
             bArr[17] = (byte) iNaSaveVideo;
             sendCmd(bArr);
             this.tv_record_time.setVisibility(0);
-            this.iv_record.setImageResource(C1021R.mipmap.icon_record_stop);
+            this.iv_record.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.icon_record_stop);
             this.startTime = Long.valueOf(System.currentTimeMillis());
             this.handler.removeCallbacks(this.updateTimer);
             this.handler.postDelayed(this.updateTimer, 1000L);
         } else {
-            Toast.makeText(this, C1021R.string.stop_recorder, 0).show();
+            Toast.makeText(this, com.weioa.KmedHealthIndonesia.R.string.stop_recorder, 0).show();
             byte[] bArr2 = {71, 80, 83, 79, 67, 75, 69, 84, 16, 0, 4, 1, 3, 2, 0, 0, 0, 0};
             bArr2[17] = (byte) stopRecode(false);
             sendCmd(bArr2);
@@ -1010,7 +1009,7 @@ public class CameraNewActivity extends Activity implements View.OnClickListener,
     @Override // android.view.View.OnClickListener
     public void onClick(View view) {
         int id = view.getId();
-        if (id == C1021R.id.btnLeftMenu || id == C1021R.id.btnSwitch) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.btnLeftMenu || id == com.weioa.KmedHealthIndonesia.R.id.btnSwitch) {
             return;
         }
         if (id == 3) {

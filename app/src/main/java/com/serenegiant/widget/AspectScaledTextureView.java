@@ -7,7 +7,6 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.TextureView;
-import com.serenegiant.common.C1831R;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -42,10 +41,10 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
         this.mListeners = new CopyOnWriteArraySet();
         this.prevWidth = -1;
         this.prevHeight = -1;
-        TypedArray typedArrayObtainStyledAttributes = context.getTheme().obtainStyledAttributes(attributeSet, C1831R.styleable.AspectScaledTextureView, i, 0);
+        TypedArray typedArrayObtainStyledAttributes = context.getTheme().obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.AspectScaledTextureView, i, 0);
         try {
-            this.mRequestedAspect = typedArrayObtainStyledAttributes.getFloat(C1831R.styleable.AspectScaledTextureView_aspect_ratio, -1.0f);
-            this.mScaleMode = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.AspectScaledTextureView_scale_mode, 0);
+            this.mRequestedAspect = typedArrayObtainStyledAttributes.getFloat(com.weioa.KmedHealthIndonesia.R.styleable.AspectScaledTextureView_aspect_ratio, -1.0f);
+            this.mScaleMode = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.AspectScaledTextureView_scale_mode, 0);
             typedArrayObtainStyledAttributes.recycle();
             super.setSurfaceTextureListener(this);
         } catch (Throwable th) {

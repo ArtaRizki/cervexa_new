@@ -6,8 +6,6 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.LruCache;
-import com.jieli.stream.p016dv.running2.C1438R;
-
 /* JADX INFO: loaded from: classes.dex */
 public class ImageLoader {
     private static String TAG = "ImageLoader";
@@ -45,7 +43,7 @@ public class ImageLoader {
             if (bitmap != null) {
                 return bitmap;
             }
-            Bitmap bitmapDecodeResource = BitmapFactory.decodeResource(context.getResources(), C1438R.mipmap.ic_default_picture);
+            Bitmap bitmapDecodeResource = BitmapFactory.decodeResource(context.getResources(), com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
             this.mImageCache.put(IConstant.DEFAULT_PATH, bitmapDecodeResource);
             return bitmapDecodeResource;
         }

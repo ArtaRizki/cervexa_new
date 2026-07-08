@@ -11,7 +11,6 @@ import android.util.LruCache;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.jieli.lib.p015dv.control.utils.Dlog;
 import com.jieli.media.codec.FrameCodec;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.interfaces.OnAviThumbListener;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import java.io.File;
@@ -76,7 +75,7 @@ public class ThumbLoader {
         if (TextUtils.isEmpty(str)) {
             Bitmap bitmapDecodeResource = this.mThumbnailCache.get(IConstant.DEFAULT_PATH);
             if (bitmapDecodeResource == null) {
-                bitmapDecodeResource = BitmapFactory.decodeResource(context.getResources(), C1438R.mipmap.ic_default_picture);
+                bitmapDecodeResource = BitmapFactory.decodeResource(context.getResources(), com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
                 this.mThumbnailCache.put(IConstant.DEFAULT_PATH, bitmapDecodeResource);
             }
             handler.post(new OnCompleteRunnable(bitmapDecodeResource, onLoadThumbListener));
@@ -120,7 +119,7 @@ public class ThumbLoader {
         if (TextUtils.isEmpty(str)) {
             Bitmap bitmapDecodeResource = this.mThumbnailCache.get(IConstant.DEFAULT_PATH);
             if (bitmapDecodeResource == null) {
-                bitmapDecodeResource = BitmapFactory.decodeResource(context.getResources(), C1438R.mipmap.ic_default_picture);
+                bitmapDecodeResource = BitmapFactory.decodeResource(context.getResources(), com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
                 this.mThumbnailCache.put(IConstant.DEFAULT_PATH, bitmapDecodeResource);
             }
             handler.post(new OnCompleteRunnable(bitmapDecodeResource, onLoadThumbListener));
@@ -191,7 +190,7 @@ public class ThumbLoader {
             if (bitmap != null) {
                 return bitmap;
             }
-            Bitmap bitmapDecodeResource = BitmapFactory.decodeResource(context.getResources(), C1438R.mipmap.ic_default_picture);
+            Bitmap bitmapDecodeResource = BitmapFactory.decodeResource(context.getResources(), com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
             this.mThumbnailCache.put(IConstant.DEFAULT_PATH, bitmapDecodeResource);
             return bitmapDecodeResource;
         }
@@ -212,7 +211,7 @@ public class ThumbLoader {
         if (TextUtils.isEmpty(str)) {
             Bitmap bitmapDecodeResource = this.mThumbnailCache.get(IConstant.DEFAULT_PATH);
             if (bitmapDecodeResource == null) {
-                bitmapDecodeResource = BitmapFactory.decodeResource(context.getResources(), C1438R.mipmap.ic_default_picture);
+                bitmapDecodeResource = BitmapFactory.decodeResource(context.getResources(), com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
                 this.mThumbnailCache.put(IConstant.DEFAULT_PATH, bitmapDecodeResource);
             }
             handler.post(new OnLoadVideoThumbRunnable(bitmapDecodeResource, 0, onLoadVideoThumbListener));

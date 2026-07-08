@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.widget.verticalseekbar.VerticalSeekBar;
 
 /* JADX INFO: loaded from: classes.dex */
@@ -28,8 +27,8 @@ public class VolumeToast {
         int streamVolume = this.mAudioManager.getStreamVolume(3);
         if (this.toast == null) {
             this.toast = new Toast(this.mContext);
-            View viewInflate = LayoutInflater.from(this.mContext).inflate(C1438R.layout.view_volume, (ViewGroup) null);
-            VerticalSeekBar verticalSeekBar = (VerticalSeekBar) viewInflate.findViewById(C1438R.id.view_volume_seek_progress);
+            View viewInflate = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.view_volume, (ViewGroup) null);
+            VerticalSeekBar verticalSeekBar = (VerticalSeekBar) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.view_volume_seek_progress);
             this.sbVolume = verticalSeekBar;
             verticalSeekBar.setMax(this.maxVol);
             this.sbVolume.setProgress(streamVolume);

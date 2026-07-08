@@ -14,7 +14,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import com.jieli.lib.p015dv.control.connect.response.SendResponse;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
 import com.jieli.stream.p016dv.running2.util.ClientManager;
@@ -39,9 +38,9 @@ public class DeviceStaModeFragment extends BaseFragment {
                 return;
             }
             int id = view.getId();
-            if (id == C1438R.id.switch_sta_btn) {
+            if (id == com.weioa.KmedHealthIndonesia.R.id.switch_sta_btn) {
                 DeviceStaModeFragment.this.sendRouterInformation();
-            } else if (id == C1438R.id.show_or_hide_pwd) {
+            } else if (id == com.weioa.KmedHealthIndonesia.R.id.show_or_hide_pwd) {
                 DeviceStaModeFragment.this.isShowPwd = !DeviceStaModeFragment.this.isShowPwd;
                 DeviceStaModeFragment.this.handlerPwdUI();
             }
@@ -51,12 +50,12 @@ public class DeviceStaModeFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_device_sta_mode, viewGroup, false);
-        this.editWifiSSID = (EditText) viewInflate.findViewById(C1438R.id.edit_wifi_ssid);
-        this.editWifiPwd = (EditText) viewInflate.findViewById(C1438R.id.edit_wifi_pwd);
-        this.ivShowOrHidePwd = (ImageView) viewInflate.findViewById(C1438R.id.show_or_hide_pwd);
-        this.mSaveSTAMsgCheckbox = (CheckBox) viewInflate.findViewById(C1438R.id.save_sta_msg);
-        this.btnSwitch = (Button) viewInflate.findViewById(C1438R.id.switch_sta_btn);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_device_sta_mode, viewGroup, false);
+        this.editWifiSSID = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.edit_wifi_ssid);
+        this.editWifiPwd = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.edit_wifi_pwd);
+        this.ivShowOrHidePwd = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.show_or_hide_pwd);
+        this.mSaveSTAMsgCheckbox = (CheckBox) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.save_sta_msg);
+        this.btnSwitch = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.switch_sta_btn);
         return viewInflate;
     }
 
@@ -84,13 +83,13 @@ public class DeviceStaModeFragment extends BaseFragment {
         String strTrim2 = this.editWifiPwd.getText().toString().trim();
         this.isSaveMsg = this.mSaveSTAMsgCheckbox.isChecked();
         if (TextUtils.isEmpty(strTrim)) {
-            ToastUtil.showToastShort(getString(C1438R.string.wifi_ssid_empty_tip));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.wifi_ssid_empty_tip));
             return;
         }
         if (TextUtils.isEmpty(strTrim2)) {
             strTrim2 = "";
         } else if (strTrim2.length() < 8) {
-            ToastUtil.showToastShort(getString(C1438R.string.pwd_lenth_limits));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.pwd_lenth_limits));
             return;
         }
         final String finalStrTrim2 = strTrim2;
@@ -122,11 +121,11 @@ public class DeviceStaModeFragment extends BaseFragment {
     public void handlerPwdUI() {
         if (this.isShowPwd) {
             this.editWifiPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            this.ivShowOrHidePwd.setImageResource(C1438R.drawable.dbg_show_pwd_selector);
+            this.ivShowOrHidePwd.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.dbg_show_pwd_selector);
         } else {
             this.editWifiPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
             this.editWifiPwd.requestFocus();
-            this.ivShowOrHidePwd.setImageResource(C1438R.mipmap.ic_hide_pwd);
+            this.ivShowOrHidePwd.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_hide_pwd);
         }
     }
 

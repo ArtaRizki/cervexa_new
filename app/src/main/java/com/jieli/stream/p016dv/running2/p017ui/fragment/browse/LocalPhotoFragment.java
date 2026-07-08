@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
 import com.jieli.stream.p016dv.running2.bean.ItemBean;
 import com.jieli.stream.p016dv.running2.bean.MediaTaskInfo;
@@ -101,7 +100,7 @@ public class LocalPhotoFragment extends BaseFragment implements BaseFooterView.O
     public void updateTextUI() {
         LinearLayout linearLayout = this.emptyView;
         if (linearLayout != null) {
-            ((TextView) linearLayout.findViewById(C1438R.id.text_empty_tips)).setText(C1438R.string.no_data_tip);
+            ((TextView) linearLayout.findViewById(com.weioa.KmedHealthIndonesia.R.id.text_empty_tips)).setText(com.weioa.KmedHealthIndonesia.R.string.no_data_tip);
         }
     }
 
@@ -116,13 +115,13 @@ public class LocalPhotoFragment extends BaseFragment implements BaseFooterView.O
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_local_photo, viewGroup, false);
-        this.mListView = (ListView) viewInflate.findViewById(C1438R.id.local_photo_view);
-        this.emptyView = (LinearLayout) viewInflate.findViewById(C1438R.id.view_empty);
-        ExpandFooterView expandFooterView = (ExpandFooterView) viewInflate.findViewById(C1438R.id.local_photo_footer);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_local_photo, viewGroup, false);
+        this.mListView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.local_photo_view);
+        this.emptyView = (LinearLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.view_empty);
+        ExpandFooterView expandFooterView = (ExpandFooterView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.local_photo_footer);
         this.footerView = expandFooterView;
         expandFooterView.setOnLoadListener(this);
-        ((LinearLayout) getActivity().findViewById(C1438R.id.pop_bottom_bar_share)).setVisibility(0);
+        ((LinearLayout) getActivity().findViewById(com.weioa.KmedHealthIndonesia.R.id.pop_bottom_bar_share)).setVisibility(0);
         return viewInflate;
     }
 
@@ -215,7 +214,7 @@ public class LocalPhotoFragment extends BaseFragment implements BaseFooterView.O
             this.mHandler.removeMessages(257);
             this.mHandler.sendEmptyMessageDelayed(257, 1500L);
         } else {
-            ToastUtil.showToastShort(getString(C1438R.string.no_more_data));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.no_more_data));
             onStopLoad();
         }
     }
@@ -254,7 +253,7 @@ public class LocalPhotoFragment extends BaseFragment implements BaseFooterView.O
 
     private void showWaitingDialog() {
         if (getActivity() != null && !getActivity().isDestroyed()) {
-            this.mLoadingDialog = NotifyDialog.newInstance(C1438R.string.dialog_tips, true, C1438R.string.loading, 0, new NotifyDialog.OnConfirmClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.browse.LocalPhotoFragment.3
+            this.mLoadingDialog = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, true, com.weioa.KmedHealthIndonesia.R.string.loading, 0, new NotifyDialog.OnConfirmClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.browse.LocalPhotoFragment.3
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnConfirmClickListener
                 public void onClick() {
                     LocalPhotoFragment.this.mLoadingDialog.dismiss();
@@ -360,7 +359,7 @@ public class LocalPhotoFragment extends BaseFragment implements BaseFooterView.O
                         this.emptyView.setVisibility(0);
                         return;
                     } else {
-                        ToastUtil.showToastShort(getString(C1438R.string.no_more_data));
+                        ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.no_more_data));
                         return;
                     }
                 }

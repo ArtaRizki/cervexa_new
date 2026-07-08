@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.activity.MainActivity;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
 import com.jieli.stream.p016dv.running2.util.ClientManager;
@@ -93,9 +92,9 @@ public class DeviceListFragment extends BaseFragment implements View.OnClickList
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_device_list, viewGroup, false);
-        ((ImageView) viewInflate.findViewById(C1438R.id.device_list_switch_search_mode)).setOnClickListener(this);
-        ((TextView) viewInflate.findViewById(C1438R.id.go_to_wifi)).setOnClickListener(this);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_device_list, viewGroup, false);
+        ((ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.device_list_switch_search_mode)).setOnClickListener(this);
+        ((TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.go_to_wifi)).setOnClickListener(this);
         return viewInflate;
     }
 
@@ -133,7 +132,7 @@ public class DeviceListFragment extends BaseFragment implements View.OnClickList
             });
         }
         if (WifiHelper.getInstance(getContext()).isWifiClosed()) {
-            ToastUtil.showToastShort(getString(C1438R.string.tip_open_wifi));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.tip_open_wifi));
         }
     }
 
@@ -155,9 +154,9 @@ public class DeviceListFragment extends BaseFragment implements View.OnClickList
             return;
         }
         int id = view.getId();
-        if (id == C1438R.id.device_list_switch_search_mode) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.device_list_switch_search_mode) {
             toQrCodeFragment();
-        } else if (id == C1438R.id.go_to_wifi) {
+        } else if (id == com.weioa.KmedHealthIndonesia.R.id.go_to_wifi) {
             enterWiFiSettings();
         }
     }
@@ -168,7 +167,7 @@ public class DeviceListFragment extends BaseFragment implements View.OnClickList
         if (videoFragment == null) {
             videoFragment = new VideoFragment();
         }
-        ((MainActivity) getActivity()).changeFragment(C1438R.id.container, videoFragment, videoFragment.getClass().getSimpleName());
+        ((MainActivity) getActivity()).changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, videoFragment, videoFragment.getClass().getSimpleName());
     }
 
     @Override // androidx.fragment.app.Fragment
@@ -177,11 +176,11 @@ public class DeviceListFragment extends BaseFragment implements View.OnClickList
     }
 
     private void toQrCodeFragment() {
-        Fragment fragmentFindFragmentById = getActivity().getSupportFragmentManager().findFragmentById(C1438R.id.container);
+        Fragment fragmentFindFragmentById = getActivity().getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.container);
         if (!(fragmentFindFragmentById instanceof QRCodeFragment)) {
             fragmentFindFragmentById = new QRCodeFragment();
         }
-        ((MainActivity) getActivity()).changeFragment(C1438R.id.container, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        ((MainActivity) getActivity()).changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     private void enterWiFiSettings() {
@@ -190,11 +189,11 @@ public class DeviceListFragment extends BaseFragment implements View.OnClickList
             if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
                 startActivity(intent);
             } else {
-                ToastUtil.showToastLong(getString(C1438R.string.go_to_wifi_settings));
+                ToastUtil.showToastLong(getString(com.weioa.KmedHealthIndonesia.R.string.go_to_wifi_settings));
             }
         } catch (Exception e) {
             e.printStackTrace();
-            ToastUtil.showToastLong(getString(C1438R.string.go_to_wifi_settings));
+            ToastUtil.showToastLong(getString(com.weioa.KmedHealthIndonesia.R.string.go_to_wifi_settings));
         }
     }
 }

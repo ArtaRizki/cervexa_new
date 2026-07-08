@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.widget.verticalseekbar.VerticalSeekBar;
 import com.jieli.stream.p016dv.running2.util.AppUtils;
 
@@ -30,8 +29,8 @@ public class BrightnessToast {
         int screenBrightness = AppUtils.getScreenBrightness(this.context);
         if (this.toast == null) {
             this.toast = new Toast(this.context);
-            View viewInflate = LayoutInflater.from(this.context).inflate(C1438R.layout.view_brightness, (ViewGroup) null);
-            VerticalSeekBar verticalSeekBar = (VerticalSeekBar) viewInflate.findViewById(C1438R.id.view_brightness_seek_progress);
+            View viewInflate = LayoutInflater.from(this.context).inflate(com.weioa.KmedHealthIndonesia.R.layout.view_brightness, (ViewGroup) null);
+            VerticalSeekBar verticalSeekBar = (VerticalSeekBar) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.view_brightness_seek_progress);
             this.sbBrightness = verticalSeekBar;
             verticalSeekBar.setMax(255);
             this.sbBrightness.setProgress(screenBrightness);
@@ -56,8 +55,8 @@ public class BrightnessToast {
         int i3 = 0;
         if (this.toast == null) {
             this.toast = new Toast(this.context);
-            View viewInflate = LayoutInflater.from(this.context).inflate(C1438R.layout.view_brightness, (ViewGroup) null);
-            VerticalSeekBar verticalSeekBar = (VerticalSeekBar) viewInflate.findViewById(C1438R.id.view_brightness_seek_progress);
+            View viewInflate = LayoutInflater.from(this.context).inflate(com.weioa.KmedHealthIndonesia.R.layout.view_brightness, (ViewGroup) null);
+            VerticalSeekBar verticalSeekBar = (VerticalSeekBar) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.view_brightness_seek_progress);
             this.sbBrightness = verticalSeekBar;
             verticalSeekBar.setMax(100);
             this.sbBrightness.setProgress(i2);

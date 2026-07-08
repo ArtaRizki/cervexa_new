@@ -8,8 +8,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
-import com.serenegiant.common.C1831R;
-
 /* JADX INFO: loaded from: classes2.dex */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private static final int[] ATTRS = {R.attr.listDivider};
@@ -115,7 +113,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         if (view instanceof Dividable) {
             return ((Dividable) view).hasDivider();
         }
-        Boolean bool = (Boolean) view.getTag(C1831R.id.has_divider);
+        Boolean bool = (Boolean) view.getTag(com.weioa.KmedHealthIndonesia.R.id.has_divider);
         return bool != null && bool.booleanValue();
     }
 }

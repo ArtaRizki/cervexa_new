@@ -10,7 +10,6 @@ import com.jieli.lib.p015dv.control.json.bean.NotifyInfo;
 import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Code;
 import com.jieli.lib.p015dv.control.utils.Topic;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.camera.SurfaceViewCallback;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity;
 import com.jieli.stream.p016dv.running2.util.ClientManager;
@@ -55,8 +54,8 @@ public class CameraActivity extends BaseActivity {
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1438R.layout.activity_camera);
-        this.surfaceView = (SurfaceView) findViewById(C1438R.id.surfaceView);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_camera);
+        this.surfaceView = (SurfaceView) findViewById(com.weioa.KmedHealthIndonesia.R.id.surfaceView);
         ClientManager.getClient().registerNotifyListener(this.onNotifyListener);
         if (Build.VERSION.SDK_INT > 22) {
             if (ContextCompat.checkSelfPermission(this, "android.permission.CAMERA") != 0) {

@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.serenegiant.common.C1831R;
 import java.util.Locale;
 
 /* JADX INFO: loaded from: classes2.dex */
@@ -76,19 +75,19 @@ public final class ItemPicker extends LinearLayout {
         this.mSpeed = 300L;
         setOrientation(0);
         setGravity(16);
-        LayoutInflater.from(context).inflate(C1831R.layout.item_picker, (ViewGroup) this, true);
-        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C1831R.styleable.ItemPicker, i, 0);
-        int i2 = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.ItemPicker_ItemPickerMinItemValue, -1);
-        int i3 = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.ItemPicker_ItemPickerMaxItemValue, -1);
-        int resourceId = typedArrayObtainStyledAttributes.getResourceId(C1831R.styleable.ItemPicker_ItemPickerDisplayedValue, -1);
+        LayoutInflater.from(context).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_picker, (ViewGroup) this, true);
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker, i, 0);
+        int i2 = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker_ItemPickerMinItemValue, -1);
+        int i3 = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker_ItemPickerMaxItemValue, -1);
+        int resourceId = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker_ItemPickerDisplayedValue, -1);
         String[] stringArray = resourceId > -1 ? getResources().getStringArray(resourceId) : null;
-        int resourceId2 = typedArrayObtainStyledAttributes.getResourceId(C1831R.styleable.ItemPicker_ItemPickerIncrementBackground, -1);
-        int resourceId3 = typedArrayObtainStyledAttributes.getResourceId(C1831R.styleable.ItemPicker_ItemPickerDecrementBackground, -1);
-        int resourceId4 = typedArrayObtainStyledAttributes.getResourceId(C1831R.styleable.ItemPicker_ItemPickerIncrementSrc, -1);
-        int resourceId5 = typedArrayObtainStyledAttributes.getResourceId(C1831R.styleable.ItemPicker_ItemPickerDecrementSrc, -1);
-        int resourceId6 = typedArrayObtainStyledAttributes.getResourceId(C1831R.styleable.ItemPicker_ItemPickerEditTextBackground, -1);
-        int i4 = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.ItemPicker_ItemPickerCurrentItemValue, -1);
-        int i5 = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.ItemPicker_ItemPickerSpeed, -1);
+        int resourceId2 = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker_ItemPickerIncrementBackground, -1);
+        int resourceId3 = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker_ItemPickerDecrementBackground, -1);
+        int resourceId4 = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker_ItemPickerIncrementSrc, -1);
+        int resourceId5 = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker_ItemPickerDecrementSrc, -1);
+        int resourceId6 = typedArrayObtainStyledAttributes.getResourceId(com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker_ItemPickerEditTextBackground, -1);
+        int i4 = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker_ItemPickerCurrentItemValue, -1);
+        int i5 = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.ItemPicker_ItemPickerSpeed, -1);
         typedArrayObtainStyledAttributes.recycle();
         View.OnClickListener onClickListener = new View.OnClickListener() { // from class: com.serenegiant.widget.ItemPicker.2
             @Override // android.view.View.OnClickListener
@@ -98,10 +97,10 @@ public final class ItemPicker extends LinearLayout {
                 if (!ItemPicker.this.mText.hasFocus()) {
                     ItemPicker.this.mText.requestFocus();
                 }
-                if (C1831R.id.increment == view.getId()) {
+                if (com.weioa.KmedHealthIndonesia.R.id.increment == view.getId()) {
                     ItemPicker itemPicker2 = ItemPicker.this;
                     itemPicker2.changeCurrent(itemPicker2.mCurrentValue + 1);
-                } else if (C1831R.id.decrement == view.getId()) {
+                } else if (com.weioa.KmedHealthIndonesia.R.id.decrement == view.getId()) {
                     ItemPicker.this.changeCurrent(ItemPicker.this.mCurrentValue - 1);
                 }
             }
@@ -119,10 +118,10 @@ public final class ItemPicker extends LinearLayout {
             @Override // android.view.View.OnLongClickListener
             public boolean onLongClick(View view) {
                 ItemPicker.this.mText.clearFocus();
-                if (C1831R.id.increment == view.getId()) {
+                if (com.weioa.KmedHealthIndonesia.R.id.increment == view.getId()) {
                     ItemPicker.this.mIncrement = true;
                     ItemPicker.this.mHandler.post(ItemPicker.this.mRunnable);
-                } else if (C1831R.id.decrement == view.getId()) {
+                } else if (com.weioa.KmedHealthIndonesia.R.id.decrement == view.getId()) {
                     ItemPicker.this.mDecrement = true;
                     ItemPicker.this.mHandler.post(ItemPicker.this.mRunnable);
                 }
@@ -131,7 +130,7 @@ public final class ItemPicker extends LinearLayout {
         };
         NumberPickerInputFilter numberPickerInputFilter = new NumberPickerInputFilter();
         this.mNumberInputFilter = new NumberRangeKeyListener();
-        ItemPickerButton itemPickerButton = (ItemPickerButton) findViewById(C1831R.id.increment);
+        ItemPickerButton itemPickerButton = (ItemPickerButton) findViewById(com.weioa.KmedHealthIndonesia.R.id.increment);
         this.mIncrementButton = itemPickerButton;
         itemPickerButton.setOnClickListener(onClickListener);
         this.mIncrementButton.setOnLongClickListener(onLongClickListener);
@@ -142,7 +141,7 @@ public final class ItemPicker extends LinearLayout {
         if (resourceId4 != -1) {
             this.mIncrementButton.setImageResource(resourceId4);
         }
-        ItemPickerButton itemPickerButton2 = (ItemPickerButton) findViewById(C1831R.id.decrement);
+        ItemPickerButton itemPickerButton2 = (ItemPickerButton) findViewById(com.weioa.KmedHealthIndonesia.R.id.decrement);
         this.mDecrementButton = itemPickerButton2;
         itemPickerButton2.setOnClickListener(onClickListener);
         this.mDecrementButton.setOnLongClickListener(onLongClickListener);
@@ -153,7 +152,7 @@ public final class ItemPicker extends LinearLayout {
         if (resourceId5 != -1) {
             this.mDecrementButton.setImageResource(resourceId5);
         }
-        EditText editText = (EditText) findViewById(C1831R.id.input);
+        EditText editText = (EditText) findViewById(com.weioa.KmedHealthIndonesia.R.id.input);
         this.mText = editText;
         editText.setOnFocusChangeListener(onFocusChangeListener);
         this.mText.setFilters(new InputFilter[]{numberPickerInputFilter});

@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.core.app.ActivityCompat;
 import com.generalplus.GoPlusDrone.Activity.StartCardActivity;
-import com.generalplus.GoPlusDrone.C1021R;
 import java.util.Locale;
 
 /* JADX INFO: loaded from: classes.dex */
@@ -32,10 +31,10 @@ public class StartActivity extends StartCardActivity {
     @Override // com.generalplus.GoPlusDrone.Activity.StartCardActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1021R.layout.activity_start);
-        this.m_bnStart = (Button) findViewById(C1021R.id.bnStart);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.activity_start);
+        this.m_bnStart = (Button) findViewById(com.weioa.KmedHealthIndonesia.R.id.bnStart);
         this.m_SharedPreferences = getSharedPreferences(SharedPreferences_KEY, 0);
-        ((TextView) findViewById(C1021R.id.tvName)).setText(getResources().getString(C1021R.string.main_name));
+        ((TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.tvName)).setText(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.main_name));
         if (Build.VERSION.SDK_INT < 16) {
             getWindow().setFlags(1024, 1024);
         } else {
@@ -63,11 +62,11 @@ public class StartActivity extends StartCardActivity {
         DisplayMetrics displayMetrics = resources.getDisplayMetrics();
         configuration.locale = this.m_locale[this.m_iLocale];
         resources.updateConfiguration(configuration, displayMetrics);
-        this.m_bnStart.setText(getResources().getString(C1021R.string.start_button));
+        this.m_bnStart.setText(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.start_button));
     }
 
     private void showLanDialog() {
-        new AlertDialog.Builder(this).setItems(new String[]{getString(C1021R.string.item_Language1), getString(C1021R.string.item_Language2), getString(C1021R.string.item_Language3), getString(C1021R.string.item_Language0)}, new DialogInterface.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.StartActivity.1
+        new AlertDialog.Builder(this).setItems(new String[]{getString(com.weioa.KmedHealthIndonesia.R.string.item_Language1), getString(com.weioa.KmedHealthIndonesia.R.string.item_Language2), getString(com.weioa.KmedHealthIndonesia.R.string.item_Language3), getString(com.weioa.KmedHealthIndonesia.R.string.item_Language0)}, new DialogInterface.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.StartActivity.1
             @Override // android.content.DialogInterface.OnClickListener
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (StartActivity.this.m_iLocale == i) {

@@ -18,7 +18,6 @@ import com.jieli.lib.p015dv.control.player.PlaybackStream;
 import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Code;
 import com.jieli.lib.p015dv.control.utils.Topic;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
 import com.jieli.stream.p016dv.running2.data.OnRecordStateListener;
 import com.jieli.stream.p016dv.running2.data.VideoRecord;
@@ -82,7 +81,7 @@ public class DownloadDialog extends BaseDialogFragment implements View.OnClickLi
 
                 @Override // com.jieli.stream.p016dv.running2.data.OnRecordStateListener
                 public void onCompletion(String str) {
-                    ToastUtil.showToastShort(DownloadDialog.this.getString(C1438R.string.record_success));
+                    ToastUtil.showToastShort(DownloadDialog.this.getString(com.weioa.KmedHealthIndonesia.R.string.record_success));
                 }
 
                 @Override // com.jieli.stream.p016dv.running2.data.OnRecordStateListener
@@ -102,7 +101,7 @@ public class DownloadDialog extends BaseDialogFragment implements View.OnClickLi
                             }
                         }
                     }
-                    ToastUtil.showToastShort(DownloadDialog.this.getString(C1438R.string.record_fail));
+                    ToastUtil.showToastShort(DownloadDialog.this.getString(com.weioa.KmedHealthIndonesia.R.string.record_fail));
                     DownloadDialog.this.closeMovWrapper();
                 }
             });
@@ -154,14 +153,14 @@ public class DownloadDialog extends BaseDialogFragment implements View.OnClickLi
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.dialog_download, viewGroup, false);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.dialog_download, viewGroup, false);
         if (getDialog() != null) {
             getDialog().requestWindowFeature(1);
         }
-        this.tvTitle = (TextView) viewInflate.findViewById(C1438R.id.dialog_download_title);
-        this.tvContent = (TextView) viewInflate.findViewById(C1438R.id.dialog_download_content);
-        this.pbNumber = (NumberProgressBar) viewInflate.findViewById(C1438R.id.dialog_download_progress_bar);
-        ((Button) viewInflate.findViewById(C1438R.id.dialog_download_cancel_btn)).setOnClickListener(this);
+        this.tvTitle = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_download_title);
+        this.tvContent = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_download_content);
+        this.pbNumber = (NumberProgressBar) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_download_progress_bar);
+        ((Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_download_cancel_btn)).setOnClickListener(this);
         this.pbNumber.setMax(100);
         return viewInflate;
     }
@@ -207,7 +206,7 @@ public class DownloadDialog extends BaseDialogFragment implements View.OnClickLi
         attributes.height = -2;
         attributes.gravity = 17;
         getDialog().getWindow().setAttributes(attributes);
-        getDialog().getWindow().setBackgroundDrawableResource(C1438R.drawable.dialog_bg);
+        getDialog().getWindow().setBackgroundDrawableResource(com.weioa.KmedHealthIndonesia.R.drawable.dialog_bg);
     }
 
     @Override // androidx.fragment.app.Fragment
@@ -224,14 +223,14 @@ public class DownloadDialog extends BaseDialogFragment implements View.OnClickLi
 
     @Override // android.view.View.OnClickListener
     public void onClick(View view) {
-        if (getActivity() == null || getDialog() == null || view == null || view.getId() != C1438R.id.dialog_download_cancel_btn) {
+        if (getActivity() == null || getDialog() == null || view == null || view.getId() != com.weioa.KmedHealthIndonesia.R.id.dialog_download_cancel_btn) {
             return;
         }
         MediaInfo currentMediaInfo = this.mStreamPlayer.getCurrentMediaInfo();
         if (currentMediaInfo != null && this.mFrameCount >= currentMediaInfo.getFrameRate()) {
             stopDownload();
         } else {
-            ToastUtil.showToastLong(getString(C1438R.string.dialod_wait));
+            ToastUtil.showToastLong(getString(com.weioa.KmedHealthIndonesia.R.string.dialod_wait));
         }
     }
 
@@ -242,7 +241,7 @@ public class DownloadDialog extends BaseDialogFragment implements View.OnClickLi
         if (!TextUtils.isEmpty(this.title)) {
             this.tvTitle.setText(this.title);
         } else {
-            this.tvTitle.setText(C1438R.string.download_file);
+            this.tvTitle.setText(com.weioa.KmedHealthIndonesia.R.string.download_file);
         }
         if (fileInfo != null && !TextUtils.isEmpty(fileInfo.getPath())) {
             this.tvContent.setText(fileInfo.getPath());

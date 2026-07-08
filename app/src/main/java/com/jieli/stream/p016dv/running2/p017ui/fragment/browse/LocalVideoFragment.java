@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
 import com.jieli.stream.p016dv.running2.bean.ItemBean;
 import com.jieli.stream.p016dv.running2.bean.MediaTaskInfo;
@@ -97,7 +96,7 @@ public class LocalVideoFragment extends BaseFragment implements BaseFooterView.O
     public void updateTextUI() {
         LinearLayout linearLayout = this.emptyView;
         if (linearLayout != null) {
-            ((TextView) linearLayout.findViewById(C1438R.id.text_empty_tips)).setText(C1438R.string.no_data_tip);
+            ((TextView) linearLayout.findViewById(com.weioa.KmedHealthIndonesia.R.id.text_empty_tips)).setText(com.weioa.KmedHealthIndonesia.R.string.no_data_tip);
         }
     }
 
@@ -112,10 +111,10 @@ public class LocalVideoFragment extends BaseFragment implements BaseFooterView.O
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_local_video, viewGroup, false);
-        this.mListView = (ListView) viewInflate.findViewById(C1438R.id.local_video_view);
-        this.emptyView = (LinearLayout) viewInflate.findViewById(C1438R.id.view_empty);
-        ExpandFooterView expandFooterView = (ExpandFooterView) viewInflate.findViewById(C1438R.id.local_video_footer);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_local_video, viewGroup, false);
+        this.mListView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.local_video_view);
+        this.emptyView = (LinearLayout) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.view_empty);
+        ExpandFooterView expandFooterView = (ExpandFooterView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.local_video_footer);
         this.footerView = expandFooterView;
         expandFooterView.setOnLoadListener(this);
         return viewInflate;
@@ -208,7 +207,7 @@ public class LocalVideoFragment extends BaseFragment implements BaseFooterView.O
             this.mHandler.removeMessages(257);
             this.mHandler.sendEmptyMessageDelayed(257, 1500L);
         } else {
-            ToastUtil.showToastShort(getString(C1438R.string.no_more_data));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.no_more_data));
             onStopLoad();
         }
     }
@@ -314,7 +313,7 @@ public class LocalVideoFragment extends BaseFragment implements BaseFooterView.O
                         this.emptyView.setVisibility(0);
                         return;
                     } else {
-                        ToastUtil.showToastShort(getString(C1438R.string.no_more_data));
+                        ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.no_more_data));
                         return;
                     }
                 }

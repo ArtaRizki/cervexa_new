@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.jieli.stream.p016dv.running2.C1438R;
-
 /* JADX INFO: loaded from: classes.dex */
 public class VideoProgressToast {
     public static final int FAST_BACKWARD = 4139;
@@ -27,10 +25,10 @@ public class VideoProgressToast {
     public void show(int i, String str) {
         if (this.toast == null) {
             this.toast = new Toast(this.mContext);
-            View viewInflate = LayoutInflater.from(this.mContext).inflate(C1438R.layout.view_video_progress, (ViewGroup) null);
-            this.ivFastForward = (ImageView) viewInflate.findViewById(C1438R.id.view_video_fast_forward);
-            this.tvText = (TextView) viewInflate.findViewById(C1438R.id.view_video_tv);
-            this.ivFastBackward = (ImageView) viewInflate.findViewById(C1438R.id.view_video_fast_backward);
+            View viewInflate = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.view_video_progress, (ViewGroup) null);
+            this.ivFastForward = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.view_video_fast_forward);
+            this.tvText = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.view_video_tv);
+            this.ivFastBackward = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.view_video_fast_backward);
             this.toast.setView(viewInflate);
             this.toast.setGravity(17, 0, 0);
             this.toast.setDuration(0);
@@ -38,11 +36,11 @@ public class VideoProgressToast {
         if (i == 4138) {
             this.ivFastBackward.setVisibility(8);
             this.ivFastForward.setVisibility(0);
-            this.tvText.setText(this.mContext.getString(C1438R.string.fast_forward));
+            this.tvText.setText(this.mContext.getString(com.weioa.KmedHealthIndonesia.R.string.fast_forward));
         } else if (i == 4139) {
             this.ivFastForward.setVisibility(8);
             this.ivFastBackward.setVisibility(0);
-            this.tvText.setText(this.mContext.getString(C1438R.string.fast_backward));
+            this.tvText.setText(this.mContext.getString(com.weioa.KmedHealthIndonesia.R.string.fast_backward));
         }
         if (!TextUtils.isEmpty(str)) {
             this.tvText.setText(str);

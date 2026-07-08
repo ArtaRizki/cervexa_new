@@ -8,8 +8,6 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import com.serenegiant.common.C1831R;
-
 /* JADX INFO: loaded from: classes2.dex */
 public class FrameView extends View {
     private static final float DEFAULT_FRAME_WIDTH_DP = 3.0f;
@@ -65,16 +63,16 @@ public class FrameView extends View {
         DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
         this.metrics = displayMetrics;
         this.defaultFrameWidth = displayMetrics.density * DEFAULT_FRAME_WIDTH_DP;
-        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C1831R.styleable.FrameView, i, 0);
-        this.mFrameType = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.FrameView_frame_type, 0);
-        this.mFrameWidth = typedArrayObtainStyledAttributes.getDimension(C1831R.styleable.FrameView_frame_width, this.defaultFrameWidth);
-        this.mFrameColor = typedArrayObtainStyledAttributes.getColor(C1831R.styleable.FrameView_frame_color, -5131855);
-        this.mScaleType = typedArrayObtainStyledAttributes.getInt(C1831R.styleable.FrameView_scale_type, 0);
-        this.mScaleWidth = typedArrayObtainStyledAttributes.getDimension(C1831R.styleable.FrameView_scale_width, this.mFrameWidth);
-        this.mScaleColor = typedArrayObtainStyledAttributes.getColor(C1831R.styleable.FrameView_scale_color, this.mFrameColor);
-        this.mTickColor = typedArrayObtainStyledAttributes.getColor(C1831R.styleable.FrameView_tick_color, this.mScaleColor);
-        this.mRotation = typedArrayObtainStyledAttributes.getFloat(C1831R.styleable.FrameView_scale_rotation, 0.0f);
-        this.mScale = typedArrayObtainStyledAttributes.getFloat(C1831R.styleable.FrameView_scale_scale, 1.0f);
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.FrameView, i, 0);
+        this.mFrameType = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.FrameView_frame_type, 0);
+        this.mFrameWidth = typedArrayObtainStyledAttributes.getDimension(com.weioa.KmedHealthIndonesia.R.styleable.FrameView_frame_width, this.defaultFrameWidth);
+        this.mFrameColor = typedArrayObtainStyledAttributes.getColor(com.weioa.KmedHealthIndonesia.R.styleable.FrameView_frame_color, -5131855);
+        this.mScaleType = typedArrayObtainStyledAttributes.getInt(com.weioa.KmedHealthIndonesia.R.styleable.FrameView_scale_type, 0);
+        this.mScaleWidth = typedArrayObtainStyledAttributes.getDimension(com.weioa.KmedHealthIndonesia.R.styleable.FrameView_scale_width, this.mFrameWidth);
+        this.mScaleColor = typedArrayObtainStyledAttributes.getColor(com.weioa.KmedHealthIndonesia.R.styleable.FrameView_scale_color, this.mFrameColor);
+        this.mTickColor = typedArrayObtainStyledAttributes.getColor(com.weioa.KmedHealthIndonesia.R.styleable.FrameView_tick_color, this.mScaleColor);
+        this.mRotation = typedArrayObtainStyledAttributes.getFloat(com.weioa.KmedHealthIndonesia.R.styleable.FrameView_scale_rotation, 0.0f);
+        this.mScale = typedArrayObtainStyledAttributes.getFloat(com.weioa.KmedHealthIndonesia.R.styleable.FrameView_scale_scale, 1.0f);
         typedArrayObtainStyledAttributes.recycle();
         this.mPaint.setStyle(Paint.Style.STROKE);
     }

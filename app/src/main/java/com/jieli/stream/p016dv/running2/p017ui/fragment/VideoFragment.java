@@ -47,7 +47,6 @@ import com.jieli.lib.p015dv.control.receiver.listener.OnNotifyListener;
 import com.jieli.lib.p015dv.control.utils.Dlog;
 import com.jieli.media.codec.FrameCodec;
 import com.jieli.media.codec.bean.MediaMeta;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.audio.AudioRecordManager;
 import com.jieli.stream.p016dv.running2.bean.DeviceSettingInfo;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
@@ -371,7 +370,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                     case VideoFragment.MSG_TAKE_VIDEO /* 2560 */:
                         if (VideoFragment.this.isPlaying()) {
                             if (VideoFragment.this.isRtspEnable) {
-                                ToastUtil.showToastLong(VideoFragment.this.getString(C1438R.string.not_supported_in_rtsp_mode));
+                                ToastUtil.showToastLong(VideoFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.not_supported_in_rtsp_mode));
                             } else if (!AppUtils.isFastDoubleClick(UIMsg.m_AppUI.MSG_APP_DATA_OK)) {
                                 Dbug.m1388e(VideoFragment.this.tag, "---is playing " + VideoFragment.this.isPlaying());
                                 if (!VideoFragment.this.isRecordPrepared) {
@@ -380,10 +379,10 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                                     VideoFragment.this.stopLocalRecording();
                                 }
                             } else {
-                                ToastUtil.showToastShort(VideoFragment.this.getString(C1438R.string.dialod_wait));
+                                ToastUtil.showToastShort(VideoFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.dialod_wait));
                             }
                         } else {
-                            ToastUtil.showToastShort(VideoFragment.this.getString(C1438R.string.open_rts_tip));
+                            ToastUtil.showToastShort(VideoFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.open_rts_tip));
                         }
                         break;
                     case VideoFragment.MSG_TAKE_PHOTO /* 2561 */:
@@ -398,7 +397,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                                             VideoFragment.this.getActivity().runOnUiThread(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.1.1.1
                                                 @Override // java.lang.Runnable
                                                 public void run() {
-                                                    ToastUtil.showToastShort(VideoFragment.this.getResources().getString(C1438R.string.photos_success));
+                                                    ToastUtil.showToastShort(VideoFragment.this.getResources().getString(com.weioa.KmedHealthIndonesia.R.string.photos_success));
                                                     if (TextUtils.isEmpty(str)) {
                                                         return;
                                                     }
@@ -413,7 +412,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                                             VideoFragment.this.getActivity().runOnUiThread(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.1.1.2
                                                 @Override // java.lang.Runnable
                                                 public void run() {
-                                                    ToastUtil.showToastShort(VideoFragment.this.getResources().getString(C1438R.string.pictures_failed));
+                                                    ToastUtil.showToastShort(VideoFragment.this.getResources().getString(com.weioa.KmedHealthIndonesia.R.string.pictures_failed));
                                                 }
                                             });
                                         }
@@ -423,12 +422,12 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                                 VideoFragment.this.mVideoCapture.setWidth(VideoFragment.this.selectedWidth);
                                 VideoFragment.this.isCapturePrepared = true;
                             } else {
-                                ToastUtil.showToastLong(VideoFragment.this.getString(C1438R.string.not_supported_in_rtsp_mode));
+                                ToastUtil.showToastLong(VideoFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.not_supported_in_rtsp_mode));
                             }
                         } else if (VideoFragment.this.isAdjustResolution || VideoFragment.this.isSwitchCamera) {
                             Dbug.m1389i(VideoFragment.this.tag, "photo=isAdjustResolution==");
                         } else {
-                            ToastUtil.showToastShort(VideoFragment.this.getString(C1438R.string.open_rts_tip));
+                            ToastUtil.showToastShort(VideoFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.open_rts_tip));
                         }
                         break;
                     case VideoFragment.MSG_LOAD_DEV_THUMBS /* 2562 */:
@@ -456,7 +455,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                                 }
                             });
                         } else {
-                            ToastUtil.showToastLong(VideoFragment.this.getString(C1438R.string.not_supported_in_rtsp_mode));
+                            ToastUtil.showToastLong(VideoFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.not_supported_in_rtsp_mode));
                         }
                         break;
                     case VideoFragment.MSG_CYC_SAVE_VIDEO /* 2565 */:
@@ -467,7 +466,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                                 }
                             });
                         } else {
-                            ToastUtil.showToastShort(VideoFragment.this.getString(C1438R.string.no_video_tip));
+                            ToastUtil.showToastShort(VideoFragment.this.getString(com.weioa.KmedHealthIndonesia.R.string.no_video_tip));
                         }
                         break;
                     case VideoFragment.MSG_FPS_COUNT /* 2566 */:
@@ -565,17 +564,17 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
      */
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_video, viewGroup, false);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_video, viewGroup, false);
         this.mView = viewInflate;
-        IjkVideoView ijkVideoView = (IjkVideoView) viewInflate.findViewById(C1438R.id.video_view);
+        IjkVideoView ijkVideoView = (IjkVideoView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.video_view);
         this.mVideoView = ijkVideoView;
         ijkVideoView.setAspectRatio(3);
         this.mVideoView.setOnPreparedListener(this.onPreparedListener);
         this.mVideoView.setOnErrorListener(this.mOnErrorListener);
         this.mVideoView.setOnCompletionListener(this.onCompletionListener);
-        this.ll_content = (FrameLayout) this.mView.findViewById(C1438R.id.ll_content);
-        this.ivBroken = (TextView) this.mView.findViewById(C1438R.id.ivBroken);
-        ImageView imageView = (ImageView) this.mView.findViewById(C1438R.id.iv_zoom_in);
+        this.ll_content = (FrameLayout) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.ll_content);
+        this.ivBroken = (TextView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.ivBroken);
+        ImageView imageView = (ImageView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_zoom_in);
         this.iv_zoom_in = imageView;
         imageView.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.2
             @Override // android.view.View.OnClickListener
@@ -584,7 +583,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 videoFragment.zoom(true, videoFragment.ll_content);
             }
         });
-        ImageView imageView2 = (ImageView) this.mView.findViewById(C1438R.id.iv_zoom_out);
+        ImageView imageView2 = (ImageView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_zoom_out);
         this.iv_zoom_out = imageView2;
         imageView2.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.3
             @Override // android.view.View.OnClickListener
@@ -593,8 +592,8 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 videoFragment.zoom(false, videoFragment.ll_content);
             }
         });
-        this.iv_focus_img = (ImageView) this.mView.findViewById(C1438R.id.iv_focus_img);
-        ImageView imageView3 = (ImageView) this.mView.findViewById(C1438R.id.iv_zoom_focus);
+        this.iv_focus_img = (ImageView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_focus_img);
+        ImageView imageView3 = (ImageView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_zoom_focus);
         this.iv_zoom_focus = imageView3;
         imageView3.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.4
             @Override // android.view.View.OnClickListener
@@ -607,8 +606,8 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             }
         });
         final boolean[] zArr = {false};
-        this.iv_record = (ImageView) this.mView.findViewById(C1438R.id.iv_record);
-        this.tv_record_time = (TextView) this.mView.findViewById(C1438R.id.tv_record_time);
+        this.iv_record = (ImageView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_record);
+        this.tv_record_time = (TextView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.tv_record_time);
         this.iv_record.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.5
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
@@ -617,9 +616,9 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                     zArr2[0] = !zArr2[0];
                 }
                 if (zArr[0]) {
-                    VideoFragment.this.iv_record.setImageResource(C1438R.mipmap.icon_record_stop);
+                    VideoFragment.this.iv_record.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.icon_record_stop);
                 } else {
-                    VideoFragment.this.iv_record.setImageResource(C1438R.mipmap.icon_record);
+                    VideoFragment.this.iv_record.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.icon_record);
                 }
                 if (VideoFragment.this.mHandler != null) {
                     VideoFragment.this.mHandler.removeMessages(VideoFragment.MSG_TAKE_VIDEO);
@@ -627,7 +626,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 }
             }
         });
-        ImageView imageView4 = (ImageView) this.mView.findViewById(C1438R.id.iv_picture);
+        ImageView imageView4 = (ImageView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_picture);
         this.iv_picture = imageView4;
         imageView4.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.6
             @Override // android.view.View.OnClickListener
@@ -637,7 +636,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 VideoFragment.this.startActivity(intent);
             }
         });
-        ImageView imageView5 = (ImageView) this.mView.findViewById(C1438R.id.iv_resolution);
+        ImageView imageView5 = (ImageView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.iv_resolution);
         this.iv_resolution = imageView5;
         imageView5.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.7
             @Override // android.view.View.OnClickListener
@@ -645,7 +644,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 VideoFragment.this.ll_resolution.setVisibility(0);
             }
         });
-        RecyclerView recyclerView = (RecyclerView) this.mView.findViewById(C1438R.id.rc_resolution);
+        RecyclerView recyclerView = (RecyclerView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.rc_resolution);
         this.rc_resolution = recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         ResolutionAdapter resolutionAdapter = new ResolutionAdapter(getActivity());
@@ -660,11 +659,11 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 String[] strArrSplit = str.split("\\*");
                 VideoFragment.this.selectedWidth = Integer.parseInt(strArrSplit[0]);
                 VideoFragment.this.selectedHeight = Integer.parseInt(strArrSplit[1]);
-                ToastUtil.showToastLong(VideoFragment.this.getResources().getString(C1438R.string.haveto_switch) + str);
+                ToastUtil.showToastLong(VideoFragment.this.getResources().getString(com.weioa.KmedHealthIndonesia.R.string.haveto_switch) + str);
             }
         });
         this.rc_resolution.setAdapter(resolutionAdapter);
-        LinearLayout linearLayout = (LinearLayout) this.mView.findViewById(C1438R.id.ll_resolution);
+        LinearLayout linearLayout = (LinearLayout) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.ll_resolution);
         this.ll_resolution = linearLayout;
         linearLayout.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.9
             @Override // android.view.View.OnClickListener
@@ -672,13 +671,13 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 VideoFragment.this.ll_resolution.setVisibility(8);
             }
         });
-        ((ImageView) this.mView.findViewById(C1438R.id.back)).setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.10
+        ((ImageView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.back)).setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.10
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
                 VideoFragment.this.getActivity().finish();
             }
         });
-        ImageView imageView6 = (ImageView) this.mView.findViewById(C1438R.id.take_photo);
+        ImageView imageView6 = (ImageView) this.mView.findViewById(com.weioa.KmedHealthIndonesia.R.id.take_photo);
         this.take_photo = imageView6;
         imageView6.setOnClickListener(new View.OnClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.11
             @Override // android.view.View.OnClickListener
@@ -1102,9 +1101,9 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             return;
         }
         ssid.replace(WIFI_PREFIX, "");
-        String str = "(" + getString(C1438R.string.front_view) + ")";
+        String str = "(" + getString(com.weioa.KmedHealthIndonesia.R.string.front_view) + ")";
         if (this.mApplication.getDeviceSettingInfo().getCameraType() == 2) {
-            String str2 = "(" + getString(C1438R.string.rear_view) + ")";
+            String str2 = "(" + getString(com.weioa.KmedHealthIndonesia.R.string.rear_view) + ")";
         }
     }
 
@@ -1180,7 +1179,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             startActivityForResult(intent, IConstant.CODE_BROWSE_FILE);
             return;
         }
-        ToastUtil.showToastShort(getString(C1438R.string.loading));
+        ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.loading));
     }
 
     private class MyGridViewAdapter extends BaseAdapter {
@@ -1251,7 +1250,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         @Override // android.widget.Adapter
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
-                View viewInflate = LayoutInflater.from(this.mContext).inflate(C1438R.layout.item_image, viewGroup, false);
+                View viewInflate = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_image, viewGroup, false);
                 new ViewHolder(viewInflate);
                 return viewInflate;
             }
@@ -1276,7 +1275,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 if (bitmap != null) {
                     imageView.setImageBitmap(bitmap);
                 } else {
-                    imageView.setImageResource(C1438R.mipmap.ic_default_picture);
+                    imageView.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
                 }
                 VideoFragment.this.hideLoadDialog(fileInfo);
                 return;
@@ -1300,12 +1299,12 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             private TextView tvDuration;
 
             ViewHolder(View view) {
-                ImageView imageView = (ImageView) view.findViewById(C1438R.id.item_image_iv);
+                ImageView imageView = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_image_iv);
                 this.imageView = imageView;
                 imageView.setLayoutParams(new RelativeLayout.LayoutParams(VideoFragment.this.viewWidth, VideoFragment.this.viewHeight));
                 this.imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                this.layoutVideo = (RelativeLayout) view.findViewById(C1438R.id.item_image_video_layout);
-                this.tvDuration = (TextView) view.findViewById(C1438R.id.item_image_duration);
+                this.layoutVideo = (RelativeLayout) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_image_video_layout);
+                this.tvDuration = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_image_duration);
                 view.setTag(this);
             }
         }
@@ -1419,7 +1418,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             WaitingDialog waitingDialog = new WaitingDialog();
             this.mWaitingDialog = waitingDialog;
             waitingDialog.setCancelable(false);
-            this.mWaitingDialog.setNotifyContent(getString(C1438R.string.loading));
+            this.mWaitingDialog.setNotifyContent(getString(com.weioa.KmedHealthIndonesia.R.string.loading));
             this.mWaitingDialog.setOnWaitingDialog(new WaitingDialog.OnWaitingDialog() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.25
                 @Override // com.jieli.stream.dv.running2.ui.dialog.WaitingDialog.OnWaitingDialog
                 public void onCancelDialog() {
@@ -1577,7 +1576,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         int streamVolume = audioManager != null ? audioManager.getStreamVolume(4) : 0;
         Dbug.m1389i(this.tag, "volume=:" + streamVolume);
         if (streamVolume != 0) {
-            MediaPlayer mediaPlayerCreate = MediaPlayer.create(getActivity(), C1438R.raw.camera_click);
+            MediaPlayer mediaPlayerCreate = MediaPlayer.create(getActivity(), com.weioa.KmedHealthIndonesia.R.raw.camera_click);
             mediaPlayerCreate.setOnCompletionListener(new MediaPlayer.OnCompletionListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.26
                 @Override // android.media.MediaPlayer.OnCompletionListener
                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -1606,7 +1605,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         if (wakeLock != null) {
             wakeLock.acquire(216000L);
         }
-        this.iv_record.setImageResource(C1438R.mipmap.icon_record_stop);
+        this.iv_record.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.icon_record_stop);
         this.tv_record_time.setVisibility(0);
         this.startTime = System.currentTimeMillis();
         this.handler.removeCallbacks(this.updateTimer);
@@ -1619,7 +1618,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         if (wakeLock != null && wakeLock.isHeld()) {
             this.wakeLock.release();
         }
-        this.iv_record.setImageResource(C1438R.mipmap.icon_record);
+        this.iv_record.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.icon_record);
         this.handler.removeCallbacks(this.updateTimer);
         this.tv_record_time.setVisibility(8);
         this.tv_record_time.setText("00:00:00");
@@ -1821,12 +1820,12 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
     private int getLevelResId(int i) {
         if (i == 0) {
-            return C1438R.drawable.drawable_resolution_sd;
+            return com.weioa.KmedHealthIndonesia.R.drawable.drawable_resolution_sd;
         }
         if (i == 2) {
-            return C1438R.drawable.drawable_resolution_fhd;
+            return com.weioa.KmedHealthIndonesia.R.drawable.drawable_resolution_fhd;
         }
-        return C1438R.drawable.drawable_resolution_hd;
+        return com.weioa.KmedHealthIndonesia.R.drawable.drawable_resolution_hd;
     }
 
     private int getCameraLevel(int i) {
@@ -1898,7 +1897,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
     private void showLocalRecordDialog() {
         if (this.mLocalRecordingDialog == null) {
-            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.no_card_record_tip, C1438R.string.dialog_cancel, C1438R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.32
+            NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.no_card_record_tip, com.weioa.KmedHealthIndonesia.R.string.dialog_cancel, com.weioa.KmedHealthIndonesia.R.string.dialog_confirm, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.32
                 @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
                 public void onClick() {
                     VideoFragment.this.mLocalRecordingDialog.dismiss();
@@ -1970,7 +1969,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     }
 
     public void showStopLocalRecordingDialog(final OnClickStateListener onClickStateListener) {
-        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(C1438R.string.dialog_tips, C1438R.string.recording_will_stop, C1438R.string.dialog_no, C1438R.string.dialog_yes, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.35
+        NotifyDialog notifyDialogNewInstance = NotifyDialog.newInstance(com.weioa.KmedHealthIndonesia.R.string.dialog_tips, com.weioa.KmedHealthIndonesia.R.string.recording_will_stop, com.weioa.KmedHealthIndonesia.R.string.dialog_no, com.weioa.KmedHealthIndonesia.R.string.dialog_yes, new NotifyDialog.OnNegativeClickListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.35
             @Override // com.jieli.stream.dv.running2.ui.dialog.NotifyDialog.OnNegativeClickListener
             public void onClick() {
                 VideoFragment.this.mStopLocalRecordingDialog.dismiss();
@@ -2033,8 +2032,8 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         if (ijkVideoView == null || (hudView = ijkVideoView.getHudView()) == null) {
             return;
         }
-        hudView.setRowValue(C1438R.string.drop_packet_count, i + "");
-        hudView.setRowValue(C1438R.string.drop_packet_sum, i2 + "");
+        hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.drop_packet_count, i + "");
+        hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.drop_packet_sum, i2 + "");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -2044,6 +2043,6 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         if (ijkVideoView == null || (hudView = ijkVideoView.getHudView()) == null) {
             return;
         }
-        hudView.setRowValue(C1438R.string.fps, i + "");
+        hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.fps, i + "");
     }
 }

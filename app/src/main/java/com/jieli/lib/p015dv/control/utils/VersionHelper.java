@@ -1,7 +1,6 @@
 package com.jieli.lib.p015dv.control.utils;
 
 import android.content.Context;
-import com.jieli.lib.p015dv.control.C1408R;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -10,7 +9,7 @@ public class VersionHelper {
     public static String getSdkVersionName(Context context) {
         InputStream inputStreamOpenRawResource = null;
         try {
-            inputStreamOpenRawResource = context.getResources().openRawResource(C1408R.raw.version);
+            inputStreamOpenRawResource = context.getResources().openRawResource(com.weioa.KmedHealthIndonesia.R.raw.version);
             byte[] bArr = new byte[inputStreamOpenRawResource.available()];
             if (inputStreamOpenRawResource.read(bArr) > 0) {
                 return new String(bArr);

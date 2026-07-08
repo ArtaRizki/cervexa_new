@@ -7,8 +7,6 @@ import android.text.Html;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.generalplus.GoPlusDrone.C1021R;
-
 /* JADX INFO: loaded from: classes.dex */
 public class HelpActivity extends Activity {
     private TextView h_text1;
@@ -32,29 +30,29 @@ public class HelpActivity extends Activity {
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1021R.layout.help_activity);
-        this.layout = (LinearLayout) findViewById(C1021R.id.help_layout);
-        this.layout1 = (LinearLayout) findViewById(C1021R.id.help_layout1);
-        this.h_text1 = (TextView) findViewById(C1021R.id.h_text1);
-        this.h_text2 = (TextView) findViewById(C1021R.id.h_text2);
-        this.h_text3 = (TextView) findViewById(C1021R.id.h_text3);
-        this.h_text4 = (TextView) findViewById(C1021R.id.h_text4);
-        this.h_text5 = (TextView) findViewById(C1021R.id.h_text5);
-        this.h_text6 = (TextView) findViewById(C1021R.id.h_text6);
-        this.h_text7 = (TextView) findViewById(C1021R.id.h_text7);
-        this.h_text8 = (TextView) findViewById(C1021R.id.h_text8);
-        this.h_text9 = (TextView) findViewById(C1021R.id.h_text9);
-        this.h_text10 = (TextView) findViewById(C1021R.id.h_text10);
-        this.h_text11 = (TextView) findViewById(C1021R.id.h_text11);
-        this.h_text12 = (TextView) findViewById(C1021R.id.h_text12);
-        this.version_t = (TextView) findViewById(C1021R.id.version);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.help_activity);
+        this.layout = (LinearLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.help_layout);
+        this.layout1 = (LinearLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.help_layout1);
+        this.h_text1 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text1);
+        this.h_text2 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text2);
+        this.h_text3 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text3);
+        this.h_text4 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text4);
+        this.h_text5 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text5);
+        this.h_text6 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text6);
+        this.h_text7 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text7);
+        this.h_text8 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text8);
+        this.h_text9 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text9);
+        this.h_text10 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text10);
+        this.h_text11 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text11);
+        this.h_text12 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.h_text12);
+        this.version_t = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.version);
         this.mScreenWidth = getResources().getDisplayMetrics().widthPixels;
         this.mScreenheight = getResources().getDisplayMetrics().heightPixels;
         int i = this.mScreenWidth;
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((i * 9) / 10, i / 15);
         layoutParams.topMargin = this.mScreenWidth / 20;
         LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setBackgroundResource(C1021R.drawable.text_style);
+        linearLayout.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.text_style);
         linearLayout.setLayoutParams(layoutParams);
         linearLayout.setGravity(16);
         linearLayout.setOrientation(7);
@@ -62,26 +60,26 @@ public class HelpActivity extends Activity {
         layoutParams2.leftMargin = this.mScreenWidth / 25;
         TextView textView = new TextView(this);
         String version = getVersion();
-        textView.setText(getResources().getString(C1021R.string.language3) + version + "  " + getResources().getString(C1021R.string.language4) + version);
+        textView.setText(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language3) + version + "  " + getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language4) + version);
         textView.setLayoutParams(layoutParams2);
         linearLayout.addView(textView);
         this.layout.addView(linearLayout);
         this.layout1.getLayoutParams().width = (this.mScreenWidth * 9) / 10;
         this.layout1.getLayoutParams().height = -2;
         this.layout1.setGravity(16);
-        this.h_text1.setText(Html.fromHtml(getResources().getString(C1021R.string.language31)));
-        this.h_text2.setText(Html.fromHtml(getResources().getString(C1021R.string.language32)));
-        this.h_text3.setText(Html.fromHtml(getResources().getString(C1021R.string.language34)));
-        this.h_text4.setText(Html.fromHtml(getResources().getString(C1021R.string.language35)));
-        this.h_text5.setText(Html.fromHtml(getResources().getString(C1021R.string.language36)));
-        this.h_text6.setText(Html.fromHtml(getResources().getString(C1021R.string.language37)));
-        this.h_text7.setText(Html.fromHtml(getResources().getString(C1021R.string.language38)));
-        this.h_text8.setText(Html.fromHtml(getResources().getString(C1021R.string.language39)));
-        this.h_text9.setText(Html.fromHtml(getResources().getString(C1021R.string.language49)));
-        this.h_text10.setText(Html.fromHtml(getResources().getString(C1021R.string.language60)));
-        this.h_text11.setText(Html.fromHtml(getResources().getString(C1021R.string.language61)));
-        this.h_text12.setText(Html.fromHtml(getResources().getString(C1021R.string.language62)));
-        this.version_t.setText(getResources().getString(C1021R.string.language295) + getVersion());
+        this.h_text1.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language31)));
+        this.h_text2.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language32)));
+        this.h_text3.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language34)));
+        this.h_text4.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language35)));
+        this.h_text5.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language36)));
+        this.h_text6.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language37)));
+        this.h_text7.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language38)));
+        this.h_text8.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language39)));
+        this.h_text9.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language49)));
+        this.h_text10.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language60)));
+        this.h_text11.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language61)));
+        this.h_text12.setText(Html.fromHtml(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language62)));
+        this.version_t.setText(getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language295) + getVersion());
     }
 
     public String getVersion() {

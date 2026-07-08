@@ -13,7 +13,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.generalplus.GoPlusDrone.View.SlidingTabLayout;
 import com.generalplus.GoPlusDrone.View.TabFragmentPagerAdapter;
 import java.util.LinkedList;
@@ -31,20 +30,20 @@ public class TabFragment extends Fragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        return layoutInflater.inflate(C1021R.layout.fragment_sample, viewGroup, false);
+        return layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_sample, viewGroup, false);
     }
 
     @Override // androidx.fragment.app.Fragment
     public void onViewCreated(View view, Bundle bundle) {
         this.adapter = new TabFragmentPagerAdapter(getChildFragmentManager(), getFragments());
-        ViewPager viewPager = (ViewPager) view.findViewById(C1021R.id.viewpager);
+        ViewPager viewPager = (ViewPager) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.viewpager);
         this.pager = viewPager;
         viewPager.setAdapter(this.adapter);
-        SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(C1021R.id.sliding_tabs);
+        SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.sliding_tabs);
         this.tabs = slidingTabLayout;
         slidingTabLayout.setViewPager(this.pager);
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        Toolbar toolbar = (Toolbar) view.findViewById(C1021R.id.toolbar);
+        Toolbar toolbar = (Toolbar) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.toolbar);
         toolbar.setTitleTextColor(-1);
         appCompatActivity.setSupportActionBar(toolbar);
         ActionBar supportActionBar = appCompatActivity.getSupportActionBar();

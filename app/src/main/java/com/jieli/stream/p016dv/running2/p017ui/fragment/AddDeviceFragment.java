@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.WifiBean;
 import com.jieli.stream.p016dv.running2.interfaces.OnWifiCallBack;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
@@ -38,13 +37,13 @@ public class AddDeviceFragment extends BaseFragment implements View.OnClickListe
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_add_device, viewGroup, false);
-        ImageView imageView = (ImageView) viewInflate.findViewById(C1438R.id.add_dev_return_btn);
-        ImageView imageView2 = (ImageView) viewInflate.findViewById(C1438R.id.add_dev_refresh_btn);
-        this.selectWifiSSIDTv = (TextView) viewInflate.findViewById(C1438R.id.add_dev_wifi_name);
-        this.wifiPwdEdit = (EditText) viewInflate.findViewById(C1438R.id.add_dev_wifi_pwd_edit);
-        TextView textView = (TextView) viewInflate.findViewById(C1438R.id.add_dev_btn);
-        this.searchWifiListView = (ListView) viewInflate.findViewById(C1438R.id.add_dev_list_view);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_add_device, viewGroup, false);
+        ImageView imageView = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.add_dev_return_btn);
+        ImageView imageView2 = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.add_dev_refresh_btn);
+        this.selectWifiSSIDTv = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.add_dev_wifi_name);
+        this.wifiPwdEdit = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.add_dev_wifi_pwd_edit);
+        TextView textView = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.add_dev_btn);
+        this.searchWifiListView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.add_dev_list_view);
         imageView.setOnClickListener(this);
         imageView2.setOnClickListener(this);
         textView.setOnClickListener(this);
@@ -80,15 +79,15 @@ public class AddDeviceFragment extends BaseFragment implements View.OnClickListe
             return;
         }
         int id = view.getId();
-        if (id == C1438R.id.add_dev_return_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.add_dev_return_btn) {
             getActivity().onBackPressed();
             return;
         }
-        if (id == C1438R.id.add_dev_refresh_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.add_dev_refresh_btn) {
             refresh();
             return;
         }
-        if (id == C1438R.id.add_dev_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.add_dev_btn) {
             String strTrim = this.selectWifiSSIDTv.getText().toString().trim();
             String strTrim2 = this.wifiPwdEdit.getText().toString().trim();
             this.isAddDev = false;
@@ -107,11 +106,11 @@ public class AddDeviceFragment extends BaseFragment implements View.OnClickListe
                         this.isAddDev = true;
                         return;
                     }
-                    ToastUtil.showToastShort(getString(C1438R.string.wifi_pwd_length_not_allow));
+                    ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.wifi_pwd_length_not_allow));
                     return;
                 }
             }
-            ToastUtil.showToastShort(getString(C1438R.string.wifi_pwd_not_empty));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.wifi_pwd_not_empty));
         }
     }
 
@@ -197,7 +196,7 @@ public class AddDeviceFragment extends BaseFragment implements View.OnClickListe
             String ssid = WifiHelper.formatSSID(wifiInfo.getSSID());
             String ssid2 = WifiHelper.formatSSID(PreferencesHelper.getSharedPreferences(getActivity().getApplicationContext()).getString(IConstant.CURRENT_WIFI_SSID, null));
             if (this.isAddDev && !TextUtils.isEmpty(ssid2) && ssid2.equals(ssid)) {
-                ToastUtil.showToastShort(getString(C1438R.string.connected_wifi_tip));
+                ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.connected_wifi_tip));
                 this.isAddDev = false;
             }
         }
@@ -270,12 +269,12 @@ public class AddDeviceFragment extends BaseFragment implements View.OnClickListe
                 return view;
             }
             if (view == null) {
-                view = LayoutInflater.from(AddDeviceFragment.this.getActivity()).inflate(C1438R.layout.item_wifi_list, viewGroup, false);
+                view = LayoutInflater.from(AddDeviceFragment.this.getActivity()).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_wifi_list, viewGroup, false);
                 viewHolder = new ViewHolder();
-                viewHolder.wifiIcon = (ImageView) view.findViewById(C1438R.id.item_wifi_icon);
-                viewHolder.wifiNameTv = (TextView) view.findViewById(C1438R.id.item_wifi_name);
-                viewHolder.wifiStateTv = (TextView) view.findViewById(C1438R.id.item_wifi_state);
-                viewHolder.wifiSelectIcon = (ImageView) view.findViewById(C1438R.id.item_wifi_select_state);
+                viewHolder.wifiIcon = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_wifi_icon);
+                viewHolder.wifiNameTv = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_wifi_name);
+                viewHolder.wifiStateTv = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_wifi_state);
+                viewHolder.wifiSelectIcon = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_wifi_select_state);
                 view.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) view.getTag();
@@ -289,12 +288,12 @@ public class AddDeviceFragment extends BaseFragment implements View.OnClickListe
                     viewHolder.wifiNameTv.setText(ssid);
                 }
                 if (state == 1) {
-                    viewHolder.wifiStateTv.setText(C1438R.string.saved);
+                    viewHolder.wifiStateTv.setText(com.weioa.KmedHealthIndonesia.R.string.saved);
                 }
                 if (zIsSelect) {
-                    viewHolder.wifiSelectIcon.setImageResource(C1438R.mipmap.ic_check_round_blue);
+                    viewHolder.wifiSelectIcon.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_check_round_blue);
                 } else {
-                    viewHolder.wifiSelectIcon.setImageResource(C1438R.mipmap.ic_uncheck_round_blue);
+                    viewHolder.wifiSelectIcon.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_uncheck_round_blue);
                 }
             }
             return view;

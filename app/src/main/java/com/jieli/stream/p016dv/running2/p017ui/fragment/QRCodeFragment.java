@@ -12,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.activity.MainActivity;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
 import com.jieli.stream.p016dv.running2.p017ui.dialog.QRCodeDialog;
@@ -34,14 +33,14 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_sta_qr_code, viewGroup, false);
-        this.mEditWifiSSID = (EditText) viewInflate.findViewById(C1438R.id.edit_hot_spot_wifi);
-        this.mEditWifiPwd = (EditText) viewInflate.findViewById(C1438R.id.edit_hot_spot_pwd);
-        this.mGenerateQRCodeButton = (Button) viewInflate.findViewById(C1438R.id.generate_qr_code_btn);
-        this.mPasswordView = (ImageView) viewInflate.findViewById(C1438R.id.show_or_hide_pwd);
-        this.mReturnButton = (Button) viewInflate.findViewById(C1438R.id.hot_spot_return_btn);
-        this.mSaveInfoCheckbox = (CheckBox) viewInflate.findViewById(C1438R.id.save_sta_msg);
-        this.mBackToSearchButton = (Button) viewInflate.findViewById(C1438R.id.back_to_search_btn);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_sta_qr_code, viewGroup, false);
+        this.mEditWifiSSID = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.edit_hot_spot_wifi);
+        this.mEditWifiPwd = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.edit_hot_spot_pwd);
+        this.mGenerateQRCodeButton = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.generate_qr_code_btn);
+        this.mPasswordView = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.show_or_hide_pwd);
+        this.mReturnButton = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.hot_spot_return_btn);
+        this.mSaveInfoCheckbox = (CheckBox) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.save_sta_msg);
+        this.mBackToSearchButton = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.back_to_search_btn);
         this.mGenerateQRCodeButton.setOnClickListener(this);
         this.mPasswordView.setOnClickListener(this);
         this.mReturnButton.setOnClickListener(this);
@@ -73,21 +72,21 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
     private void handlerPwdUI() {
         if (this.isShowPwd) {
             this.mEditWifiPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            this.mPasswordView.setImageResource(C1438R.drawable.dbg_show_pwd_selector);
+            this.mPasswordView.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.dbg_show_pwd_selector);
         } else {
             this.mEditWifiPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
             this.mEditWifiPwd.requestFocus();
-            this.mPasswordView.setImageResource(C1438R.mipmap.ic_hide_pwd);
+            this.mPasswordView.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_hide_pwd);
         }
     }
 
     private void showQRCodeDialog(String str, String str2) {
         if (TextUtils.isEmpty(str)) {
-            ToastUtil.showToastShort(getString(C1438R.string.wifi_ssid_empty_tip));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.wifi_ssid_empty_tip));
             return;
         }
         if (!TextUtils.isEmpty(str2) && str2.length() < 8) {
-            ToastUtil.showToastShort(getString(C1438R.string.pwd_lenth_limits));
+            ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.pwd_lenth_limits));
             return;
         }
         QRCodeDialog qRCodeDialogNewInstance = QRCodeDialog.newInstance(str, str2, this.mSaveInfoCheckbox.isChecked());
@@ -109,12 +108,12 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
 
     /* JADX INFO: Access modifiers changed from: private */
     public void toDeviceListFragment(Bundle bundle) {
-        Fragment fragmentFindFragmentById = getActivity().getSupportFragmentManager().findFragmentById(C1438R.id.container);
+        Fragment fragmentFindFragmentById = getActivity().getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.container);
         if (!(fragmentFindFragmentById instanceof DeviceListFragment)) {
             fragmentFindFragmentById = new DeviceListFragment();
         }
         fragmentFindFragmentById.setArguments(bundle);
-        ((MainActivity) getActivity()).changeFragment(C1438R.id.container, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
+        ((MainActivity) getActivity()).changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, fragmentFindFragmentById, fragmentFindFragmentById.getClass().getSimpleName());
     }
 
     private void toStaDeviceListFragment() {
@@ -122,6 +121,6 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
         if (staDeviceListFragment == null) {
             staDeviceListFragment = new StaDeviceListFragment();
         }
-        ((MainActivity) getActivity()).changeFragment(C1438R.id.container, staDeviceListFragment, staDeviceListFragment.getClass().getSimpleName());
+        ((MainActivity) getActivity()).changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, staDeviceListFragment, staDeviceListFragment.getClass().getSimpleName());
     }
 }

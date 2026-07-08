@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseDialogFragment;
 import com.jieli.stream.p016dv.running2.util.ToastUtil;
 import org.apache.commons.net.ftp.FTPReply;
@@ -37,10 +36,10 @@ public class InputContentDialog extends BaseDialogFragment implements View.OnCli
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.dialog_input_content, viewGroup, false);
-        this.mEditText = (EditText) viewInflate.findViewById(C1438R.id.dialog_edit_text);
-        Button button = (Button) viewInflate.findViewById(C1438R.id.dialog_input_cancel_btn);
-        Button button2 = (Button) viewInflate.findViewById(C1438R.id.dialog_input_confirm_btn);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.dialog_input_content, viewGroup, false);
+        this.mEditText = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_edit_text);
+        Button button = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_input_cancel_btn);
+        Button button2 = (Button) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_input_confirm_btn);
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
         return viewInflate;
@@ -84,11 +83,11 @@ public class InputContentDialog extends BaseDialogFragment implements View.OnCli
             return;
         }
         int id = view.getId();
-        if (id == C1438R.id.dialog_input_cancel_btn) {
+        if (id == com.weioa.KmedHealthIndonesia.R.id.dialog_input_cancel_btn) {
             dismiss();
             return;
         }
-        if (id != C1438R.id.dialog_input_confirm_btn || (editText = this.mEditText) == null) {
+        if (id != com.weioa.KmedHealthIndonesia.R.id.dialog_input_confirm_btn || (editText = this.mEditText) == null) {
             return;
         }
         String strTrim = editText.getText().toString().trim();
@@ -100,6 +99,6 @@ public class InputContentDialog extends BaseDialogFragment implements View.OnCli
             dismiss();
             return;
         }
-        ToastUtil.showToastShort(getString(C1438R.string.input_content_empty));
+        ToastUtil.showToastShort(getString(com.weioa.KmedHealthIndonesia.R.string.input_content_empty));
     }
 }

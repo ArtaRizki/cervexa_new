@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseDialogFragment;
 import com.jieli.stream.p016dv.running2.util.IConstant;
 import com.jieli.stream.p016dv.running2.util.ToastUtil;
@@ -76,7 +75,7 @@ public class SelectWifiDialog extends BaseDialogFragment {
                 if (view == SelectWifiDialog.this.mRightBtn) {
                     String strTrim = SelectWifiDialog.this.mEditPwd.getText().toString().trim();
                     if (TextUtils.isEmpty(SelectWifiDialog.this.mSSID)) {
-                        ToastUtil.showToastShort(SelectWifiDialog.this.getString(C1438R.string.wifi_ssid_empty_tip));
+                        ToastUtil.showToastShort(SelectWifiDialog.this.getString(com.weioa.KmedHealthIndonesia.R.string.wifi_ssid_empty_tip));
                         return;
                     }
                     if (TextUtils.isEmpty(strTrim) || strTrim.length() >= 8) {
@@ -86,18 +85,18 @@ public class SelectWifiDialog extends BaseDialogFragment {
                         SelectWifiDialog.this.dismiss();
                         return;
                     }
-                    ToastUtil.showToastShort(SelectWifiDialog.this.getString(C1438R.string.wifi_pwd_length_not_allow));
+                    ToastUtil.showToastShort(SelectWifiDialog.this.getString(com.weioa.KmedHealthIndonesia.R.string.wifi_pwd_length_not_allow));
                     return;
                 }
                 if (view == SelectWifiDialog.this.ivShowOrHidePwd) {
                     SelectWifiDialog.this.isShowPwd = !SelectWifiDialog.this.isShowPwd;
                     if (SelectWifiDialog.this.isShowPwd) {
                         SelectWifiDialog.this.mEditPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                        SelectWifiDialog.this.ivShowOrHidePwd.setImageResource(C1438R.drawable.dbg_show_pwd_selector);
+                        SelectWifiDialog.this.ivShowOrHidePwd.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.dbg_show_pwd_selector);
                     } else {
                         SelectWifiDialog.this.mEditPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
                         SelectWifiDialog.this.mEditPwd.requestFocus();
-                        SelectWifiDialog.this.ivShowOrHidePwd.setImageResource(C1438R.mipmap.ic_hide_pwd);
+                        SelectWifiDialog.this.ivShowOrHidePwd.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_hide_pwd);
                     }
                 }
             }
@@ -123,16 +122,16 @@ public class SelectWifiDialog extends BaseDialogFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.dialog_select_wifi, viewGroup);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.dialog_select_wifi, viewGroup);
         if (getDialog() != null) {
             getDialog().requestWindowFeature(1);
         }
-        this.tvTitle = (TextView) viewInflate.findViewById(C1438R.id.dialog_title);
-        this.mSpinner = (Spinner) viewInflate.findViewById(C1438R.id.dialog_wifi_ssid_spinner);
-        this.mEditPwd = (EditText) viewInflate.findViewById(C1438R.id.dialog_edit_wifi_pwd);
-        this.ivShowOrHidePwd = (ImageView) viewInflate.findViewById(C1438R.id.dialog_show_or_hide_pwd);
-        this.mLeftBtn = (TextView) viewInflate.findViewById(C1438R.id.dialog_left);
-        this.mRightBtn = (TextView) viewInflate.findViewById(C1438R.id.dialog_right);
+        this.tvTitle = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_title);
+        this.mSpinner = (Spinner) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_wifi_ssid_spinner);
+        this.mEditPwd = (EditText) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_edit_wifi_pwd);
+        this.ivShowOrHidePwd = (ImageView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_show_or_hide_pwd);
+        this.mLeftBtn = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_left);
+        this.mRightBtn = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_right);
         this.mSpinner.setOnItemSelectedListener(this.onItemSelectedListener);
         this.mLeftBtn.setOnClickListener(this.mOnClickListener);
         this.mRightBtn.setOnClickListener(this.mOnClickListener);
@@ -211,7 +210,7 @@ public class SelectWifiDialog extends BaseDialogFragment {
         public View getView(int i, View view, ViewGroup viewGroup) {
             ViewHolder viewHolder;
             if (view == null) {
-                view = LayoutInflater.from(getContext()).inflate(C1438R.layout.item_select_wifi, viewGroup, false);
+                view = LayoutInflater.from(getContext()).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_select_wifi, viewGroup, false);
                 viewHolder = new ViewHolder(view);
             } else {
                 viewHolder = (ViewHolder) view.getTag();
@@ -224,7 +223,7 @@ public class SelectWifiDialog extends BaseDialogFragment {
             private TextView textView;
 
             ViewHolder(View view) {
-                this.textView = (TextView) view.findViewById(C1438R.id.item_select_wifi_tv);
+                this.textView = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_select_wifi_tv);
                 view.setTag(this);
             }
         }

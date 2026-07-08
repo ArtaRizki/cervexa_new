@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseFragment;
 
 /* JADX INFO: loaded from: classes.dex */
@@ -15,16 +14,16 @@ public class DeviceCameraModeFragment extends BaseFragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.fragment_device_setting_camera_mode, viewGroup, false);
-        RadioGroup radioGroup = (RadioGroup) viewInflate.findViewById(C1438R.id.camera_mode_radiogroup);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_device_setting_camera_mode, viewGroup, false);
+        RadioGroup radioGroup = (RadioGroup) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.camera_mode_radiogroup);
         this.radioGroup = radioGroup;
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() { // from class: com.jieli.stream.dv.running2.ui.fragment.settings.DeviceCameraModeFragment.1
             @Override // android.widget.RadioGroup.OnCheckedChangeListener
             public void onCheckedChanged(RadioGroup radioGroup2, int i) {
-                if (i == C1438R.id.full_screen_mode_rbtn) {
+                if (i == com.weioa.KmedHealthIndonesia.R.id.full_screen_mode_rbtn) {
                     return;
                 }
-                int i2 = C1438R.id.width_screen_mode_rbtn;
+                int i2 = com.weioa.KmedHealthIndonesia.R.id.width_screen_mode_rbtn;
             }
         });
         return viewInflate;

@@ -17,7 +17,6 @@ import com.tencent.p023mm.opensdk.modelmsg.WXTextObject;
 import com.tencent.p023mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.p023mm.opensdk.openapi.IWXAPI;
 import com.tencent.p023mm.opensdk.openapi.WXAPIFactory;
-import com.xyzlf.com.share.library.C2095R;
 import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.interfaces.OnShareListener;
 import com.xyzlf.share.library.interfaces.ShareConstant;
@@ -127,7 +126,7 @@ public class ShareByWeixin extends ShareBase {
         if (onShareListener != null) {
             onShareListener.onShare(this.channel, 2);
         }
-        ToastUtil.showToast(this.context, C2095R.string.share_no_weixin_client, true);
+        ToastUtil.showToast(this.context, com.weioa.KmedHealthIndonesia.R.string.share_no_weixin_client, true);
     }
 
     public Bitmap getLoacalBitmap(String str) {
@@ -138,7 +137,7 @@ public class ShareByWeixin extends ShareBase {
                 e.printStackTrace();
             }
         }
-        return BitmapFactory.decodeResource(this.context.getResources(), C2095R.drawable.share_default);
+        return BitmapFactory.decodeResource(this.context.getResources(), com.weioa.KmedHealthIndonesia.R.drawable.share_default);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -172,7 +171,7 @@ public class ShareByWeixin extends ShareBase {
             if (bitmap != null) {
                 wXMediaMessage.thumbData = bmpToByteArray(getWxShareBitmap(bitmap), true);
             } else {
-                Bitmap bitmapDecodeResource = BitmapFactory.decodeResource(this.context.getResources(), C2095R.drawable.share_default);
+                Bitmap bitmapDecodeResource = BitmapFactory.decodeResource(this.context.getResources(), com.weioa.KmedHealthIndonesia.R.drawable.share_default);
                 if (bitmapDecodeResource != null) {
                     wXMediaMessage.thumbData = bmpToByteArray(getWxShareBitmap(bitmapDecodeResource), true);
                 }
@@ -213,7 +212,7 @@ public class ShareByWeixin extends ShareBase {
                     if (ShareByWeixin.this.listener != null) {
                         ShareByWeixin.this.listener.onShare(ShareByWeixin.this.channel, 1);
                     }
-                    ToastUtil.showToast(context, C2095R.string.share_success, true);
+                    ToastUtil.showToast(context, com.weioa.KmedHealthIndonesia.R.string.share_success, true);
                 } else if (ShareByWeixin.this.listener != null) {
                     ShareByWeixin.this.listener.onShare(ShareByWeixin.this.channel, 2);
                 }
@@ -264,6 +263,6 @@ public class ShareByWeixin extends ShareBase {
         if (onShareListener != null) {
             onShareListener.onShare(this.channel, 2);
         }
-        ToastUtil.showToast(this.context, C2095R.string.share_no_weixin_client, true);
+        ToastUtil.showToast(this.context, com.weioa.KmedHealthIndonesia.R.string.share_no_weixin_client, true);
     }
 }

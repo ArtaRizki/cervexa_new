@@ -24,7 +24,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.generalplus.ffmpegLib.ZoomableSurfaceView;
 import com.generalplus.ffmpegLib.ffmpegWrapper;
 
@@ -194,8 +193,8 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
                     }
                 }).start();
                 CameraActivity cameraActivity = CameraActivity.this;
-                Toast.makeText(cameraActivity, cameraActivity.getResources().getString(C1021R.string.language22), 0).show();
-                CameraActivity.btnTakeRecorder.setBackgroundResource(C1021R.drawable.vedio_button);
+                Toast.makeText(cameraActivity, cameraActivity.getResources().getString(com.weioa.KmedHealthIndonesia.R.string.language22), 0).show();
+                CameraActivity.btnTakeRecorder.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.vedio_button);
                 CameraActivity.imageView.setVisibility(4);
             }
         }
@@ -241,17 +240,17 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(C1021R.layout.camera_activity);
+        setContentView(com.weioa.KmedHealthIndonesia.R.layout.camera_activity);
         this.mStartTime = getTick();
         getWindow().addFlags(128);
-        this.btnSwitch = (ImageButton) findViewById(C1021R.id.btnSwitch);
-        this.btnLeftMenu = (ImageButton) findViewById(C1021R.id.btnLeftMenu);
-        layout = (LinearLayout) findViewById(C1021R.id.linearLayout);
-        relativeLayout = (RelativeLayout) findViewById(C1021R.id.relativeLayout);
-        this.rlRightMenu = (RelativeLayout) findViewById(C1021R.id.rlRightMenu);
-        this.textMenu12 = (TextView) findViewById(C1021R.id.textMenu12);
-        this.textMenu13 = (TextView) findViewById(C1021R.id.textMenu13);
-        this.textMenu14 = (TextView) findViewById(C1021R.id.textMenu14);
+        this.btnSwitch = (ImageButton) findViewById(com.weioa.KmedHealthIndonesia.R.id.btnSwitch);
+        this.btnLeftMenu = (ImageButton) findViewById(com.weioa.KmedHealthIndonesia.R.id.btnLeftMenu);
+        layout = (LinearLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.linearLayout);
+        relativeLayout = (RelativeLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.relativeLayout);
+        this.rlRightMenu = (RelativeLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.rlRightMenu);
+        this.textMenu12 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.textMenu12);
+        this.textMenu13 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.textMenu13);
+        this.textMenu14 = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.textMenu14);
         text(12);
         this.textMenu12.setOnClickListener(new View.OnClickListener() { // from class: com.generalplus.GoPlusDrone.Activity.CameraActivity.1
             @Override // android.view.View.OnClickListener
@@ -283,13 +282,13 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
                 CameraActivity.this.rlRightMenu.setVisibility(8);
             }
         });
-        ImageView imageView2 = (ImageView) findViewById(C1021R.id.imgTip);
+        ImageView imageView2 = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.imgTip);
         imgTip = imageView2;
         imageView2.setBackgroundResource(0);
         this.isImgTipShow = false;
         this.mScreenWidth = getResources().getDisplayMetrics().widthPixels;
         this.mScreenHigth = getResources().getDisplayMetrics().heightPixels;
-        relative = (RelativeLayout) findViewById(C1021R.id.container);
+        relative = (RelativeLayout) findViewById(com.weioa.KmedHealthIndonesia.R.id.container);
         isT = false;
         isT2 = false;
         initView();
@@ -314,7 +313,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         initGL2JNIVIEW();
         if (isR) {
             imageView.setVisibility(0);
-            btnTakeRecorder.setBackgroundResource(C1021R.drawable.videobutton_3);
+            btnTakeRecorder.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.videobutton_3);
         }
         isHave = false;
         exit();
@@ -322,8 +321,8 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         if (this.m_CamWrapper == null) {
             this.m_CamWrapper = new CamWrapper();
         }
-        this.m_tvRecordTime = (TextView) findViewById(C1021R.id.tvRecordTime);
-        ZoomableSurfaceView zoomableSurfaceView = (ZoomableSurfaceView) findViewById(C1021R.id.surfaceView);
+        this.m_tvRecordTime = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.tvRecordTime);
+        ZoomableSurfaceView zoomableSurfaceView = (ZoomableSurfaceView) findViewById(com.weioa.KmedHealthIndonesia.R.id.surfaceView);
         this.mSurfaceView = zoomableSurfaceView;
         zoomableSurfaceView.setEGLContextClientVersion(2);
         this.mSurfaceView.setRenderer(ffmpegWrapper.getInstance());
@@ -346,10 +345,10 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         ffmpegWrapper.naSetDecodeOptions("flags=low_delay");
         ffmpegWrapper.getInstance();
         ffmpegWrapper.naSetScaleMode(0);
-        ImageView imageView3 = (ImageView) findViewById(C1021R.id.ivBroken);
+        ImageView imageView3 = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.ivBroken);
         this.m_ivBroken = imageView3;
         imageView3.setVisibility(4);
-        TextView textView = (TextView) findViewById(C1021R.id.tvSpeed);
+        TextView textView = (TextView) findViewById(com.weioa.KmedHealthIndonesia.R.id.tvSpeed);
         this.m_tvSpeed = textView;
         textView.setVisibility(8);
         setPlayStatus(false);
@@ -689,7 +688,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         }
         ffmpegWrapper.getInstance();
         ffmpegWrapper.naSaveSnapshot(this.strSaveDirectory + "/Photo/" + getTime() + UVCCameraHelper.SUFFIX_JPEG, this.mSaveType);
-        Toast.makeText(this, C1021R.string.capture_successfully, 0).show();
+        Toast.makeText(this, com.weioa.KmedHealthIndonesia.R.string.capture_successfully, 0).show();
     }
 
     private int stopRecode(boolean z) {
@@ -728,7 +727,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
                 ffmpegWrapper.getInstance();
                 ffmpegWrapper.naStopSaveVideo();
             }
-            Toast.makeText(this, C1021R.string.start_recorder, 0).show();
+            Toast.makeText(this, com.weioa.KmedHealthIndonesia.R.string.start_recorder, 0).show();
             String time = getTime();
             ffmpegWrapper.getInstance();
             ffmpegWrapper.naSaveSnapshot(this.strSaveDirectory + "/Video/thumbnails/" + time + UVCCameraHelper.SUFFIX_JPEG, 1);
@@ -741,7 +740,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
             this.handler.removeCallbacks(this.updateTimer);
             this.handler.postDelayed(this.updateTimer, 1000L);
         } else {
-            Toast.makeText(this, C1021R.string.stop_recorder, 0).show();
+            Toast.makeText(this, com.weioa.KmedHealthIndonesia.R.string.stop_recorder, 0).show();
             byte[] bArr2 = {71, 80, 83, 79, 67, 75, 69, 84, 16, 0, 4, 1, 3, 2, 0, 0, 0, 0};
             bArr2[17] = (byte) stopRecode(false);
             sendCmd(bArr2);
@@ -807,7 +806,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
             this.isS = true;
         }
         if (isOff) {
-            imageView = (ImageView) findViewById(C1021R.id.camera_video_dot);
+            imageView = (ImageView) findViewById(com.weioa.KmedHealthIndonesia.R.id.camera_video_dot);
             new RelativeLayout.LayoutParams((this.mScreenWidth * 99) / 100, this.mScreenHigth).leftMargin = this.mScreenWidth / 200;
             relative.setGravity(17);
             this.btnSwitch.setVisibility(4);
@@ -831,7 +830,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
                 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(i / 30, i / 30);
                 layoutParams.leftMargin = (this.mScreenWidth * 16) / 30;
                 layoutParams.topMargin = this.mScreenWidth / 30;
-                imageView.setImageResource(C1021R.drawable.cicle);
+                imageView.setImageResource(com.weioa.KmedHealthIndonesia.R.drawable.cicle);
                 imageView.setVisibility(4);
                 relative.addView(imageView, layoutParams);
                 this.rig = 1;
@@ -881,7 +880,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         ImageView imageView3 = new ImageView(this);
         this.shizi2ImageView = imageView3;
         imageView3.setLayoutParams(layoutParams5);
-        this.shizi2ImageView.setBackgroundResource(C1021R.drawable.shizi);
+        this.shizi2ImageView.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.shizi);
         this.shizi2ImageView.setVisibility(4);
         if (!this.isS) {
             this.shizi2ImageView.setVisibility(0);
@@ -897,7 +896,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(i, i);
         ImageButton imageButton = new ImageButton(this);
         this.backButton = imageButton;
-        imageButton.setBackgroundResource(C1021R.drawable.back_button);
+        imageButton.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.back_button);
         this.backButton.setId(3);
         this.backButton.setLayoutParams(layoutParams);
         layout.addView(this.backButton);
@@ -906,7 +905,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         layoutParams2.leftMargin = this.mScreenWidth / 30;
         ImageButton imageButton2 = new ImageButton(this);
         this.subButton = imageButton2;
-        imageButton2.setBackgroundResource(C1021R.drawable.sub_button);
+        imageButton2.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.sub_button);
         this.subButton.setId(4);
         this.subButton.setLayoutParams(layoutParams2);
         layout.addView(this.subButton);
@@ -914,7 +913,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(i3, i3);
         ImageButton imageButton3 = new ImageButton(this);
         this.autoButton = imageButton3;
-        imageButton3.setBackgroundResource(C1021R.drawable.auto_button);
+        imageButton3.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.auto_button);
         this.autoButton.setId(5);
         this.autoButton.setLayoutParams(layoutParams3);
         layout.addView(this.autoButton);
@@ -922,7 +921,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         LinearLayout.LayoutParams layoutParams4 = new LinearLayout.LayoutParams(i4, i4);
         ImageButton imageButton4 = new ImageButton(this);
         this.sumButton = imageButton4;
-        imageButton4.setBackgroundResource(C1021R.drawable.sum_button);
+        imageButton4.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.sum_button);
         this.sumButton.setId(6);
         this.sumButton.setLayoutParams(layoutParams4);
         layout.addView(this.sumButton);
@@ -931,7 +930,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         layoutParams5.leftMargin = this.mScreenWidth / 30;
         ImageButton imageButton5 = new ImageButton(this);
         this.narrowButton = imageButton5;
-        imageButton5.setBackgroundResource(C1021R.drawable.narrow_button);
+        imageButton5.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.narrow_button);
         this.narrowButton.setId(7);
         this.narrowButton.setLayoutParams(layoutParams5);
         layout.addView(this.narrowButton);
@@ -939,7 +938,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         LinearLayout.LayoutParams layoutParams6 = new LinearLayout.LayoutParams(i6, i6);
         ImageButton imageButton6 = new ImageButton(this);
         this.ampButton = imageButton6;
-        imageButton6.setBackgroundResource(C1021R.drawable.amp_button);
+        imageButton6.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.amp_button);
         this.ampButton.setId(8);
         this.ampButton.setLayoutParams(layoutParams6);
         layout.addView(this.ampButton);
@@ -948,7 +947,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         layoutParams7.leftMargin = this.mScreenWidth / 30;
         ImageButton imageButton7 = new ImageButton(this);
         this.btnTip = imageButton7;
-        imageButton7.setBackgroundResource(C1021R.drawable.btntip);
+        imageButton7.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.btntip);
         this.btnTip.setId(9);
         this.btnTip.setLayoutParams(layoutParams7);
         layout.addView(this.btnTip);
@@ -957,7 +956,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         layoutParams8.leftMargin = this.mScreenWidth / 30;
         ImageButton imageButton8 = new ImageButton(this);
         this.btnSnapshot = imageButton8;
-        imageButton8.setBackgroundResource(C1021R.drawable.photo_button);
+        imageButton8.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.photo_button);
         this.btnSnapshot.setId(1);
         this.btnSnapshot.setLayoutParams(layoutParams8);
         layout.addView(this.btnSnapshot);
@@ -966,7 +965,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         layoutParams9.leftMargin = this.mScreenWidth / 30;
         ImageButton imageButton9 = new ImageButton(this);
         btnTakeRecorder = imageButton9;
-        imageButton9.setBackgroundResource(C1021R.drawable.vedio_button);
+        imageButton9.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.vedio_button);
         btnTakeRecorder.setId(2);
         btnTakeRecorder.setLayoutParams(layoutParams9);
         layout.addView(btnTakeRecorder);
@@ -975,7 +974,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
         layoutParams10.leftMargin = this.mScreenWidth / 30;
         ImageButton imageButton10 = new ImageButton(this);
         this.fileButton = imageButton10;
-        imageButton10.setBackgroundResource(C1021R.drawable.file_button);
+        imageButton10.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.file_button);
         this.fileButton.setId(10);
         this.fileButton.setLayoutParams(layoutParams10);
         layout.addView(this.fileButton);
@@ -1210,7 +1209,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Vi
                 boolean z = !this.isImgTipShow;
                 this.isImgTipShow = z;
                 if (z) {
-                    imgTip.setBackgroundResource(C1021R.drawable.shizi);
+                    imgTip.setBackgroundResource(com.weioa.KmedHealthIndonesia.R.drawable.shizi);
                 } else {
                     imgTip.setBackgroundResource(0);
                 }

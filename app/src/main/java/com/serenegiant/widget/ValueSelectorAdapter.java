@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import com.serenegiant.common.C1831R;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,7 +83,7 @@ public class ValueSelectorAdapter extends ArrayAdapter<ValueSelectorAdapter.Valu
                 }
                 if (viewHolder.titleTv == null) {
                     try {
-                        viewHolder.titleTv = (TextView) view.findViewById(C1831R.id.title);
+                        viewHolder.titleTv = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.title);
                     } catch (Exception unused2) {
                         viewHolder.titleTv = null;
                     }

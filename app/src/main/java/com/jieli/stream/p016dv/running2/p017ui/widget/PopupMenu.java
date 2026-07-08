@@ -16,7 +16,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import androidx.core.view.GravityCompat;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.util.AppUtils;
 import com.jieli.stream.p016dv.running2.util.Dbug;
 import java.util.HashMap;
@@ -61,9 +60,9 @@ public class PopupMenu {
         }
         this.mContext = context;
         this.resIds = map;
-        View viewInflate = LayoutInflater.from(context).inflate(C1438R.layout.popup_menu_layout, (ViewGroup) null);
+        View viewInflate = LayoutInflater.from(context).inflate(com.weioa.KmedHealthIndonesia.R.layout.popup_menu_layout, (ViewGroup) null);
         this.mContentView = viewInflate;
-        ListView listView = (ListView) viewInflate.findViewById(C1438R.id.pop_list_view);
+        ListView listView = (ListView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.pop_list_view);
         listView.setAdapter((ListAdapter) new PopupAdapter(this.mContext));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() { // from class: com.jieli.stream.dv.running2.ui.widget.PopupMenu.1
             @Override // android.widget.AdapterView.OnItemClickListener
@@ -241,9 +240,9 @@ public class PopupMenu {
             Integer num;
             int iIntValue = 0;
             if (view == null) {
-                view = LayoutInflater.from(this.mContext).inflate(C1438R.layout.popup_menu_item, viewGroup, false);
+                view = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.popup_menu_item, viewGroup, false);
                 viewHolder = new ViewHolder();
-                viewHolder.imageView = (ImageView) view.findViewById(C1438R.id.item_image);
+                viewHolder.imageView = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_image);
                 view.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) view.getTag();

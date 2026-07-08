@@ -11,7 +11,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.bean.FileInfo;
 import com.jieli.stream.p016dv.running2.p017ui.MainApplication;
 import com.jieli.stream.p016dv.running2.p017ui.widget.NoScrollGridView;
@@ -92,7 +91,7 @@ public class SubGridViewAdapter extends BaseAdapter implements IConstant {
         FileInfo fileInfo;
         String path;
         if (view == null) {
-            view = LayoutInflater.from(this.mContext).inflate(C1438R.layout.item_media, viewGroup, false);
+            view = LayoutInflater.from(this.mContext).inflate(com.weioa.KmedHealthIndonesia.R.layout.item_media, viewGroup, false);
             viewHolder = new ViewHolder(view);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -119,7 +118,7 @@ public class SubGridViewAdapter extends BaseAdapter implements IConstant {
                         getPictureThumb(fileInfo, i);
                     }
                 } else if (iJudgeFileType != 2) {
-                    viewHolder.ivThumb.setImageResource(C1438R.mipmap.ic_default_picture);
+                    viewHolder.ivThumb.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
                 } else {
                     viewHolder.ivPicState.setVisibility(8);
                     viewHolder.layoutVideo.setVisibility(0);
@@ -140,9 +139,9 @@ public class SubGridViewAdapter extends BaseAdapter implements IConstant {
                 } else {
                     viewHolder.ivSelectState.setVisibility(0);
                     if (fileInfo.isSelected()) {
-                        viewHolder.ivSelectState.setImageResource(C1438R.mipmap.ic_check_round_blue);
+                        viewHolder.ivSelectState.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_check_round_blue);
                     } else {
-                        viewHolder.ivSelectState.setImageResource(C1438R.mipmap.ic_uncheck_round);
+                        viewHolder.ivSelectState.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_uncheck_round);
                     }
                 }
             }
@@ -159,14 +158,14 @@ public class SubGridViewAdapter extends BaseAdapter implements IConstant {
         private TextView tvDuration;
 
         ViewHolder(View view) {
-            ImageView imageView = (ImageView) view.findViewById(C1438R.id.item_media_thumb);
+            ImageView imageView = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_media_thumb);
             this.ivThumb = imageView;
             imageView.setLayoutParams(new RelativeLayout.LayoutParams(SubGridViewAdapter.this.viewWidth, SubGridViewAdapter.this.viewHeight));
-            this.ivSelectState = (ImageView) view.findViewById(C1438R.id.item_media_select_state);
-            this.ivPicState = (ImageView) view.findViewById(C1438R.id.item_media_picture_state);
-            this.ivVideoState = (ImageView) view.findViewById(C1438R.id.item_media_video_state);
-            this.layoutVideo = (RelativeLayout) view.findViewById(C1438R.id.item_media_video_layout);
-            this.tvDuration = (TextView) view.findViewById(C1438R.id.item_media_duration);
+            this.ivSelectState = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_media_select_state);
+            this.ivPicState = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_media_picture_state);
+            this.ivVideoState = (ImageView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_media_video_state);
+            this.layoutVideo = (RelativeLayout) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_media_video_layout);
+            this.tvDuration = (TextView) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_media_duration);
             view.setTag(this);
         }
     }
@@ -190,11 +189,11 @@ public class SubGridViewAdapter extends BaseAdapter implements IConstant {
                 imageView.setImageBitmap(bitmap);
                 return;
             } else {
-                imageView.setImageResource(C1438R.mipmap.ic_default_picture);
+                imageView.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
                 return;
             }
         }
-        imageView.setImageResource(C1438R.mipmap.ic_default_picture);
+        imageView.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
     }
 
     private void getLoadVideoThumb(String str, int i) {
@@ -302,7 +301,7 @@ public class SubGridViewAdapter extends BaseAdapter implements IConstant {
                 if (bitmap != null) {
                     imageView.setImageBitmap(bitmap);
                 } else {
-                    imageView.setImageResource(C1438R.mipmap.ic_default_picture);
+                    imageView.setImageResource(com.weioa.KmedHealthIndonesia.R.mipmap.ic_default_picture);
                 }
             }
             FileInfo fileInfo = this.info;

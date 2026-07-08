@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-import com.jieli.stream.p016dv.running2.C1438R;
 import com.jieli.stream.p016dv.running2.p017ui.base.BaseDialogFragment;
 
 /* JADX INFO: loaded from: classes.dex */
@@ -44,11 +43,11 @@ public class WaitingDialog extends BaseDialogFragment implements DialogInterface
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(C1438R.layout.dialog_waiting, viewGroup, false);
+        View viewInflate = layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.dialog_waiting, viewGroup, false);
         if (getDialog() != null) {
             getDialog().requestWindowFeature(1);
         }
-        this.tvNotifyContent = (TextView) viewInflate.findViewById(C1438R.id.dialog_waiting_tv);
+        this.tvNotifyContent = (TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.dialog_waiting_tv);
         return viewInflate;
     }
 
@@ -67,7 +66,7 @@ public class WaitingDialog extends BaseDialogFragment implements DialogInterface
         attributes.height = -2;
         attributes.gravity = 17;
         getDialog().getWindow().setAttributes(attributes);
-        getDialog().getWindow().setBackgroundDrawableResource(C1438R.drawable.dialog_bg);
+        getDialog().getWindow().setBackgroundDrawableResource(com.weioa.KmedHealthIndonesia.R.drawable.dialog_bg);
         getDialog().setOnKeyListener(this);
     }
 

@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import com.generalplus.GoPlusDrone.C1021R;
 import com.generalplus.GoPlusDrone.View.SlidingTabLayout;
 
 /* JADX INFO: loaded from: classes.dex */
@@ -20,15 +19,15 @@ public class SlidingTabsBasicFragment extends Fragment {
 
     @Override // androidx.fragment.app.Fragment
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        return layoutInflater.inflate(C1021R.layout.fragment_sample, viewGroup, false);
+        return layoutInflater.inflate(com.weioa.KmedHealthIndonesia.R.layout.fragment_sample, viewGroup, false);
     }
 
     @Override // androidx.fragment.app.Fragment
     public void onViewCreated(View view, Bundle bundle) {
-        ViewPager viewPager = (ViewPager) view.findViewById(C1021R.id.viewpager);
+        ViewPager viewPager = (ViewPager) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.viewpager);
         this.mViewPager = viewPager;
         viewPager.setAdapter(new SamplePagerAdapter());
-        SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(C1021R.id.sliding_tabs);
+        SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(com.weioa.KmedHealthIndonesia.R.id.sliding_tabs);
         this.mSlidingTabLayout = slidingTabLayout;
         slidingTabLayout.setViewPager(this.mViewPager);
     }
@@ -54,9 +53,9 @@ public class SlidingTabsBasicFragment extends Fragment {
 
         @Override // androidx.viewpager.widget.PagerAdapter
         public Object instantiateItem(ViewGroup viewGroup, int i) {
-            View viewInflate = SlidingTabsBasicFragment.this.getActivity().getLayoutInflater().inflate(C1021R.layout.pager_item, viewGroup, false);
+            View viewInflate = SlidingTabsBasicFragment.this.getActivity().getLayoutInflater().inflate(com.weioa.KmedHealthIndonesia.R.layout.pager_item, viewGroup, false);
             viewGroup.addView(viewInflate);
-            ((TextView) viewInflate.findViewById(C1021R.id.item_title)).setText(String.valueOf(i + 1));
+            ((TextView) viewInflate.findViewById(com.weioa.KmedHealthIndonesia.R.id.item_title)).setText(String.valueOf(i + 1));
             Log.i(SlidingTabsBasicFragment.LOG_TAG, "instantiateItem() [position: " + i + "]");
             return viewInflate;
         }
