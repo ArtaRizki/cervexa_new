@@ -268,7 +268,8 @@ public final class USBMonitor {
         if (this.mPermissionIntent == null) {
             Context context = this.mWeakContext.get();
             if (context != null) {
-                this.mPermissionIntent = PendingIntent.getBroadcast(context, 0, new Intent(this.ACTION_USB_PERMISSION), 0);
+                int pendingFlags = android.os.Build.VERSION.SDK_INT >= 23 ? android.app.PendingIntent.FLAG_IMMUTABLE : 0;
+                this.mPermissionIntent = PendingIntent.getBroadcast(context, 0, new Intent(this.ACTION_USB_PERMISSION), pendingFlags);
                 IntentFilter intentFilter = new IntentFilter(this.ACTION_USB_PERMISSION);
                 intentFilter.addAction(ACTION_USB_DEVICE_ATTACHED);
                 intentFilter.addAction("android.hardware.usb.action.USB_DEVICE_DETACHED");
