@@ -274,7 +274,11 @@ public final class USBMonitor {
                 intentFilter.addAction(ACTION_USB_DEVICE_ATTACHED);
                 intentFilter.addAction("android.hardware.usb.action.USB_DEVICE_DETACHED");
                 intentFilter.addAction(USBSTATECHANGEACTIION);
-                context.registerReceiver(this.mUsbReceiver, intentFilter);
+                if (android.os.Build.VERSION.SDK_INT >= 33) {
+                    context.registerReceiver(this.mUsbReceiver, intentFilter, android.content.Context.RECEIVER_NOT_EXPORTED);
+                } else {
+                    context.registerReceiver(this.mUsbReceiver, intentFilter);
+                }
             }
             this.mDeviceCounts = 0;
             this.mAsyncHandler.postDelayed(this.mDeviceCheckRunnable, 1000L);
