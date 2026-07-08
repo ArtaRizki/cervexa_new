@@ -70,7 +70,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         public android.widget.ImageView back;
         public androidx.recyclerview.widget.RecyclerView rcResolution;
         public com.serenegiant.usb.widget.UVCCameraTextureView cameraView;
-        public android.widget.ImageView ivBroken;
+        public android.widget.TextView ivBroken;
         public android.view.View llConent;
         public void setEventHandler(Object o) {}
     }
@@ -129,7 +129,7 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         this.binding.back = findViewById(getResources().getIdentifier("back", "id", getPackageName()));
         this.binding.rcResolution = findViewById(getResources().getIdentifier("rc_resolution", "id", getPackageName()));
         this.binding.cameraView = findViewById(getResources().getIdentifier("camera_view", "id", getPackageName()));
-        this.binding.ivBroken = findViewById(getResources().getIdentifier("iv_broken", "id", getPackageName()));
+        this.binding.ivBroken = findViewById(getResources().getIdentifier("ivBroken", "id", getPackageName()));
         this.binding.llConent = findViewById(getResources().getIdentifier("ll_conent", "id", getPackageName()));
         this.binding.setEventHandler(this);
         connectService();
