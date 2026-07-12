@@ -44,7 +44,7 @@ public final class MediaInfo {
             Method dump skipped, instruction units count: 268
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.utils.MediaInfo.getVideo():org.json.JSONObject");
+        return null;
     }
 
     private static final JSONObject getAudio() throws JSONException {
@@ -482,3 +482,4 @@ public final class MediaInfo {
         }
     }
 }
+

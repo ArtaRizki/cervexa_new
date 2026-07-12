@@ -92,7 +92,7 @@ public class AudioEncoderBuffered extends AbstractAudioEncoder {
                 Method dump skipped, instruction units count: 240
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.AudioEncoderBuffered.AudioThread.run():void");
+            return;
         }
     }
 
@@ -218,7 +218,8 @@ public class AudioEncoderBuffered extends AbstractAudioEncoder {
                 monitor-exit(r2)     // Catch: java.lang.Throwable -> L8b
                 throw r0
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.AudioEncoderBuffered.DequeueThread.run():void");
+            return;
         }
     }
 }
+

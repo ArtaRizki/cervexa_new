@@ -159,7 +159,7 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
             IntentFilter intentFilter = new IntentFilter(IActions.ACTION_SELECT_FILES);
             intentFilter.addAction(IActions.ACTION_SELECT_STATE_CHANGE);
             intentFilter.addAction(IActions.ACTION_LANGUAAGE_CHANGE);
-            getActivity().getApplicationContext().registerReceiver(this.mReceiver, intentFilter);
+            if(android.os.Build.VERSION.SDK_INT>=33){getActivity().getApplicationContext().registerReceiver(this.mReceiver, intentFilter, 4);}else{getActivity().getApplicationContext().registerReceiver(this.mReceiver, intentFilter);}
         }
     }
 
@@ -470,3 +470,4 @@ public class BrowseFileFragment extends BaseFragment implements View.OnClickList
         this.mShareTipsDialog.show(getActivity().getSupportFragmentManager(), "Share_Tips");
     }
 }
+

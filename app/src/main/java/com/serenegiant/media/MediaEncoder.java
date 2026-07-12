@@ -121,7 +121,7 @@ public abstract class MediaEncoder implements IMediaCodec {
                 monitor-exit(r0)     // Catch: java.lang.Throwable -> L87
                 throw r1
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.MediaEncoder.RunnableC18531.run():void");
+            return;
         }
     };
     private long prevOutputPTSUs = 0;
@@ -401,3 +401,4 @@ public abstract class MediaEncoder implements IMediaCodec {
         return jNanoTime < j ? jNanoTime + (j - jNanoTime) : jNanoTime;
     }
 }
+

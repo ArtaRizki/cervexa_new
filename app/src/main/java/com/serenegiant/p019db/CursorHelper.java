@@ -108,7 +108,7 @@ public final class CursorHelper {
         L2e:
             return r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.p019db.CursorHelper.findPositionFromId(android.database.Cursor, long):int");
+        return 0;
     }
 
     public static void dumpCursor(Cursor cursor) {
@@ -159,3 +159,4 @@ public final class CursorHelper {
         }
     }
 }
+

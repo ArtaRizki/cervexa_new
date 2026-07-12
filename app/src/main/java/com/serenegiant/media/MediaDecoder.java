@@ -476,7 +476,7 @@ public abstract class MediaDecoder implements IMediaCodec {
         L3c:
             return
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.MediaDecoder.internal_HandleInput():void");
+        return;
     }
 
     protected long handleInput(long j) {
@@ -645,3 +645,4 @@ public abstract class MediaDecoder implements IMediaCodec {
         return -1;
     }
 }
+

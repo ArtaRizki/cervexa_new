@@ -626,7 +626,7 @@ public class TwoPainViewGroup extends FrameLayout {
             r7.mChild2 = r0
             throw r2
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.widget.TwoPainViewGroup.startLayoutOnUI():void");
+        return;
     }
 
     private void cancelAnimation() {
@@ -638,3 +638,4 @@ public class TwoPainViewGroup extends FrameLayout {
         }
     }
 }
+

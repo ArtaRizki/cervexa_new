@@ -296,6 +296,14 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
     protected void onStart() {
         super.onStart();
         startService(new Intent(this, (Class<?>) CommunicationService.class));
+        if (!ClientManager.getClient().isConnected()) {
+            String gateway = this.mWifiHelper != null ? this.mWifiHelper.getGateWay(this.mApplication) : "";
+            if (TextUtils.isEmpty(gateway) || "0.0.0.0".equals(gateway)) {
+                gateway = "192.168.1.1";
+            }
+            Dbug.m1389i(this.tag, "Force connecting to gateway: " + gateway);
+            connectDevice(gateway);
+        }
     }
 
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
@@ -312,7 +320,11 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(IActions.ACTION_DEV_ACCESS);
         intentFilter.addAction(IActions.ACTION_CONNECTION_TIMEOUT);
-        getApplicationContext().registerReceiver(this.mainReceiver, intentFilter);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            getApplicationContext().registerReceiver(this.mainReceiver, intentFilter, android.content.Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            getApplicationContext().registerReceiver(this.mainReceiver, intentFilter);
+        }
         this.mWifiHelper.registerOnWifiCallback(this);
         Locale.getDefault().getLanguage();
         changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, new VideoFragment(), VideoFragment.class.getSimpleName());
@@ -382,7 +394,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
     @Override // com.jieli.stream.p016dv.running2.interfaces.OnWifiCallBack
     public void onConnected(WifiInfo wifiInfo) {
         String ssid = WifiHelper.formatSSID(wifiInfo.getSSID());
-        if (!TextUtils.isEmpty(ssid) && ssid.contains(WIFI_PREFIX)) {
+        if ((!TextUtils.isEmpty(ssid) && ssid.contains(WIFI_PREFIX)) || (!TextUtils.isEmpty(ssid) && ssid.contains("unknown ssid"))) {
             this.isReConnectDev = false;
             this.reConnectNum = 0;
             connectDevice(this.mWifiHelper.getGateWay(this.mApplication));
@@ -413,7 +425,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
                 NetworkInfo activeNetworkInfo = connectivityManager != null ? connectivityManager.getActiveNetworkInfo() : null;
                 if (activeNetworkInfo != null) {
                     String extraInfo = activeNetworkInfo.getExtraInfo();
-                    if (!TextUtils.isEmpty(extraInfo) && extraInfo.contains(WIFI_PREFIX) && activeNetworkInfo.getDetailedState() == NetworkInfo.DetailedState.CONNECTED) {
+                    if (((!TextUtils.isEmpty(extraInfo) && extraInfo.contains(WIFI_PREFIX)) || (!TextUtils.isEmpty(extraInfo) && extraInfo.contains("unknown ssid"))) && activeNetworkInfo.getDetailedState() == NetworkInfo.DetailedState.CONNECTED) {
                         connectDevice(this.mWifiHelper.getGateWay(this.mApplication));
                     } else {
                         Dbug.m1388e(this.tag, "getExtraInfo is null");

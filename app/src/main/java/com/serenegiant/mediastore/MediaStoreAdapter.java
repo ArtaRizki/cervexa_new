@@ -211,7 +211,7 @@ public class MediaStoreAdapter extends CursorAdapter {
             monitor-exit(r7)
             throw r8
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.mediastore.MediaStoreAdapter.getMediaInfo(int, com.serenegiant.mediastore.MediaStoreHelper$MediaInfo):com.serenegiant.mediastore.MediaStoreHelper$MediaInfo");
+        return null;
     }
 
     public void setThumbnailSize(int i) {
@@ -421,3 +421,4 @@ public class MediaStoreAdapter extends CursorAdapter {
         }
     }
 }
+

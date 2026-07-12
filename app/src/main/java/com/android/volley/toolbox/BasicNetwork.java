@@ -49,7 +49,7 @@ public class BasicNetwork implements Network {
             Method dump skipped, instruction units count: 418
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.android.volley.toolbox.BasicNetwork.performRequest(com.android.volley.Request):com.android.volley.NetworkResponse");
+        return null;
     }
 
     private void logSlowRequests(long j, Request<?> request, byte[] bArr, StatusLine statusLine) {
@@ -136,3 +136,4 @@ public class BasicNetwork implements Network {
         return treeMap;
     }
 }
+

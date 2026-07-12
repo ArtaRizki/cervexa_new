@@ -43,7 +43,7 @@ public class CommunicationService extends Service implements IConstant, IActions
                 Method dump skipped, instruction units count: 2958
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.service.CommunicationService.C17211.onNotify(com.jieli.lib.dv.control.json.bean.NotifyInfo):void");
+            return;
         }
     };
     private OnConnectStateListener connectStateListener = new OnConnectStateListener() { // from class: com.jieli.stream.dv.running2.ui.service.CommunicationService.2
@@ -240,3 +240,4 @@ public class CommunicationService extends Service implements IConstant, IActions
         }
     }
 }
+

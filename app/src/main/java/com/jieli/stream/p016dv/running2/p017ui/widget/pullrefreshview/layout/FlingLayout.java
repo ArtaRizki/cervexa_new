@@ -248,7 +248,7 @@ public class FlingLayout extends FrameLayout implements NestedScrollingChild, Ne
             Method dump skipped, instruction units count: 366
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.layout.FlingLayout.dispatchTouchEvent(android.view.MotionEvent):boolean");
+        return false;
     }
 
     @Override // android.view.View
@@ -407,7 +407,7 @@ public class FlingLayout extends FrameLayout implements NestedScrollingChild, Ne
         La6:
             return
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.layout.FlingLayout.onNestedPreScroll(android.view.View, int, int, int[]):void");
+        return;
     }
 
     @Override // android.view.ViewGroup, android.view.ViewParent, androidx.core.view.NestedScrollingParent
@@ -485,3 +485,4 @@ public class FlingLayout extends FrameLayout implements NestedScrollingChild, Ne
         this.mOnScrollListener = onScrollListener;
     }
 }
+

@@ -94,7 +94,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
     }
 
     private void populateAttributes(Context context, AttributeSet attributeSet) {
-        this.primaryColor = MiscUtils.getColor(getContext(), com.weioa.KmedHealthIndonesia.R.attr.colorPrimary);
+        this.primaryColor = MiscUtils.getColor(getContext(), android.R.attr.colorPrimary);
         this.screenWidth = MiscUtils.getScreenWidth(getContext());
         this.tenDp = MiscUtils.dpToPixel(getContext(), 10.0f);
         this.maxFixedItemWidth = MiscUtils.dpToPixel(getContext(), 168.0f);

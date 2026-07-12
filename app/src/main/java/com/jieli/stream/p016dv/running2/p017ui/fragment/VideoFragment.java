@@ -771,7 +771,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(IActions.ACTION_FORMAT_TF_CARD);
         intentFilter.addAction(IActions.ACTION_LANGUAAGE_CHANGE);
-        MainApplication.getApplication().registerReceiver(this.mReceiver, intentFilter);
+        if(android.os.Build.VERSION.SDK_INT>=33){MainApplication.getApplication().registerReceiver(this.mReceiver, intentFilter, 4);}else{MainApplication.getApplication().registerReceiver(this.mReceiver, intentFilter);}
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -783,9 +783,26 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         if (PreferencesHelper.getSharedPreferences(this.mApplication).getBoolean(IConstant.DEBUG_SETTINGS, false)) {
             startDebug();
         }
-        if (this.isRtspEnable) {
-            initPlayer(AppUtils.getRtspUrl());
+        boolean isMs2 = false;
+        if (getActivity() != null && getActivity().getIntent() != null) {
+            isMs2 = getActivity().getIntent().getBooleanExtra("isMs2", false);
+        }
+        if (this.isRtspEnable || isMs2) {
+            String url = isMs2 ? "http://192.168.1.1:8080/?action=stream" : AppUtils.getRtspUrl();
+            if (isMs2 && this.mVideoView != null) {
+                this.mVideoView.setRender(2); // Use TextureView
+            }
+            initPlayer(url);
             this.isSwitchCamera = false;
+            if (isMs2) {
+                this.isSentOpenRtsCmd = true;
+                if (this.ivBroken != null) {
+                    this.ivBroken.setVisibility(View.GONE);
+                }
+                if (this.mHandler != null) {
+                    this.mHandler.removeCallbacks(this.openRts);
+                }
+            }
             return;
         }
         int rtsFormat = AppUtils.getRtsFormat();
@@ -825,7 +842,11 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         if (PreferencesHelper.getSharedPreferences(this.mApplication).getBoolean(IConstant.DEBUG_SETTINGS, false)) {
             closeDebug();
         }
-        if (!this.isRtspEnable) {
+        boolean isMs2 = false;
+        if (getActivity() != null && getActivity().getIntent() != null) {
+            isMs2 = getActivity().getIntent().getBooleanExtra("isMs2", false);
+        }
+        if (!this.isRtspEnable && !isMs2) {
             if (isPlaying() || this.isSwitchCamera) {
                 final int cameraType = this.mApplication.getDeviceSettingInfo().getCameraType();
                 Dbug.m1389i(this.tag, "cameraType = " + cameraType);
@@ -843,7 +864,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 Dbug.m1389i(this.tag, "Not playing, isSwitchCamera=" + this.isSwitchCamera);
             }
         } else {
-            Dbug.m1389i(this.tag, "Rtsp Enable");
+            Dbug.m1389i(this.tag, "Rtsp Enable or MS2");
         }
         stopLocalRecording();
         VideoCapture videoCapture = this.mVideoCapture;
@@ -860,7 +881,11 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
     /* JADX INFO: Access modifiers changed from: private */
     public boolean isPlaying() {
-        if (this.isRtspEnable) {
+        boolean isMs2 = false;
+        if (getActivity() != null && getActivity().getIntent() != null) {
+            isMs2 = getActivity().getIntent().getBooleanExtra("isMs2", false);
+        }
+        if (this.isRtspEnable || isMs2) {
             IjkVideoView ijkVideoView = this.mVideoView;
             return ijkVideoView != null && ijkVideoView.isPlaying();
         }
@@ -917,7 +942,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 Method dump skipped, instruction units count: 2644
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.fragment.VideoFragment.C160817.onNotify(com.jieli.lib.dv.control.json.bean.NotifyInfo):void");
+            return;
         }
     }
 
@@ -1662,7 +1687,11 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     /* JADX INFO: Access modifiers changed from: private */
     public void switchStreamResolution(int i) {
         closeRTS();
-        if (this.isRtspEnable) {
+        boolean isMs2 = false;
+        if (getActivity() != null && getActivity().getIntent() != null) {
+            isMs2 = getActivity().getIntent().getBooleanExtra("isMs2", false);
+        }
+        if (this.isRtspEnable || isMs2) {
             AppUtils.saveRtspResolutionLevel(i);
             this.mHandler.postDelayed(new Runnable() { // from class: com.jieli.stream.dv.running2.ui.fragment.VideoFragment.29
                 @Override // java.lang.Runnable
@@ -2046,3 +2075,5 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.fps, i + "");
     }
 }
+
+

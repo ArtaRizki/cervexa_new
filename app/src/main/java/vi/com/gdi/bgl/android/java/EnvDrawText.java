@@ -246,7 +246,7 @@ public class EnvDrawText {
         L43:
             return r7
         */
-        throw new UnsupportedOperationException("Method not decompiled: vi.com.gdi.bgl.android.java.EnvDrawText.getTextSize(java.lang.String, int, int):short[]");
+        return null;
     }
 
     public static synchronized void registFontCache(int i, Typeface typeface) {
@@ -278,3 +278,4 @@ public class EnvDrawText {
         }
     }
 }
+

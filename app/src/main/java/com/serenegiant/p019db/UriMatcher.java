@@ -172,6 +172,7 @@ public class UriMatcher {
             int r0 = r5.mCode
             return r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.p019db.UriMatcher.match(android.net.Uri):int");
+        return 0;
     }
 }
+

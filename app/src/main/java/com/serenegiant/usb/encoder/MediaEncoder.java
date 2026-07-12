@@ -177,7 +177,7 @@ public abstract class MediaEncoder implements Runnable {
             monitor-exit(r0)     // Catch: java.lang.Throwable -> L75
             throw r1
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.usb.encoder.MediaEncoder.run():void");
+        return;
     }
 
     void startRecording() {
@@ -504,3 +504,4 @@ public abstract class MediaEncoder implements Runnable {
         return jNanoTime < j ? jNanoTime + (j - jNanoTime) : jNanoTime;
     }
 }
+

@@ -407,7 +407,7 @@ public class UpgradeFragment extends BaseFragment {
                 Method dump skipped, instruction units count: 270
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.dv.running2.ui.fragment.UpgradeFragment.UpgradeSDK.run():void");
+            return;
         }
     }
 
@@ -505,3 +505,4 @@ public class UpgradeFragment extends BaseFragment {
         }
     }
 }
+

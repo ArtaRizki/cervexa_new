@@ -15,6 +15,7 @@ import com.gizthon.camera.adapter.ResolutionListAdapter;
 import com.gizthon.camera.application.CameraApplication;
 import com.gizthon.camera.core.OnCameraConnectedListener;
 // import com.gizthon.camera.databinding.UsbPreviewActivityBinding;
+import com.gizthon.camera.core.wifi.WifiCamera;
 import com.gizthon.camera.model.CervexaDatabase;
 import com.gizthon.camera.model.PatientDao;
 import com.jaeger.library.StatusBarUtil;
@@ -419,9 +420,15 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
                     @Override
                     public void run() {
                         if (!UVCUSBCameraActivity.this.uvcCameraConnected) {
-                            // Tidak ada kamera USB — fallback otomatis ke kamera HP
-                            UVCUSBCameraActivity.this.usePhoneCameraMode = true;
-                            UVCUSBCameraActivity.this.startPhoneCamera();
+                            // FIX: Cek dahulu apakah HP terhubung ke WiFi MS2 —
+                            // Jika ya, alihkan ke stream WiFi bukan kamera HP
+                            if (WifiCamera.isMs2WifiConnected(UVCUSBCameraActivity.this)) {
+                                UVCUSBCameraActivity.this.openMs2WifiStream();
+                            } else {
+                                // Tidak ada kamera USB maupun WiFi MS2 — fallback ke kamera HP
+                                UVCUSBCameraActivity.this.usePhoneCameraMode = true;
+                                UVCUSBCameraActivity.this.startPhoneCamera();
+                            }
                         } else {
                             UVCUSBCameraActivity.this.binding.ivBroken.setVisibility(0);
                         }
@@ -432,16 +439,40 @@ public class UVCUSBCameraActivity extends CameraBaseActivity {
         this.cameraManager.getUVCUSBCamera().connectDevice();
         this.cameraManager.getUVCUSBCamera().onStart();
         this.mCameraHelper = this.cameraManager.getUVCUSBCamera().getCameraHelper();
-        // Safety timeout: jika 5 detik tidak ada kamera USB, fallback ke kamera HP
+        // Safety timeout: jika 5 detik tidak ada kamera USB, cek WiFi MS2 dulu
         new Handler(getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (!uvcCameraConnected && !usePhoneCameraMode) {
-                    usePhoneCameraMode = true;
-                    startPhoneCamera();
+                    // FIX: Cek WiFi MS2 sebelum jatuh ke kamera HP
+                    if (WifiCamera.isMs2WifiConnected(UVCUSBCameraActivity.this)) {
+                        openMs2WifiStream();
+                    } else {
+                        usePhoneCameraMode = true;
+                        startPhoneCamera();
+                    }
                 }
             }
         }, 5000L);
+    }
+
+    /**
+     * Alihkan ke stream WiFi MS2 — buka MainActivity (stream viewer bawaan app).
+     * Data pasien diteruskan via flag agar bisa ditampilkan di atas stream.
+     */
+    private void openMs2WifiStream() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(UVCUSBCameraActivity.this,
+                    "📷 Kamera MS2 terdeteksi — membuka stream WiFi...",
+                    Toast.LENGTH_SHORT).show();
+                // Gunakan WifiCamera.startWifi1Activity() agar konsisten
+                UVCUSBCameraActivity.this.cameraManager.getWifiCamera().initDevice(UVCUSBCameraActivity.this);
+                UVCUSBCameraActivity.this.cameraManager.getWifiCamera().startWifi1Activity(UVCUSBCameraActivity.this);
+                finish(); // Tutup activity USB ini agar tidak menumpuk
+            }
+        });
     }
 
     @Override // com.gizthon.camera.activity.CameraBaseActivity

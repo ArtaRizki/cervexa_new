@@ -519,7 +519,7 @@ public class FixedIndicatorView extends LinearLayout implements Indicator {
             Method dump skipped, instruction units count: 426
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.shizhefei.view.indicator.FixedIndicatorView.drawSlideBar(android.graphics.Canvas):void");
+        return;
     }
 
     private void notifyPageScrolled(int i, float f, int i2) {
@@ -757,3 +757,4 @@ public class FixedIndicatorView extends LinearLayout implements Indicator {
         return this.mPreSelectedTabIndex;
     }
 }
+

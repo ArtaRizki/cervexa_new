@@ -37,7 +37,7 @@ public abstract class BaseActivity extends FragmentActivity implements IConstant
                 Method dump skipped, instruction units count: 491
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.dv.running2.ui.base.BaseActivity.BaseWifiBroadcastReceiver.onReceive(android.content.Context, android.content.Intent):void");
+            return;
         }
     }
 
@@ -78,7 +78,7 @@ public abstract class BaseActivity extends FragmentActivity implements IConstant
         IntentFilter intentFilter = new IntentFilter("android.net.wifi.STATE_CHANGE");
         intentFilter.addAction("android.net.wifi.supplicant.STATE_CHANGE");
         intentFilter.addAction(NetworkChangedReceiver.ACTION_GLOBAL_CONNECTIVITY_CHANGE);
-        MainApplication.getApplication().registerReceiver(this.mReceiver, intentFilter);
+        if(android.os.Build.VERSION.SDK_INT>=33){MainApplication.getApplication().registerReceiver(this.mReceiver, intentFilter, 4);}else{MainApplication.getApplication().registerReceiver(this.mReceiver, intentFilter);}
     }
 
     public void changeFragment(int i, Fragment fragment, String str) {
@@ -100,3 +100,5 @@ public abstract class BaseActivity extends FragmentActivity implements IConstant
         changeFragment(i, fragment, null);
     }
 }
+
+

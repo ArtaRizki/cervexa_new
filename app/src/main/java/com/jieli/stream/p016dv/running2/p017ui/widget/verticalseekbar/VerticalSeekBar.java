@@ -208,7 +208,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
             boolean r5 = super.onKeyDown(r5, r6)
             return r5
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.widget.verticalseekbar.VerticalSeekBar.onKeyDown(int, android.view.KeyEvent):boolean");
+        return false;
     }
 
     @Override // android.widget.ProgressBar
@@ -317,3 +317,4 @@ public class VerticalSeekBar extends AppCompatSeekBar {
         return null;
     }
 }
+

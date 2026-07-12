@@ -420,7 +420,7 @@ public class FilesActivity extends Activity {
                 Method dump skipped, instruction units count: 484
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.generalplus.GoPlusDrone.Activity.FilesActivity.UpdateThumbnailRunnable.run():void");
+            return;
         }
     }
 
@@ -829,3 +829,4 @@ public class FilesActivity extends Activity {
         finish();
     }
 }
+

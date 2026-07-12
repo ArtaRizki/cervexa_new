@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="has_divider" />
+    <item name="h_text1" type="id" />
+    <item name="h_text2" type="id" />
+    <item name="h_text3" type="id" />
+    <item name="h_text4" type="id" />
+    <item name="h_text5" type="id" />
+    <item name="h_text6" type="id" />
+    <item name="h_text7" type="id" />
+    <item name="h_text8" type="id" />
+    <item name="h_text9" type="id" />
+    <item name="h_text10" type="id" />
+    <item name="h_text11" type="id" />
+    <item name="h_text12" type="id" />
+    
+    <item name="version" type="id" />
+    
+    <item name="tv_wchat" type="id" />
+    <item name="tv_qq" type="id" />
+    <item name="tv_fecebook" type="id" />
+    <item name="tv_twitter" type="id" />
+    <item name="tv_youtube" type="id" />
+    
+    <item name="statusbarutil_fake_status_bar_view" type="id" />
+    <item name="statusbarutil_translucent_view" type="id" />
+    
+    <item name="mediastorephotoadapter" type="id" />
+    <item name="thumbnail" type="id" />
+    
+    <item name="anim_type" type="id" />
+    <item name="anim_listener" type="id" />
+    
+    <item name="message" type="id" />
+    <item name="position" type="id" />
+    
+    <item name="help_layout" type="id" />
+    <item name="help_layout1" type="id" />
+    <item name="has_divider" type="id" />
 </resources>

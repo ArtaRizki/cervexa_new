@@ -182,6 +182,18 @@ class PatientActivity : AppCompatActivity() {
     }
 
     private fun openCamera(patientId: Int, nama: String, nik: String, rs: String, nrm: String, dob: String) {
+        // FIX: Cek apakah HP saat ini terhubung ke WiFi kamera MS2
+        // Jika ya, langsung buka stream WiFi MS2 (bukan kamera USB/HP)
+        if (com.gizthon.camera.core.wifi.WifiCamera.isMs2WifiConnected(this)) {
+            Toast.makeText(this, "📡 Kamera MS2 terdeteksi — membuka stream WiFi...", Toast.LENGTH_SHORT).show()
+            // Buat instance WifiCamera lokal untuk membuka stream MS2
+            val wifiCamera = com.gizthon.camera.core.wifi.WifiCamera()
+            wifiCamera.initDevice(this)
+            wifiCamera.startWifi1Activity(this)
+            return
+        }
+
+        // Tidak ada WiFi MS2 — buka UVCUSBCameraActivity (USB atau fallback HP)
         startActivity(Intent(this, UVCUSBCameraActivity::class.java).apply {
             putExtra(EXTRA_PATIENT_ID,   patientId)
             putExtra(EXTRA_PATIENT_NAMA, nama)
@@ -191,6 +203,7 @@ class PatientActivity : AppCompatActivity() {
             putExtra(EXTRA_PATIENT_DOB,  dob)
         })
     }
+
 
     // ── Validation ────────────────────────────────────────────────────────────
     private fun validate(): Boolean {

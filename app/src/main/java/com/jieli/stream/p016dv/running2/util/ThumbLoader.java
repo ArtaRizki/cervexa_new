@@ -445,7 +445,7 @@ public class ThumbLoader {
                     Method dump skipped, instruction units count: 239
                     To view this dump change 'Code comments level' option to 'DEBUG'
                 */
-                throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.ThumbLoader.C17665.onCompleted(byte[], com.jieli.media.codec.bean.MediaMeta):void");
+                return;
             }
 
             @Override // com.jieli.stream.p016dv.running2.interfaces.OnAviThumbListener
@@ -484,7 +484,7 @@ public class ThumbLoader {
                     Method dump skipped, instruction units count: 241
                     To view this dump change 'Code comments level' option to 'DEBUG'
                 */
-                throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.ThumbLoader.C17676.onCompleted(byte[], com.jieli.media.codec.bean.MediaMeta):void");
+                return;
             }
 
             @Override // com.jieli.media.codec.FrameCodec.OnFrameCodecListener
@@ -503,3 +503,4 @@ public class ThumbLoader {
         }
     }
 }
+

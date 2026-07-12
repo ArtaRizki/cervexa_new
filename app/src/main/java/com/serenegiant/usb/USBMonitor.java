@@ -328,7 +328,7 @@ public final class USBMonitor {
             monitor-exit(r1)
             throw r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.usb.USBMonitor.isRegistered():boolean");
+        return false;
     }
 
     public void setDeviceFilter(DeviceFilter deviceFilter) throws IllegalStateException {
@@ -1117,3 +1117,4 @@ public final class USBMonitor {
         }
     }
 }
+

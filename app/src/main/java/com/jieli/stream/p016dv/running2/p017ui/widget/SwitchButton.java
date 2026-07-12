@@ -369,7 +369,7 @@ public class SwitchButton extends CompoundButton {
             Method dump skipped, instruction units count: 499
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.widget.SwitchButton.onDraw(android.graphics.Canvas):void");
+        return;
     }
 
     @Override // android.widget.CompoundButton, android.widget.TextView, android.view.View
@@ -495,7 +495,7 @@ public class SwitchButton extends CompoundButton {
         L97:
             return r1
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.widget.SwitchButton.onTouchEvent(android.view.MotionEvent):boolean");
+        return false;
     }
 
     private boolean getStatusBasedOnPos() {
@@ -855,3 +855,4 @@ public class SwitchButton extends CompoundButton {
         }
     }
 }
+

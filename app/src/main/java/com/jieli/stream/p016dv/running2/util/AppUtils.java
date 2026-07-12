@@ -738,7 +738,7 @@ public class AppUtils implements IConstant {
         L4a:
             throw r4
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.AppUtils.getFromRaw(android.content.Context, int):java.lang.String");
+        return null;
     }
 
     public static void deleteFile(File file) {
@@ -784,7 +784,7 @@ public class AppUtils implements IConstant {
             Method dump skipped, instruction units count: 206
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.AppUtils.readTxtFile(java.lang.String):java.lang.String");
+        return null;
     }
 
     public static AppInfo parseApplicationMsg(String str) {
@@ -1061,7 +1061,7 @@ public class AppUtils implements IConstant {
             Method dump skipped, instruction units count: 262
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.AppUtils.parseServerTxtInfo(java.lang.String, java.lang.String):com.jieli.stream.dv.running2.bean.ServerInfo");
+        return null;
     }
 
     /* JADX WARN: Code restructure failed: missing block: B:62:0x01ad, code lost:
@@ -1078,7 +1078,7 @@ public class AppUtils implements IConstant {
             Method dump skipped, instruction units count: 724
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.AppUtils.checkUpdateFilePath(android.content.Context, int):java.lang.String");
+        return null;
     }
 
     public static void setScreenManualMode(Activity activity) {
@@ -1609,3 +1609,4 @@ public class AppUtils implements IConstant {
         return str + "_rear_camera";
     }
 }
+

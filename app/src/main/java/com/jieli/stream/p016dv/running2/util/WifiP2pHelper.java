@@ -343,7 +343,7 @@ public class WifiP2pHelper {
             La7:
                 return
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.dv.running2.util.WifiP2pHelper.WiFiDirectBroadcastReceiver.onReceive(android.content.Context, android.content.Intent):void");
+            return;
         }
     }
 
@@ -426,3 +426,4 @@ public class WifiP2pHelper {
         }
     }
 }
+

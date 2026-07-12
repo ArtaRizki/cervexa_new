@@ -200,7 +200,7 @@ public class ZoomAspectScaledTextureView extends AspectScaledTextureView impleme
             r5.startWaiting(r6)
             return r1
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.widget.ZoomAspectScaledTextureView.onTouchEvent(android.view.MotionEvent):boolean");
+        return false;
     }
 
     @Override // com.serenegiant.widget.AspectScaledTextureView, android.view.TextureView.SurfaceTextureListener
@@ -296,7 +296,7 @@ public class ZoomAspectScaledTextureView extends AspectScaledTextureView impleme
             Method dump skipped, instruction units count: 613
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.widget.ZoomAspectScaledTextureView.processDrag(android.view.MotionEvent):boolean");
+        return false;
     }
 
     private final void startCheck(MotionEvent motionEvent) {
@@ -558,3 +558,4 @@ public class ZoomAspectScaledTextureView extends AspectScaledTextureView impleme
         }
     }
 }
+

@@ -164,7 +164,7 @@ public class DiskBasedCache implements Cache {
             monitor-exit(r11)
             throw r12
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.android.volley.toolbox.DiskBasedCache.get(java.lang.String):com.android.volley.Cache$Entry");
+        return null;
     }
 
     @Override // com.android.volley.Cache
@@ -506,3 +506,4 @@ public class DiskBasedCache implements Cache {
         return mapEmptyMap;
     }
 }
+

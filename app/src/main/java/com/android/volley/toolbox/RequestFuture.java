@@ -112,7 +112,7 @@ public class RequestFuture<T> implements Future<T>, Response.Listener<T>, Respon
             monitor-exit(r1)
             throw r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.android.volley.toolbox.RequestFuture.isDone():boolean");
+        return false;
     }
 
     @Override // com.android.volley.Response.Listener
@@ -128,3 +128,4 @@ public class RequestFuture<T> implements Future<T>, Response.Listener<T>, Respon
         notifyAll();
     }
 }
+

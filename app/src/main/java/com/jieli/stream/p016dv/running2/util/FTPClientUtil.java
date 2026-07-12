@@ -172,7 +172,7 @@ public class FTPClientUtil implements IConstant {
             Method dump skipped, instruction units count: 432
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.FTPClientUtil.downloadTxt(java.util.List, boolean):void");
+        return;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -191,7 +191,7 @@ public class FTPClientUtil implements IConstant {
             Method dump skipped, instruction units count: 717
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.FTPClientUtil.downLoadUpdateFile(java.lang.String, int, int, android.os.Handler):java.util.List");
+        return null;
     }
 
     /* JADX WARN: Removed duplicated region for block: B:103:0x00ff A[EXC_TOP_SPLITTER, SYNTHETIC] */
@@ -211,6 +211,7 @@ public class FTPClientUtil implements IConstant {
             Method dump skipped, instruction units count: 328
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.FTPClientUtil.uploadFile(java.lang.String, java.lang.String, android.os.Handler):boolean");
+        return false;
     }
 }
+

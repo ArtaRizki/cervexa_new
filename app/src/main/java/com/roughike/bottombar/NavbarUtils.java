@@ -77,6 +77,7 @@ final class NavbarUtils {
         L4d:
             return r2
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.roughike.bottombar.NavbarUtils.hasSoftKeys(android.content.Context):boolean");
+        return false;
     }
 }
+

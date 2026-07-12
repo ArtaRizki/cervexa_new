@@ -350,7 +350,7 @@ public abstract class AbstractChannelDataLink {
                 r4.release(r0)
                 throw r3
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.net.AbstractChannelDataLink.AbstractClient.run():void");
+            return;
         }
 
         private void doReceiveLoop() throws IOException, ClassNotFoundException {
@@ -575,3 +575,4 @@ public abstract class AbstractChannelDataLink {
         }
     }
 }
+

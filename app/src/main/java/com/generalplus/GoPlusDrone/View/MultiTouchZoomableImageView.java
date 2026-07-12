@@ -200,6 +200,7 @@ public class MultiTouchZoomableImageView extends BaseZoomableImageView {
         L41:
             return r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.generalplus.GoPlusDrone.View.MultiTouchZoomableImageView.onTouchEvent(android.view.MotionEvent):boolean");
+        return false;
     }
 }
+

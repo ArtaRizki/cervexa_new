@@ -171,7 +171,7 @@ public abstract class AbstractEncoder implements Encoder {
                 monitor-exit(r0)     // Catch: java.lang.Throwable -> Lc2
                 throw r1
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.AbstractEncoder.RunnableC18471.run():void");
+            return;
         }
     };
     private long prevOutputPTSUs = -1;
@@ -489,3 +489,4 @@ public abstract class AbstractEncoder implements Encoder {
         return j;
     }
 }
+

@@ -695,7 +695,7 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
                 monitor-exit(r0)     // Catch: java.lang.Throwable -> L40
                 throw r5
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.glutils.AbstractRendererHolder.BaseRendererTask.addSurface(int, java.lang.Object, int):void");
+            return;
         }
 
         /* JADX WARN: Code restructure failed: missing block: B:10:0x0018, code lost:
@@ -736,7 +736,7 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
                 monitor-exit(r0)     // Catch: java.lang.Throwable -> L28
                 throw r5
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.glutils.AbstractRendererHolder.BaseRendererTask.removeSurface(int):void");
+            return;
         }
 
         /* JADX WARN: Code restructure failed: missing block: B:8:0x0011, code lost:
@@ -774,7 +774,7 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
                 monitor-exit(r0)     // Catch: java.lang.Throwable -> L21
                 throw r1
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.glutils.AbstractRendererHolder.BaseRendererTask.removeSurfaceAll():void");
+            return;
         }
 
         public void clearSurface(int i, int i2) {
@@ -1149,3 +1149,4 @@ public abstract class AbstractRendererHolder implements IRendererHolder {
         }
     }
 }
+

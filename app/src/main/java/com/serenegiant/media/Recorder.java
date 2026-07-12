@@ -178,7 +178,7 @@ public abstract class Recorder implements IRecorder {
             monitor-exit(r2)
             throw r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.Recorder.isStarted():boolean");
+        return false;
     }
 
     /* JADX WARN: Removed duplicated region for block: B:11:0x0011  */
@@ -212,7 +212,7 @@ public abstract class Recorder implements IRecorder {
             monitor-exit(r2)
             throw r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.Recorder.isReady():boolean");
+        return false;
     }
 
     @Override // com.serenegiant.media.IRecorder
@@ -596,3 +596,4 @@ public abstract class Recorder implements IRecorder {
         return mediaMuxerWrapper == null ? new VideoMuxer(context.getContentResolver().openFileDescriptor(documentFile.getUri(), "rw").getFd()) : mediaMuxerWrapper;
     }
 }
+

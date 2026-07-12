@@ -221,7 +221,7 @@ public abstract class MediaReaper implements Runnable {
             monitor-exit(r0)     // Catch: java.lang.Throwable -> L67
             throw r1
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.MediaReaper.run():void");
+        return;
     }
 
     private final void drain() {
@@ -329,3 +329,4 @@ public abstract class MediaReaper implements Runnable {
         return j;
     }
 }
+

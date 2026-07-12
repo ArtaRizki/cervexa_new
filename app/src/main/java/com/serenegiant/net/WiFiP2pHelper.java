@@ -238,7 +238,7 @@ public class WiFiP2pHelper {
             monitor-exit(r1)
             throw r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.net.WiFiP2pHelper.isWiFiP2pEnabled():boolean");
+        return false;
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -285,7 +285,7 @@ public class WiFiP2pHelper {
             monitor-exit(r1)
             throw r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.net.WiFiP2pHelper.isConnected():boolean");
+        return false;
     }
 
     /* JADX WARN: Removed duplicated region for block: B:10:0x0013  */
@@ -317,7 +317,7 @@ public class WiFiP2pHelper {
             monitor-exit(r2)
             throw r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.net.WiFiP2pHelper.isConnectedOrConnecting():boolean");
+        return false;
     }
 
     protected void callOnStateChanged(boolean z) {
@@ -435,3 +435,4 @@ public class WiFiP2pHelper {
         }
     }
 }
+

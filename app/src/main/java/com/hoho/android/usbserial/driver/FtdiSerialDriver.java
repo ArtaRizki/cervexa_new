@@ -167,7 +167,7 @@ public class FtdiSerialDriver implements UsbSerialDriver {
                 Method dump skipped, instruction units count: 286
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.hoho.android.usbserial.driver.FtdiSerialDriver.FtdiSerialPort.setBaudrate(int):void");
+            return;
         }
 
         @Override // com.hoho.android.usbserial.driver.CommonUsbSerialPort, com.hoho.android.usbserial.driver.UsbSerialPort
@@ -337,3 +337,4 @@ public class FtdiSerialDriver implements UsbSerialDriver {
         return linkedHashMap;
     }
 }
+

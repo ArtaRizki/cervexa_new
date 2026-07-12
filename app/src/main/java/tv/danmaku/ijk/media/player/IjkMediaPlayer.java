@@ -406,7 +406,7 @@ public final class IjkMediaPlayer extends AbstractMediaPlayer {
             r7.setDataSource(r8, r10)
             return
         */
-        throw new UnsupportedOperationException("Method not decompiled: tv.danmaku.ijk.media.player.IjkMediaPlayer.setDataSource(android.content.Context, android.net.Uri, java.util.Map):void");
+        setDataSource(r9.toString(), r10);
     }
 
     @Override // tv.danmaku.ijk.media.player.IMediaPlayer
@@ -1008,3 +1008,4 @@ public final class IjkMediaPlayer extends AbstractMediaPlayer {
         }
     }
 }
+

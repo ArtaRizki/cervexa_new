@@ -189,7 +189,7 @@ public final class VideoMuxer implements IMuxer {
         L4a:
             return
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.VideoMuxer.writeSampleData(int, java.nio.ByteBuffer, android.media.MediaCodec$BufferInfo):void");
+        return;
     }
 
     @Override // com.serenegiant.media.IMuxer
@@ -197,3 +197,4 @@ public final class VideoMuxer implements IMuxer {
         return this.mIsStarted && !this.mReleased;
     }
 }
+

@@ -75,7 +75,7 @@ public class JSonManager {
             Method dump skipped, instruction units count: 516
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.json.JSonManager.parseJSon(com.jieli.stream.dv.running2.util.json.listener.OnCompletedListener):void");
+        return;
     }
 
     private void setFileInfos(List<FileInfo> list) {
@@ -254,3 +254,4 @@ public class JSonManager {
         }
     }
 }
+

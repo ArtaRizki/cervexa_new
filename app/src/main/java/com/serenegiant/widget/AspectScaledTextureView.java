@@ -114,7 +114,7 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
             super.onMeasure(r1, r2)
             return
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.widget.AspectScaledTextureView.onMeasure(int, int):void");
+        return;
     }
 
     @Override // android.view.View
@@ -248,3 +248,4 @@ public class AspectScaledTextureView extends TextureView implements TextureView.
         setTransform(this.mImageMatrix);
     }
 }
+

@@ -137,7 +137,7 @@ public class TouchImageView extends AppCompatImageView {
                     Method dump skipped, instruction units count: 316
                     To view this dump change 'Code comments level' option to 'DEBUG'
                 */
-                throw new UnsupportedOperationException("Method not decompiled: com.gizthon.camera.view.TouchImageView.ViewOnTouchListenerC11221.onTouch(android.view.View, android.view.MotionEvent):boolean");
+                return false;
             }
         });
     }
@@ -310,7 +310,8 @@ public class TouchImageView extends AppCompatImageView {
                 r5 = 1
                 return r5
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.gizthon.camera.view.TouchImageView.ScaleListener.onScale(android.view.ScaleGestureDetector):boolean");
+            return false;
         }
     }
 }
+

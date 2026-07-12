@@ -161,7 +161,7 @@ public abstract class BaseFooterView extends RelativeLayout implements Loadable 
         L3d:
             return r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.layout.BaseFooterView.onScroll(float):boolean");
+        return false;
     }
 
     @Override // com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.support.impl.Loadable
@@ -186,3 +186,4 @@ public abstract class BaseFooterView extends RelativeLayout implements Loadable 
         this.onLoadListener = onLoadListener;
     }
 }
+

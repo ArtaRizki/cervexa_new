@@ -136,7 +136,7 @@ public class TouchImageView extends ImageView {
                     Method dump skipped, instruction units count: 316
                     To view this dump change 'Code comments level' option to 'DEBUG'
                 */
-                throw new UnsupportedOperationException("Method not decompiled: com.generalplus.GoPlusDrone.View.TouchImageView.ViewOnTouchListenerC10311.onTouch(android.view.View, android.view.MotionEvent):boolean");
+                return false;
             }
         });
     }
@@ -241,7 +241,7 @@ public class TouchImageView extends ImageView {
                 r5 = 1
                 return r5
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.generalplus.GoPlusDrone.View.TouchImageView.ScaleListener.onScale(android.view.ScaleGestureDetector):boolean");
+            return false;
         }
     }
 
@@ -315,3 +315,4 @@ public class TouchImageView extends ImageView {
         fixTrans();
     }
 }
+

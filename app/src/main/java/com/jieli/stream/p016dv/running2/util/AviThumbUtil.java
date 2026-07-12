@@ -50,7 +50,7 @@ public class AviThumbUtil {
             Method dump skipped, instruction units count: 646
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.AviThumbUtil.getRecordVideoThumb(java.lang.String, com.jieli.stream.dv.running2.interfaces.OnAviThumbListener):void");
+        return;
     }
 
     public static long getLong(byte[] bArr, boolean z) {
@@ -73,3 +73,4 @@ public class AviThumbUtil {
         return j;
     }
 }
+

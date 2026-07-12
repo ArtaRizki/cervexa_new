@@ -87,7 +87,7 @@ public class AspectRatioFrameLayout extends FrameLayout implements IAspectRatioV
             super.onMeasure(r1, r2)
             return
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.widget.AspectRatioFrameLayout.onMeasure(int, int):void");
+        return;
     }
 
     @Override // com.serenegiant.widget.IAspectRatioView
@@ -108,3 +108,4 @@ public class AspectRatioFrameLayout extends FrameLayout implements IAspectRatioV
         return this.mRequestedAspect;
     }
 }
+

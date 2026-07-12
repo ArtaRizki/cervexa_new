@@ -545,7 +545,7 @@ public class TLView extends ViewGroup implements IConstant {
             Method dump skipped, instruction units count: 1853
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.widget.TLView.onDraw(android.graphics.Canvas):void");
+        return;
     }
 
     private void drawEvents(Canvas canvas) {
@@ -691,3 +691,4 @@ public class TLView extends ViewGroup implements IConstant {
         return super.onTouchEvent(motionEvent);
     }
 }
+

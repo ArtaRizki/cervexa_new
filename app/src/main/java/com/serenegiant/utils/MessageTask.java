@@ -145,7 +145,7 @@ public abstract class MessageTask implements Runnable {
             Method dump skipped, instruction units count: 230
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.utils.MessageTask.run():void");
+        return;
     }
 
     protected boolean callOnError(Exception exc) {
@@ -286,3 +286,4 @@ public abstract class MessageTask implements Runnable {
         throw new TaskBreak();
     }
 }
+

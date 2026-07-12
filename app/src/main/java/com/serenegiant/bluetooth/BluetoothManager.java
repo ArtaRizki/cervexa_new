@@ -743,7 +743,7 @@ public class BluetoothManager {
             L4b:
                 return
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.bluetooth.BluetoothManager.ListeningThread.run():void");
+            return;
         }
 
         public void cancel() {
@@ -797,3 +797,4 @@ public class BluetoothManager {
         }
     }
 }
+

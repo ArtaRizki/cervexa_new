@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="ItemPickerCurrentItemValue" format="integer" />
-    <attr name="ItemPickerDecrementBackground" format="reference" />
-    <attr name="ItemPickerDecrementSrc" format="reference" />
-    <attr name="ItemPickerDisplayedValue" format="reference" />
-    <attr name="ItemPickerEditTextBackground" format="reference" />
-    <attr name="ItemPickerIncrementBackground" format="reference" />
-    <attr name="ItemPickerIncrementSrc" format="reference" />
-    <attr name="ItemPickerMaxItemValue" format="integer" />
-    <attr name="ItemPickerMinItemValue" format="integer" />
-    <attr name="ItemPickerSpeed" format="integer" />
-    <attr name="TimePickerDefaultValue" format="integer" />
 
+    <!-- ─── Standalone attrs (global, reused across multiple styleables) ──── -->
     <attr name="metaButtonBarButtonStyle" format="reference" />
     <attr name="metaButtonBarStyle" format="reference" />
 
@@ -25,75 +15,131 @@
     <attr name="progress_unreached_color" format="color" />
 
     <attr name="seekBarRotation">
-        <enum name="CW270" value="270" />
         <enum name="CW90" value="90" />
+        <enum name="CW270" value="270" />
     </attr>
 
+    <attr name="aspect_ratio" format="float" />
+    <attr name="scale_mode" format="integer" />
+    <attr name="handle_touch_event" format="boolean" />
+
+    <!-- ─── IAspectRatioView ─────────────────────────────────────────────── -->
     <declare-styleable name="IAspectRatioView">
         <attr name="aspect_ratio" />
     </declare-styleable>
-    <declare-styleable name="SwitchButton">
-        <attr name="kswAnimationDuration" />
-        <attr name="kswBackColor" />
-        <attr name="kswBackDrawable" />
-        <attr name="kswBackMeasureRatio" />
-        <attr name="kswBackRadius" />
-        <attr name="kswFadeBack" />
-        <attr name="kswTextMarginH" />
-        <attr name="kswTextOff" />
-        <attr name="kswTextOn" />
-        <attr name="kswThumbColor" />
-        <attr name="kswThumbDrawable" />
-        <attr name="kswThumbHeight" />
-        <attr name="kswThumbMargin" />
-        <attr name="kswThumbMarginBottom" />
-        <attr name="kswThumbMarginLeft" />
-        <attr name="kswThumbMarginRight" />
-        <attr name="kswThumbMarginTop" />
-        <attr name="kswThumbRadius" />
-        <attr name="kswThumbWidth" />
-        <attr name="kswTintColor" />
-    </declare-styleable>
-    <declare-styleable name="ItemPicker">
-        <attr name="ItemPickerDecrementBackground" />
-        <attr name="ItemPickerDecrementSrc" />
-        <attr name="ItemPickerDisplayedValue" />
-        <attr name="ItemPickerEditTextBackground" />
-        <attr name="ItemPickerIncrementBackground" />
-        <attr name="ItemPickerIncrementSrc" />
-        <attr name="ItemPickerMaxItemValue" />
-        <attr name="ItemPickerMinItemValue" />
-    </declare-styleable>
-    <declare-styleable name="BottomBar">
-        <attr name="bb_activeTabAlpha" />
-        <attr name="bb_activeTabColor" />
-        <attr name="bb_badgeBackgroundColor" />
-        <attr name="bb_badgesHideWhenActive" />
-        <attr name="bb_behavior" />
-        <attr name="bb_inActiveTabAlpha" />
-        <attr name="bb_inActiveTabColor" />
-        <attr name="bb_showShadow" />
-        <attr name="bb_tabXmlResource" />
-        <attr name="bb_tabletMode" />
-        <attr name="bb_titleTextAppearance" />
-        <attr name="bb_titleTypeFace" />
-    </declare-styleable>
-    <declare-styleable name="VerticalSeekBar">
-        <attr name="seekBarRotation" />
-    </declare-styleable>
-    <declare-styleable name="FrameView">
-        <attr name="frame_color" />
-        <attr name="frame_type" />
-        <attr name="frame_width" />
-        <attr name="scale_color" />
-        <attr name="scale_rotation" />
-        <attr name="scale_scale" />
-        <attr name="scale_type" />
-        <attr name="scale_width" />
-        <attr name="tick_color" />
-    </declare-styleable>
+
+    <!-- ─── AspectScaledTextureView ──────────────────────────────────────── -->
     <declare-styleable name="AspectScaledTextureView">
         <attr name="aspect_ratio" />
         <attr name="scale_mode" />
     </declare-styleable>
+
+    <!-- ─── ZoomAspectScaledTextureView ─────────────────────────────────── -->
+    <declare-styleable name="ZoomAspectScaledTextureView">
+        <attr name="handle_touch_event" />
+    </declare-styleable>
+
+    <!-- ─── FrameView ────────────────────────────────────────────────────── -->
+    <declare-styleable name="FrameView">
+        <attr name="frame_type" format="integer" />
+        <attr name="frame_width" format="dimension" />
+        <attr name="frame_color" format="color" />
+        <attr name="scale_type" format="integer" />
+        <attr name="scale_width" format="dimension" />
+        <attr name="scale_color" format="color" />
+        <attr name="scale_rotation" format="float" />
+        <attr name="scale_scale" format="float" />
+        <attr name="tick_color" format="color" />
+    </declare-styleable>
+
+    <!-- ─── VerticalSeekBar ──────────────────────────────────────────────── -->
+    <declare-styleable name="VerticalSeekBar">
+        <attr name="seekBarRotation" />
+    </declare-styleable>
+
+    <!-- ─── SwitchButton ─────────────────────────────────────────────────── -->
+    <declare-styleable name="SwitchButton">
+        <attr name="kswThumbDrawable" format="reference" />
+        <attr name="kswThumbColor" format="color|reference" />
+        <attr name="kswThumbMargin" format="dimension" />
+        <attr name="kswThumbMarginLeft" format="dimension" />
+        <attr name="kswThumbMarginRight" format="dimension" />
+        <attr name="kswThumbMarginTop" format="dimension" />
+        <attr name="kswThumbMarginBottom" format="dimension" />
+        <attr name="kswThumbWidth" format="dimension" />
+        <attr name="kswThumbHeight" format="dimension" />
+        <attr name="kswThumbRadius" format="dimension" />
+        <attr name="kswBackRadius" format="dimension" />
+        <attr name="kswBackDrawable" format="reference" />
+        <attr name="kswBackColor" format="color|reference" />
+        <attr name="kswBackMeasureRatio" format="float" />
+        <attr name="kswAnimationDuration" format="integer" />
+        <attr name="kswFadeBack" format="boolean" />
+        <attr name="kswTintColor" format="color" />
+        <attr name="kswTextOn" format="string" />
+        <attr name="kswTextOff" format="string" />
+        <attr name="kswTextMarginH" format="dimension" />
+    </declare-styleable>
+
+    <!-- ─── BottomBar ────────────────────────────────────────────────────── -->
+    <declare-styleable name="BottomBar">
+        <attr name="bb_tabXmlResource" format="reference" />
+        <attr name="bb_tabletMode" format="boolean" />
+        <attr name="bb_behavior" format="integer" />
+        <attr name="bb_inActiveTabAlpha" format="float" />
+        <attr name="bb_activeTabAlpha" format="float" />
+        <attr name="bb_inActiveTabColor" format="color" />
+        <attr name="bb_activeTabColor" format="color" />
+        <attr name="bb_badgeBackgroundColor" format="color" />
+        <attr name="bb_badgesHideWhenActive" format="boolean" />
+        <attr name="bb_titleTextAppearance" format="reference" />
+        <attr name="bb_titleTypeFace" format="string" />
+        <attr name="bb_showShadow" format="boolean" />
+    </declare-styleable>
+
+    <!-- ─── ItemPicker ───────────────────────────────────────────────────── -->
+    <declare-styleable name="ItemPicker">
+        <attr name="ItemPickerMinItemValue" format="integer" />
+        <attr name="ItemPickerMaxItemValue" format="integer" />
+        <attr name="ItemPickerCurrentItemValue" format="integer" />
+        <attr name="ItemPickerDisplayedValue" format="reference" />
+        <attr name="ItemPickerIncrementBackground" format="reference" />
+        <attr name="ItemPickerDecrementBackground" format="reference" />
+        <attr name="ItemPickerIncrementSrc" format="reference" />
+        <attr name="ItemPickerDecrementSrc" format="reference" />
+        <attr name="ItemPickerEditTextBackground" format="reference" />
+        <attr name="ItemPickerSpeed" format="integer" />
+    </declare-styleable>
+
+    <!-- ─── RecycleViewWithEmptyView ─────────────────────────────────────── -->
+    <declare-styleable name="RecycleViewWithEmptyView">
+        <attr name="listDivider" format="reference" />
+    </declare-styleable>
+
+    <!-- ─── SeekBarPreference ────────────────────────────────────────────── -->
+    <declare-styleable name="SeekBarPreference">
+        <attr name="seekbar_layout" format="reference" />
+        <attr name="seekbar_id" format="reference" />
+        <attr name="seekbar_label_id" format="reference" />
+        <attr name="min_value" format="integer" />
+        <attr name="max_value" format="integer" />
+        <attr name="default_value" format="integer" />
+        <attr name="scale_value" format="float" />
+        <attr name="value_format" format="string" />
+    </declare-styleable>
+
+    <!-- ─── TimePicker ───────────────────────────────────────────────────── -->
+    <declare-styleable name="TimePicker">
+        <attr name="TimePickerDefaultValue" format="float" />
+    </declare-styleable>
+
+    <!-- ─── TwoPainViewGroup ─────────────────────────────────────────────── -->
+    <declare-styleable name="TwoPainViewGroup">
+        <attr name="orientation" format="integer" />
+        <attr name="displayMode" format="integer" />
+        <attr name="enableSubWindow" format="boolean" />
+        <attr name="flipChildPos" format="boolean" />
+        <attr name="subWindowScale" format="float" />
+    </declare-styleable>
+
 </resources>

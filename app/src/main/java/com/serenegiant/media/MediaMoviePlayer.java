@@ -387,7 +387,7 @@ public class MediaMoviePlayer {
             monitor-exit(r0)     // Catch: java.lang.Throwable -> L48
             throw r3
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.MediaMoviePlayer.processPrepared(int):boolean");
+        return false;
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -960,3 +960,4 @@ public class MediaMoviePlayer {
         return -1;
     }
 }
+

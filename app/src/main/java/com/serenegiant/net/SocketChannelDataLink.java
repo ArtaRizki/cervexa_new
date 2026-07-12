@@ -134,7 +134,7 @@ public class SocketChannelDataLink extends AbstractChannelDataLink {
                 monitor-exit(r1)
                 throw r0
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.net.SocketChannelDataLink.Client.isConnected():boolean");
+            return false;
         }
 
         @Override // com.serenegiant.net.AbstractChannelDataLink.AbstractClient
@@ -208,3 +208,4 @@ public class SocketChannelDataLink extends AbstractChannelDataLink {
         }
     }
 }
+

@@ -93,7 +93,8 @@ public class OuterCheckerImpl {
                 Method dump skipped, instruction units count: 347
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.zh_jieli.juson.netcheck.OuterCheckerImpl.InternetCheckRunner.run():void");
+            return;
         }
     }
 }
+

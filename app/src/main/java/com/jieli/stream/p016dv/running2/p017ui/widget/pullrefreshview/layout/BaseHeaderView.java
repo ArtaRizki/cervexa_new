@@ -159,7 +159,7 @@ public abstract class BaseHeaderView extends RelativeLayout implements Refreshab
         L3b:
             return r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.layout.BaseHeaderView.onScroll(float):boolean");
+        return false;
     }
 
     @Override // com.jieli.stream.p016dv.running2.p017ui.widget.pullrefreshview.support.impl.Refreshable
@@ -184,3 +184,4 @@ public abstract class BaseHeaderView extends RelativeLayout implements Refreshab
         this.onRefreshListener = onRefreshListener;
     }
 }
+

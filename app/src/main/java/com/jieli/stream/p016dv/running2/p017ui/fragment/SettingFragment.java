@@ -115,7 +115,7 @@ public class SettingFragment extends BaseFragment {
     @Override // androidx.fragment.app.Fragment
     public void onStart() {
         super.onStart();
-        MainApplication.getApplication().registerReceiver(this.mBroadcastReceiver, new IntentFilter(IActions.ACTION_LANGUAAGE_CHANGE));
+        if(android.os.Build.VERSION.SDK_INT>=33){MainApplication.getApplication().registerReceiver(this.mBroadcastReceiver, new IntentFilter(IActions.ACTION_LANGUAAGE_CHANGE), 4);}else{MainApplication.getApplication().registerReceiver(this.mBroadcastReceiver, new IntentFilter(IActions.ACTION_LANGUAAGE_CHANGE));}
     }
 
     @Override // androidx.fragment.app.Fragment
@@ -189,3 +189,4 @@ public class SettingFragment extends BaseFragment {
         startActivity(intent);
     }
 }
+

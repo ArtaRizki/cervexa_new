@@ -218,7 +218,7 @@ public class IjkMediaCodecInfo {
         L9e:
             return r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: tv.danmaku.ijk.media.player.IjkMediaCodecInfo.setupCandidate(android.media.MediaCodecInfo, java.lang.String):tv.danmaku.ijk.media.player.IjkMediaCodecInfo");
+        return null;
     }
 
     public void dumpProfileLevels(String str) {
@@ -252,3 +252,4 @@ public class IjkMediaCodecInfo {
         return String.format(Locale.US, " %s Profile Level %s (%d,%d)", getProfileName(i), getLevelName(i2), Integer.valueOf(i), Integer.valueOf(i2));
     }
 }
+

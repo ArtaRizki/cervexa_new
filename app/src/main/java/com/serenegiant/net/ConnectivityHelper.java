@@ -250,7 +250,7 @@ public class ConnectivityHelper {
             r2.updateActiveNetwork(r3)
             return
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.net.ConnectivityHelper.updateActiveNetwork(android.net.Network):void");
+        return;
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -497,10 +497,11 @@ public class ConnectivityHelper {
         L58:
             return r1
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.net.ConnectivityHelper.isNetworkReachable(android.net.NetworkCapabilities, android.net.NetworkInfo):boolean");
+        return false;
     }
 
     public static String getNetworkTypeString(int i) {
         return i != 0 ? i != 1 ? i != 2 ? i != 128 ? i != 512 ? String.format(Locale.US, "UNKNOWN(%d)", Integer.valueOf(i)) : "ETHERNET" : "BLUETOOTH" : "WIFI" : "MOBILE" : "NON";
     }
 }
+

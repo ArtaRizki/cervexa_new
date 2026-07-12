@@ -346,7 +346,7 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
             Method dump skipped, instruction units count: 243
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.fragment.browse.VideoPlayerFragment.onTouch(android.view.View, android.view.MotionEvent):boolean");
+        return false;
     }
 
     private void showVolumeToastUI(int i, float f) {
@@ -485,3 +485,4 @@ public class VideoPlayerFragment extends BaseFragment implements View.OnTouchLis
         this.tvCurrentTime.setText(getString(com.weioa.KmedHealthIndonesia.R.string.default_time_format));
     }
 }
+

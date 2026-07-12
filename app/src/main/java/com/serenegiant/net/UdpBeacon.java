@@ -275,7 +275,7 @@ public class UdpBeacon {
                     monitor-exit(r0)     // Catch: java.lang.Throwable -> Lbd
                     throw r1
                 */
-                throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.net.UdpBeacon.RunnableC18632.run():void");
+                return;
             }
         };
         if (udpBeaconCallback != null) {
@@ -539,3 +539,4 @@ public class UdpBeacon {
         }
     }
 }
+

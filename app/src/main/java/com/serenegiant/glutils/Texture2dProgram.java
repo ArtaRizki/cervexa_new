@@ -320,7 +320,7 @@ public class Texture2dProgram {
             monitor-exit(r0)     // Catch: java.lang.Throwable -> Ld
             throw r5
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.glutils.Texture2dProgram.setKernel2(float[]):void");
+        return;
     }
 
     public void setColorAdjust(float f) {
@@ -454,3 +454,4 @@ public class Texture2dProgram {
         GLHelper.checkGlError("glDrawArrays");
     }
 }
+

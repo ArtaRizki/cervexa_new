@@ -425,7 +425,7 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
         intentFilter.addAction("android.intent.action.SCREEN_OFF");
-        this.mApplication.registerReceiver(this.receiver, intentFilter);
+        if(android.os.Build.VERSION.SDK_INT>=33){this.mApplication.registerReceiver(this.receiver, intentFilter, 4);}else{this.mApplication.registerReceiver(this.receiver, intentFilter);}
         if (1 == this.mApplication.getSearchMode()) {
             Dbug.m1391w(this.tag, "Current mode is STA");
             this.mExpandButton.setVisibility(0);
@@ -871,3 +871,4 @@ public class PlaybackDialogActivity extends BaseActivity implements View.OnClick
         }
     }
 }
+

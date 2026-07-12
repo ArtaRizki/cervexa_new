@@ -108,7 +108,7 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
                 Method dump skipped, instruction units count: 410
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.fragment.settings.DeviceAdvancedSettingFragment.C16708.onNotify(com.jieli.lib.dv.control.json.bean.NotifyInfo):void");
+            return;
         }
     };
 
@@ -273,3 +273,4 @@ public class DeviceAdvancedSettingFragment extends BaseFragment {
         popupWindow.showAsDropDown(textView);
     }
 }
+

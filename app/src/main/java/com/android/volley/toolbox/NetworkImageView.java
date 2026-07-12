@@ -136,7 +136,7 @@ public class NetworkImageView extends ImageView {
             r8.mImageContainer = r9
             return
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.android.volley.toolbox.NetworkImageView.loadImageIfNecessary(boolean):void");
+        return;
     }
 
     /* JADX INFO: renamed from: com.android.volley.toolbox.NetworkImageView$1 */
@@ -210,3 +210,4 @@ public class NetworkImageView extends ImageView {
         invalidate();
     }
 }
+

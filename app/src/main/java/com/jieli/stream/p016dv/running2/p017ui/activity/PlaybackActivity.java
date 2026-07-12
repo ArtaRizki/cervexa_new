@@ -853,7 +853,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
     private void registerBroadcast() {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(IActions.ACTION_FORMAT_TF_CARD);
-        MainApplication.getApplication().registerReceiver(this.mReceiver, intentFilter);
+        if(android.os.Build.VERSION.SDK_INT>=33){MainApplication.getApplication().registerReceiver(this.mReceiver, intentFilter, 4);}else{MainApplication.getApplication().registerReceiver(this.mReceiver, intentFilter);}
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -1124,7 +1124,7 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
                 Method dump skipped, instruction units count: 3026
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.activity.PlaybackActivity.C148417.onNotify(com.jieli.lib.dv.control.json.bean.NotifyInfo):void");
+            return;
         }
     }
 
@@ -2414,3 +2414,5 @@ public class PlaybackActivity extends BaseActivity implements View.OnClickListen
         hudView.setRowValue(com.weioa.KmedHealthIndonesia.R.string.fps, i + "");
     }
 }
+
+

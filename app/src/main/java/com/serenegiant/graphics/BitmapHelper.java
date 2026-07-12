@@ -331,7 +331,7 @@ public final class BitmapHelper {
             Method dump skipped, instruction units count: 242
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.graphics.BitmapHelper.transform(android.graphics.Matrix, android.graphics.Bitmap, int, int, int):android.graphics.Bitmap");
+        return null;
     }
 
     public static int calcSampleSize(BitmapFactory.Options options, int i, int i2) {
@@ -374,3 +374,4 @@ public final class BitmapHelper {
         return bitmapCreateBitmap;
     }
 }
+

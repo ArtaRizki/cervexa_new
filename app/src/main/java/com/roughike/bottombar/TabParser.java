@@ -60,7 +60,7 @@ class TabParser {
             Method dump skipped, instruction units count: 248
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.roughike.bottombar.TabParser.parseNewTab(android.content.res.XmlResourceParser, int):com.roughike.bottombar.BottomBarTab");
+        return null;
     }
 
     private BottomBarTab tabWithDefaults() {
@@ -86,3 +86,4 @@ class TabParser {
         return ContextCompat.getColor(this.context, attributeResourceValue);
     }
 }
+

@@ -156,7 +156,7 @@ public abstract class AbstractFakeEncoder implements Encoder {
             monitor-exit(r2)
             throw r0
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.AbstractFakeEncoder.release():void");
+        return;
     }
 
     @Override // com.serenegiant.media.Encoder
@@ -436,3 +436,4 @@ public abstract class AbstractFakeEncoder implements Encoder {
         return j;
     }
 }
+

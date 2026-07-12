@@ -55,12 +55,54 @@ public final class MeasureHelper {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct code enable 'Show inconsistent code' option in preferences
     */
-    public void doMeasure(int r11, int r12) {
-        /*
-            Method dump skipped, instruction units count: 284
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.p017ui.widget.media.MeasureHelper.doMeasure(int, int):void");
+    public void doMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int width = View.getDefaultSize(mVideoWidth, widthMeasureSpec);
+        int height = View.getDefaultSize(mVideoHeight, heightMeasureSpec);
+        if (mCurrentAspectRatio == 3) {
+            // MATCH_PARENT
+            width = widthMeasureSpec;
+            height = heightMeasureSpec;
+        } else if (mVideoWidth > 0 && mVideoHeight > 0) {
+            int widthSpecMode = View.MeasureSpec.getMode(widthMeasureSpec);
+            int widthSpecSize = View.MeasureSpec.getSize(widthMeasureSpec);
+            int heightSpecMode = View.MeasureSpec.getMode(heightMeasureSpec);
+            int heightSpecSize = View.MeasureSpec.getSize(heightMeasureSpec);
+
+            if (widthSpecMode == View.MeasureSpec.EXACTLY && heightSpecMode == View.MeasureSpec.EXACTLY) {
+                width = widthSpecSize;
+                height = heightSpecSize;
+                if (mVideoWidth * height < width * mVideoHeight) {
+                    width = height * mVideoWidth / mVideoHeight;
+                } else if (mVideoWidth * height > width * mVideoHeight) {
+                    height = width * mVideoHeight / mVideoWidth;
+                }
+            } else if (widthSpecMode == View.MeasureSpec.EXACTLY) {
+                width = widthSpecSize;
+                height = width * mVideoHeight / mVideoWidth;
+                if (heightSpecMode == View.MeasureSpec.AT_MOST && height > heightSpecSize) {
+                    height = heightSpecSize;
+                }
+            } else if (heightSpecMode == View.MeasureSpec.EXACTLY) {
+                height = heightSpecSize;
+                width = height * mVideoWidth / mVideoHeight;
+                if (widthSpecMode == View.MeasureSpec.AT_MOST && width > widthSpecSize) {
+                    width = widthSpecSize;
+                }
+            } else {
+                width = mVideoWidth;
+                height = mVideoHeight;
+                if (heightSpecMode == View.MeasureSpec.AT_MOST && height > heightSpecSize) {
+                    height = heightSpecSize;
+                    width = height * mVideoWidth / mVideoHeight;
+                }
+                if (widthSpecMode == View.MeasureSpec.AT_MOST && width > widthSpecSize) {
+                    width = widthSpecSize;
+                    height = width * mVideoHeight / mVideoWidth;
+                }
+            }
+        }
+        mMeasuredWidth = width;
+        mMeasuredHeight = height;
     }
 
     public int getMeasuredWidth() {

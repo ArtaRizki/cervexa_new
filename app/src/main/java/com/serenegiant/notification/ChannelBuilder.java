@@ -111,7 +111,7 @@ public class ChannelBuilder {
             Method dump skipped, instruction units count: 652
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.notification.ChannelBuilder.readEntryOne(android.content.Context, org.xmlpull.v1.XmlPullParser, java.util.List):void");
+        return;
     }
 
     public ChannelBuilder(Context context) {
@@ -347,3 +347,4 @@ public class ChannelBuilder {
         }
     }
 }
+

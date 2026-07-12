@@ -41,6 +41,7 @@ public class LangUtil {
             Method dump skipped, instruction units count: 584
             To view this dump change 'Code comments level' option to 'DEBUG'
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.stream.p016dv.running2.util.LangUtil.getLanguage(java.lang.String):java.util.Locale");
+        return null;
     }
 }
+

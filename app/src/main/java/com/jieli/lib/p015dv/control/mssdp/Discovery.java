@@ -281,7 +281,7 @@ public class Discovery {
             monitor-exit(r1)
             throw r2
         */
-        throw new UnsupportedOperationException("Method not decompiled: com.jieli.lib.p015dv.control.mssdp.Discovery.doDiscovery(int, java.lang.String, java.lang.String):void");
+        return;
     }
 
     /* JADX INFO: renamed from: a */
@@ -400,3 +400,4 @@ public class Discovery {
         }
     }
 }
+

@@ -91,7 +91,7 @@ public class AudioSampler extends IAudioSampler {
                 Method dump skipped, instruction units count: 399
                 To view this dump change 'Code comments level' option to 'DEBUG'
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.serenegiant.media.AudioSampler.AudioThread.run():void");
+            return;
         }
     }
 
@@ -105,3 +105,4 @@ public class AudioSampler extends IAudioSampler {
         return this.SAMPLING_RATE;
     }
 }
+
