@@ -164,7 +164,8 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
                     } else {
                         MainActivity.this.mApplication.getDeviceSettingInfo().setCameraType(1);
                     }
-                    new VideoFragment();
+                    VideoFragment videoFragment = new VideoFragment();
+                    MainActivity.this.changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, videoFragment, videoFragment.getClass().getSimpleName());
                     return;
                 }
                 Dbug.m1391w(MainActivity.this.tag, "It isn't DeviceListFragment or StaDeviceListFragment");
@@ -327,7 +328,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
         }
         this.mWifiHelper.registerOnWifiCallback(this);
         Locale.getDefault().getLanguage();
-        changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, new VideoFragment(), VideoFragment.class.getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, new DeviceListFragment(), DeviceListFragment.class.getSimpleName());
     }
 
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
@@ -375,8 +376,8 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
             BaseFragment baseFragment = (BaseFragment) getSupportFragmentManager().findFragmentById(com.weioa.KmedHealthIndonesia.R.id.container);
             Dbug.m1388e(this.tag, "Current fragment=" + baseFragment);
             if (baseFragment == null) {
-                VideoFragment videoFragment = new VideoFragment();
-                changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, videoFragment, videoFragment.getClass().getSimpleName());
+                DeviceListFragment deviceListFragment = new DeviceListFragment();
+                changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, deviceListFragment, deviceListFragment.getClass().getSimpleName());
                 return;
             }
             return;
