@@ -4,20 +4,20 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <!-- Stream ImageView — fullscreen, center crop -->
-    <ImageView
+    <!-- IjkVideoView — fullscreen RTSP stream player -->
+    <com.jieli.stream.p016dv.running2.p017ui.widget.media.IjkVideoView
         android:id="@+id/iv_ms2_stream"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
-        android:contentDescription="MS2 Camera Stream" />
+        android:layout_gravity="center" />
 
-    <!-- Loading indicator -->
+    <!-- Loading indicator (ditampilkan saat mencoba koneksi) -->
     <ProgressBar
         android:id="@+id/pb_ms2_loading"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="center"
+        android:layout_marginTop="-60dp"
         android:indeterminateTint="#FFFFFF"
         android:visibility="visible" />
 
@@ -27,12 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:padding="24dp"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
-        android:lineSpacingMultiplier="1.4"
+        android:lineSpacingMultiplier="1.5"
         android:text="Menghubungkan ke kamera MS2..."
         android:visibility="visible" />
 
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="top"
-        android:background="#80000000"
+        android:background="#AA000000"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingStart="8dp"
@@ -81,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_gravity="bottom"
-        android:background="#80000000"
+        android:background="#AA000000"
         android:orientation="horizontal"
         android:gravity="center"
         android:paddingStart="24dp"
@@ -90,12 +90,12 @@
         <!-- Capture button -->
         <ImageButton
             android:id="@+id/btn_ms2_capture"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@android:drawable/ic_menu_camera"
             android:contentDescription="Ambil Gambar"
             android:scaleType="fitCenter"
-            android:padding="8dp" />
+            android:padding="6dp" />
 
     </LinearLayout>
 
