@@ -183,13 +183,10 @@ class PatientActivity : AppCompatActivity() {
 
     private fun openCamera(patientId: Int, nama: String, nik: String, rs: String, nrm: String, dob: String) {
         // FIX: Cek apakah HP saat ini terhubung ke WiFi kamera MS2
-        // Jika ya, langsung buka stream WiFi MS2 (bukan kamera USB/HP)
+        // Jika ya, langsung buka Ms2CameraActivity (MJPEG stream, tanpa Jieli SDK)
         if (com.gizthon.camera.core.wifi.WifiCamera.isMs2WifiConnected(this)) {
-            Toast.makeText(this, "📡 Kamera MS2 terdeteksi — membuka stream WiFi...", Toast.LENGTH_SHORT).show()
-            // Buat instance WifiCamera lokal untuk membuka stream MS2
-            val wifiCamera = com.gizthon.camera.core.wifi.WifiCamera()
-            wifiCamera.initDevice(this)
-            wifiCamera.startWifi1Activity(this)
+            Toast.makeText(this, "📡 Kamera MS2 terdeteksi — membuka live stream...", Toast.LENGTH_SHORT).show()
+            Ms2CameraActivity.start(this)
             return
         }
 

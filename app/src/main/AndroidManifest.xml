@@ -91,6 +91,11 @@
             android:screenOrientation="landscape"
             android:exported="false"/>
         <activity
+            android:name="com.gizthon.camera.activity.Ms2CameraActivity"
+            android:screenOrientation="landscape"
+            android:exported="false"
+            android:hardwareAccelerated="true"/>
+        <activity
             android:name="com.gizthon.camera.activity.GalleryListActivity"
             android:exported="true"
             android:screenOrientation="landscape">
