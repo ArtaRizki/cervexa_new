@@ -360,6 +360,9 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
     }
 
     public void connectDevice(String str) {
+        if (android.text.TextUtils.isEmpty(str) || "0.0.0.0".equals(str)) {
+            str = "192.168.1.1";
+        }
         Dbug.m1389i(this.tag, "Second, connect device IP=" + str + ", isConnected=" + ClientManager.getClient().isConnected());
         if (!ClientManager.getClient().isConnected()) {
             this.mHandler.removeMessages(3);
@@ -394,7 +397,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
     @Override // com.jieli.stream.p016dv.running2.interfaces.OnWifiCallBack
     public void onConnected(WifiInfo wifiInfo) {
         String ssid = WifiHelper.formatSSID(wifiInfo.getSSID());
-        if ((!TextUtils.isEmpty(ssid) && ssid.contains(WIFI_PREFIX)) || (!TextUtils.isEmpty(ssid) && ssid.contains("unknown ssid"))) {
+        if ((!TextUtils.isEmpty(ssid) && (ssid.contains(WIFI_PREFIX) || ssid.toLowerCase().contains("ms2"))) || (!TextUtils.isEmpty(ssid) && ssid.contains("unknown ssid"))) {
             this.isReConnectDev = false;
             this.reConnectNum = 0;
             connectDevice(this.mWifiHelper.getGateWay(this.mApplication));
@@ -425,7 +428,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
                 NetworkInfo activeNetworkInfo = connectivityManager != null ? connectivityManager.getActiveNetworkInfo() : null;
                 if (activeNetworkInfo != null) {
                     String extraInfo = activeNetworkInfo.getExtraInfo();
-                    if (((!TextUtils.isEmpty(extraInfo) && extraInfo.contains(WIFI_PREFIX)) || (!TextUtils.isEmpty(extraInfo) && extraInfo.contains("unknown ssid"))) && activeNetworkInfo.getDetailedState() == NetworkInfo.DetailedState.CONNECTED) {
+                    if (((!TextUtils.isEmpty(extraInfo) && (extraInfo.contains(WIFI_PREFIX) || extraInfo.toLowerCase().contains("ms2"))) || (!TextUtils.isEmpty(extraInfo) && extraInfo.contains("unknown ssid"))) && activeNetworkInfo.getDetailedState() == NetworkInfo.DetailedState.CONNECTED) {
                         connectDevice(this.mWifiHelper.getGateWay(this.mApplication));
                     } else {
                         Dbug.m1388e(this.tag, "getExtraInfo is null");
