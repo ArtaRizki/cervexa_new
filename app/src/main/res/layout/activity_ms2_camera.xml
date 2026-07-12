@@ -4,14 +4,28 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <!-- IjkVideoView — fullscreen RTSP stream player -->
-    <com.jieli.stream.p016dv.running2.p017ui.widget.media.IjkVideoView
-        android:id="@+id/iv_ms2_stream"
+    <!-- IjkVideoView — fullscreen RTSP stream player, wrapped in a scalable layout for zooming -->
+    <FrameLayout
+        android:id="@+id/fl_video_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center" />
+        android:layout_height="match_parent">
+        <com.jieli.stream.p016dv.running2.p017ui.widget.media.IjkVideoView
+            android:id="@+id/iv_ms2_stream"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+    </FrameLayout>
 
-    <!-- Loading indicator (ditampilkan saat mencoba koneksi) -->
+    <!-- Crosshair indicator like the old UI -->
+    <ImageView
+        android:id="@+id/imgTip"
+        android:background="@drawable/shizi"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:visibility="visible" />
+
+    <!-- Loading indicator -->
     <ProgressBar
         android:id="@+id/pb_ms2_loading"
         android:layout_width="64dp"
@@ -36,67 +50,96 @@
         android:text="Menghubungkan ke kamera MS2..."
         android:visibility="visible" />
 
-    <!-- Top bar overlay -->
-    <LinearLayout
+    <!-- Top Controls Overlay -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_gravity="top"
-        android:background="#AA000000"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp">
+        android:layout_height="match_parent">
 
-        <!-- Back button -->
         <ImageButton
             android:id="@+id/btn_ms2_back"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_media_previous"
-            android:contentDescription="Kembali"
-            android:tint="#FFFFFF" />
+            android:background="@drawable/navigation_return_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="16dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true" />
 
-        <!-- Title -->
-        <TextView
-            android:layout_width="0dp"
+        <!-- Record Timer -->
+        <LinearLayout
+            android:id="@+id/ll_record_timer"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Kamera MS2 — Live Stream"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="invisible">
+            
+            <ImageView
+                android:id="@+id/camera_video_dot"
+                android:background="@drawable/cicle"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvRecordTime"
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00:00" />
+        </LinearLayout>
+        
+        <!-- Bottom Controls Overlay -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#66000000"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:fontFamily="sans-serif-medium" />
+            android:padding="16dp">
 
-        <!-- Spacer matching back button width -->
-        <View
-            android:layout_width="44dp"
-            android:layout_height="44dp" />
+            <!-- Gallery Button -->
+            <ImageButton
+                android:id="@+id/btn_ms2_gallery"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/drawable_gallery"
+                android:scaleType="fitCenter" />
 
-    </LinearLayout>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
-    <!-- Bottom controls overlay -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_gravity="bottom"
-        android:background="#AA000000"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp">
+            <!-- Capture / Record Button -->
+            <ImageButton
+                android:id="@+id/btn_ms2_capture"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:background="@drawable/btn_new_shutter"
+                android:scaleType="fitCenter" />
 
-        <!-- Capture button -->
-        <ImageButton
-            android:id="@+id/btn_ms2_capture"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@android:drawable/ic_menu_camera"
-            android:contentDescription="Ambil Gambar"
-            android:scaleType="fitCenter"
-            android:padding="6dp" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+                
+            <!-- Toggle Mode (Photo/Video) Button -->
+            <ImageButton
+                android:id="@+id/btn_ms2_mode_switch"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/drawable_hor_video"
+                android:scaleType="fitCenter" />
+                
+        </LinearLayout>
 
-    </LinearLayout>
-
+    </RelativeLayout>
 </FrameLayout>

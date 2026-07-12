@@ -12,9 +12,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,9 +46,10 @@ import tv.danmaku.ijk.media.player.IMediaPlayer;
  *   3. rtsp://192.168.1.1:554/264_pcm_rt/XXX.fhd  (H264, kualitas FHD)
  *   4. rtsp://192.168.1.1:554/avi_pcm_rt/front.hd (JPEG/AVI front)
  *   5. rtsp://192.168.1.1:554/avi_pcm_rt/front.sd (JPEG/AVI front SD)
- *   6. rtsp://192.168.1.1:554/                     (fallback root)
+ *   6. rtsp://192.168.1.1:554/264_pcm_rt/rear.hd
+ *   7. rtsp://192.168.1.1:554/
  *
- * Alur: PatientActivity → Ms2CameraActivity (jika MS2 WiFi terdeteksi)
+ * Alur: PatientActivity -> Ms2CameraActivity (jika MS2 WiFi terdeteksi)
  */
 public class Ms2CameraActivity extends Activity {
 
@@ -65,18 +72,38 @@ public class Ms2CameraActivity extends Activity {
     /** Timeout per URL sebelum mencoba URL berikutnya (ms) */
     private static final long URL_TIMEOUT_MS = 6000;
 
-    // ── Views ─────────────────────────────────────────────────────────────────
+    // --- Views ---
     private IjkVideoView mVideoView;
+    private View flVideoContainer;
     private ProgressBar  pbLoading;
     private TextView     tvStatus;
+    
+    // Top & Bottom Bar Controls
     private ImageButton  btnBack;
     private ImageButton  btnCapture;
+    private ImageButton  btnGallery;
+    private ImageButton  btnModeSwitch;
+    
+    // Recording UI
+    private LinearLayout llRecordTimer;
+    private ImageView    ivVideoDot;
+    private TextView     tvRecordTime;
 
-    // ── State ─────────────────────────────────────────────────────────────────
+    // --- State ---
     private int     mCurrentUrlIndex = 0;
     private boolean mStreamStarted   = false;
     private final Handler mUiHandler  = new Handler(Looper.getMainLooper());
     private Runnable mTimeoutRunnable;
+    
+    // Mode State
+    private boolean mIsVideoMode = false;
+    private boolean mIsRecording = false;
+    private long    mRecordingStartTime = 0;
+    private Runnable mRecordTimerRunnable;
+    
+    // Zoom Logic
+    private ScaleGestureDetector mScaleGestureDetector;
+    private float mScaleFactor = 1.0f;
 
     // ─────────────────────────────────────────────────────────────────────────
 
@@ -94,22 +121,67 @@ public class Ms2CameraActivity extends Activity {
         setContentView(R.layout.activity_ms2_camera);
 
         mVideoView = findViewById(R.id.iv_ms2_stream);
+        flVideoContainer = findViewById(R.id.fl_video_container);
         pbLoading  = findViewById(R.id.pb_ms2_loading);
         tvStatus   = findViewById(R.id.tv_ms2_status);
+        
         btnBack    = findViewById(R.id.btn_ms2_back);
         btnCapture = findViewById(R.id.btn_ms2_capture);
+        btnGallery = findViewById(R.id.btn_ms2_gallery);
+        btnModeSwitch = findViewById(R.id.btn_ms2_mode_switch);
+        
+        llRecordTimer = findViewById(R.id.ll_record_timer);
+        ivVideoDot    = findViewById(R.id.camera_video_dot);
+        tvRecordTime  = findViewById(R.id.tvRecordTime);
 
         // Gunakan TextureView agar bisa getBitmap() untuk capture
         mVideoView.setRender(IjkVideoView.RENDER_TEXTURE_VIEW);
         mVideoView.setAspectRatio(3); // fit screen
 
         setupPlayerListeners();
+        setupGestureZoom();
 
         btnBack.setOnClickListener(v -> finish());
+        
+        btnGallery.setOnClickListener(v -> {
+            // Open GalleryListActivity
+            Intent intent = new Intent(this, GalleryListActivity.class);
+            startActivity(intent);
+        });
+        
+        btnModeSwitch.setOnClickListener(v -> toggleCameraMode());
 
-        btnCapture.setOnClickListener(v -> captureFrame());
+        btnCapture.setOnClickListener(v -> {
+            if (mIsVideoMode) {
+                toggleRecording();
+            } else {
+                captureFrame();
+            }
+        });
 
         setStatus("Menghubungkan ke kamera MS2...\n(mencoba URL 1 dari " + CANDIDATE_URLS.length + ")");
+    }
+    
+    private void setupGestureZoom() {
+        mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleGestureDetector.SimpleOnScaleGestureListener() {
+            @Override
+            public boolean onScale(ScaleGestureDetector detector) {
+                mScaleFactor *= detector.getScaleFactor();
+                // Limit zoom from 1.0x to 5.0x
+                mScaleFactor = Math.max(1.0f, Math.min(mScaleFactor, 5.0f)); 
+                mVideoView.setScaleX(mScaleFactor);
+                mVideoView.setScaleY(mScaleFactor);
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (mScaleGestureDetector != null) {
+            mScaleGestureDetector.onTouchEvent(event);
+        }
+        return super.onTouchEvent(event);
     }
 
     @Override
@@ -222,6 +294,71 @@ public class Ms2CameraActivity extends Activity {
     }
 
     // ── Capture ───────────────────────────────────────────────────────────────
+
+    private void toggleCameraMode() {
+        mIsVideoMode = !mIsVideoMode;
+        if (mIsVideoMode) {
+            btnModeSwitch.setImageResource(R.drawable.drawable_hor_photo); 
+            btnCapture.setBackgroundResource(R.drawable.btn_new_shutter_video); 
+            Toast.makeText(this, "Mode Video", Toast.LENGTH_SHORT).show();
+        } else {
+            if (mIsRecording) {
+                toggleRecording(); // Stop recording if switching modes
+            }
+            btnModeSwitch.setImageResource(R.drawable.drawable_hor_video); 
+            btnCapture.setBackgroundResource(R.drawable.btn_new_shutter); 
+            Toast.makeText(this, "Mode Foto", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void toggleRecording() {
+        if (!mStreamStarted) {
+            Toast.makeText(this, "Stream belum aktif", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (mIsRecording) {
+            // Stop recording
+            mIsRecording = false;
+            llRecordTimer.setVisibility(View.INVISIBLE);
+            ivVideoDot.clearAnimation();
+            if (mRecordTimerRunnable != null) {
+                mUiHandler.removeCallbacks(mRecordTimerRunnable);
+            }
+            Toast.makeText(this, "Perekaman Selesai (Simulasi UI)", Toast.LENGTH_SHORT).show();
+            btnCapture.setBackgroundResource(R.drawable.btn_new_shutter_video);
+        } else {
+            // Start recording
+            mIsRecording = true;
+            mRecordingStartTime = System.currentTimeMillis();
+            llRecordTimer.setVisibility(View.VISIBLE);
+            btnCapture.setBackgroundResource(R.drawable.btn_shutter_video_recording); 
+
+            // Animate red dot
+            Animation anim = new AlphaAnimation(0.0f, 1.0f);
+            anim.setDuration(500);
+            anim.setStartOffset(20);
+            anim.setRepeatMode(Animation.REVERSE);
+            anim.setRepeatCount(Animation.INFINITE);
+            ivVideoDot.startAnimation(anim);
+
+            mRecordTimerRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    if (!mIsRecording) return;
+                    long elapsed = System.currentTimeMillis() - mRecordingStartTime;
+                    int seconds = (int) (elapsed / 1000);
+                    int h = seconds / 3600;
+                    int m = (seconds % 3600) / 60;
+                    int s = seconds % 60;
+                    tvRecordTime.setText(String.format("%02d:%02d:%02d", h, m, s));
+                    mUiHandler.postDelayed(this, 1000);
+                }
+            };
+            mUiHandler.post(mRecordTimerRunnable);
+            Toast.makeText(this, "Merekam video... (Simulasi UI)", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void captureFrame() {
         if (!mStreamStarted) {
