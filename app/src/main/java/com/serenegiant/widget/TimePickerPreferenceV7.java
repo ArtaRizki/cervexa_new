@@ -29,7 +29,7 @@ public class TimePickerPreferenceV7 extends DialogPreferenceV7 {
         super(context, attributeSet, i);
         this.picker = null;
         TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, com.weioa.KmedHealthIndonesia.R.styleable.TimePicker, i, 0);
-        this.mDefaultValue = (long) typedArrayObtainStyledAttributes.getFloat(com.weioa.KmedHealthIndonesia.R.styleable.TimePicker_TimePickerDefaultValue, -1.0f);
+        this.mDefaultValue = (long) typedArrayObtainStyledAttributes.getFloat(0, -1.0f);
         typedArrayObtainStyledAttributes.recycle();
         setPositiveButtonText(R.string.ok);
         setNegativeButtonText(R.string.cancel);

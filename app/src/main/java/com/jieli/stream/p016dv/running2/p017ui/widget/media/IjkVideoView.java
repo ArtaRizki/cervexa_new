@@ -1182,6 +1182,13 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         }
     }
 
+    public Bitmap getBitmap() {
+        if (this.mCurrentRender == RENDER_TEXTURE_VIEW && this.mRenderView != null) {
+            return ((TextureRenderView) this.mRenderView).getBitmap();
+        }
+        return null;
+    }
+
     public void tryToGetBitmap(int i, int i2) {
         int i3 = this.mCurrentRender;
         if (i3 == 0) {
@@ -1575,14 +1582,14 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         ijkMediaPlayer.setOption(4, "opensles", 1L);
         ijkMediaPlayer.setOption(4, "overlay-format", "fcc-_es2");
         ijkMediaPlayer.setOption(1, "http-detect-range-support", 0L);
-        ijkMediaPlayer.setOption(4, "min-frames", 5L);
-        ijkMediaPlayer.setOption(4, "max-buffer-size", 2097152);
+        ijkMediaPlayer.setOption(4, "min-frames", 1L);       // Mulai render dari frame pertama
+        ijkMediaPlayer.setOption(4, "max-buffer-size", 0L);   // Tidak ada buffer maksimum
         ijkMediaPlayer.setOption(4, "packet-buffering", 0L);
-        ijkMediaPlayer.setOption(2, "skip_frame", 16L);
+        ijkMediaPlayer.setOption(2, "skip_frame", 8L);
         ijkMediaPlayer.setOption(2, "skip_loop_filter", 48L);
-        ijkMediaPlayer.setOption(4, "framedrop", 60L);
-        ijkMediaPlayer.setOption(1, "probesize", 1048576);
-        ijkMediaPlayer.setOption(1, "analyzeduration", 5000L);
+        ijkMediaPlayer.setOption(4, "framedrop", 5L);
+        ijkMediaPlayer.setOption(1, "probesize", 32768L);      // Turunkan dari 1MB ke 32KB
+        ijkMediaPlayer.setOption(1, "analyzeduration", 100L); // Turunkan dari 5000ms ke 100ms
         ijkMediaPlayer.setOption(4, "start-on-prepared", 1L);
         ijkMediaPlayer.setOption(1, "flush_packets", 1L);
         ijkMediaPlayer.setOption(1, "sync", "ext");

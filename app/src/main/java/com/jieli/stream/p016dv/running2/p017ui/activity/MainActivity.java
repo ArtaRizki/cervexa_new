@@ -101,7 +101,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
                     MainActivity.this.mHandler.sendEmptyMessage(1);
                     return;
                 }
-                Dbug.m1389i(MainActivity.this.tag, "stop reconnect ");
+                Dbug.m1389i(MainActivity.this.tag, "stop reconnect");
                 MainActivity.this.mHandler.sendEmptyMessage(1);
             }
         }

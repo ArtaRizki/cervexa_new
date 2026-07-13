@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,10 +29,13 @@ import android.widget.Toast;
 import com.jieli.stream.p016dv.running2.p017ui.widget.media.IjkVideoView;
 import com.weioa.KmedHealthIndonesia.R;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.gizthon.camera.utils.ViewRecorder;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 
 /**
@@ -105,6 +109,9 @@ public class Ms2CameraActivity extends Activity {
     private ScaleGestureDetector mScaleGestureDetector;
     private float mScaleFactor = 1.0f;
 
+    // Video Recorder
+    private ViewRecorder mRecorder;
+
     // ─────────────────────────────────────────────────────────────────────────
 
     public static void start(Context context) {
@@ -133,6 +140,10 @@ public class Ms2CameraActivity extends Activity {
         llRecordTimer = findViewById(R.id.ll_record_timer);
         ivVideoDot    = findViewById(R.id.camera_video_dot);
         tvRecordTime  = findViewById(R.id.tvRecordTime);
+
+        // Mode real-time: aktifkan fflags=nobuffer + infbuf=1 + rtsp/udp
+        // Ini menghilangkan jeda/delay 1 detik saat menggerakkan kamera MS2
+        mVideoView.setRealtime(true);
 
         // Gunakan TextureView agar bisa getBitmap() untuk capture
         mVideoView.setRender(IjkVideoView.RENDER_TEXTURE_VIEW);
@@ -194,6 +205,9 @@ public class Ms2CameraActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        if (mIsRecording) {
+            toggleRecording();
+        }
         cancelTimeout();
         if (mVideoView != null) {
             mVideoView.stopPlayback();
@@ -325,7 +339,13 @@ public class Ms2CameraActivity extends Activity {
             if (mRecordTimerRunnable != null) {
                 mUiHandler.removeCallbacks(mRecordTimerRunnable);
             }
-            Toast.makeText(this, "Perekaman Selesai (Simulasi UI)", Toast.LENGTH_SHORT).show();
+            if (mRecorder != null) {
+                mRecorder.stop();
+                String path = mRecorder.getOutputPath();
+                MediaScannerConnection.scanFile(this, new String[]{path}, new String[]{"video/mp4"}, null);
+                mRecorder = null;
+            }
+            Toast.makeText(this, "Perekaman Selesai, video tersimpan di Galeri", Toast.LENGTH_SHORT).show();
             btnCapture.setBackgroundResource(R.drawable.btn_new_shutter_video);
         } else {
             // Start recording
@@ -342,6 +362,18 @@ public class Ms2CameraActivity extends Activity {
             anim.setRepeatCount(Animation.INFINITE);
             ivVideoDot.startAnimation(anim);
 
+            try {
+                File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES), "Cervexa");
+                if (!dir.exists()) dir.mkdirs();
+                String outputPath = new File(dir, "MS2_Video_" + System.currentTimeMillis() + ".mp4").getAbsolutePath();
+                mRecorder = new ViewRecorder(mVideoView, outputPath);
+                mRecorder.start();
+                Toast.makeText(this, "Mulai merekam video...", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Log.e(TAG, "Gagal memulai rekaman", e);
+                Toast.makeText(this, "Gagal merekam video", Toast.LENGTH_SHORT).show();
+            }
+
             mRecordTimerRunnable = new Runnable() {
                 @Override
                 public void run() {
@@ -356,7 +388,6 @@ public class Ms2CameraActivity extends Activity {
                 }
             };
             mUiHandler.post(mRecordTimerRunnable);
-            Toast.makeText(this, "Merekam video... (Simulasi UI)", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -367,38 +398,30 @@ public class Ms2CameraActivity extends Activity {
         }
 
         try {
-            // Ambil bitmap dari VideoView via drawing cache
-            mVideoView.setDrawingCacheEnabled(true);
-            mVideoView.buildDrawingCache();
-            Bitmap cache = mVideoView.getDrawingCache();
-            if (cache == null) {
+            // Ambil bitmap langsung dari TextureView via IjkVideoView
+            final Bitmap bmp = mVideoView.getBitmap();
+            if (bmp == null) {
                 Toast.makeText(this, "Gagal mengambil frame dari stream", Toast.LENGTH_SHORT).show();
                 return;
             }
-            final Bitmap bmp = Bitmap.createBitmap(cache);
-            mVideoView.setDrawingCacheEnabled(false);
 
             ExecutorService saver = Executors.newSingleThreadExecutor();
             saver.submit(() -> {
                 try {
                     String fileName = "MS2_" + System.currentTimeMillis() + ".jpg";
-                    ContentValues values = new ContentValues();
-                    values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);
-                    values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
-                    values.put(MediaStore.Images.Media.RELATIVE_PATH,
-                            Environment.DIRECTORY_PICTURES + "/Cervexa");
+                    File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Cervexa");
+                    if (!dir.exists()) dir.mkdirs();
+                    File imageFile = new File(dir, fileName);
 
-                    Uri uri = getContentResolver()
-                            .insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-
-                    if (uri != null) {
-                        try (OutputStream out = getContentResolver().openOutputStream(uri)) {
-                            bmp.compress(Bitmap.CompressFormat.JPEG, 95, out);
-                        }
-                        runOnUiThread(() ->
-                                Toast.makeText(this, "📸 Gambar tersimpan: " + fileName,
-                                        Toast.LENGTH_SHORT).show());
+                    try (OutputStream out = new FileOutputStream(imageFile)) {
+                        bmp.compress(Bitmap.CompressFormat.JPEG, 95, out);
                     }
+
+                    MediaScannerConnection.scanFile(this, new String[]{imageFile.getAbsolutePath()}, new String[]{"image/jpeg"}, null);
+
+                    runOnUiThread(() ->
+                            Toast.makeText(this, "📸 Gambar tersimpan di Galeri: " + fileName,
+                                    Toast.LENGTH_SHORT).show());
                 } catch (Exception e) {
                     Log.e(TAG, "Save capture failed: " + e.getMessage(), e);
                     runOnUiThread(() ->
