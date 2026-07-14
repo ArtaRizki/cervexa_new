@@ -164,7 +164,8 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
                     } else {
                         MainActivity.this.mApplication.getDeviceSettingInfo().setCameraType(1);
                     }
-                    new VideoFragment();
+                    VideoFragment videoFragment = new VideoFragment();
+                    changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, videoFragment, videoFragment.getClass().getSimpleName());
                     return;
                 }
                 Dbug.m1391w(MainActivity.this.tag, "It isn't DeviceListFragment or StaDeviceListFragment");
@@ -327,7 +328,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
         }
         this.mWifiHelper.registerOnWifiCallback(this);
         Locale.getDefault().getLanguage();
-        changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, new VideoFragment(), VideoFragment.class.getSimpleName());
+        changeFragment(com.weioa.KmedHealthIndonesia.R.id.container, new DeviceListFragment(), DeviceListFragment.class.getSimpleName());
     }
 
     @Override // com.jieli.stream.p016dv.running2.p017ui.base.BaseActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
@@ -360,6 +361,9 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
     }
 
     public void connectDevice(String str) {
+        if (android.text.TextUtils.isEmpty(str) || "0.0.0.0".equals(str)) {
+            str = "192.168.1.1";
+        }
         Dbug.m1389i(this.tag, "Second, connect device IP=" + str + ", isConnected=" + ClientManager.getClient().isConnected());
         if (!ClientManager.getClient().isConnected()) {
             this.mHandler.removeMessages(3);
