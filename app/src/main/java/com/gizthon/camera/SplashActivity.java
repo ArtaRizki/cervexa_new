@@ -8,7 +8,6 @@ import com.gizthon.camera.activity.CameraBaseActivity;
 import com.gizthon.camera.activity.GalleryListActivity;
 import com.gizthon.camera.activity.HelpActivity;
 import com.gizthon.camera.activity.PatientActivity;
-import com.gizthon.camera.activity.PatientHistoryActivity;
 import com.gizthon.camera.activity.UVCUSBCameraActivity;
 import com.gizthon.camera.databinding.SplashActivityBinding;
 import com.jaeger.library.StatusBarUtil;
@@ -101,9 +100,7 @@ public class SplashActivity extends CameraBaseActivity {
         }
     }
 
-    public void onClickHistory() {
-        PatientHistoryActivity.start(this);
-    }
+    
 
     @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, android.app.Activity
     public void onRequestPermissionsResult(int i, String[] strArr, int[] iArr) {

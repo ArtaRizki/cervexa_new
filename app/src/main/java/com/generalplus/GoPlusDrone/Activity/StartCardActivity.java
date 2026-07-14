@@ -109,7 +109,7 @@ public class StartCardActivity extends Activity {
                 @Override // java.lang.Runnable
                 public void run() {
                     if (ConnectGPWifiDeviceRunnable.this.bCheckConnectStatus) {
-                        Intent intent = new Intent(StartCardActivity.this, (Class<?>) MainOldActivity.class);
+                        Intent intent = new Intent(StartCardActivity.this, (Class<?>) com.idn.kmed.cervexa.ui.MainActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putBoolean("IsCard", true);
                         intent.putExtras(bundle);

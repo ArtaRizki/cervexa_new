@@ -57,9 +57,9 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:requestLegacyExternalStorage="true">
         <activity
-            android:name="com.gizthon.camera.SplashActivity"
+            android:name="com.idn.kmed.cervexa.auth.SplashActivity"
             android:exported="true"
-            android:screenOrientation="landscape">
+            android:theme="@style/Theme_App_Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -243,5 +243,61 @@
         <meta-data
             android:name="com.android.vending.derived.apk.id"
             android:value="1"/>
-    </application>
+    
+        <!-- Modern UI Activities (ported from cervexa) -->
+        <activity
+            android:name="com.idn.kmed.cervexa.auth.LoginActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name="com.idn.kmed.cervexa.auth.OnboardingActivity" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.home.HomeActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.patient.ConfirmPatientActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.patient.SelectExistingPatientActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.patient.RegistrationPatientActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.gallery.PreviewActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.gallery.MediaPagerActivity"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.gallery.MediaPagerActivityLand"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.gallery.SessionMediaActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.media.MediaListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.settings.SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.idn.kmed.cervexa.settings.SystemInfoActivity"
+            android:exported="false" />
+</application>
 </manifest>

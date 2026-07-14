@@ -1,231 +1,371 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources><style name="AndroidThemeColorAccentYellow" parent="">
-        <item name="android:colorAccent">#ffffff00</item>
-    </style>
-    <style name="Animation.AppCompat.Dialog" parent="@style/Base.Animation.AppCompat.Dialog">
-    </style>
-    <style name="Animation.AppCompat.DropDownUp" parent="@style/Base.Animation.AppCompat.DropDownUp">
-    </style>
-    <style name="Animation.AppCompat.Tooltip" parent="@style/Base.Animation.AppCompat.Tooltip">
-    </style>
-    <style name="Animation.Design.BottomSheetDialog" parent="@style/Animation.AppCompat.Dialog">
-        <item name="android:windowEnterAnimation">@anim/design_bottom_sheet_slide_in</item>
-        <item name="android:windowExitAnimation">@anim/design_bottom_sheet_slide_out</item>
-    </style>
-    <style name="Animation.MaterialComponents.BottomSheetDialog" parent="@style/Animation.AppCompat.Dialog">
-    </style>
-    <style name="AnimationActivity" parent="@android:style/Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@anim/activity_show</item>
-        <item name="android:activityOpenExitAnimation">@anim/activity_exit</item>
-        <item name="android:activityCloseEnterAnimation">@anim/activity_show</item>
-        <item name="android:activityCloseExitAnimation">@anim/activity_exit</item>
-    </style>
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    </style>
-    <style name="BB_BottomBarBadge_Text" parent="@style/TextAppearance.AppCompat.Body2">
-        <item name="android:textColor">#ffffff</item>
-    </style>
-    <style name="BB_BottomBarItem" parent="">
-        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/bb_height</item>
-    </style>
-    <style name="BB_BottomBarItem_Fixed.TitleAppearance" parent="@style/TextAppearance.AppCompat.Body1">
-        <item name="android:textSize">14sp</item>
-    </style>
-    <style name="BB_BottomBarItem_Shifting.TitleAppearance" parent="@style/BB_BottomBarItem_Fixed.TitleAppearance">
-        <item name="android:textColor">#ffffff</item>
-    </style>
-    <style name="BB_BottomBarItem_Tablet" parent="">
-        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-    <style name="BB_BottomBarItem_TitleStyle" parent="">
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:singleLine">true</item>
-    </style>
-    <style name="CardView" parent="@style/Base.CardView">
-    </style>
-    <style name="CardView.Dark" parent="@style/CardView">
-        <item name="cardBackgroundColor">@color/cardview_dark_background</item>
-    </style>
-    <style name="CardView.Light" parent="@style/CardView">
-        <item name="cardBackgroundColor">@color/cardview_light_background</item>
-    </style>
-    <style name="DialogStyle" parent="@android:style/Theme.Dialog">
-        <item name="android:backgroundDimAmount">0.65</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">false</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:backgroundDimEnabled">true</item>
-    </style>
-    <style name="DialogTheme.BottomAnimation" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/dialog_bottom_in</item>
-        <item name="android:windowExitAnimation">@anim/dialog_bottom_out</item>
-    </style>
-    <style name="EmptyTheme" parent="">
-    </style>
-    <style name="FullscreenActionBarStyle" parent="@android:style/Widget.Holo.ActionBar">
-        <item name="android:background">@color/black_overlay</item>
-    </style>
-    <style name="FullscreenTheme" parent="@style/AppTheme">
-        <item name="android:windowBackground">@null</item>
-        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
-        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
-    </style>
-    <style name="MediaController_SeekBar" parent="@android:style/Widget.SeekBar">
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:maxHeight">13dp</item>
-        <item name="android:minHeight">13dp</item>
-        <item name="android:thumbOffset">16dp</item>
-    </style>
-    <style name="MediaController_Text" parent="">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#ffffffff</item>
-    </style>
-    <style name="MyDialogTheme" parent="@style/AppTheme">
-        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
-    </style>
-    <style name="NumberProgressBar_Beauty_Red" parent="">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="progress_current">0</item>
-        <item name="progress_max">100</item>
-        <item name="progress_reached_bar_height">1.5dp</item>
-        <item name="progress_reached_color">#ff3d7f</item>
-        <item name="progress_text_color">#ff3d7f</item>
-        <item name="progress_text_size">10sp</item>
-        <item name="progress_unreached_bar_height">0.75dp</item>
-        <item name="progress_unreached_color">#cccccc</item>
-    </style>
-    <style name="NumberProgressBar_Default" parent="">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="progress_current">0</item>
-        <item name="progress_max">100</item>
-        <item name="progress_reached_bar_height">1.5dp</item>
-        <item name="progress_reached_color">#3498db</item>
-        <item name="progress_text_color">#3498db</item>
-        <item name="progress_text_size">10sp</item>
-        <item name="progress_unreached_bar_height">0.75dp</item>
-        <item name="progress_unreached_color">#cccccc</item>
-    </style>
-    <style name="NumberProgressBar_Funny_Orange" parent="">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="progress_current">0</item>
-        <item name="progress_max">100</item>
-        <item name="progress_reached_bar_height">1.5dp</item>
-        <item name="progress_reached_color">#ff530d</item>
-        <item name="progress_text_color">#ff530d</item>
-        <item name="progress_text_size">10sp</item>
-        <item name="progress_unreached_bar_height">0.75dp</item>
-        <item name="progress_unreached_color">#cccccc</item>
-    </style>
-    <style name="NumberProgressBar_Grace_Yellow" parent="">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="progress_current">0</item>
-        <item name="progress_max">100</item>
-        <item name="progress_reached_bar_height">1.5dp</item>
-        <item name="progress_reached_color">#ffc73b</item>
-        <item name="progress_text_color">#ffc73b</item>
-        <item name="progress_text_size">10sp</item>
-        <item name="progress_unreached_bar_height">0.75dp</item>
-        <item name="progress_unreached_color">#cccccc</item>
-    </style>
-    <style name="NumberProgressBar_Passing_Green" parent="">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="progress_current">0</item>
-        <item name="progress_max">100</item>
-        <item name="progress_reached_bar_height">1.5dp</item>
-        <item name="progress_reached_color">#70a800</item>
-        <item name="progress_text_color">#70a800</item>
-        <item name="progress_text_size">10sp</item>
-        <item name="progress_unreached_bar_height">0.75dp</item>
-        <item name="progress_unreached_color">#cccccc</item>
-    </style>
-    <style name="NumberProgressBar_Relax_Blue" parent="">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="progress_current">0</item>
-        <item name="progress_max">100</item>
-        <item name="progress_reached_bar_height">1.5dp</item>
-        <item name="progress_reached_color">#6dbcdb</item>
-        <item name="progress_text_color">#6dbcdb</item>
-        <item name="progress_text_size">10sp</item>
-        <item name="progress_unreached_bar_height">0.75dp</item>
-        <item name="progress_unreached_color">#cccccc</item>
-    </style>
-    <style name="NumberProgressBar_Twinkle_Night" parent="">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="progress_current">0</item>
-        <item name="progress_max">100</item>
-        <item name="progress_reached_bar_height">1.5dp</item>
-        <item name="progress_reached_color">#ecf0f1</item>
-        <item name="progress_text_color">#ecf0f1</item>
-        <item name="progress_text_size">10sp</item>
-        <item name="progress_unreached_bar_height">0.75dp</item>
-        <item name="progress_unreached_color">#cccccc</item>
-    </style>
-    <style name="NumberProgressBar_Warning_Red" parent="">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="progress_current">0</item>
-        <item name="progress_max">100</item>
-        <item name="progress_reached_bar_height">1.5dp</item>
-        <item name="progress_reached_color">#e74c3c</item>
-        <item name="progress_text_color">#e74c3c</item>
-        <item name="progress_text_size">10sp</item>
-        <item name="progress_unreached_bar_height">0.75dp</item>
-        <item name="progress_unreached_color">#cccccc</item>
-    </style>
-    <style name="SeekBarPreference_summary" parent="@android:style/TextAppearance.Small">
-    </style>
-    <style name="SeekBarPreference_title" parent="@android:style/TextAppearance.Large">
-    </style>
-    <style name="ShapeAppearanceOverlay" parent="">
-    </style>
-    <style name="ShareDialogTheme" parent="@android:style/Theme.Dialog">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
-        <item name="android:windowCloseOnTouchOutside">true</item>
-    </style>
-    <style name="TestStyleWithLineHeight" parent="@style/TestStyleWithoutLineHeight">
-        <item name="lineHeight">@dimen/material_text_view_test_line_height</item>
-    </style>
-    <style name="TestStyleWithLineHeightAppearance" parent="">
-        <item name="android:textAppearance">@style/TestStyleWithLineHeight</item>
-    </style>
-    <style name="TestStyleWithThemeLineHeightAttribute" parent="@style/TestStyleWithoutLineHeight">
-        <item name="lineHeight">?attr/themeLineHeight</item>
-    </style>
-    <style name="TestStyleWithoutLineHeight" parent="@style/TextAppearance.AppCompat.Title">
-        <item name="android:textSize">20sp</item>
-    </style>
-    <style name="TestThemeWithLineHeight" parent="@style/Theme.AppCompat.Light">
-        <item name="themeLineHeight">@dimen/material_text_view_test_line_height</item>
-    </style>
-    <style name="TestThemeWithLineHeightDisabled" parent="@style/TestThemeWithLineHeight">
-        <item name="textAppearanceLineHeightEnabled">false</item>
-    </style>
-    <style name="ThemeOverlayColorAccentRed" parent="">
-        <item name="android:colorAccent">#ffff0000</item>
-    </style>
-    </resources>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="AndroidThemeColorAccentYellow" parent="">
+    <item name="android:colorAccent">#ffffff00</item>
+  </style>
+  <style name="Animation.AppCompat.Dialog" parent="@style/Base.Animation.AppCompat.Dialog">
+  </style>
+  <style name="Animation.AppCompat.DropDownUp" parent="@style/Base.Animation.AppCompat.DropDownUp">
+  </style>
+  <style name="Animation.AppCompat.Tooltip" parent="@style/Base.Animation.AppCompat.Tooltip">
+  </style>
+  <style name="Animation.Design.BottomSheetDialog" parent="@style/Animation.AppCompat.Dialog">
+    <item name="android:windowEnterAnimation">@anim/design_bottom_sheet_slide_in</item>
+    <item name="android:windowExitAnimation">@anim/design_bottom_sheet_slide_out</item>
+  </style>
+  <style name="Animation.MaterialComponents.BottomSheetDialog" parent="@style/Animation.AppCompat.Dialog">
+  </style>
+  <style name="AnimationActivity" parent="@android:style/Animation.Activity">
+    <item name="android:activityOpenEnterAnimation">@anim/activity_show</item>
+    <item name="android:activityOpenExitAnimation">@anim/activity_exit</item>
+    <item name="android:activityCloseEnterAnimation">@anim/activity_show</item>
+    <item name="android:activityCloseExitAnimation">@anim/activity_exit</item>
+  </style>
+  <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+  </style>
+  <style name="BB_BottomBarBadge_Text" parent="@style/TextAppearance.AppCompat.Body2">
+    <item name="android:textColor">#ffffff</item>
+  </style>
+  <style name="BB_BottomBarItem" parent="">
+    <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">@dimen/bb_height</item>
+  </style>
+  <style name="BB_BottomBarItem_Fixed.TitleAppearance" parent="@style/TextAppearance.AppCompat.Body1">
+    <item name="android:textSize">14sp</item>
+  </style>
+  <style name="BB_BottomBarItem_Shifting.TitleAppearance" parent="@style/BB_BottomBarItem_Fixed.TitleAppearance">
+    <item name="android:textColor">#ffffff</item>
+  </style>
+  <style name="BB_BottomBarItem_Tablet" parent="">
+    <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+  <style name="BB_BottomBarItem_TitleStyle" parent="">
+    <item name="android:gravity">center_horizontal</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:singleLine">true</item>
+  </style>
+  <style name="CardView" parent="@style/Base.CardView">
+  </style>
+  <style name="CardView.Dark" parent="@style/CardView">
+    <item name="cardBackgroundColor">@color/cardview_dark_background</item>
+  </style>
+  <style name="CardView.Light" parent="@style/CardView">
+    <item name="cardBackgroundColor">@color/cardview_light_background</item>
+  </style>
+  <style name="DialogStyle" parent="@android:style/Theme.Dialog">
+    <item name="android:backgroundDimAmount">0.65</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowFrame">@null</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsFloating">true</item>
+    <item name="android:windowIsTranslucent">false</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:backgroundDimEnabled">true</item>
+  </style>
+  <style name="DialogTheme.BottomAnimation" parent="@android:style/Animation">
+    <item name="android:windowEnterAnimation">@anim/dialog_bottom_in</item>
+    <item name="android:windowExitAnimation">@anim/dialog_bottom_out</item>
+  </style>
+  <style name="EmptyTheme" parent="">
+  </style>
+  <style name="FullscreenActionBarStyle" parent="@android:style/Widget.Holo.ActionBar">
+    <item name="android:background">@color/black_overlay</item>
+  </style>
+  <style name="FullscreenTheme" parent="@style/AppTheme">
+    <item name="android:windowBackground">@null</item>
+    <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+    <item name="android:windowActionBarOverlay">true</item>
+    <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+  </style>
+  <style name="MediaController_SeekBar" parent="@android:style/Widget.SeekBar">
+    <item name="android:paddingLeft">16dp</item>
+    <item name="android:paddingRight">16dp</item>
+    <item name="android:maxHeight">13dp</item>
+    <item name="android:minHeight">13dp</item>
+    <item name="android:thumbOffset">16dp</item>
+  </style>
+  <style name="MediaController_Text" parent="">
+    <item name="android:textSize">12sp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">#ffffffff</item>
+  </style>
+  <style name="MyDialogTheme" parent="@style/AppTheme">
+    <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+    <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+  </style>
+  <style name="NumberProgressBar_Beauty_Red" parent="">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="progress_current">0</item>
+    <item name="progress_max">100</item>
+    <item name="progress_reached_bar_height">1.5dp</item>
+    <item name="progress_reached_color">#ff3d7f</item>
+    <item name="progress_text_color">#ff3d7f</item>
+    <item name="progress_text_size">10sp</item>
+    <item name="progress_unreached_bar_height">0.75dp</item>
+    <item name="progress_unreached_color">#cccccc</item>
+  </style>
+  <style name="NumberProgressBar_Default" parent="">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="progress_current">0</item>
+    <item name="progress_max">100</item>
+    <item name="progress_reached_bar_height">1.5dp</item>
+    <item name="progress_reached_color">#3498db</item>
+    <item name="progress_text_color">#3498db</item>
+    <item name="progress_text_size">10sp</item>
+    <item name="progress_unreached_bar_height">0.75dp</item>
+    <item name="progress_unreached_color">#cccccc</item>
+  </style>
+  <style name="NumberProgressBar_Funny_Orange" parent="">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="progress_current">0</item>
+    <item name="progress_max">100</item>
+    <item name="progress_reached_bar_height">1.5dp</item>
+    <item name="progress_reached_color">#ff530d</item>
+    <item name="progress_text_color">#ff530d</item>
+    <item name="progress_text_size">10sp</item>
+    <item name="progress_unreached_bar_height">0.75dp</item>
+    <item name="progress_unreached_color">#cccccc</item>
+  </style>
+  <style name="NumberProgressBar_Grace_Yellow" parent="">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="progress_current">0</item>
+    <item name="progress_max">100</item>
+    <item name="progress_reached_bar_height">1.5dp</item>
+    <item name="progress_reached_color">#ffc73b</item>
+    <item name="progress_text_color">#ffc73b</item>
+    <item name="progress_text_size">10sp</item>
+    <item name="progress_unreached_bar_height">0.75dp</item>
+    <item name="progress_unreached_color">#cccccc</item>
+  </style>
+  <style name="NumberProgressBar_Passing_Green" parent="">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="progress_current">0</item>
+    <item name="progress_max">100</item>
+    <item name="progress_reached_bar_height">1.5dp</item>
+    <item name="progress_reached_color">#70a800</item>
+    <item name="progress_text_color">#70a800</item>
+    <item name="progress_text_size">10sp</item>
+    <item name="progress_unreached_bar_height">0.75dp</item>
+    <item name="progress_unreached_color">#cccccc</item>
+  </style>
+  <style name="NumberProgressBar_Relax_Blue" parent="">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="progress_current">0</item>
+    <item name="progress_max">100</item>
+    <item name="progress_reached_bar_height">1.5dp</item>
+    <item name="progress_reached_color">#6dbcdb</item>
+    <item name="progress_text_color">#6dbcdb</item>
+    <item name="progress_text_size">10sp</item>
+    <item name="progress_unreached_bar_height">0.75dp</item>
+    <item name="progress_unreached_color">#cccccc</item>
+  </style>
+  <style name="NumberProgressBar_Twinkle_Night" parent="">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="progress_current">0</item>
+    <item name="progress_max">100</item>
+    <item name="progress_reached_bar_height">1.5dp</item>
+    <item name="progress_reached_color">#ecf0f1</item>
+    <item name="progress_text_color">#ecf0f1</item>
+    <item name="progress_text_size">10sp</item>
+    <item name="progress_unreached_bar_height">0.75dp</item>
+    <item name="progress_unreached_color">#cccccc</item>
+  </style>
+  <style name="NumberProgressBar_Warning_Red" parent="">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="progress_current">0</item>
+    <item name="progress_max">100</item>
+    <item name="progress_reached_bar_height">1.5dp</item>
+    <item name="progress_reached_color">#e74c3c</item>
+    <item name="progress_text_color">#e74c3c</item>
+    <item name="progress_text_size">10sp</item>
+    <item name="progress_unreached_bar_height">0.75dp</item>
+    <item name="progress_unreached_color">#cccccc</item>
+  </style>
+  <style name="SeekBarPreference_summary" parent="@android:style/TextAppearance.Small">
+  </style>
+  <style name="SeekBarPreference_title" parent="@android:style/TextAppearance.Large">
+  </style>
+  <style name="ShapeAppearanceOverlay" parent="">
+  </style>
+  <style name="ShareDialogTheme" parent="@android:style/Theme.Dialog">
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+    <item name="android:windowCloseOnTouchOutside">true</item>
+  </style>
+  <style name="TestStyleWithLineHeight" parent="@style/TestStyleWithoutLineHeight">
+    <item name="lineHeight">@dimen/material_text_view_test_line_height</item>
+  </style>
+  <style name="TestStyleWithLineHeightAppearance" parent="">
+    <item name="android:textAppearance">@style/TestStyleWithLineHeight</item>
+  </style>
+  <style name="TestStyleWithThemeLineHeightAttribute" parent="@style/TestStyleWithoutLineHeight">
+    <item name="lineHeight">?attr/themeLineHeight</item>
+  </style>
+  <style name="TestStyleWithoutLineHeight" parent="@style/TextAppearance.AppCompat.Title">
+    <item name="android:textSize">20sp</item>
+  </style>
+  <style name="TestThemeWithLineHeight" parent="@style/Theme.AppCompat.Light">
+    <item name="themeLineHeight">@dimen/material_text_view_test_line_height</item>
+  </style>
+  <style name="TestThemeWithLineHeightDisabled" parent="@style/TestThemeWithLineHeight">
+    <item name="textAppearanceLineHeightEnabled">false</item>
+  </style>
+  <style name="ThemeOverlayColorAccentRed" parent="">
+    <item name="android:colorAccent">#ffff0000</item>
+  </style>
+  <style name="BlueDatePickerDialog" parent="Theme.AppCompat.Light.Dialog">
+    <item name="colorAccent">#1E63E4</item>
+    <item name="android:headerBackground">#1E63E4</item>
+    <item name="android:buttonBarPositiveButtonStyle">@style/BlueDialogButton</item>
+    <item name="android:buttonBarNegativeButtonStyle">@style/BlueDialogButton</item>
+  </style>
+  <style name="BlueDialogButton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:textColor">#1E63E4</item>
+    <item name="android:background">@null</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+  <style name="AppTheme.Splash" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Customize your theme here. -->
+    <!-- Hilangkan title bar -->
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+    <!-- Background splash -->
+    <item name="android:windowBackground">@color/colorWhite</item>
+    <item name="android:fontFamily">@font/manrope_medium</item>
+  </style>
+  <style name="AppTheme.CustomeActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="android:windowNoTitle">true</item>
+    <item name="colorPrimary">@color/colorButton</item>
+    <!-- Background splash -->
+    <item name="android:windowBackground">@color/colorWhite</item>
+    <item name="android:fontFamily">@font/manrope_medium</item>
+  </style>
+  <style name="AppTheme.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="android:fontFamily">@font/manrope_medium</item>
+    <!-- Customize your theme here. -->
+    <!-- <item name="colorPrimary">@color/colorPrimaryDark</item>  -->
+    <item name="colorPrimary">@color/colorButton</item>
+    <item name="colorPrimaryDark">@color/colorButton</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:popupMenuStyle">@style/CustomPopupMenu</item>
+    <item name="android:navigationBarColor">@color/colorBlack</item>
+  </style>
+  <style name="AppTheme.Land.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="android:fontFamily">@font/manrope_medium</item>
+    <!-- Customize your theme here. -->
+    <!-- <item name="colorPrimary">@color/colorPrimaryDark</item>  -->
+    <item name="colorPrimary">@color/colorBlack</item>
+    <item name="colorPrimaryDark">@color/colorBlack</item>
+    <item name="colorAccent">@color/colorBlack</item>
+    <item name="android:statusBarColor">@color/colorBlack</item>
+    <item name="android:popupMenuStyle">@style/CustomPopupMenu</item>
+    <item name="android:navigationBarColor">@color/colorBlack</item>
+  </style>
+  <style name="CustomToolbarTitle" parent="TextAppearance.AppCompat.Large">
+    <item name="fontFamily">@font/manrope_medium</item>
+    <item name="android:textColor">@color/colorBlack</item>
+    <item name="android:textSize">18sp</item>
+    <item name="fontWeight">500</item>
+    <item name="android:letterSpacing">0.06</item>
+  </style>
+  <style name="CustomToolbarTitleHome" parent="TextAppearance.AppCompat.Large">
+    <item name="fontFamily">@font/manrope_medium</item>
+    <item name="android:textColor">@color/colorBlack</item>
+    <item name="android:textSize">22sp</item>
+    <item name="fontWeight">500</item>
+    <item name="android:letterSpacing">0.06</item>
+  </style>
+  <style name="ToolbarPopupTheme" parent="ThemeOverlay.MaterialComponents.Light">
+    <item name="android:textColorPrimary">@android:color/black</item>
+    <item name="android:textColorSecondary">@color/colorWhite</item>
+    <item name="android:colorControlNormal">@color/colorWhite</item>
+    <!-- ini untuk ikon tiga titik -->
+    <item name="android:background">@color/colorWhite</item>
+    <item name="android:backgroundTint">@color/colorWhite</item>
+    <!--        <item name="android:itemBackground">@color/colorWhite</item>-->
+    <!--        <item name="popupMenuStyle">@style/MyPopupMenuStyle</item>-->
+    <!--        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>-->
+  </style>
+  <style name="OverflowMenuStyle" parent="Widget.MaterialComponents.PopupMenu.Overflow">
+    <item name="android:popupBackground">@null</item>
+  </style>
+  <style name="MyPopupMenuStyle" parent="Widget.MaterialComponents.PopupMenu">
+    <item name="android:popupBackground">@color/colorWhite</item>
+    <item name="android:elevation">8dp</item>
+  </style>
+  <style name="CustomMenuText" parent="TextAppearance.Material3.BodyLarge">&gt;
+        <item name="fontFamily">@font/manrope_medium</item><item name="android:textStyle">bold</item><item name="android:textSize">16sp</item></style>
+  <style name="CustomPopupMenu" parent="@style/Widget.Material3.PopupMenu">
+    <item name="android:textAppearance">@style/CustomMenuText</item>
+    <item name="android:popupBackground">@color/colorWhite</item>
+    <item name="android:itemBackground">@color/colorWhite</item>
+  </style>
+  <style name="Theme_App_Splash" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="colorPrimary">@color/colorButton</item>
+    <item name="android:windowBackground">@drawable/splash_background</item>
+  </style>
+  <style name="globalTextTheme" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="fontFamily">@font/manrope_medium</item>
+    <item name="android:textColor">@color/colorBlack</item>
+    <item name="android:textSize">12sp</item>
+    <item name="android:inputType">textCapWords</item>
+    <item name="fontWeight">500</item>
+    <item name="android:letterSpacing">0.06</item>
+    <item name="colorPrimary">@color/colorButton</item>
+    <item name="colorSecondary">@color/colorWhite</item>
+  </style>
+  <style name="AppMaterialButton" parent="Widget.Material3.Button">
+    <item name="android:textAppearance">@style/ButtonTextAppearance</item>
+  </style>
+  <style name="ButtonTextAppearance" parent="TextAppearance.Material3.LabelLarge">
+    <item name="android:textColor">@color/colorWhite</item>
+    <item name="fontFamily">@font/manrope_medium</item>
+  </style>
+  <style name="MyAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <!-- Customize button and radio button color -->
+    <item name="colorAccent">@color/colorButton</item>
+    <!-- Customize title and message text color -->
+    <item name="android:textColorPrimary">@color/colorBlack</item>
+    <item name="android:textColorSecondary">@color/colorBlack</item>
+    <!-- Customize dialog background -->
+    <!--        <item name="android:windowBackground">@drawable/my_custom_dialog_background</item>-->
+    <item name="materialAlertDialogBodyTextStyle">@style/MyDialogBodyText</item>
+    <item name="materialAlertDialogTitleTextStyle">@style/MyDialogTitleText</item>
+  </style>
+  <style name="MyDialogBodyText" parent="TextAppearance.Material3.BodyMedium">
+    <item name="android:textColor">@color/colorBlack</item>
+  </style>
+  <style name="MyDialogTitleText" parent="TextAppearance.Material3.TitleMedium">
+    <item name="android:textColor">@color/colorBlack</item>
+  </style>
+  <style name="MyCustomDatePicker" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+    <item name="colorPrimary">@color/colorButton</item>
+    <item name="colorOnPrimary">@color/colorWhite</item>
+    <item name="colorAccent">@color/colorButton</item>
+    <item name="buttonBarPositiveButtonStyle">@style/DatePickerButtonStyle</item>
+    <item name="buttonBarNegativeButtonStyle">@style/DatePickerButtonStyle</item>
+  </style>
+  <style name="DatePickerButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+    <item name="android:textColor">@color/colorButton</item>
+  </style>
+</resources>

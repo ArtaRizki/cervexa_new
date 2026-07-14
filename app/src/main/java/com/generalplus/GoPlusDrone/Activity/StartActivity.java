@@ -102,7 +102,7 @@ public class StartActivity extends StartCardActivity {
         Bundle bundle = new Bundle();
         bundle.putBoolean("IsCard", false);
         intent.putExtras(bundle);
-        intent.setClass(this, MainOldActivity.class);
+        intent.setClass(this, com.idn.kmed.cervexa.ui.MainActivity.class);
         startActivity(intent);
     }
 

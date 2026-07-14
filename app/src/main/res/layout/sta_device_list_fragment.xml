@@ -42,7 +42,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <android.support.v4.widget.SwipeRefreshLayout
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:orientation="vertical"
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
@@ -55,6 +55,6 @@
                 android:divider="@android:color/darker_gray"
                 android:dividerHeight="1dp"
                 android:layout_weight="2"/>
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </RelativeLayout>
 </LinearLayout>

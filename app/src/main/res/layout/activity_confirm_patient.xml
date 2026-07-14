@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/imgHeader"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/img_device_active"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/manrope_medium"
+        android:text="Konfirmasi Pasien"
+        android:textColor="@color/colorBlack"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgHeader" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/manrope_medium"
+        android:text="Apakah ini pasien baru atau pasien yang sudah terdaftar?"
+        android:textColor="#666666"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNewPatient"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="48dp"
+
+        android:text="PASIEN BARU"
+        android:textSize="16sp"
+        android:fontFamily="@font/manrope_medium"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+
+
+        android:background="@drawable/bg_btn_tv_focus"
+
+        app:layout_constraintWidth_max="450dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
+<!--        android:focusable="true"-->
+        <!--                    android:focusableInTouchMode="true"-->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnExistingPatient"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+
+        android:text="PASIEN LAMA"
+        android:textSize="16sp"
+        android:fontFamily="@font/manrope_medium"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+
+
+        android:background="@drawable/bg_btn_tv_focus"
+
+        app:layout_constraintWidth_max="450dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNewPatient" />
+<!--        android:focusable="true"-->
+        <!--                    android:focusableInTouchMode="true"-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
