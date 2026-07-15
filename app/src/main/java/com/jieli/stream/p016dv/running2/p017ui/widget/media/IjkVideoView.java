@@ -1586,8 +1586,8 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         ijkMediaPlayer.setOption(4, "max-buffer-size", 0L);   // Tidak ada buffer maksimum
         ijkMediaPlayer.setOption(4, "packet-buffering", 0L);
         ijkMediaPlayer.setOption(2, "skip_frame", 8L);
-        ijkMediaPlayer.setOption(2, "skip_loop_filter", 48L);
-        ijkMediaPlayer.setOption(4, "framedrop", 5L);
+        ijkMediaPlayer.setOption(2, "skip_loop_filter", 0L);
+        ijkMediaPlayer.setOption(4, "framedrop", 60L);
         ijkMediaPlayer.setOption(1, "probesize", 32768L);      // Turunkan dari 1MB ke 32KB
         ijkMediaPlayer.setOption(1, "analyzeduration", 100L); // Turunkan dari 5000ms ke 100ms
         ijkMediaPlayer.setOption(4, "start-on-prepared", 1L);
@@ -1596,7 +1596,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         if (this.isRealTime) {
             ijkMediaPlayer.setOption(1, "fflags", "nobuffer");
             ijkMediaPlayer.setOption(4, "find_stream_info", 0L);
-            ijkMediaPlayer.setOption(1, "rtsp_transport", "udp");
+            ijkMediaPlayer.setOption(1, "rtsp_transport", "udp"); // UDP: no retransmit stall
             ijkMediaPlayer.setOption(4, "infbuf", 1L);
             return ijkMediaPlayer;
         }

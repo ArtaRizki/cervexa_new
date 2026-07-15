@@ -98,6 +98,7 @@ public class Ms2CameraActivity extends Activity {
     private boolean mStreamStarted   = false;
     private final Handler mUiHandler  = new Handler(Looper.getMainLooper());
     private Runnable mTimeoutRunnable;
+    private Runnable mClockRunnable;
     
     // Mode State
     private boolean mIsVideoMode = false;
@@ -145,6 +146,30 @@ public class Ms2CameraActivity extends Activity {
         // Ini menghilangkan jeda/delay 1 detik saat menggerakkan kamera MS2
         mVideoView.setRealtime(true);
 
+        // Overlay Data
+        String patientNama = getIntent().getStringExtra("patient_nama");
+        String patientNrm = getIntent().getStringExtra("patient_nrm");
+        String patientRs = getIntent().getStringExtra("patient_rs");
+
+        TextView tvOverlayInfo = findViewById(R.id.tvOverlayInfo);
+        if (tvOverlayInfo != null) {
+            String rs = patientRs != null ? patientRs : "";
+            String nrm = patientNrm != null ? patientNrm : "";
+            String nama = patientNama != null ? patientNama : "";
+            
+            String top = nrm.isEmpty() ? rs : rs + " / " + nrm;
+            String text = top;
+            if (!nama.isEmpty()) {
+                text += "\n" + nama;
+            }
+            tvOverlayInfo.setText(text);
+        }
+
+        TextView tvOverlayClock = findViewById(R.id.tvOverlayClock);
+        if (tvOverlayClock != null) {
+            startClock(tvOverlayClock);
+        }
+
         // Gunakan TextureView agar bisa getBitmap() untuk capture
         mVideoView.setRender(IjkVideoView.RENDER_TEXTURE_VIEW);
         mVideoView.setAspectRatio(3); // fit screen
@@ -187,6 +212,18 @@ public class Ms2CameraActivity extends Activity {
         });
     }
 
+    private void startClock(final TextView tvClock) {
+        final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault());
+        mClockRunnable = new Runnable() {
+            @Override
+            public void run() {
+                tvClock.setText(sdf.format(new java.util.Date()));
+                mUiHandler.postDelayed(this, 1000);
+            }
+        };
+        mUiHandler.post(mClockRunnable);
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (mScaleGestureDetector != null) {
@@ -219,6 +256,9 @@ public class Ms2CameraActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         cancelTimeout();
+        if (mClockRunnable != null) {
+            mUiHandler.removeCallbacks(mClockRunnable);
+        }
         if (mVideoView != null) {
             mVideoView.release(true);
         }

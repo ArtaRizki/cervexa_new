@@ -85,6 +85,7 @@ public class MainActivity extends BaseActivity implements OnWifiCallBack {
             if (MainActivity.this.mWifiHelper.isWifiOpen()) {
                 MainActivity.access$108(MainActivity.this);
                 if (MainActivity.this.reConnectNum < 3) {
+
                     SharedPreferences sharedPreferences = PreferencesHelper.getSharedPreferences(MainActivity.this.getApplicationContext());
                     String string = sharedPreferences.getString(IConstant.CURRENT_WIFI_SSID, null);
                     if (!TextUtils.isEmpty(string)) {

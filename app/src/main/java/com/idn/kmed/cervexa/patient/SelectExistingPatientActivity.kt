@@ -214,7 +214,7 @@ class SelectExistingPatientActivity : AppCompatActivity() {
             .filter { it.nik == p.nik }
             .maxByOrNull { it.lastTs }
 
-        startActivity(Intent(this, Class.forName("com.jieli.stream.p016dv.running2.p017ui.activity.MainActivity")).apply {
+        startActivity(Intent(this, Class.forName("com.gizthon.camera.activity.Ms2CameraActivity")).apply {
             putExtra("patient_id", patientId)   // server ID (−1 jika offline)
             putExtra("patient_nama", p.nama)
             putExtra("patient_nik", p.nik)

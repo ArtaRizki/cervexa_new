@@ -107,7 +107,7 @@ class RegistrationPatientActivity : AppCompatActivity() {
         patientId: Int,
         nama: String, nik: String, rs: String, nrm: String, dobUtcMs: Long
     ) {
-        startActivity(Intent(this, Class.forName("com.jieli.stream.p016dv.running2.p017ui.activity.MainActivity")).apply {
+        startActivity(Intent(this, Class.forName("com.gizthon.camera.activity.Ms2CameraActivity")).apply {
             putExtra("patient_id", patientId)   // ← ID dari server (BARU)
             putExtra("patient_nama", nama)
             putExtra("patient_nik", nik)
