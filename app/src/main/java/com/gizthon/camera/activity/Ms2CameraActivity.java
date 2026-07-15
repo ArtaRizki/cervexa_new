@@ -116,6 +116,16 @@ public class Ms2CameraActivity extends Activity {
     private ScaleGestureDetector mScaleGestureDetector;
     private float mScaleFactor = 1.0f;
 
+    // Session Logic
+    private File mSessionDir;
+    private File mSnapsDir;
+    private File mVidsDir;
+    private String mPatientNama = "-";
+    private String mPatientNik = "-";
+    private String mPatientRs = "-";
+    private String mPatientNrm = null;
+    private long mPatientDobUtc = -1;
+
     // Video Recorder
     private ViewRecorder mRecorder;
 
@@ -152,21 +162,49 @@ public class Ms2CameraActivity extends Activity {
         // Ini menghilangkan jeda/delay 1 detik saat menggerakkan kamera MS2
         mVideoView.setRealtime(true);
 
-        // Overlay Data
-        String patientNama = getIntent().getStringExtra("patient_nama");
-        String patientNrm = getIntent().getStringExtra("patient_nrm");
-        String patientRs = getIntent().getStringExtra("patient_rs");
+        mVideoView.setRealtime(true);
+
+        // Overlay Data & Session Initialization
+        mPatientNama = getIntent().getStringExtra("patient_nama");
+        if (mPatientNama == null || mPatientNama.isEmpty()) mPatientNama = "-";
+        
+        mPatientNik = getIntent().getStringExtra("patient_nik");
+        if (mPatientNik == null || mPatientNik.isEmpty()) mPatientNik = "-";
+        
+        mPatientRs = getIntent().getStringExtra("patient_rs");
+        if (mPatientRs == null || mPatientRs.isEmpty()) mPatientRs = "-";
+        
+        mPatientNrm = getIntent().getStringExtra("patient_nrm");
+        if (mPatientNrm != null && mPatientNrm.isEmpty()) mPatientNrm = null;
+        
+        mPatientDobUtc = getIntent().getLongExtra("patient_dob_utc", -1);
+
+        String dateFolder = com.idn.kmed.cervexa.utils.StorageUtils.INSTANCE.todayDateFolderWIB();
+        String patientFolder = mPatientNik + "_" + mPatientNama.replace(" ", "_");
+        
+        mSessionDir = com.idn.kmed.cervexa.utils.StorageUtils.INSTANCE.ensureSessionDir(this, dateFolder, patientFolder);
+        mSnapsDir = com.idn.kmed.cervexa.utils.StorageUtils.INSTANCE.ensureChildDir(mSessionDir, "Snapshots");
+        mVidsDir = com.idn.kmed.cervexa.utils.StorageUtils.INSTANCE.ensureChildDir(mSessionDir, "Video");
+
+        // Write session.json for MediaRepository to read
+        try {
+            org.json.JSONObject json = new org.json.JSONObject();
+            json.put("nama", mPatientNama);
+            json.put("nik", mPatientNik);
+            json.put("nrm", mPatientNrm);
+            json.put("rs", mPatientRs);
+            json.put("dob_utc", mPatientDobUtc);
+            com.idn.kmed.cervexa.utils.StorageUtils.INSTANCE.writeSessionMetadata(mSessionDir, json.toString());
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to write session.json", e);
+        }
 
         TextView tvOverlayInfo = findViewById(R.id.tvOverlayInfo);
         if (tvOverlayInfo != null) {
-            String rs = patientRs != null ? patientRs : "";
-            String nrm = patientNrm != null ? patientNrm : "";
-            String nama = patientNama != null ? patientNama : "";
-            
-            String top = nrm.isEmpty() ? rs : rs + " / " + nrm;
+            String top = mPatientNrm == null ? mPatientRs : mPatientRs + " / " + mPatientNrm;
             String text = top;
-            if (!nama.isEmpty()) {
-                text += "\n" + nama;
+            if (!mPatientNama.isEmpty() && !mPatientNama.equals("-")) {
+                text += "\n" + mPatientNama;
             }
             tvOverlayInfo.setText(text);
         }
@@ -291,11 +329,8 @@ public class Ms2CameraActivity extends Activity {
         setStatus("Membuat PDF...");
 
         new Thread(() -> {
-            File snapsDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Cervexa");
-            File vidsDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES), "Cervexa");
-
-            File[] snapFilesArr = snapsDir.exists() ? snapsDir.listFiles() : new File[0];
-            File[] vidFilesArr = vidsDir.exists() ? vidsDir.listFiles() : new File[0];
+            File[] snapFilesArr = mSnapsDir.exists() ? mSnapsDir.listFiles() : new File[0];
+            File[] vidFilesArr = mVidsDir.exists() ? mVidsDir.listFiles() : new File[0];
 
             java.util.List<File> snaps = snapFilesArr != null ? java.util.Arrays.asList(snapFilesArr) : new java.util.ArrayList<>();
             java.util.List<File> vids = vidFilesArr != null ? java.util.Arrays.asList(vidFilesArr) : new java.util.ArrayList<>();
@@ -304,25 +339,16 @@ public class Ms2CameraActivity extends Activity {
             String fname = sessionOnly ? "cervexa_sesi_" + ts + ".pdf" : "cervexa_pasien_" + ts + ".pdf";
             File outFile = new File(getCacheDir(), fname);
 
-            String nama = getIntent().getStringExtra("patient_nama");
-            if (nama == null || nama.isEmpty()) nama = "—";
-            String nik = getIntent().getStringExtra("patient_nik");
-            if (nik == null || nik.isEmpty()) nik = "—";
-            String rs = getIntent().getStringExtra("patient_rs");
-            if (rs == null || rs.isEmpty()) rs = "—";
-            String nrm = getIntent().getStringExtra("patient_nrm");
-            if (nrm != null && nrm.isEmpty()) nrm = null;
-            long dobUtc = getIntent().getLongExtra("patient_dob_utc", -1);
-            Long dobObj = dobUtc > 0 ? dobUtc : null;
+            Long dobObj = mPatientDobUtc > 0 ? mPatientDobUtc : null;
 
             File pdf = null;
             try {
                 pdf = com.idn.kmed.cervexa.utils.PdfReportHelper.INSTANCE.generateSessionPdf(
                     outFile,
-                    nama,
-                    nik,
-                    rs,
-                    nrm,
+                    mPatientNama,
+                    mPatientNik,
+                    mPatientRs,
+                    mPatientNrm,
                     dobObj,
                     -1, // sessionId
                     null, // sessionCode
@@ -512,9 +538,7 @@ public class Ms2CameraActivity extends Activity {
             ivVideoDot.startAnimation(anim);
 
             try {
-                File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES), "Cervexa");
-                if (!dir.exists()) dir.mkdirs();
-                String outputPath = new File(dir, "MS2_Video_" + System.currentTimeMillis() + ".mp4").getAbsolutePath();
+                String outputPath = new File(mVidsDir, "MS2_Video_" + System.currentTimeMillis() + ".mp4").getAbsolutePath();
                 mRecorder = new ViewRecorder(mVideoView, outputPath);
                 mRecorder.start();
                 Toast.makeText(this, "Mulai merekam video...", Toast.LENGTH_SHORT).show();
@@ -579,9 +603,7 @@ public class Ms2CameraActivity extends Activity {
             saver.submit(() -> {
                 try {
                     String fileName = "MS2_" + System.currentTimeMillis() + ".jpg";
-                    File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Cervexa");
-                    if (!dir.exists()) dir.mkdirs();
-                    File imageFile = new File(dir, fileName);
+                    File imageFile = new File(mSnapsDir, fileName);
 
                     try (OutputStream out = new FileOutputStream(imageFile)) {
                         finalBmp.compress(Bitmap.CompressFormat.JPEG, 95, out);
