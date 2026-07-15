@@ -81,7 +81,7 @@ public class VideoListFragment extends BaseXFragment {
 
     /* JADX INFO: Access modifiers changed from: private */
     public ArrayList<PhotoBean> getPhotoBeans() {
-        String str = Environment.getExternalStorageDirectory().getPath() + "/MergeCamera/Media/Video/";
+        String str = Environment.getExternalStorageDirectory().getPath() + "/Movies/Cervexa/";
         File file = new File(str);
         ArrayList<PhotoBean> arrayList = new ArrayList<>();
         String[] list = file.list();

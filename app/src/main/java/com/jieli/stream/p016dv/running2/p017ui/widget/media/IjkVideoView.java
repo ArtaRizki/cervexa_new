@@ -1153,6 +1153,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
     public void setRender(int i) {
         if (i == 0) {
             setRenderView(null);
+            this.mCurrentRender = i;
             return;
         }
         if (i == 1) {
@@ -1160,6 +1161,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
             surfaceRenderView.setZOrderOnTop(true);
             surfaceRenderView.setZOrderMediaOverlay(true);
             setRenderView(surfaceRenderView);
+            this.mCurrentRender = i;
             return;
         }
         if (i == 2) {
@@ -1171,6 +1173,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
                 textureRenderView.setAspectRatio(this.mCurrentAspectRatio);
             }
             setRenderView(textureRenderView);
+            this.mCurrentRender = i;
             return;
         }
         Dbug.m1388e(this.TAG, String.format(Locale.getDefault(), "invalid render %d\n", Integer.valueOf(i)));
