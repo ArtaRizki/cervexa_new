@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -34,6 +35,11 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import android.view.TextureView;
+import android.view.ViewGroup;
+import android.view.SurfaceView;
+import android.view.PixelCopy;
+import android.view.Surface;
 
 import com.gizthon.camera.utils.ViewRecorder;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
@@ -179,6 +185,11 @@ public class Ms2CameraActivity extends Activity {
 
         btnBack.setOnClickListener(v -> finish());
         
+        Button btnSelesai = findViewById(R.id.btn_selesai);
+        if (btnSelesai != null) {
+            btnSelesai.setOnClickListener(v -> showExitConfirmDialog());
+        }
+        
         btnGallery.setOnClickListener(v -> {
             // Open GalleryListActivity
             Intent intent = new Intent(this, GalleryListActivity.class);
@@ -246,10 +257,108 @@ public class Ms2CameraActivity extends Activity {
             toggleRecording();
         }
         cancelTimeout();
+        if (mUiHandler != null) {
+            mUiHandler.removeCallbacksAndMessages(null);
+        }
         if (mVideoView != null) {
             mVideoView.stopPlayback();
         }
         mStreamStarted = false;
+    }
+
+    private void showExitConfirmDialog() {
+        new android.app.AlertDialog.Builder(this)
+            .setTitle("Selesaikan Sesi?")
+            .setMessage("Anda yakin ingin menyelesaikan sesi ini?")
+            .setPositiveButton("Ya", (dialog, which) -> showSaveConfirmDialog())
+            .setNegativeButton("Tidak", null)
+            .show();
+    }
+
+    private void showSaveConfirmDialog() {
+        new android.app.AlertDialog.Builder(this)
+            .setTitle("Simpan Sesi")
+            .setMessage("Sesi ini dapat disimpan sebagai dokumen laporan/rekam medis atau hanya menyimpan media yang sudah diambil.")
+            .setPositiveButton("Simpan Rekam Medis (PDF)", (dialog, which) -> generateAndActionPdf(true, false))
+            .setNeutralButton("Unduh PDF", (dialog, which) -> generateAndActionPdf(true, true))
+            .setNegativeButton("Batal", (dialog, which) -> finish())
+            .show();
+    }
+
+    private void generateAndActionPdf(boolean sessionOnly, boolean download) {
+        pbLoading.setVisibility(View.VISIBLE);
+        tvStatus.setVisibility(View.VISIBLE);
+        setStatus("Membuat PDF...");
+
+        new Thread(() -> {
+            File snapsDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Cervexa");
+            File vidsDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES), "Cervexa");
+
+            File[] snapFilesArr = snapsDir.exists() ? snapsDir.listFiles() : new File[0];
+            File[] vidFilesArr = vidsDir.exists() ? vidsDir.listFiles() : new File[0];
+
+            java.util.List<File> snaps = snapFilesArr != null ? java.util.Arrays.asList(snapFilesArr) : new java.util.ArrayList<>();
+            java.util.List<File> vids = vidFilesArr != null ? java.util.Arrays.asList(vidFilesArr) : new java.util.ArrayList<>();
+
+            long ts = System.currentTimeMillis();
+            String fname = sessionOnly ? "cervexa_sesi_" + ts + ".pdf" : "cervexa_pasien_" + ts + ".pdf";
+            File outFile = new File(getCacheDir(), fname);
+
+            String nama = getIntent().getStringExtra("patient_nama");
+            if (nama == null || nama.isEmpty()) nama = "—";
+            String nik = getIntent().getStringExtra("patient_nik");
+            if (nik == null || nik.isEmpty()) nik = "—";
+            String rs = getIntent().getStringExtra("patient_rs");
+            if (rs == null || rs.isEmpty()) rs = "—";
+            String nrm = getIntent().getStringExtra("patient_nrm");
+            if (nrm != null && nrm.isEmpty()) nrm = null;
+            long dobUtc = getIntent().getLongExtra("patient_dob_utc", -1);
+            Long dobObj = dobUtc > 0 ? dobUtc : null;
+
+            File pdf = null;
+            try {
+                pdf = com.idn.kmed.cervexa.utils.PdfReportHelper.INSTANCE.generateSessionPdf(
+                    outFile,
+                    nama,
+                    nik,
+                    rs,
+                    nrm,
+                    dobObj,
+                    -1, // sessionId
+                    null, // sessionCode
+                    null, // startedAt
+                    null, // completedAt
+                    snaps,
+                    vids,
+                    null, // aiClassification
+                    null, // aiConfidenceScore
+                    false // aiIsFallback
+                );
+            } catch (Exception e) {
+                Log.e(TAG, "Error generating PDF", e);
+            }
+            final File finalPdf = pdf;
+
+            mUiHandler.post(() -> {
+                pbLoading.setVisibility(View.GONE);
+                tvStatus.setVisibility(View.GONE);
+
+                if (finalPdf == null) {
+                    Toast.makeText(Ms2CameraActivity.this, "Gagal membuat PDF", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (download) {
+                    boolean ok = com.idn.kmed.cervexa.utils.PrintHelper.INSTANCE.downloadPdf(Ms2CameraActivity.this, finalPdf, fname);
+                    Toast.makeText(Ms2CameraActivity.this, ok ? "PDF tersimpan di folder Downloads" : "Gagal menyimpan PDF", Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    String label = sessionOnly ? "Sesi Pemeriksaan" : "Data Pasien";
+                    com.idn.kmed.cervexa.utils.PrintHelper.INSTANCE.printPdf(Ms2CameraActivity.this, finalPdf, "Cervexa — " + label);
+                    finish();
+                }
+            });
+        }).start();
     }
 
     @Override
@@ -431,6 +540,19 @@ public class Ms2CameraActivity extends Activity {
         }
     }
 
+    private TextureView findTextureView(ViewGroup group) {
+        for (int i = 0; i < group.getChildCount(); i++) {
+            View child = group.getChildAt(i);
+            if (child instanceof TextureView) {
+                return (TextureView) child;
+            } else if (child instanceof ViewGroup) {
+                TextureView tv = findTextureView((ViewGroup) child);
+                if (tv != null) return tv;
+            }
+        }
+        return null;
+    }
+
     private void captureFrame() {
         if (!mStreamStarted) {
             Toast.makeText(this, "Stream belum aktif", Toast.LENGTH_SHORT).show();
@@ -438,13 +560,21 @@ public class Ms2CameraActivity extends Activity {
         }
 
         try {
-            // Ambil bitmap langsung dari TextureView via IjkVideoView
-            final Bitmap bmp = mVideoView.getBitmap();
+            Bitmap bmp = null;
+            TextureView tv = findTextureView(mVideoView);
+            
+            if (tv != null) {
+                bmp = tv.getBitmap();
+            } else {
+                bmp = mVideoView.getBitmap();
+            }
+
             if (bmp == null) {
                 Toast.makeText(this, "Gagal mengambil frame dari stream", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+            final Bitmap finalBmp = bmp;
             ExecutorService saver = Executors.newSingleThreadExecutor();
             saver.submit(() -> {
                 try {
@@ -454,7 +584,7 @@ public class Ms2CameraActivity extends Activity {
                     File imageFile = new File(dir, fileName);
 
                     try (OutputStream out = new FileOutputStream(imageFile)) {
-                        bmp.compress(Bitmap.CompressFormat.JPEG, 95, out);
+                        finalBmp.compress(Bitmap.CompressFormat.JPEG, 95, out);
                     }
 
                     MediaScannerConnection.scanFile(this, new String[]{imageFile.getAbsolutePath()}, new String[]{"image/jpeg"}, null);

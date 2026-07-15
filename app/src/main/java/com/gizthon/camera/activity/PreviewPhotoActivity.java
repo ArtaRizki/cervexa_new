@@ -119,7 +119,7 @@ public class PreviewPhotoActivity extends Activity {
             Intent intent = new Intent(Intent.ACTION_SEND);
             
             if (Build.VERSION.SDK_INT >= 24) {
-                uriFromFile = androidx.core.content.FileProvider.getUriForFile(this, "com.weioa.GoPlusDrone.fileProvider", imageFile);
+                uriFromFile = androidx.core.content.FileProvider.getUriForFile(this, getPackageName() + ".fileProvider", imageFile);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             } else {
                 uriFromFile = Uri.fromFile(imageFile);

@@ -88,19 +88,19 @@ public class PhotoListFragment extends BaseXFragment {
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public ArrayList<PhotoBean> getPhotoBeans() {
-        String str = Environment.getExternalStorageDirectory().getPath() + CameraApplication.DIRECTORY_NAME;
+        String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/Cervexa/";
         File file = new File(str);
         ArrayList<PhotoBean> arrayList = new ArrayList<>();
         String[] list = file.list();
         if (list != null) {
             for (int i = 0; i < list.length; i++) {
                 String str2 = list[i];
-                if (str2.contains(UVCCameraHelper.SUFFIX_JPEG)) {
+                if (str2.toLowerCase().endsWith(".jpg") || str2.toLowerCase().endsWith(".jpeg") || str2.toLowerCase().endsWith(".png")) {
                     PhotoBean photoBean = new PhotoBean();
                     photoBean.setIndex(i);
                     photoBean.setName(str2);
+                    photoBean.setSelected(false);
                     photoBean.setPath(str + str2);
                     arrayList.add(photoBean);
                 }

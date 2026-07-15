@@ -79,9 +79,8 @@ public class VideoListFragment extends BaseXFragment {
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public ArrayList<PhotoBean> getPhotoBeans() {
-        String str = Environment.getExternalStorageDirectory().getPath() + "/Movies/Cervexa/";
+        String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath() + "/Cervexa/";
         File file = new File(str);
         ArrayList<PhotoBean> arrayList = new ArrayList<>();
         String[] list = file.list();
@@ -89,22 +88,15 @@ public class VideoListFragment extends BaseXFragment {
         if (list != null) {
             for (int i = 0; i < list.length; i++) {
                 String str2 = list[i];
-                if (str2.contains(".avi") || str2.contains(UVCCameraHelper.SUFFIX_MP4) || str2.contains("mov")) {
+                if (str2.toLowerCase().endsWith(".mp4") || str2.toLowerCase().endsWith(".avi") || str2.toLowerCase().endsWith(".mov")) {
                     PhotoBean photoBean = new PhotoBean();
                     photoBean.setIndex(i);
                     photoBean.setName(str2);
-                    if (str2.contains(".avi")) {
-                        photoBean.setAviPngName(str + "thumbnails/" + str2.replace("avi", "jpg"));
-                    } else if (str2.contains(UVCCameraHelper.SUFFIX_MP4)) {
-                        photoBean.setAviPngName(str + "thumbnails/" + str2.replace("mp4", "jpg"));
-                    }
-                    try {
-                        photoBean.setPath(str + str2);
-                        photoBean.setVideoVisible(0);
-                        arrayList.add(photoBean);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    photoBean.setAviPngName(str + str2); // let Glide extract thumbnail from the video file
+                    photoBean.setSelected(false);
+                    photoBean.setVideoVisible(0);
+                    photoBean.setPath(str + str2);
+                    arrayList.add(photoBean);
                 }
             }
         }

@@ -9,6 +9,8 @@ import android.media.MediaMuxer;
 import android.util.Log;
 import android.view.Surface;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.TextureView;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -24,12 +26,29 @@ public class ViewRecorder {
     private boolean mMuxerStarted = false;
     private Surface mInputSurface;
     private boolean mIsRecording = false;
+    private TextureView mTextureView;
     
     private Thread mRecordThread;
     
     public ViewRecorder(View view, String outputPath) {
         mView = view;
         mOutputPath = outputPath;
+        if (mView instanceof ViewGroup) {
+            mTextureView = findTextureView((ViewGroup) mView);
+        }
+    }
+    
+    private TextureView findTextureView(ViewGroup group) {
+        for (int i = 0; i < group.getChildCount(); i++) {
+            View child = group.getChildAt(i);
+            if (child instanceof TextureView) {
+                return (TextureView) child;
+            } else if (child instanceof ViewGroup) {
+                TextureView tv = findTextureView((ViewGroup) child);
+                if (tv != null) return tv;
+            }
+        }
+        return null;
     }
     
     public String getOutputPath() {
@@ -79,7 +98,9 @@ public class ViewRecorder {
             // Ambil bitmap langsung jika berupa IjkVideoView (TextureView)
             Bitmap bmp = null;
             try {
-                if (mView instanceof com.jieli.stream.p016dv.running2.p017ui.widget.media.IjkVideoView) {
+                if (mTextureView != null) {
+                    bmp = mTextureView.getBitmap();
+                } else if (mView instanceof com.jieli.stream.p016dv.running2.p017ui.widget.media.IjkVideoView) {
                     bmp = ((com.jieli.stream.p016dv.running2.p017ui.widget.media.IjkVideoView) mView).getBitmap();
                 } else {
                     mView.setDrawingCacheEnabled(true);
