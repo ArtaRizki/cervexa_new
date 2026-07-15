@@ -176,7 +176,6 @@ class OnboardingActivity : AppCompatActivity() {
         }
         if (!hasWifiPermissions()) {
             requestWifiPermissions()
-            openWifiSettings()
             return
         }
 
@@ -380,5 +379,22 @@ class OnboardingActivity : AppCompatActivity() {
         }
 
         return fallbackWifi
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        val granted = grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED }
+        if (granted) {
+            Toast.makeText(this, "Izin diberikan, mencoba menyambungkan...", Toast.LENGTH_SHORT).show()
+            val prefs = getSharedPreferences(getString(R.string.pref_application), MODE_PRIVATE)
+            val prefix = prefs.getString("camera_ssid_prefix", "wifi_camera_MS2_") ?: "wifi_camera_MS2_"
+            connectToCameraWifiWithFallback(prefix, null, 12_000L)
+        } else {
+            Toast.makeText(this, "Izin ditolak, tidak bisa mendeteksi Wi-Fi kamera", Toast.LENGTH_SHORT).show()
+        }
     }
 }

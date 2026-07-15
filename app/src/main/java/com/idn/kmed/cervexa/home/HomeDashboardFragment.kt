@@ -184,12 +184,7 @@ class HomeDashboardFragment : Fragment() {
                     "Izin 'Nearby Devices' diperlukan untuk deteksi Wi-Fi.",
                     Toast.LENGTH_LONG
                 ).show()
-                WifiMonitor.handlePermissionResult(
-                    2201,
-                    intArrayOf(),
-                    ctx
-                ) // Trigger request permission logic di WifiMonitor
-                // Atau bisa direct requestPermissions(arrayOf(Manifest.permission.NEARBY_WIFI_DEVICES), 2201)
+                requestPermissions(arrayOf(Manifest.permission.NEARBY_WIFI_DEVICES), 2201)
                 return
             }
             if (ContextCompat.checkSelfPermission(
