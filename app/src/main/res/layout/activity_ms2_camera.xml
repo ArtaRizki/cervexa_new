@@ -164,6 +164,7 @@
         android:id="@+id/tvOverlayInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="200dp"
         android:background="#DD000000"
         android:elevation="5dp"
         android:fontFamily="monospace"

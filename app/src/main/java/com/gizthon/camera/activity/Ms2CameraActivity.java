@@ -204,7 +204,7 @@ public class Ms2CameraActivity extends Activity {
             String top = mPatientNrm == null ? mPatientRs : mPatientRs + " / " + mPatientNrm;
             String text = top;
             if (!mPatientNama.isEmpty() && !mPatientNama.equals("-")) {
-                text += "\n" + mPatientNama;
+                text += " - " + mPatientNama;
             }
             tvOverlayInfo.setText(text);
         }
