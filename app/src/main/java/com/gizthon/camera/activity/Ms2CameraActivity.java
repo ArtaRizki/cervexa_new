@@ -231,6 +231,8 @@ public class Ms2CameraActivity extends Activity {
         btnGallery.setOnClickListener(v -> {
             // Open GalleryListActivity
             Intent intent = new Intent(this, GalleryListActivity.class);
+            if (mSnapsDir != null) intent.putExtra("snapsDir", mSnapsDir.getAbsolutePath() + "/");
+            if (mVidsDir != null) intent.putExtra("vidsDir", mVidsDir.getAbsolutePath() + "/");
             startActivity(intent);
         });
         

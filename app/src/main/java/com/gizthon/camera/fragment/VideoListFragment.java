@@ -28,8 +28,9 @@ public class VideoListFragment extends BaseXFragment {
     }
     private GalleryPhotoFragmentBinding binding;
 
-    public static VideoListFragment newInstance() {
+    public static VideoListFragment newInstance(String path) {
         Bundle bundle = new Bundle();
+        bundle.putString("path", path);
         VideoListFragment videoListFragment = new VideoListFragment();
         videoListFragment.setArguments(bundle);
         return videoListFragment;
@@ -80,7 +81,8 @@ public class VideoListFragment extends BaseXFragment {
     }
 
     public ArrayList<PhotoBean> getPhotoBeans() {
-        String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath() + "/Cervexa/";
+        String str = getArguments() != null && getArguments().getString("path") != null ? getArguments().getString("path") : Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath() + "/Cervexa/";
+        if (str != null && !str.endsWith("/")) str += "/";
         File file = new File(str);
         ArrayList<PhotoBean> arrayList = new ArrayList<>();
         String[] list = file.list();

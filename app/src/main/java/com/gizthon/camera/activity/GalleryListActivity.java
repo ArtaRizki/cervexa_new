@@ -83,8 +83,10 @@ public class GalleryListActivity extends CameraBaseActivity {
 
         ArrayList<Fragment> arrayList = new ArrayList<>();
         this.fragments = arrayList;
-        arrayList.add(PhotoListFragment.newInstance());
-        this.fragments.add(VideoListFragment.newInstance());
+        String snapsDir = getIntent().getStringExtra("snapsDir");
+        String vidsDir = getIntent().getStringExtra("vidsDir");
+        arrayList.add(PhotoListFragment.newInstance(snapsDir));
+        this.fragments.add(VideoListFragment.newInstance(vidsDir));
         if (this.pager != null) {
             this.pager.setAdapter(new PhotoFragmentAdapter(this, this.fragments));
         }
