@@ -542,6 +542,9 @@ public class Ms2CameraActivity extends Activity {
             try {
                 String outputPath = new File(mVidsDir, "MS2_Video_" + System.currentTimeMillis() + ".mp4").getAbsolutePath();
                 mRecorder = new ViewRecorder(mVideoView, outputPath);
+                View overlay1 = findViewById(R.id.tvOverlayInfo);
+                View overlay2 = findViewById(R.id.tvOverlayClock);
+                mRecorder.setOverlays(overlay1, overlay2);
                 mRecorder.start();
                 Toast.makeText(this, "Mulai merekam video...", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
@@ -600,7 +603,31 @@ public class Ms2CameraActivity extends Activity {
                 return;
             }
 
-            final Bitmap finalBmp = bmp;
+            Bitmap tempBmp = Bitmap.createBitmap(bmp.getWidth(), bmp.getHeight(), Bitmap.Config.ARGB_8888);
+            android.graphics.Canvas canvas = new android.graphics.Canvas(tempBmp);
+            
+            // Fix dark image issue from TextureView.getBitmap()
+            android.graphics.Paint paint = new android.graphics.Paint();
+            android.graphics.ColorMatrix cm = new android.graphics.ColorMatrix();
+            cm.setScale(1.4f, 1.4f, 1.4f, 1.0f); // Increase brightness by 40%
+            paint.setColorFilter(new android.graphics.ColorMatrixColorFilter(cm));
+            canvas.drawBitmap(bmp, 0, 0, paint);
+            
+            View overlay1 = findViewById(R.id.tvOverlayInfo);
+            if (overlay1 != null && overlay1.getVisibility() == View.VISIBLE) {
+                canvas.save();
+                canvas.translate(overlay1.getLeft(), overlay1.getTop());
+                overlay1.draw(canvas);
+                canvas.restore();
+            }
+            View overlay2 = findViewById(R.id.tvOverlayClock);
+            if (overlay2 != null && overlay2.getVisibility() == View.VISIBLE) {
+                canvas.save();
+                canvas.translate(overlay2.getLeft(), overlay2.getTop());
+                overlay2.draw(canvas);
+                canvas.restore();
+            }
+            final Bitmap finalBmp = tempBmp;
             ExecutorService saver = Executors.newSingleThreadExecutor();
             saver.submit(() -> {
                 try {

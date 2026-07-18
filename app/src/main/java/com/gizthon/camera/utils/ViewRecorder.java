@@ -88,6 +88,14 @@ public class ViewRecorder {
         mRecordThread.start();
     }
     
+    private View mOverlay1;
+    private View mOverlay2;
+
+    public void setOverlays(View o1, View o2) {
+        mOverlay1 = o1;
+        mOverlay2 = o2;
+    }
+
     private void recordLoop() {
         final long frameTimeNs = 1000000000L / 15; // 15 fps
         MediaCodec.BufferInfo bufferInfo = new MediaCodec.BufferInfo();
@@ -99,7 +107,31 @@ public class ViewRecorder {
             Bitmap bmp = null;
             try {
                 if (mTextureView != null) {
-                    bmp = mTextureView.getBitmap();
+                    Bitmap base = mTextureView.getBitmap();
+                    if (base != null) {
+                        bmp = Bitmap.createBitmap(base.getWidth(), base.getHeight(), Bitmap.Config.ARGB_8888);
+                        Canvas canvas = new Canvas(bmp);
+                        android.graphics.Paint paint = new android.graphics.Paint();
+                        android.graphics.ColorMatrix cm = new android.graphics.ColorMatrix();
+                        cm.setScale(1.4f, 1.4f, 1.4f, 1.0f);
+                        paint.setColorFilter(new android.graphics.ColorMatrixColorFilter(cm));
+                        canvas.drawBitmap(base, 0, 0, paint);
+                        
+                        if (mOverlay1 != null || mOverlay2 != null) {
+                            if (mOverlay1 != null && mOverlay1.getVisibility() == View.VISIBLE) {
+                                canvas.save();
+                                canvas.translate(mOverlay1.getLeft(), mOverlay1.getTop());
+                                mOverlay1.draw(canvas);
+                                canvas.restore();
+                            }
+                            if (mOverlay2 != null && mOverlay2.getVisibility() == View.VISIBLE) {
+                                canvas.save();
+                                canvas.translate(mOverlay2.getLeft(), mOverlay2.getTop());
+                                mOverlay2.draw(canvas);
+                                canvas.restore();
+                            }
+                        }
+                    }
                 } else if (mView instanceof com.jieli.stream.p016dv.running2.p017ui.widget.media.IjkVideoView) {
                     bmp = ((com.jieli.stream.p016dv.running2.p017ui.widget.media.IjkVideoView) mView).getBitmap();
                 } else {
