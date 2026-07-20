@@ -390,11 +390,11 @@ public class Ms2CameraActivity extends Activity {
                 if (download) {
                     boolean ok = com.idn.kmed.cervexa.utils.PrintHelper.INSTANCE.downloadPdf(Ms2CameraActivity.this, finalPdf, fname);
                     Toast.makeText(Ms2CameraActivity.this, ok ? "PDF tersimpan di folder Downloads" : "Gagal menyimpan PDF", Toast.LENGTH_LONG).show();
-                    finish();
+                    // Jangan finish() di sini, biarkan user menutup kamera sendiri setelah selesai
                 } else {
                     String label = sessionOnly ? "Sesi Pemeriksaan" : "Data Pasien";
-                    com.idn.kmed.cervexa.utils.PrintHelper.INSTANCE.printPdf(Ms2CameraActivity.this, finalPdf, "Cervexa — " + label);
-                    finish();
+                    com.idn.kmed.cervexa.utils.PrintHelper.INSTANCE.printPdf(Ms2CameraActivity.this, finalPdf, "Cervexa - " + label);
+                    // Jangan finish() di sini, PrintManager butuh activity tetap hidup untuk menampilkan dialog print
                 }
             });
         }).start();

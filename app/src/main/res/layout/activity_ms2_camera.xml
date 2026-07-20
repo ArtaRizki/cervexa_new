@@ -14,6 +14,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center" />
+            
+        <!-- Software Brightness Overlay: Lifts black levels by adding 20% white -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#33FFFFFF" />
     </FrameLayout>
 
     <!-- Crosshair indicator like the old UI -->
