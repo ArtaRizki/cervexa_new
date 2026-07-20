@@ -142,6 +142,11 @@ public class Ms2CameraActivity extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        // Paksa kecerahan layar maksimal 100% agar live stream terlihat jelas
+        WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
+        layoutParams.screenBrightness = 1.0f;
+        getWindow().setAttributes(layoutParams);
+
         setContentView(R.layout.activity_ms2_camera);
 
         mVideoView = findViewById(R.id.iv_ms2_stream);

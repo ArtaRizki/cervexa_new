@@ -1596,6 +1596,10 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         ijkMediaPlayer.setOption(4, "start-on-prepared", 1L);
         ijkMediaPlayer.setOption(1, "flush_packets", 1L);
         ijkMediaPlayer.setOption(1, "sync", "video");
+        
+        // Coba gunakan filter FFmpeg untuk mencerahkan stream
+        ijkMediaPlayer.setOption(4, "vfilter", "eq=brightness=0.3:contrast=1.2:saturation=1.2");
+
         if (this.isRealTime) {
             ijkMediaPlayer.setOption(1, "fflags", "nobuffer");
             ijkMediaPlayer.setOption(4, "find_stream_info", 0L);
