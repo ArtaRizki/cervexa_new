@@ -152,11 +152,13 @@ public class GalleryListActivity extends CameraBaseActivity {
         if (z) {
             if (this.btnDelete != null) this.btnDelete.setVisibility(android.view.View.VISIBLE);
             if (this.tvComplete != null) this.tvComplete.setVisibility(android.view.View.VISIBLE);
+            if (this.done != null) this.done.setVisibility(android.view.View.VISIBLE);
             return;
         }
         if (this.btnDelete != null) this.btnDelete.setVisibility(android.view.View.GONE);
         if (this.tvComplete != null) this.tvComplete.setVisibility(android.view.View.GONE);
         if (this.done != null) {
+            this.done.setVisibility(android.view.View.GONE);
             this.done.setChecked(false);
         }
     }

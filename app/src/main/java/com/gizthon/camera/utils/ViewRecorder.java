@@ -113,7 +113,7 @@ public class ViewRecorder {
                         Canvas canvas = new Canvas(bmp);
                         android.graphics.Paint paint = new android.graphics.Paint();
                         android.graphics.ColorMatrix cm = new android.graphics.ColorMatrix();
-                        cm.setScale(1.4f, 1.4f, 1.4f, 1.0f);
+                        cm.setScale(2.0f, 2.0f, 2.0f, 1.0f);
                         paint.setColorFilter(new android.graphics.ColorMatrixColorFilter(cm));
                         canvas.drawBitmap(base, 0, 0, paint);
                         

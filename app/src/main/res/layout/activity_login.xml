@@ -24,7 +24,7 @@
                 android:layout_marginTop="48dp"
                 android:layout_marginBottom="32dp"
                 android:contentDescription="Cervexa Logo"
-                android:src="@drawable/cervexa_logo" />
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:layout_width="wrap_content"

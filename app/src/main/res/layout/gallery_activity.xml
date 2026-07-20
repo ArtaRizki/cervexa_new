@@ -40,7 +40,8 @@
             android:button="@null"
             android:drawableLeft="@mipmap/done"
             android:layout_alignWithParentIfMissing="true"
-            android:layout_toStartOf="@+id/tv_complete"/>
+            android:layout_toStartOf="@+id/tv_complete"
+            android:visibility="gone"/>
         <TextView
             android:textColor="@color/WHITE"
             android:gravity="center"

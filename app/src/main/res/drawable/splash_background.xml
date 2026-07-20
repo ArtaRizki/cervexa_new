@@ -5,5 +5,5 @@
     <!-- logo vektor di tengah -->
     <item
         android:gravity="center"
-        android:drawable="@drawable/cervexa_logo"/>
+        android:drawable="@mipmap/ic_launcher"/>
 </layer-list>

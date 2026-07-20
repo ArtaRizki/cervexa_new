@@ -217,6 +217,12 @@ public class Ms2CameraActivity extends Activity {
         // Gunakan TextureView agar bisa getBitmap() untuk capture
         mVideoView.setRender(IjkVideoView.RENDER_TEXTURE_VIEW);
         mVideoView.setAspectRatio(3); // fit screen
+        // Fix dark streaming issue by applying ColorMatrix directly to the View
+        android.graphics.Paint paint = new android.graphics.Paint();
+        android.graphics.ColorMatrix cm = new android.graphics.ColorMatrix();
+        cm.setScale(2.0f, 2.0f, 2.0f, 1.0f); // Increase brightness by 100%
+        paint.setColorFilter(new android.graphics.ColorMatrixColorFilter(cm));
+        mVideoView.setLayerType(View.LAYER_TYPE_HARDWARE, paint);
 
         setupPlayerListeners();
         setupGestureZoom();
@@ -609,7 +615,7 @@ public class Ms2CameraActivity extends Activity {
             // Fix dark image issue from TextureView.getBitmap()
             android.graphics.Paint paint = new android.graphics.Paint();
             android.graphics.ColorMatrix cm = new android.graphics.ColorMatrix();
-            cm.setScale(1.4f, 1.4f, 1.4f, 1.0f); // Increase brightness by 40%
+            cm.setScale(2.0f, 2.0f, 2.0f, 1.0f); // Increase brightness by 100%
             paint.setColorFilter(new android.graphics.ColorMatrixColorFilter(cm));
             canvas.drawBitmap(bmp, 0, 0, paint);
             
