@@ -1590,16 +1590,16 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         ijkMediaPlayer.setOption(4, "packet-buffering", 0L);
         ijkMediaPlayer.setOption(2, "skip_frame", 8L);
         ijkMediaPlayer.setOption(2, "skip_loop_filter", 0L);
-        ijkMediaPlayer.setOption(4, "framedrop", 60L);
+        ijkMediaPlayer.setOption(4, "framedrop", 1L);
         ijkMediaPlayer.setOption(1, "probesize", 32768L);      // Turunkan dari 1MB ke 32KB
         ijkMediaPlayer.setOption(1, "analyzeduration", 100L); // Turunkan dari 5000ms ke 100ms
         ijkMediaPlayer.setOption(4, "start-on-prepared", 1L);
         ijkMediaPlayer.setOption(1, "flush_packets", 1L);
-        ijkMediaPlayer.setOption(1, "sync", "ext");
+        ijkMediaPlayer.setOption(1, "sync", "video");
         if (this.isRealTime) {
             ijkMediaPlayer.setOption(1, "fflags", "nobuffer");
             ijkMediaPlayer.setOption(4, "find_stream_info", 0L);
-            ijkMediaPlayer.setOption(1, "rtsp_transport", "udp"); // UDP: no retransmit stall
+            ijkMediaPlayer.setOption(1, "rtsp_transport", "tcp"); // Ubah ke TCP agar tidak patah-patah (hilang paket)
             ijkMediaPlayer.setOption(4, "infbuf", 1L);
             return ijkMediaPlayer;
         }
